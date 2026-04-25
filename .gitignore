@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.DS_Store
+
+# Datos locales grandes si despues decides no versionarlos.
+# PSCompPars_*.csv
+# data/raw/

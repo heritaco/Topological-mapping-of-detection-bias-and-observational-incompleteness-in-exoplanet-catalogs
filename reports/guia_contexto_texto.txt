@@ -1,0 +1,163 @@
+                                      Guía breve de astrofísica
+                                        ExoData Challenge
+                                Feria de Puebla 2026 • Planetario de Puebla
+
+Objetivo
+
+Brindar un breve marco conceptual de apoyo que permita interpretar, desde una perspectiva astrofísica, los
+resultados que obtengas en la competencia ExoData Challenge, facilitando así la transición del análisis de
+datos a conclusiones físicas significativas. Esta guía busca ayudar a identificar relaciones clave y a reconocer
+sesgos observacionales en los censos planetarios.
+
+Dataset
+
+Se utilizará la tabla Planetary Systems Composite Parameters (PSCompPars) del NASA Exoplanet Archive,
+que contiene información de 6147 exoplanetas confirmados. La liga a la base de datos es:
+https://exoplanetarchive.ipac.caltech.edu
+
+
+Variables clave para el análisis
+    1.    Las propiedades físicas que definen lo que realmente es un planeta:
+
+
+         Propiedad                   Unidad                                 Observaciones
+ Radio del planeta           Radios terrestres     Esencial para distinguir entre planetas rocosos y gigantes
+                                                   gaseosos.
+ Masa del planeta            Masas terrestres /    La masa del planeta no siempre está disponible, en algunos
+                             Masas de Júpiter      casos estará disponible M sin i, que es la masa mínima del
+                                                   planeta medida por su velocidad radial.
+ Densidad del planeta        g/cm3                 Calculada como Masa/Volumen. Si el valor es alto, el planeta
+                                                   podría ser rocoso; si es bajo, podría ser gaseoso.
+
+
+    2.    Las propiedades que definen dónde vive un planeta (su órbita):
+
+
+         Propiedad                   Unidad                                 Observaciones
+ Periodo orbital             días                  Duración de un año en el planeta
+
+
+ Semi eje mayor              AU (unidades          Distancia promedio entre el planeta y la estrella. 1 AU =
+                             astronómicas)         distancia promedio entre el Sol y la Tierra.
+
+
+
+
+                              CONVOCATORIA ExoData Challenge | Planetario de Puebla
+ Eccentricidad              g/cm3                   Si es cero significa que la órbita es un círculo perfecto; si es
+                                                    mayor a 0.5 significa que la órbita es bastante elíptica
+                                                    (estaciones en el planeta son extremas)
+
+
+
+   3.   Las propiedades que establecen la relación entre el planeta y su estrella anfitriona:
+
+
+        Propiedad                    Unidad                                  Observaciones
+ Temperatura efectiva       Kelvin                  Las estrellas como el Sol tienen una temperatura de aprox.
+                                                    5700 K. Mientras que por ejemplo las enanas rojas tienen una
+                                                    temperatura inferior a 4000 K
+ Metalicidad                [Fe/H]                  Está descrita en escala logarítmica. Si es 0, la metalicidad de
+                                                    la estrella es similar a la del Sol. Valores positivos indican una
+                                                    mayor metalicidad, es decir, un mayor contenido de
+                                                    elementos pesados.
+ Número de planetas                                 Dato útil para estudiar la arquitectura del sistema planetario
+                                                    (sistema multi planeta vs Júpiteres aislados)
+
+
+
+Interpretaciones
+
+
+   1.   Distinción de los tipos de planetas: puedes clasificarlos por su radio:
+
+
+        •   Planetas similares a la Tierra: R < 1.25 R_terrestre
+        •   Supertierras: 1.25 - 2 R_terrestre
+        •   Subneptunos: 2 - 4 R_terrestre
+        •   Neptunos o transitorios: 4 – 10 R_terrestre
+        •   Gigantes gaseosos: R > 10 R_terrestre (o > 0.5 R_Júpiter)
+
+
+        O por su masa:
+
+
+        •   Planetas de masa terrestre: 0.1 - 10 M_terrestre
+        •   Planetas de masa media (tipo Neptuno): 10 - 50 M_terrestre.
+        •   Gigantes gaseosos: 50 - 4000 M_terrestre
+
+
+
+
+                             CONVOCATORIA ExoData Challenge | Planetario de Puebla
+    2.   Cálculo de habitabilidad: si deseas encontrar la "Tierra 2.0", necesitarás estudiar el flujo de
+         insolación (pl_insol). Esto representa la cantidad de energía que recibe el planeta en comparación
+         con la que recibe la Tierra. El objetivo podría ser tener un flujo de insolación de alrededor de 1.0.
+         Pero si te falta el dato, podrías usar una variable que contiene información relacionada: la
+         temperatura de equilibrio del planeta. Esta se modela suponiendo que el planeta es un cuerpo
+         negro calentado solo por su estrella. Para algunos planetas, este dato se obtiene de medir
+         directamente la luminosidad del planeta.
+
+
+
+Sesgos en la selección
+
+
+    1.   Método para detectar exoplanetas y sus sesgos:
+
+
+    •    Velocidad radial: Este método mide los cambios en la velocidad radial de una estrella debido a la
+         presencia de planetas. Las longitudes de onda de la luz estelar se comprimen y se estiran
+         alternativamente a medida que una estrella se acerca y se aleja ligeramente de nosotros. Estas
+         oscilaciones son causadas por las fuerzas gravitatorias, tanto en una dirección como en otra, de los
+         planetas en órbita. Este método favorece el descubrimiento de planetas masivos.
+
+
+    •    Tránsitos: Con este método se detectan pequeñas disminuciones en la cantidad de luz que emiten
+         las estrellas, causadas por el paso de planetas frente a ellas. Una vez detectado un planeta, el
+         tamaño de su órbita puede calcularse a partir de su período (el tiempo que tarda en dar una vuelta
+         completa alrededor de la estrella) y la masa de esta (según las leyes de Kepler). Los censos que
+         detectan planetas mediante el método de tránsito encuentran planetas con períodos cortos y
+         radios grandes con mayor facilidad.
+
+
+    •    Microlentes gravitacionales: Otro método para la búsqueda de planetas aprovecha un efecto
+         descrito por primera vez por Einstein: la capacidad de la gravedad para deformar y curvar la luz
+         estelar. Este método detecta exoplanetas cuando la gravedad de un planeta y su estrella anfitriona
+         desvían y amplifican la luz de una estrella de fondo más lejana. Al alinearse, la gravedad actúa
+         como una lupa, provocando un aumento transitorio de brillo. Si la estrella lente tiene un planeta,
+         este añade un "pico" adicional de luz, revelando su existencia.
+
+
+    •    El método de imágenes directas detecta exoplanetas capturando su luz, generalmente en
+         infrarrojo, utilizando telescopios potentes como el Hubble o VLT. Dado que la estrella es miles de
+         millones de veces más brillante, se emplean coronógrafos para bloquear su luz y óptica adaptativa
+         para corregir la distorsión atmosférica, lo que permite ver al planeta como un pequeño punto.
+         Hasta ahora, este tipo de "imágenes directas" de exoplanetas se ha limitado principalmente a
+         planetas gigantes que, por su reciente formación, aún están tan calientes que conservan su propia
+         luminosidad; es decir, favorece planetas jóvenes y grandes.
+
+
+
+
+                             CONVOCATORIA ExoData Challenge | Planetario de Puebla
+   2.   Cuidado con los valores de las masas planetarias (M sin i vs. Masa): Para las detecciones de
+        exoplanetas mediante el método de velocidad radial, a menudo solo se conoce la masa mínima
+        (pl_msinie). Si la inclinación (pl_orbincl) es desconocida, la masa real podría ser mucho mayor.
+
+
+   3.   Valores nulos: En la tabla de datos, algunos valores (como pl_dens) podrían ser nulos. Decide con
+        anticipación si eliminarás estas filas o las completarás utilizando, por ejemplo, la relación masa-
+        radio para exoplanetas. La relación describe cómo cambia el radio de un exoplaneta a medida que
+        aumenta su masa, lo que revela directamente su densidad, estructura interna y composición. La
+        relación general no es lineal; sigue diferentes leyes de potencia según si el planeta es rocoso o
+        gaseoso.
+
+
+
+Dudas o comentarios comunicarse al correo: equipo.stem@udlap.mx
+
+
+
+
+                            CONVOCATORIA ExoData Challenge | Planetario de Puebla

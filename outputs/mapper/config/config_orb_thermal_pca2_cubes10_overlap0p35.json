@@ -1,0 +1,15 @@
+{
+  "config": {
+    "space": "orb_thermal",
+    "lens": "pca2",
+    "n_cubes": 10,
+    "overlap": 0.35,
+    "clusterer": "dbscan",
+    "min_samples": 4,
+    "eps_percentile": 90.0,
+    "k_density": 15,
+    "random_state": 42,
+    "input_method": "iterative"
+  },
+  "config_id": "orb_thermal_pca2_cubes10_overlap0p35"
+}

@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{placeins}
+\title{Mapper/TDA Report for Imputed PSCompPars}
+\date{}
+\begin{document}
+\maketitle
+\input{sections/00_abstract.tex}
+\section{Introduction}
+\input{sections/01_introduction.tex}
+\section{Data and Imputation}
+\input{sections/02_data_and_imputation.tex}
+\section{Mapper Methodology}
+\input{sections/03_mapper_methodology.tex}
+\section{Mapper Results}
+\input{sections/04_mapper_results.tex}
+\section{Sensitivity Analysis}
+\input{sections/05_sensitivity_analysis.tex}
+\section{Interpretation}
+\input{sections/06_interpretation.tex}
+\section{Limitations}
+\input{sections/07_limitations.tex}
+\section{Conclusion}
+\input{sections/08_conclusion.tex}
+\FloatBarrier
+\input{tables/mapper_graph_metrics_summary.tex}
+\input{tables/mapper_space_comparison.tex}
+\input{tables/mapper_density_sensitivity.tex}
+\input{tables/mapper_lens_sensitivity.tex}
+\input{tables/mapper_imputation_audit_summary.tex}
+\end{document}

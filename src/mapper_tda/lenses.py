@@ -7,6 +7,7 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.neighbors import NearestNeighbors
 
+from .feature_sets import canonical_space_name
 from .preprocessing import safe_log10
 
 
@@ -24,13 +25,7 @@ def _pca_projection(Z: np.ndarray, n_components: int) -> tuple[np.ndarray, PCA, 
     return scores, pca, fitted_components
 
 
-def make_lens_pca2(Z: np.ndarray, random_state: int = 42) -> tuple[np.ndarray, dict]:
-    """
-    Return:
-    - lens matrix with shape (n_samples, 2): [PC1, PC2]
-    - metadata with explained variance ratio
-    """
-
+def make_lens_pca2(Z: np.ndarray, random_state: int = 42) -> tuple[np.ndarray, dict[str, Any]]:
     del random_state
     scores, pca, fitted_components = _pca_projection(Z, n_components=2)
     if fitted_components == 1:
@@ -45,21 +40,10 @@ def make_lens_pca2(Z: np.ndarray, random_state: int = 42) -> tuple[np.ndarray, d
     return np.asarray(scores[:, :2], dtype=float), metadata
 
 
-def make_lens_density(
-    Z: np.ndarray,
-    k_density: int = 15,
-    random_state: int = 42,
-) -> tuple[np.ndarray, dict]:
-    """
-    Return:
-    - lens matrix with shape (n_samples, 2): [PC1, log(distance_to_kth_neighbor + eps)]
-    - metadata with k_density and density summary
-    """
-
+def make_lens_density(Z: np.ndarray, k_density: int = 15, random_state: int = 42) -> tuple[np.ndarray, dict[str, Any]]:
     del random_state
     scores, pca, _ = _pca_projection(Z, n_components=1)
     pc1 = scores[:, 0]
-
     if Z.shape[0] <= 1:
         kth_distance = np.zeros(Z.shape[0], dtype=float)
         effective_k = 0
@@ -68,69 +52,73 @@ def make_lens_density(
         neighbors = NearestNeighbors(n_neighbors=effective_k + 1)
         distances, _ = neighbors.fit(Z).kneighbors(Z)
         kth_distance = distances[:, -1]
-
     density_score = np.log(kth_distance + EPS)
-    lens = np.column_stack([pc1, density_score])
-    metadata = {
-        "lens": "density",
-        "explained_variance_ratio_pc1": float(pca.explained_variance_ratio_[0]),
-        "k_density_requested": int(k_density),
-        "k_density_effective": int(effective_k),
-        "distance_summary": {
-            "min": float(np.min(kth_distance)) if len(kth_distance) else 0.0,
-            "median": float(np.median(kth_distance)) if len(kth_distance) else 0.0,
-            "max": float(np.max(kth_distance)) if len(kth_distance) else 0.0,
+    return (
+        np.column_stack([pc1, density_score]),
+        {
+            "lens": "density",
+            "explained_variance_ratio_pc1": float(pca.explained_variance_ratio_[0]),
+            "k_density_requested": int(k_density),
+            "k_density_effective": int(effective_k),
         },
-        "density_score_summary": {
-            "min": float(np.min(density_score)) if len(density_score) else 0.0,
-            "median": float(np.median(density_score)) if len(density_score) else 0.0,
-            "max": float(np.max(density_score)) if len(density_score) else 0.0,
-        },
-    }
-    return np.asarray(lens, dtype=float), metadata
+    )
 
 
-def _domain_columns_for_space(space: str) -> list[str]:
-    if space == "phys":
-        return ["pl_rade", "pl_dens"]
-    if space == "orb":
-        return ["pl_orbper", "pl_insol"]
-    if space == "joint":
-        return ["pl_rade", "pl_orbper"]
+def _domain_coordinates(physical_df: pd.DataFrame, space: str) -> tuple[pd.Series, pd.Series, list[str]]:
+    canonical = canonical_space_name(space)
+    if canonical == "phys_min":
+        return safe_log10(physical_df["pl_bmasse"]), safe_log10(physical_df["pl_rade"]), [
+            "log10(pl_bmasse)",
+            "log10(pl_rade)",
+        ]
+    if canonical == "phys_density":
+        return safe_log10(physical_df["pl_dens"]), safe_log10(physical_df["pl_rade"]), [
+            "log10(pl_dens)",
+            "log10(pl_rade)",
+        ]
+    if canonical == "orbital":
+        return safe_log10(physical_df["pl_orbper"]), safe_log10(physical_df["pl_orbsmax"]), [
+            "log10(pl_orbper)",
+            "log10(pl_orbsmax)",
+        ]
+    if canonical == "thermal":
+        return safe_log10(physical_df["pl_insol"]), pd.to_numeric(physical_df["pl_eqt"], errors="coerce"), [
+            "log10(pl_insol)",
+            "pl_eqt",
+        ]
+    if canonical == "orb_thermal":
+        return safe_log10(physical_df["pl_insol"]), pd.to_numeric(physical_df["pl_eqt"], errors="coerce"), [
+            "log10(pl_insol)",
+            "pl_eqt",
+        ]
+    if canonical in {"joint_no_density", "joint"}:
+        values = pd.to_numeric(physical_df["pl_dens"], errors="coerce") if "pl_dens" in physical_df.columns else None
+        if canonical == "joint" and values is not None and values.notna().any():
+            return safe_log10(values), safe_log10(physical_df["pl_rade"]), ["log10(pl_dens)", "log10(pl_rade)"]
+        scores, _, _ = _pca_projection(
+            physical_df[
+                [column for column in ["pl_rade", "pl_bmasse", "pl_orbper", "pl_orbsmax", "pl_insol", "pl_eqt"] if column in physical_df.columns]
+            ]
+            .apply(pd.to_numeric, errors="coerce")
+            .fillna(method="ffill")
+            .fillna(method="bfill")
+            .to_numpy(dtype=float),
+            n_components=2,
+        )
+        return pd.Series(scores[:, 0], index=physical_df.index), pd.Series(scores[:, 1], index=physical_df.index), [
+            "physical_pca1",
+            "physical_pca2",
+        ]
     raise ValueError(f"Espacio no soportado para lens domain: {space}")
 
 
-def make_lens_domain(
-    work_df: pd.DataFrame,
-    space: str,
-) -> tuple[np.ndarray, dict]:
-    columns = _domain_columns_for_space(space)
-    domain_values: list[np.ndarray] = []
-    used_columns: list[str] = []
-
-    for feature in columns:
-        log_column = f"log10_{feature}"
-        if log_column in work_df.columns:
-            values = pd.to_numeric(work_df[log_column], errors="coerce")
-            used_columns.append(log_column)
-        elif feature in work_df.columns:
-            values = safe_log10(work_df[feature])
-            used_columns.append(log_column)
-        else:
-            raise ValueError(
-                f"No se pudo construir el lens domain para '{space}'. "
-                f"Falta la columna '{feature}' o '{log_column}'."
-            )
-        if values.isna().any():
-            raise ValueError(
-                f"El lens domain para '{space}' requiere valores positivos y completos en '{feature}'."
-            )
-        domain_values.append(values.to_numpy(dtype=float))
-
-    lens = np.column_stack(domain_values)
-    metadata = {
+def make_lens_domain(physical_df: pd.DataFrame, space: str) -> tuple[np.ndarray, dict[str, Any]]:
+    x, y, labels = _domain_coordinates(physical_df, space)
+    mask = x.notna() & y.notna()
+    if not bool(mask.all()):
+        raise ValueError(f"El lens domain requiere valores completos para el espacio {space}.")
+    return np.column_stack([x.to_numpy(dtype=float), y.to_numpy(dtype=float)]), {
         "lens": "domain",
-        "space": space,
-        "columns": used_columns,
+        "space": canonical_space_name(space),
+        "columns": labels,
     }
-    return lens, metadata

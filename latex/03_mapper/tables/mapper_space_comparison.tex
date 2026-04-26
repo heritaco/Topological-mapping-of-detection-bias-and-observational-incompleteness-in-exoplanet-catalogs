@@ -1,0 +1,17 @@
+\begin{table}
+\caption{Mapper space comparison.}
+\label{tab:mapper_space_comparison}
+\begin{tabular}{llllrrlrrrrrrrrrrrrrrrrrrrrrrrrr}
+\toprule
+config\_id & input\_method & space & lens & n\_cubes & overlap & clusterer & min\_samples & eps\_percentile & rows\_used & n\_features & mean\_node\_imputation\_fraction & max\_node\_imputation\_fraction & mean\_node\_physically\_derived\_fraction & frac\_nodes\_high\_imputation & frac\_nodes\_high\_derived & config\_has\_density\_feature & n\_nodes & n\_edges & beta\_0 & beta\_1 & graph\_density & average\_degree & average\_clustering & transitivity & n\_isolates & largest\_component\_size & largest\_component\_fraction & mean\_node\_size & median\_node\_size & min\_node\_size & max\_node\_size \\
+\midrule
+phys\_min\_pca2\_cubes10\_overlap0p35 & iterative & phys\_min & pca2 & 10 & 0.350 & dbscan & 4 & 90.000 & 6273 & 2 & 0.017 & 0.421 & 0.000 & 0.030 & 0.000 & False & 66 & 105 & 15 & 54 & 0.049 & 3.182 & 0.649 & 0.579 & 6 & 33 & 0.500 & 202.545 & 7.000 & 3 & 2323 \\
+phys\_density\_pca2\_cubes10\_overlap0p35 & iterative & phys\_density & pca2 & 10 & 0.350 & dbscan & 4 & 90.000 & 6273 & 3 & 0.002 & 0.079 & 0.332 & 0.000 & 0.985 & True & 67 & 102 & 17 & 52 & 0.046 & 3.045 & 0.561 & 0.529 & 7 & 33 & 0.493 & 238.388 & 6.000 & 3 & 3023 \\
+orbital\_pca2\_cubes10\_overlap0p35 & iterative & orbital & pca2 & 10 & 0.350 & dbscan & 4 & 90.000 & 6273 & 2 & 0.011 & 0.375 & 0.028 & 0.008 & 0.000 & False & 124 & 196 & 24 & 96 & 0.026 & 3.161 & 0.577 & 0.215 & 4 & 62 & 0.500 & 91.573 & 6.000 & 3 & 3316 \\
+thermal\_pca2\_cubes10\_overlap0p35 & iterative & thermal & pca2 & 10 & 0.350 & dbscan & 4 & 90.000 & 6273 & 2 & 0.588 & 1.000 & 0.000 & 0.719 & 0.000 & False & 121 & 150 & 38 & 67 & 0.021 & 2.479 & 0.505 & 0.521 & 6 & 35 & 0.289 & 96.157 & 6.000 & 3 & 2993 \\
+orb\_thermal\_pca2\_cubes10\_overlap0p35 & iterative & orb\_thermal & pca2 & 10 & 0.350 & dbscan & 4 & 90.000 & 6273 & 4 & 0.347 & 0.750 & 0.009 & 0.586 & 0.000 & False & 58 & 100 & 12 & 54 & 0.060 & 3.448 & 0.536 & 0.476 & 4 & 36 & 0.621 & 244.793 & 6.500 & 3 & 2847 \\
+joint\_no\_density\_pca2\_cubes10\_overlap0p35 & iterative & joint\_no\_density & pca2 & 10 & 0.350 & dbscan & 4 & 90.000 & 6273 & 6 & 0.176 & 0.500 & 0.008 & 0.355 & 0.000 & False & 62 & 134 & 9 & 81 & 0.071 & 4.323 & 0.542 & 0.454 & 3 & 47 & 0.758 & 220.645 & 23.000 & 3 & 2500 \\
+joint\_pca2\_cubes10\_overlap0p35 & iterative & joint & pca2 & 10 & 0.350 & dbscan & 4 & 90.000 & 6273 & 7 & 0.152 & 0.429 & 0.148 & 0.143 & 0.000 & True & 56 & 126 & 7 & 77 & 0.082 & 4.500 & 0.573 & 0.466 & 0 & 40 & 0.714 & 246.054 & 23.000 & 4 & 2384 \\
+\bottomrule
+\end{tabular}
+\end{table}

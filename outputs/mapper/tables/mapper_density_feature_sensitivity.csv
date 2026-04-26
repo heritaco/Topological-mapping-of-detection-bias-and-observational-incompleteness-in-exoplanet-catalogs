@@ -1,0 +1,3 @@
+comparison,without_density,with_density,delta_n_nodes,delta_n_edges,delta_beta_1,delta_average_degree,delta_mean_node_imputation_fraction,delta_mean_node_physically_derived_fraction
+phys_min_vs_phys_density,phys_min,phys_density,1.0,-3.0,-2.0,-0.13704206241519667,-0.015533231205090411,0.33242662843303494
+joint_no_density_vs_joint,joint_no_density,joint,-6.0,-8.0,-4.0,0.17741935483870996,-0.023906154885925124,0.14015954447713547

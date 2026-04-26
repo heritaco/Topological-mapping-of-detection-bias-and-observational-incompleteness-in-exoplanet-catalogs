@@ -1,0 +1,5 @@
+method,mapper_features_exists,physical_csv_exists
+iterative,False,False
+knn,False,False
+median,False,False
+complete_case,False,False

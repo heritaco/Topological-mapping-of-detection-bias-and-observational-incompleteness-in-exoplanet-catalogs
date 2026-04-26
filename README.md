@@ -120,7 +120,7 @@ python .\src\impute_exodata.py --method iterative --visualized-method iterative 
 Ejemplo completo:
 
 ```powershell
-python .\src\impute_exodata.py --csv .\data\PSCompPars_2026.04.25_17.36.36.csv --reports-dir .\reports\imputation --method compare --visualized-method iterative --n-neighbors 15 --weights distance --max-missing-pct 60 --validation-mask-frac 0.15 --random-state 42
+python .\src\impute_exodata.py --csv .\data\PSCompPars_2026.04.25_17.36.36.csv --reports-dir .\reports\imputation --outputs-dir .\reports\imputation\outputs --method compare --visualized-method iterative --n-neighbors 15 --weights distance --max-missing-pct 60 --validation-mask-frac 0.15 --random-state 42
 ```
 
 Flags opcionales:

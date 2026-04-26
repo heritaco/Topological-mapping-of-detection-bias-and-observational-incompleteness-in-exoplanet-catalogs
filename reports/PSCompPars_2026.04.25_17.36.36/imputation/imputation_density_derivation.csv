@@ -1,0 +1,2 @@
+column_created,observed_before,missing_before,derived_count,missing_after,formula
+True,0,6273,6199,74,pl_dens = 5.514 * pl_bmasse / pl_rade**3

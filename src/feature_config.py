@@ -46,7 +46,55 @@ CONTEST_NUMERIC_COLUMNS = [
     "pl_eqt",
 ]
 
+MAPPER_PHYS_FEATURES = [
+    "pl_rade",
+    "pl_bmasse",
+    "pl_dens",
+]
+
+MAPPER_ORBITAL_FEATURES = [
+    "pl_orbper",
+    "pl_orbsmax",
+    "pl_orbeccen",
+]
+
+MAPPER_STELLAR_SYSTEM_FEATURES = [
+    "st_teff",
+    "st_met",
+    "sy_pnum",
+]
+
+MAPPER_HABITABILITY_FEATURES = [
+    "pl_insol",
+    "pl_eqt",
+]
+
+MAPPER_BIAS_COLUMNS = [
+    "discoverymethod",
+    "disc_year",
+]
+
+MAPPER_CORE_FEATURES = [
+    *MAPPER_PHYS_FEATURES,
+    *MAPPER_ORBITAL_FEATURES,
+    *MAPPER_STELLAR_SYSTEM_FEATURES,
+]
+
+MAPPER_WIDE_FEATURES = [
+    *MAPPER_CORE_FEATURES,
+    *MAPPER_HABITABILITY_FEATURES,
+]
+
+IMPUTATION_FEATURE_SETS = {
+    "mapper_phys": MAPPER_PHYS_FEATURES,
+    "mapper_core": MAPPER_CORE_FEATURES,
+    "mapper_wide": MAPPER_WIDE_FEATURES,
+}
+
 CLUSTERING_FEATURE_SETS = {
+    "mapper_phys": MAPPER_PHYS_FEATURES,
+    "mapper_core": MAPPER_CORE_FEATURES,
+    "mapper_wide": MAPPER_WIDE_FEATURES,
     "pdf_core_no_mass_density": [
         "pl_rade",
         "pl_orbper",
@@ -113,6 +161,19 @@ LOG_CANDIDATE_COLUMNS = [
     "pl_insol",
     "pl_eqt",
 ]
+
+IMPUTATION_VALUE_BOUNDS = {
+    "pl_rade": (0.0, None),
+    "pl_bmasse": (0.0, None),
+    "pl_dens": (0.0, None),
+    "pl_orbper": (0.0, None),
+    "pl_orbsmax": (0.0, None),
+    "pl_orbeccen": (0.0, 1.0),
+    "st_teff": (0.0, None),
+    "sy_pnum": (1.0, None),
+    "pl_insol": (0.0, None),
+    "pl_eqt": (0.0, None),
+}
 
 RADIUS_BINS = [-float("inf"), 1.25, 2.0, 4.0, 10.0, float("inf")]
 RADIUS_LABELS = [

@@ -1,0 +1,10 @@
+feature,rows,observed_after_physical_derivation,missing_after_physical_derivation,missing_for_imputation,missing_for_imputation_pct,log10_applied,nonpositive_set_missing,derived_density_count,missing_after_knn,missing_after_median,missing_after_iterative
+pl_rade,6273,6223,50,50,0.7971,True,0,0,0,0,0
+pl_bmasse,6273,6242,31,31,0.4942,True,0,0,0,0,0
+pl_dens,6273,6199,74,74,1.1797,True,0,6199,0,0,0
+pl_orbper,6273,5934,339,339,5.4041,True,0,0,0,0,0
+pl_orbsmax,6273,5845,428,428,6.8229,True,0,0,0,0,0
+pl_orbeccen,6273,5221,1052,1052,16.7703,False,0,0,0,0,0
+st_teff,6273,5979,294,294,4.6868,False,0,0,0,0,0
+st_met,6273,5633,640,640,10.2025,False,0,0,0,0,0
+sy_pnum,6273,6273,0,0,0.0,False,0,0,0,0,0

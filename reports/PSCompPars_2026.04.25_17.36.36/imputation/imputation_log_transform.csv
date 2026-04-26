@@ -1,0 +1,10 @@
+feature,log10_applied,missing_before_transform,nonpositive_set_missing,missing_after_transform
+pl_rade,True,50,0,50
+pl_bmasse,True,31,0,31
+pl_dens,True,74,0,74
+pl_orbper,True,339,0,339
+pl_orbsmax,True,428,0,428
+pl_orbeccen,False,1052,0,1052
+st_teff,False,294,0,294
+st_met,False,640,0,640
+sy_pnum,False,0,0,0

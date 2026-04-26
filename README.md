@@ -21,9 +21,12 @@ para clustering conviene comenzar con subconjuntos numericos interpretables.
 
 - `src/eda_exodata.py`: genera el EDA reproducible en Plotly.
 - `src/feature_config.py`: define variables clave y grupos de features para clustering.
+- `src/impute_exodata.py`: genera matrices imputadas y auditorias para Mapper/TDA y ML.
+- `src/imputation/steps/`: pasos auditables del pipeline de imputacion.
 - `notebooks/`: notebooks renderizables para revisar EDA y preparar clustering.
 - `reports/`: salidas generadas: HTML interactivo, tablas de nulos, rangos y correlaciones.
 - `data/`: espacio recomendado para organizar datos si despues se mueve el CSV.
+- `tests/`: pruebas unitarias del pipeline de imputacion.
 
 ## Datos
 
@@ -39,6 +42,21 @@ es `pl_dens`: si no viene en el CSV, el script la deriva como
 
 ## Como ejecutar
 
+Crear el entorno Conda del proyecto:
+
+```powershell
+conda env create -f .\environment.yml
+conda activate planetas
+```
+
+Si tu instalacion de Conda pide aceptar terminos de los canales `defaults`,
+crea el mismo entorno solo con `conda-forge`:
+
+```powershell
+conda create -y -n planetas --override-channels -c conda-forge python=3.12 pandas numpy plotly scikit-learn scipy nbformat nbconvert ipykernel jupyterlab pytest
+conda activate planetas
+```
+
 ```powershell
 python .\src\eda_exodata.py
 ```
@@ -50,6 +68,57 @@ Tambien puedes pasar un archivo explicitamente:
 ```powershell
 python .\src\eda_exodata.py --csv .\data\PSCompPars_2026.04.25_17.36.36.csv --reports-dir .\reports\PSCompPars_2026.04.25_17.36.36
 ```
+
+## Imputacion para Mapper/TDA y ML
+
+El pipeline de imputacion esta pensado para no inventar datos sin control. El
+metodo principal es:
+
+```text
+derivacion fisica -> log-transform -> RobustScaler -> KNNImputer -> inversion de escala -> auditoria
+```
+
+Primero se preservan valores observados de `pl_dens` y solo se derivan faltantes
+cuando hay masa y radio positivos:
+
+```text
+pl_dens = 5.514 * pl_bmasse / pl_rade**3
+```
+
+Despues se transforman en log10 las variables positivas y sesgadas, se escala
+con `RobustScaler`, se imputa en el espacio escalado y se vuelve a unidades
+fisicas. `KNNImputer` es el default porque Mapper depende de vecindades locales:
+la imputacion se apoya en planetas cercanos en las variables observadas. `median`
+queda como baseline robusto e `iterative` como sensibilidad avanzada, porque
+puede imponer relaciones globales y suavizar artificialmente la topologia.
+
+Conjuntos disponibles:
+
+- `mapper_phys`: `pl_rade`, `pl_bmasse`, `pl_dens`
+- `mapper_core`: fisicas + orbitales + estrella/sistema
+- `mapper_wide`: `mapper_core` + `pl_insol`, `pl_eqt`
+
+Ejecutar el pipeline recomendado:
+
+```powershell
+python .\src\impute_exodata.py --feature-set mapper_core
+```
+
+Tambien se pueden comparar sensibilidades en el conjunto amplio:
+
+```powershell
+python .\src\impute_exodata.py --feature-set mapper_wide --methods knn,median,iterative --n-neighbors 7
+```
+
+Salidas principales:
+
+- `data/processed/<csv>/imputation/mapper_features_knn_imputed.csv`: matriz principal para Mapper/TDA y ML.
+- `data/processed/<csv>/imputation/mapper_features_median_imputed.csv`: baseline de mediana.
+- `data/processed/<csv>/imputation/mapper_features_iterative_imputed.csv`: sensibilidad avanzada.
+- `reports/<csv>/imputation/imputation_missingness.csv`: nulos antes/despues, derivaciones e invalidos para log.
+- `reports/<csv>/imputation/imputation_validation_summary.csv`: validacion con casos completos enmascarados.
+- `reports/<csv>/imputation/imputation_complete_case_comparison.csv`: comparacion de distribuciones contra casos completos.
+- `reports/<csv>/imputation/imputation_config.json`: configuracion reproducible.
 
 ## Salida principal
 
@@ -74,6 +143,12 @@ Para ejecutarlos:
 
 ```powershell
 jupyter lab
+```
+
+## Tests
+
+```powershell
+python -m pytest
 ```
 
 ## Repositorio sugerido

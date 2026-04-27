@@ -1,0 +1,10 @@
+orbital_pca2_cubes10_overlap0p35: membership source -> rebuilt:graph_json
+orbital_pca2_cubes10_overlap0p35: is_peripheral = (degree <= 1) or (component_n_nodes <= 3)
+phys_min_pca2_cubes10_overlap0p35: membership source -> rebuilt:graph_json
+phys_min_pca2_cubes10_overlap0p35: is_peripheral = (degree <= 1) or (component_n_nodes <= 3)
+joint_no_density_pca2_cubes10_overlap0p35: membership source -> rebuilt:graph_json
+joint_no_density_pca2_cubes10_overlap0p35: is_peripheral = (degree <= 1) or (component_n_nodes <= 3)
+joint_pca2_cubes10_overlap0p35: membership source -> rebuilt:graph_json
+joint_pca2_cubes10_overlap0p35: is_peripheral = (degree <= 1) or (component_n_nodes <= 3)
+thermal_pca2_cubes10_overlap0p35: membership source -> rebuilt:graph_json
+thermal_pca2_cubes10_overlap0p35: is_peripheral = (degree <= 1) or (component_n_nodes <= 3)

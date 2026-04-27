@@ -1,0 +1,1 @@
+La NMI observada supera claramente la nula y los nodos con enriquecimiento significativo se concentran en zonas perifericas. La evidencia sugiere que el sesgo observacional existe y parece localizarse sobre todo en ramas o periferias, no necesariamente en el nucleo completo del grafo.

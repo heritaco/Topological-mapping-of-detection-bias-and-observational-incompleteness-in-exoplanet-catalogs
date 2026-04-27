@@ -1,0 +1,94 @@
+config_id,component_id,n_nodes,n_members_unique,top_method,top_method_fraction,method_entropy,method_entropy_norm,mean_imputation_fraction,mean_physically_derived_fraction,fraction_peripheral_nodes,beta_1_internal,methods_present
+orbital_pca2_cubes10_overlap0p35,0,62,5512,Transit,0.7828374455732946,0.6835590010261053,0.2968659022009368,0.005116338290594414,0.020348449738643467,0.24193548387096775,66.0,"Transit, Radial Velocity, Microlensing, Transit Timing Variations, Eclipse Timing Variations"
+orbital_pca2_cubes10_overlap0p35,1,12,113,Transit,0.9911504424778761,0.050645574596848646,0.0730661193138456,0.0,0.08080808080808079,0.0,15.0,"Transit, Radial Velocity"
+orbital_pca2_cubes10_overlap0p35,2,2,17,Transit,1.0,-0.0,,0.0,0.071078431372549,1.0,0.0,Transit
+orbital_pca2_cubes10_overlap0p35,3,1,5,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+orbital_pca2_cubes10_overlap0p35,4,2,4,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+orbital_pca2_cubes10_overlap0p35,5,2,7,Transit,0.8571428571428571,0.410116318288409,0.5916727785823274,0.0,0.0714285714285714,1.0,0.0,"Transit, Radial Velocity"
+orbital_pca2_cubes10_overlap0p35,6,2,6,Transit,0.6666666666666666,0.6365141682948128,0.9182958340544894,0.0,0.0,1.0,0.0,"Transit, Radial Velocity"
+orbital_pca2_cubes10_overlap0p35,7,2,6,Radial Velocity,0.5,0.6931471805599453,1.0,0.0,0.0833333333333333,1.0,0.0,"Radial Velocity, Transit"
+orbital_pca2_cubes10_overlap0p35,8,1,4,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+orbital_pca2_cubes10_overlap0p35,9,2,4,Transit,0.75,0.5623351446188083,0.8112781244591328,0.0,0.0,1.0,0.0,"Transit, Radial Velocity"
+orbital_pca2_cubes10_overlap0p35,10,2,4,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+orbital_pca2_cubes10_overlap0p35,11,2,4,Transit,0.75,0.5623351446188083,0.8112781244591328,0.0,0.125,1.0,0.0,"Transit, Radial Velocity"
+orbital_pca2_cubes10_overlap0p35,12,4,5,Radial Velocity,1.0,-0.0,,0.0,0.0,0.0,3.0,Radial Velocity
+orbital_pca2_cubes10_overlap0p35,13,4,5,Radial Velocity,0.8,0.5004024235381879,0.7219280948873623,0.0,0.0,0.0,3.0,"Radial Velocity, Transit Timing Variations"
+orbital_pca2_cubes10_overlap0p35,14,4,4,Radial Velocity,1.0,-0.0,,0.0,0.125,0.0,3.0,Radial Velocity
+orbital_pca2_cubes10_overlap0p35,15,2,4,Radial Velocity,0.5,0.6931471805599453,1.0,0.0,0.0,1.0,0.0,"Radial Velocity, Transit"
+orbital_pca2_cubes10_overlap0p35,16,4,10,Radial Velocity,1.0,-0.0,,0.0,0.0,0.0,3.0,Radial Velocity
+orbital_pca2_cubes10_overlap0p35,17,4,33,Radial Velocity,0.8484848484848485,0.5011468423941993,0.45616351424737744,0.0403030303030303,0.0,0.0,3.0,"Radial Velocity, Microlensing, Eclipse Timing Variations"
+orbital_pca2_cubes10_overlap0p35,18,1,4,Microlensing,0.5,1.0397207708399179,0.946394630357186,0.25,0.0,1.0,0.0,"Microlensing, Eclipse Timing Variations, Radial Velocity"
+orbital_pca2_cubes10_overlap0p35,19,2,22,Radial Velocity,0.6818181818181818,0.9295776887159249,0.6705485608157448,0.04545454545454545,0.0,1.0,0.0,"Radial Velocity, Microlensing, Eclipse Timing Variations, Transit Timing Variations"
+orbital_pca2_cubes10_overlap0p35,20,2,9,Radial Velocity,0.6666666666666666,1.0027182645175161,0.7233083338141042,0.0555555555555555,0.0,1.0,0.0,"Radial Velocity, Imaging, Microlensing, Pulsar Timing"
+orbital_pca2_cubes10_overlap0p35,21,2,7,Radial Velocity,1.0,-0.0,,0.0,0.0,1.0,0.0,Radial Velocity
+orbital_pca2_cubes10_overlap0p35,22,2,6,Radial Velocity,0.8333333333333334,0.45056120886630463,0.6500224216483541,0.04166666666666665,0.0,1.0,0.0,"Radial Velocity, Imaging"
+orbital_pca2_cubes10_overlap0p35,23,1,4,Imaging,0.5,1.0397207708399179,0.946394630357186,0.375,0.0,1.0,0.0,"Imaging, Radial Velocity, Microlensing"
+phys_min_pca2_cubes10_overlap0p35,0,4,5,Transit,1.0,-0.0,,0.0,0.0,0.0,3.0,Transit
+phys_min_pca2_cubes10_overlap0p35,1,33,5877,Transit,0.7270716351880211,0.8308553700979278,0.34649360191961603,0.03474050724624665,0.0,0.12121212121212122,38.0,"Transit, Radial Velocity, Microlensing, Imaging, Transit Timing Variations"
+phys_min_pca2_cubes10_overlap0p35,2,4,4,Transit,0.75,0.5623351446188083,0.8112781244591328,0.0,0.0,0.0,3.0,"Transit, Radial Velocity"
+phys_min_pca2_cubes10_overlap0p35,3,1,4,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+phys_min_pca2_cubes10_overlap0p35,4,2,5,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+phys_min_pca2_cubes10_overlap0p35,5,4,6,Transit,1.0,-0.0,,0.0,0.0,0.0,3.0,Transit
+phys_min_pca2_cubes10_overlap0p35,6,1,3,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+phys_min_pca2_cubes10_overlap0p35,7,4,9,Transit,1.0,-0.0,,0.0,0.0,0.0,3.0,Transit
+phys_min_pca2_cubes10_overlap0p35,8,1,7,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+phys_min_pca2_cubes10_overlap0p35,9,1,5,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+phys_min_pca2_cubes10_overlap0p35,10,1,5,Transit,0.8,0.5004024235381879,0.7219280948873623,0.0,0.0,1.0,0.0,"Transit, Radial Velocity"
+phys_min_pca2_cubes10_overlap0p35,11,3,7,Transit,1.0,-0.0,,0.0,0.0,1.0,1.0,Transit
+phys_min_pca2_cubes10_overlap0p35,12,2,5,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+phys_min_pca2_cubes10_overlap0p35,13,4,7,Transit,1.0,-0.0,,0.0,0.0,0.0,3.0,Transit
+phys_min_pca2_cubes10_overlap0p35,14,1,4,Imaging,0.5,0.6931471805599453,1.0,0.0,0.0,1.0,0.0,"Imaging, Transit"
+joint_no_density_pca2_cubes10_overlap0p35,0,47,5825,Transit,0.7503862660944206,0.7437276338159784,0.3229968074052417,0.14548738181695736,0.010172023730106963,0.06382978723404255,78.0,"Transit, Radial Velocity, Microlensing, Transit Timing Variations, Eclipse Timing Variations"
+joint_no_density_pca2_cubes10_overlap0p35,1,1,4,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+joint_no_density_pca2_cubes10_overlap0p35,2,2,3,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+joint_no_density_pca2_cubes10_overlap0p35,3,1,3,Radial Velocity,0.6666666666666666,0.6365141682948128,0.9182958340544894,0.0555555555555555,0.0,1.0,0.0,"Radial Velocity, Transit"
+joint_no_density_pca2_cubes10_overlap0p35,4,2,4,Radial Velocity,1.0,-0.0,,0.25,0.0,1.0,0.0,Radial Velocity
+joint_no_density_pca2_cubes10_overlap0p35,5,1,4,Radial Velocity,0.5,0.6931471805599453,1.0,0.1666666666666666,0.0,1.0,0.0,"Radial Velocity, Transit"
+joint_no_density_pca2_cubes10_overlap0p35,6,4,5,Imaging,1.0,-0.0,,0.3333333333333333,0.0,0.0,3.0,Imaging
+joint_no_density_pca2_cubes10_overlap0p35,7,2,10,Imaging,1.0,-0.0,,0.5,0.0,1.0,0.0,Imaging
+joint_no_density_pca2_cubes10_overlap0p35,8,2,4,Imaging,1.0,-0.0,,0.5,0.0,1.0,0.0,Imaging
+joint_pca2_cubes10_overlap0p35,0,2,4,Transit,1.0,-0.0,,0.0,0.1428571428571428,1.0,0.0,Transit
+joint_pca2_cubes10_overlap0p35,1,40,5806,Transit,0.7466414054426456,0.7533939589896224,0.32719483908843777,0.16132231828106053,0.14987597547095569,0.025,71.0,"Transit, Radial Velocity, Microlensing, Transit Timing Variations, Eclipse Timing Variations"
+joint_pca2_cubes10_overlap0p35,2,2,4,Transit,1.0,-0.0,,0.0,0.1428571428571428,1.0,0.0,Transit
+joint_pca2_cubes10_overlap0p35,3,4,8,Transit,1.0,-0.0,,0.0,0.1428571428571428,0.0,3.0,Transit
+joint_pca2_cubes10_overlap0p35,4,2,6,Transit,0.8333333333333334,0.45056120886630463,0.6500224216483541,0.0238095238095238,0.1428571428571428,1.0,0.0,"Transit, Radial Velocity"
+joint_pca2_cubes10_overlap0p35,5,4,7,Imaging,1.0,-0.0,,0.2857142857142856,0.1428571428571428,0.0,3.0,Imaging
+joint_pca2_cubes10_overlap0p35,6,2,8,Imaging,1.0,-0.0,,0.4285714285714285,0.1428571428571428,1.0,0.0,Imaging
+thermal_pca2_cubes10_overlap0p35,0,2,42,Radial Velocity,0.6190476190476191,1.2055251764410089,0.6728164115467944,0.9724702380952381,0.0,1.0,0.0,"Radial Velocity, Microlensing, Eclipse Timing Variations, Imaging, Astrometry"
+thermal_pca2_cubes10_overlap0p35,1,1,10,Imaging,0.5,0.9433483923290391,0.8586727110732548,0.95,0.0,1.0,0.0,"Imaging, Radial Velocity, Microlensing"
+thermal_pca2_cubes10_overlap0p35,2,4,15,Radial Velocity,0.8666666666666667,0.39267446722755217,0.5665095065529053,0.9666666666666666,0.0,0.0,3.0,"Radial Velocity, Imaging"
+thermal_pca2_cubes10_overlap0p35,3,2,10,Radial Velocity,0.9,0.3250829733914482,0.46899559358928117,0.95,0.0,1.0,0.0,"Radial Velocity, Eclipse Timing Variations"
+thermal_pca2_cubes10_overlap0p35,4,35,5567,Transit,0.7808514460211964,0.6880350396228,0.3131382411792114,0.48964856099106757,0.0,0.11428571428571428,40.0,"Transit, Radial Velocity, Microlensing, Transit Timing Variations, Eclipse Timing Variations"
+thermal_pca2_cubes10_overlap0p35,5,4,9,Radial Velocity,0.7777777777777778,0.6837389058487535,0.6223659728744494,0.7916666666666667,0.0,0.0,3.0,"Radial Velocity, Eclipse Timing Variations, Imaging"
+thermal_pca2_cubes10_overlap0p35,6,4,8,Radial Velocity,0.875,0.37677016125643675,0.5435644431995964,0.875,0.0,0.0,3.0,"Radial Velocity, Pulsar Timing"
+thermal_pca2_cubes10_overlap0p35,7,2,23,Radial Velocity,0.782608695652174,0.8131904766573733,0.5052636515984086,0.8913043478260869,0.0,1.0,0.0,"Radial Velocity, Microlensing, Transit, Pulsar Timing, Pulsation Timing Variations"
+thermal_pca2_cubes10_overlap0p35,8,2,6,Radial Velocity,0.6666666666666666,0.8675632284814612,0.7896900821428474,0.9166666666666666,0.0,1.0,0.0,"Radial Velocity, Imaging, Microlensing"
+thermal_pca2_cubes10_overlap0p35,9,4,3,Radial Velocity,1.0,-0.0,,0.8333333333333334,0.0,0.0,3.0,Radial Velocity
+thermal_pca2_cubes10_overlap0p35,10,4,5,Radial Velocity,0.8,0.5004024235381879,0.7219280948873623,0.9,0.0,0.0,3.0,"Radial Velocity, Microlensing"
+thermal_pca2_cubes10_overlap0p35,11,2,6,Radial Velocity,1.0,-0.0,,0.7916666666666667,0.0,1.0,0.0,Radial Velocity
+thermal_pca2_cubes10_overlap0p35,12,2,5,Imaging,0.6,0.9502705392332347,0.8649735207179272,1.0,0.0,1.0,0.0,"Imaging, Radial Velocity, Microlensing"
+thermal_pca2_cubes10_overlap0p35,13,1,4,Radial Velocity,0.75,0.5623351446188083,0.8112781244591328,0.75,0.0,1.0,0.0,"Radial Velocity, Astrometry"
+thermal_pca2_cubes10_overlap0p35,14,1,5,Radial Velocity,0.6,0.9502705392332347,0.8649735207179272,1.0,0.0,1.0,0.0,"Radial Velocity, Microlensing, Transit Timing Variations"
+thermal_pca2_cubes10_overlap0p35,15,2,6,Microlensing,0.6666666666666666,0.6365141682948128,0.9182958340544894,1.0,0.0,1.0,0.0,"Microlensing, Radial Velocity"
+thermal_pca2_cubes10_overlap0p35,16,1,4,Radial Velocity,0.75,0.5623351446188083,0.8112781244591328,0.625,0.0,1.0,0.0,"Radial Velocity, Transit"
+thermal_pca2_cubes10_overlap0p35,17,1,4,Radial Velocity,0.75,0.5623351446188083,0.8112781244591328,0.625,0.0,1.0,0.0,"Radial Velocity, Transit"
+thermal_pca2_cubes10_overlap0p35,18,2,4,Radial Velocity,0.5,0.6931471805599453,1.0,0.5,0.0,1.0,0.0,"Radial Velocity, Transit"
+thermal_pca2_cubes10_overlap0p35,19,2,5,Radial Velocity,0.4,1.0549201679861442,0.9602297178607612,0.6,0.0,1.0,0.0,"Radial Velocity, Transit, Microlensing"
+thermal_pca2_cubes10_overlap0p35,20,4,4,Radial Velocity,1.0,-0.0,,1.0,0.0,0.0,3.0,Radial Velocity
+thermal_pca2_cubes10_overlap0p35,21,2,14,Radial Velocity,0.5714285714285714,1.0547209169068124,0.7608203181716593,1.0,0.0,1.0,0.0,"Radial Velocity, Microlensing, Imaging, Transit"
+thermal_pca2_cubes10_overlap0p35,22,2,4,Radial Velocity,1.0,-0.0,,1.0,0.0,1.0,0.0,Radial Velocity
+thermal_pca2_cubes10_overlap0p35,23,2,3,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+thermal_pca2_cubes10_overlap0p35,24,2,7,Radial Velocity,0.5714285714285714,0.6829081047004717,0.9852281360342515,0.5714285714285714,0.0,1.0,0.0,"Radial Velocity, Transit"
+thermal_pca2_cubes10_overlap0p35,25,2,5,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+thermal_pca2_cubes10_overlap0p35,26,4,4,Transit,0.75,0.5623351446188083,0.8112781244591328,0.25,0.0,0.0,3.0,"Transit, Radial Velocity"
+thermal_pca2_cubes10_overlap0p35,27,2,6,Transit,0.5,1.0114042647073516,0.9206198357143047,0.5,0.0,1.0,0.0,"Transit, Radial Velocity, Transit Timing Variations"
+thermal_pca2_cubes10_overlap0p35,28,2,4,Radial Velocity,0.75,0.5623351446188083,0.8112781244591328,0.75,0.0,1.0,0.0,"Radial Velocity, Transit"
+thermal_pca2_cubes10_overlap0p35,29,2,4,Radial Velocity,0.75,0.5623351446188083,0.8112781244591328,0.75,0.0,1.0,0.0,"Radial Velocity, Transit"
+thermal_pca2_cubes10_overlap0p35,30,4,8,Transit,0.625,0.6615632381579821,0.954434002924965,0.3125,0.0,0.0,3.0,"Transit, Radial Velocity"
+thermal_pca2_cubes10_overlap0p35,31,2,4,Transit,1.0,-0.0,,0.75,0.0,1.0,0.0,Transit
+thermal_pca2_cubes10_overlap0p35,32,4,4,Transit,1.0,-0.0,,0.0,0.0,0.0,3.0,Transit
+thermal_pca2_cubes10_overlap0p35,33,2,5,Transit,1.0,-0.0,,0.1,0.0,1.0,0.0,Transit
+thermal_pca2_cubes10_overlap0p35,34,2,4,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+thermal_pca2_cubes10_overlap0p35,35,2,7,Transit,1.0,-0.0,,0.0982142857142857,0.0,1.0,0.0,Transit
+thermal_pca2_cubes10_overlap0p35,36,2,7,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit
+thermal_pca2_cubes10_overlap0p35,37,1,4,Transit,1.0,-0.0,,0.0,0.0,1.0,0.0,Transit

@@ -101,11 +101,36 @@ def build_imputation_availability(imputation_dir: Path) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def _membership_table_from_result(result: dict[str, Any]) -> pd.DataFrame:
+    graph = result["graph"]
+    physical_df = result["physical_df"].reset_index(drop=True)
+    sample_lookup = graph.get("sample_id_lookup") or list(range(len(physical_df)))
+    rows: list[dict[str, Any]] = []
+    for node_id, members in graph.get("nodes", {}).items():
+        for cluster_position, member_index in enumerate(members):
+            mapped_index = int(sample_lookup[member_index]) if member_index < len(sample_lookup) else int(member_index)
+            member_row = physical_df.iloc[mapped_index] if 0 <= mapped_index < len(physical_df) else pd.Series(dtype=object)
+            rows.append(
+                {
+                    "config_id": result["config_id"],
+                    "node_id": str(node_id),
+                    "member_id": str(member_row.get("pl_name")) if pd.notna(member_row.get("pl_name")) else str(mapped_index),
+                    "pl_name": member_row.get("pl_name"),
+                    "hostname": member_row.get("hostname"),
+                    "row_index": mapped_index,
+                    "cube_id": str(node_id).split("_cluster", 1)[0] if "_cluster" in str(node_id) else None,
+                    "cluster_id": int(str(node_id).split("_cluster", 1)[1]) if "_cluster" in str(node_id) else cluster_position,
+                }
+            )
+    return pd.DataFrame(rows)
+
+
 def write_primary_artifacts(batch_result: dict[str, Any], outputs_dir: Path) -> dict[str, Path]:
     tree = ensure_mapper_output_tree(outputs_dir)
     paths: dict[str, Path] = {}
     node_tables: list[pd.DataFrame] = []
     edge_tables: list[pd.DataFrame] = []
+    membership_tables: list[pd.DataFrame] = []
     planet_labels_frames: list[pd.DataFrame] = []
     for result in batch_result["results"]:
         config = result["config"]
@@ -113,6 +138,7 @@ def write_primary_artifacts(batch_result: dict[str, Any], outputs_dir: Path) -> 
         graph_path = tree["graphs"] / f"graph_{config_name}.json"
         nodes_path = tree["nodes"] / f"nodes_{config_name}.csv"
         edges_path = tree["edges"] / f"edges_{config_name}.csv"
+        membership_path = tree["memberships"] / f"memberships_{config_name}.csv"
         config_path = tree["config"] / f"config_{config_name}.json"
         write_json(
             graph_path,
@@ -125,9 +151,12 @@ def write_primary_artifacts(batch_result: dict[str, Any], outputs_dir: Path) -> 
         )
         result["node_table"].to_csv(nodes_path, index=False)
         result["edge_table"].to_csv(edges_path, index=False)
+        membership_table = _membership_table_from_result(result)
+        membership_table.to_csv(membership_path, index=False)
         write_json(config_path, {"config": config.__dict__, "config_id": config_name})
         node_tables.append(result["node_table"])
         edge_tables.append(result["edge_table"])
+        membership_tables.append(membership_table)
         labeled = add_planet_physical_labels(result["physical_df"].copy())
         labeled.insert(0, "config_id", config_name)
         planet_labels_frames.append(labeled)
@@ -142,6 +171,8 @@ def write_primary_artifacts(batch_result: dict[str, Any], outputs_dir: Path) -> 
     pd.concat(node_tables, ignore_index=True).to_csv(node_audit_path, index=False)
     edges_all_path = tree["tables"] / "mapper_edges_all.csv"
     pd.concat(edge_tables, ignore_index=True).to_csv(edges_all_path, index=False)
+    memberships_all_path = tree["tables"] / "mapper_memberships_all.csv"
+    pd.concat(membership_tables, ignore_index=True).to_csv(memberships_all_path, index=False)
     labels_path = tree["data"] / "planet_physical_labels.csv"
     pd.concat(planet_labels_frames, ignore_index=True).to_csv(labels_path, index=False)
 
@@ -152,6 +183,7 @@ def write_primary_artifacts(batch_result: dict[str, Any], outputs_dir: Path) -> 
             "mapper_input_alignment_summary": alignment_path,
             "mapper_node_source_audit": node_audit_path,
             "mapper_edges_all": edges_all_path,
+            "mapper_memberships_all": memberships_all_path,
             "planet_physical_labels": labels_path,
         }
     )

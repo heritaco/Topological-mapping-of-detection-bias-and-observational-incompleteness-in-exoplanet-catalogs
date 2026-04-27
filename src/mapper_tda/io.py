@@ -176,6 +176,7 @@ def ensure_mapper_output_tree(outputs_dir: Path) -> dict[str, Path]:
         "graphs": outputs_dir / "graphs",
         "nodes": outputs_dir / "nodes",
         "edges": outputs_dir / "edges",
+        "memberships": outputs_dir / "memberships",
         "metrics": outputs_dir / "metrics",
         "distances": outputs_dir / "distances",
         "tables": outputs_dir / "tables",

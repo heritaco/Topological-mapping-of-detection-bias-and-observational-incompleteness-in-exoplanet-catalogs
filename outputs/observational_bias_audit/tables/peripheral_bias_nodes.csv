@@ -1,0 +1,99 @@
+config_id,node_id,n_members,top_method,top_method_fraction,enriched_method,z_score,fdr_q_value,mean_imputation_fraction,component_id,degree
+joint_no_density_pca2_cubes10_overlap0p35,cube61_cluster0,10,Imaging,1.0,Imaging,45.48858476674701,0.011060368203225346,0.5,7,1
+joint_no_density_pca2_cubes10_overlap0p35,cube38_cluster1,7,Radial Velocity,1.0,Radial Velocity,5.289701426516391,0.011060368203225346,0.3333333333333333,0,1
+joint_no_density_pca2_cubes10_overlap0p35,cube5_cluster1,6,Transit,1.0,Transit,1.4549572751500126,1.0,0.0277777777777777,0,1
+joint_no_density_pca2_cubes10_overlap0p35,cube15_cluster1,4,Transit,1.0,Transit,1.1568406738294292,1.0,0.0,0,1
+joint_no_density_pca2_cubes10_overlap0p35,cube5_cluster2,4,Transit,1.0,Transit,1.1566413337921004,1.0,0.0,1,0
+joint_no_density_pca2_cubes10_overlap0p35,cube26_cluster1,4,Radial Velocity,1.0,Radial Velocity,4.112799422268961,0.020646020646020648,0.25,4,1
+joint_no_density_pca2_cubes10_overlap0p35,cube27_cluster1,4,Radial Velocity,1.0,Radial Velocity,4.112799422268961,0.020646020646020648,0.25,4,1
+joint_no_density_pca2_cubes10_overlap0p35,cube62_cluster0,4,Imaging,1.0,Imaging,30.81123360999887,0.011060368203225346,0.5,7,1
+joint_no_density_pca2_cubes10_overlap0p35,cube61_cluster1,4,Imaging,1.0,Imaging,25.423171812171944,0.011060368203225346,0.5,8,1
+joint_no_density_pca2_cubes10_overlap0p35,cube68_cluster0,4,Imaging,1.0,Imaging,25.423171812171944,0.011060368203225346,0.5,8,1
+joint_no_density_pca2_cubes10_overlap0p35,cube13_cluster1,3,Transit,1.0,Transit,0.9590645250405244,1.0,0.0,2,1
+joint_no_density_pca2_cubes10_overlap0p35,cube22_cluster1,3,Transit,1.0,Transit,0.9590645250405244,1.0,0.0,2,1
+joint_pca2_cubes10_overlap0p35,cube61_cluster0,8,Imaging,1.0,Imaging,43.263785701151114,0.010171646535282899,0.4285714285714285,6,1
+joint_pca2_cubes10_overlap0p35,cube31_cluster1,5,Radial Velocity,1.0,Radial Velocity,4.707128633927863,0.010171646535282899,0.2857142857142857,1,1
+joint_pca2_cubes10_overlap0p35,cube62_cluster0,5,Imaging,1.0,Imaging,36.48423442466253,0.010171646535282899,0.4285714285714285,6,1
+joint_pca2_cubes10_overlap0p35,cube11_cluster1,4,Transit,1.0,Transit,1.2142601102745667,1.0,0.0,0,1
+joint_pca2_cubes10_overlap0p35,cube1_cluster0,4,Transit,1.0,Transit,1.2142601102745667,1.0,0.0,0,1
+joint_pca2_cubes10_overlap0p35,cube16_cluster1,4,Transit,1.0,Transit,1.1717987182712302,1.0,0.0,2,1
+joint_pca2_cubes10_overlap0p35,cube25_cluster1,4,Transit,1.0,Transit,1.1717987182712302,1.0,0.0,2,1
+joint_pca2_cubes10_overlap0p35,cube16_cluster3,6,Transit,0.8333333333333334,Transit,0.5196658233433898,1.0,0.0238095238095238,4,1
+joint_pca2_cubes10_overlap0p35,cube25_cluster3,6,Transit,0.8333333333333334,Transit,0.5196658233433898,1.0,0.0238095238095238,4,1
+orbital_pca2_cubes10_overlap0p35,cube1_cluster2,17,Transit,1.0,Transit,2.238162463132863,0.13464796073491725,0.0,2,1
+orbital_pca2_cubes10_overlap0p35,cube6_cluster2,12,Transit,1.0,Transit,1.863211705378938,0.5215836794784163,0.0,2,1
+orbital_pca2_cubes10_overlap0p35,cube32_cluster2,7,Radial Velocity,1.0,Radial Velocity,6.0386833500194825,0.02099595319934303,0.0,21,1
+orbital_pca2_cubes10_overlap0p35,cube26_cluster14,6,Radial Velocity,1.0,Radial Velocity,5.242858936384276,0.02099595319934303,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube33_cluster2,6,Radial Velocity,1.0,Radial Velocity,5.557791500736636,0.02099595319934303,0.0,21,1
+orbital_pca2_cubes10_overlap0p35,cube17_cluster10,5,Radial Velocity,1.0,Radial Velocity,4.758439615163896,0.02099595319934303,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube26_cluster7,5,Radial Velocity,1.0,Radial Velocity,4.87708349150095,0.02099595319934303,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube1_cluster3,5,Transit,1.0,Transit,1.1892873412575973,1.0,0.0,3,0
+orbital_pca2_cubes10_overlap0p35,cube33_cluster3,5,Radial Velocity,1.0,Radial Velocity,4.878971321590208,0.02099595319934303,0.0,22,1
+orbital_pca2_cubes10_overlap0p35,cube11_cluster5,4,Transit,1.0,Transit,1.1050102532315005,1.0,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube17_cluster1,4,Radial Velocity,1.0,Radial Velocity,4.09852843855403,0.050907996113475566,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube26_cluster13,4,Radial Velocity,1.0,Radial Velocity,4.2610232625644695,0.02099595319934303,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube1_cluster4,4,Transit,1.0,Transit,1.081257722186014,1.0,0.0,4,1
+orbital_pca2_cubes10_overlap0p35,cube6_cluster3,4,Transit,1.0,Transit,1.081257722186014,1.0,0.0,4,1
+orbital_pca2_cubes10_overlap0p35,cube7_cluster3,4,Transit,1.0,Transit,1.075433484143394,1.0,0.0,8,0
+orbital_pca2_cubes10_overlap0p35,cube7_cluster8,4,Transit,1.0,Transit,1.093397754974889,1.0,0.0,10,1
+orbital_pca2_cubes10_overlap0p35,cube8_cluster1,4,Transit,1.0,Transit,1.093397754974889,1.0,0.0,10,1
+orbital_pca2_cubes10_overlap0p35,cube26_cluster0,12,Radial Velocity,0.9166666666666666,Radial Velocity,7.050522741633687,0.02099595319934303,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube26_cluster8,9,Radial Velocity,0.8888888888888888,Radial Velocity,5.6852605562128975,0.02099595319934303,0.0555555555555555,0,1
+orbital_pca2_cubes10_overlap0p35,cube17_cluster9,8,Radial Velocity,0.875,Radial Velocity,5.316385734862363,0.02099595319934303,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube26_cluster11,8,Radial Velocity,0.875,Radial Velocity,5.285926320332071,0.02099595319934303,0.0,19,1
+orbital_pca2_cubes10_overlap0p35,cube2_cluster2,7,Transit,0.8571428571428571,Transit,0.49321899586796547,1.0,0.0,5,1
+orbital_pca2_cubes10_overlap0p35,cube7_cluster5,7,Transit,0.8571428571428571,Transit,0.49321899586796547,1.0,0.0,5,1
+orbital_pca2_cubes10_overlap0p35,cube11_cluster3,38,Transit,0.8421052631578947,Pulsar Timing,5.4146197379233625,0.35035671399307766,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube32_cluster3,6,Radial Velocity,0.8333333333333334,Radial Velocity,4.262313474594398,0.02099595319934303,0.0833333333333333,22,1
+orbital_pca2_cubes10_overlap0p35,cube26_cluster5,5,Radial Velocity,0.8,Radial Velocity,3.863306022928272,0.0359061228626446,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube12_cluster1,4,Transit,0.75,Radial Velocity,0.3666318565238427,1.0,0.0,0,1
+orbital_pca2_cubes10_overlap0p35,cube13_cluster9,4,Transit,0.75,Radial Velocity,0.41810368082708427,1.0,0.0,9,1
+orbital_pca2_cubes10_overlap0p35,cube7_cluster7,4,Transit,0.75,Radial Velocity,0.41810368082708427,1.0,0.0,9,1
+orbital_pca2_cubes10_overlap0p35,cube7_cluster9,4,Transit,0.75,Radial Velocity,0.43659040347440264,1.0,0.0,11,1
+orbital_pca2_cubes10_overlap0p35,cube8_cluster2,4,Transit,0.75,Radial Velocity,0.43659040347440264,1.0,0.0,11,1
+phys_min_pca2_cubes10_overlap0p35,cube40_cluster1,7,Transit,1.0,Transit,1.5779521177481517,1.0,0.0,8,0
+phys_min_pca2_cubes10_overlap0p35,cube41_cluster2,7,Transit,1.0,Transit,1.6302414684489654,1.0,0.0,11,2
+phys_min_pca2_cubes10_overlap0p35,cube40_cluster3,6,Transit,1.0,Transit,1.5547601507588744,1.0,0.0,1,1
+phys_min_pca2_cubes10_overlap0p35,cube51_cluster3,6,Transit,1.0,Transit,1.540458383585725,1.0,0.0,11,2
+phys_min_pca2_cubes10_overlap0p35,cube21_cluster1,5,Transit,1.0,Transit,1.4270558811586072,1.0,0.0,4,1
+phys_min_pca2_cubes10_overlap0p35,cube22_cluster1,5,Transit,1.0,Transit,1.4270558811586072,1.0,0.0,4,1
+phys_min_pca2_cubes10_overlap0p35,cube40_cluster2,5,Transit,1.0,Transit,1.4138178631441733,1.0,0.0,9,0
+phys_min_pca2_cubes10_overlap0p35,cube41_cluster3,5,Transit,1.0,Transit,1.3636015918814794,1.0,0.0,12,1
+phys_min_pca2_cubes10_overlap0p35,cube42_cluster2,5,Transit,1.0,Transit,1.3636015918814794,1.0,0.0,12,1
+phys_min_pca2_cubes10_overlap0p35,cube20_cluster2,4,Transit,1.0,Transit,1.24232336649472,1.0,0.0,3,0
+phys_min_pca2_cubes10_overlap0p35,cube42_cluster3,4,Transit,1.0,Transit,1.2027864406449387,1.0,0.0,11,2
+phys_min_pca2_cubes10_overlap0p35,cube30_cluster2,3,Transit,1.0,Transit,1.0722944843167672,1.0,0.0,6,0
+phys_min_pca2_cubes10_overlap0p35,cube6_cluster0,11,Transit,0.9090909090909091,Transit,1.329200958699631,1.0,0.0,1,1
+phys_min_pca2_cubes10_overlap0p35,cube51_cluster2,7,Transit,0.8571428571428571,Transit,0.77215561160426,1.0,0.0,1,1
+phys_min_pca2_cubes10_overlap0p35,cube41_cluster1,5,Transit,0.8,Transit,0.35004175107806107,1.0,0.0,10,0
+thermal_pca2_cubes10_overlap0p35,cube47_cluster2,7,Transit,1.0,Transit,1.5042270241521936,1.0,0.0714285714285714,35,1
+thermal_pca2_cubes10_overlap0p35,cube46_cluster3,7,Transit,1.0,Transit,1.572348179970755,1.0,0.0,36,1
+thermal_pca2_cubes10_overlap0p35,cube47_cluster3,7,Transit,1.0,Transit,1.572348179970755,1.0,0.0,36,1
+thermal_pca2_cubes10_overlap0p35,cube19_cluster1,6,Radial Velocity,1.0,Radial Velocity,5.191027307015457,0.02659340659340659,0.8333333333333334,11,1
+thermal_pca2_cubes10_overlap0p35,cube33_cluster6,5,Transit,1.0,Transit,1.288137799255844,1.0,0.0,25,1
+thermal_pca2_cubes10_overlap0p35,cube40_cluster1,5,Transit,1.0,Transit,1.288137799255844,1.0,0.0,25,1
+thermal_pca2_cubes10_overlap0p35,cube40_cluster3,5,Transit,1.0,Transit,1.272978607628313,1.0,0.1,33,1
+thermal_pca2_cubes10_overlap0p35,cube47_cluster4,5,Transit,1.0,Transit,1.272978607628313,1.0,0.1,33,1
+thermal_pca2_cubes10_overlap0p35,cube13_cluster0,4,Radial Velocity,1.0,Radial Velocity,4.261373970293849,0.04289259127968805,0.75,11,1
+thermal_pca2_cubes10_overlap0p35,cube26_cluster9,4,Radial Velocity,1.0,Radial Velocity,4.209296121289028,0.04289259127968805,1.0,22,1
+thermal_pca2_cubes10_overlap0p35,cube33_cluster13,4,Radial Velocity,1.0,Radial Velocity,4.209296121289028,0.04289259127968805,1.0,22,1
+thermal_pca2_cubes10_overlap0p35,cube34_cluster2,4,Transit,1.0,Transit,1.1881713519506263,1.0,0.75,31,1
+thermal_pca2_cubes10_overlap0p35,cube41_cluster1,4,Transit,1.0,Transit,1.1881713519506263,1.0,0.75,31,1
+thermal_pca2_cubes10_overlap0p35,cube46_cluster1,4,Transit,1.0,Transit,1.179810106724073,1.0,0.0,34,1
+thermal_pca2_cubes10_overlap0p35,cube47_cluster1,4,Transit,1.0,Transit,1.179810106724073,1.0,0.0,34,1
+thermal_pca2_cubes10_overlap0p35,cube46_cluster2,4,Transit,1.0,Transit,1.1097555495978604,1.0,0.125,35,1
+thermal_pca2_cubes10_overlap0p35,cube46_cluster4,4,Transit,1.0,Transit,1.1716588446540852,1.0,0.0,37,0
+thermal_pca2_cubes10_overlap0p35,cube27_cluster8,3,Transit,1.0,Transit,0.9628623523979386,1.0,0.0,23,1
+thermal_pca2_cubes10_overlap0p35,cube28_cluster1,3,Transit,1.0,Transit,0.9628623523979386,1.0,0.0,23,1
+thermal_pca2_cubes10_overlap0p35,cube12_cluster1,10,Radial Velocity,0.9,Radial Velocity,5.942551512186392,0.02659340659340659,0.95,3,1
+thermal_pca2_cubes10_overlap0p35,cube18_cluster1,10,Radial Velocity,0.9,Radial Velocity,5.942551512186392,0.02659340659340659,0.95,3,1
+thermal_pca2_cubes10_overlap0p35,cube27_cluster1,23,Radial Velocity,0.8260869565217391,Radial Velocity,7.978137526391665,0.02659340659340659,0.9130434782608696,4,1
+thermal_pca2_cubes10_overlap0p35,cube12_cluster5,23,Radial Velocity,0.782608695652174,Radial Velocity,7.392745684460092,0.02659340659340659,0.8913043478260869,7,1
+thermal_pca2_cubes10_overlap0p35,cube18_cluster4,23,Radial Velocity,0.782608695652174,Radial Velocity,7.392745684460092,0.02659340659340659,0.8913043478260869,7,1
+thermal_pca2_cubes10_overlap0p35,cube18_cluster6,4,Radial Velocity,0.75,Astrometry,15.7797338380595,0.0936387556105866,0.75,13,0
+thermal_pca2_cubes10_overlap0p35,cube19_cluster4,4,Radial Velocity,0.75,Radial Velocity,2.925694677687238,0.3114543114543115,0.625,16,0
+thermal_pca2_cubes10_overlap0p35,cube19_cluster8,4,Radial Velocity,0.75,Radial Velocity,2.9509530025608344,0.3058241758241758,0.625,17,0
+thermal_pca2_cubes10_overlap0p35,cube33_cluster11,4,Radial Velocity,0.75,Radial Velocity,2.9794377288891054,0.3114543114543115,0.75,28,1
+thermal_pca2_cubes10_overlap0p35,cube34_cluster8,4,Radial Velocity,0.75,Radial Velocity,2.9794377288891054,0.3114543114543115,0.75,28,1
+thermal_pca2_cubes10_overlap0p35,cube33_cluster12,4,Radial Velocity,0.75,Radial Velocity,2.8913428408637203,0.3114543114543115,0.75,29,1
+thermal_pca2_cubes10_overlap0p35,cube34_cluster10,4,Radial Velocity,0.75,Radial Velocity,2.8913428408637203,0.3114543114543115,0.75,29,1

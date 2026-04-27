@@ -11,8 +11,6 @@
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{placeins}
-\usepackage{pdflscape}
-\usepackage{adjustbox}
 \title{Mapper/TDA Report for Imputed PSCompPars}
 \date{}
 \begin{document}
@@ -22,26 +20,32 @@
 \input{sections/01_introduction.tex}
 \section{Data and Imputation}
 \input{sections/02_data_and_imputation.tex}
+\section{Key Findings}
+\input{sections/03_key_findings.tex}
 \section{Mapper Methodology}
-\input{sections/03_mapper_methodology.tex}
-\section{Mapper Results}
-\input{sections/04_mapper_results.tex}
+\input{sections/04_mapper_methodology.tex}
+\section{Results}
+\input{sections/05_mapper_results.tex}
+\section{Node-Level Interpretation}
+\input{sections/06_node_level_interpretation.tex}
+\section{Main Graph Interpretation}
+\input{sections/07_main_graph_interpretation.tex}
+\section{Stability Diagnostics}
+\input{sections/08_stability_diagnostics.tex}
+\section{Null Model Diagnostics}
+\input{sections/09_null_model_diagnostics.tex}
 \section{Sensitivity Analysis}
-\input{sections/05_sensitivity_analysis.tex}
-\section{Interpretation}
-\input{sections/06_interpretation.tex}
+\input{sections/10_sensitivity_analysis.tex}
 \section{Limitations}
-\input{sections/07_limitations.tex}
+\input{sections/11_limitations.tex}
 \section{Conclusion}
-\input{sections/08_conclusion.tex}
+\input{sections/12_conclusion.tex}
 \FloatBarrier
-\clearpage
-\begin{landscape}
-\footnotesize
 \input{tables/mapper_graph_metrics_summary.tex}
 \input{tables/mapper_space_comparison.tex}
 \input{tables/mapper_density_sensitivity.tex}
 \input{tables/mapper_lens_sensitivity.tex}
 \input{tables/mapper_imputation_audit_summary.tex}
-\end{landscape}
+\input{tables/main_graph_selection_summary.tex}
+\input{tables/component_summary_short.tex}
 \end{document}

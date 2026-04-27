@@ -1,5 +1,5 @@
-method,mapper_features_exists,physical_csv_exists
-iterative,False,False
-knn,False,False
-median,False,False
-complete_case,False,False
+input_method,available,mapper_features_path,physical_csv_path
+iterative,True,C:\Users\175199\Downloads\planetas\reports\imputation\mapper_features_imputed_iterative.csv,C:\Users\175199\Downloads\planetas\reports\imputation\PSCompPars_imputed_iterative.csv
+knn,True,C:\Users\175199\Downloads\planetas\reports\imputation\mapper_features_imputed_knn.csv,C:\Users\175199\Downloads\planetas\reports\imputation\PSCompPars_imputed_knn.csv
+median,True,C:\Users\175199\Downloads\planetas\reports\imputation\mapper_features_imputed_median.csv,C:\Users\175199\Downloads\planetas\reports\imputation\PSCompPars_imputed_median.csv
+complete_case,True,C:\Users\175199\Downloads\planetas\reports\imputation\mapper_features_complete_case.csv,C:\Users\175199\Downloads\planetas\reports\imputation\PSCompPars_imputed_iterative.csv

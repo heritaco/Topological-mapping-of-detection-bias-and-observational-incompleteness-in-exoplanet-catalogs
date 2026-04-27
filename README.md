@@ -50,10 +50,11 @@ outputs/
   logs/
 
 latex/
-  mapper_report.tex
-  sections/
-  figures/
-  tables/
+  03_mapper/
+    mapper_report.tex
+    sections/
+    figures/
+    tables/
 ```
 
 ## Entorno
@@ -147,13 +148,33 @@ Default metodologico:
 Comandos documentados:
 
 ```powershell
-python .\src\mapper_exodata.py --space all --lens pca2 --input-method iterative --outputs-dir outputs/mapper --make-latex --static-only
-python .\src\mapper_exodata.py --space all --lens all --input-method iterative --outputs-dir outputs/mapper --make-latex --static-only
-python .\src\mapper_exodata.py --space all --lens pca2 --input-method iterative --outputs-dir outputs/mapper --fast --make-latex
+python .\src\mapper_exodata.py --space all --lens pca2 --input-method iterative --outputs-dir outputs/mapper --interpret-nodes --presentation --make-latex
+python .\src\mapper_exodata.py --space all --lens all --input-method iterative --outputs-dir outputs/mapper --full-report
+python .\src\mapper_exodata.py --space all --lens all --input-method iterative --outputs-dir outputs/mapper --full-validation --n-bootstrap 30 --n-null 30
 ```
 
 El resolver de inputs prioriza `iterative`. Solo si no existe entra en
 fallbacks legacy, incluyendo KNN.
+
+Flags nuevos importantes:
+
+- `--interpret-nodes`: genera etiquetas fisicas, composicion nodal, componentes y nodos destacados.
+- `--bootstrap --n-bootstrap 30 --bootstrap-frac 0.8`: corre estabilidad por remuestreo.
+- `--null-models --n-null 30`: corre modelos nulos `column_shuffle`.
+- `--presentation`: genera figuras tipo slide.
+- `--full-report`: equivale a interpretacion + presentacion + LaTeX.
+- `--full-validation`: agrega bootstrap y null models al flujo anterior.
+
+Artefactos interpretativos clave:
+
+- `outputs/mapper/data/planet_physical_labels.csv`
+- `outputs/mapper/tables/main_graph_selection.csv`
+- `outputs/mapper/tables/node_physical_interpretation.csv`
+- `outputs/mapper/tables/highlighted_nodes.csv`
+- `outputs/mapper/tables/component_summary.csv`
+- `outputs/mapper/tables/mapper_interpretive_summary.md`
+- `outputs/mapper/figures_pdf/interpretation/*.pdf`
+- `outputs/mapper/figures_pdf/presentation/*.pdf`
 
 ## LaTeX
 

@@ -8,6 +8,18 @@ import networkx as nx
 import numpy as np
 import pandas as pd
 
+from .planet_classes import (
+    CANDIDATE_POPULATIONS,
+    DENSITY_CLASSES,
+    ORBIT_CLASSES,
+    RADIUS_CLASSES,
+    THERMAL_CLASSES,
+    add_planet_physical_labels,
+    dominant_label as dominant_planet_label,
+    label_entropy as planet_label_entropy,
+    label_fraction,
+)
+
 
 GRAPH_DISTANCE_COLUMNS = [
     "n_nodes",
@@ -186,7 +198,7 @@ def build_node_table(
     used_features: list[str],
     config_id: str,
 ) -> pd.DataFrame:
-    frame = physical_df.copy()
+    frame = add_planet_physical_labels(physical_df.copy())
     frame["imputation_fraction_row"] = _compute_row_imputation_fraction(frame, used_features)
     components = list(nx.connected_components(nx_graph))
     component_lookup: dict[str, int] = {}
@@ -252,9 +264,73 @@ def build_node_table(
         if "radius_class" in node_frame.columns:
             dominant, _ = _dominant_label(node_frame["radius_class"].astype("string"))
             row["radius_class_top"] = dominant
-        if "planet_regime" in node_frame.columns:
-            dominant, _ = _dominant_label(node_frame["planet_regime"].astype("string"))
-            row["planet_regime_top"] = dominant
+        if "density_class" in node_frame.columns:
+            dominant, _ = dominant_planet_label(node_frame, "density_class")
+            row["density_class_top"] = dominant
+        if "orbit_class" in node_frame.columns:
+            dominant, _ = dominant_planet_label(node_frame, "orbit_class")
+            row["orbit_class_top"] = dominant
+        if "thermal_class" in node_frame.columns:
+            dominant, _ = dominant_planet_label(node_frame, "thermal_class")
+            row["thermal_class_top"] = dominant
+        if "candidate_population" in node_frame.columns:
+            dominant, _ = dominant_planet_label(node_frame, "candidate_population")
+            row["candidate_population_top"] = dominant
+
+        for label in ["rocky_size", "sub_neptune_size", "neptune_or_sub_jovian_size", "jovian_size"]:
+            row[f"frac_radius_{label}"] = label_fraction(node_frame, "radius_class", label)
+        density_label_map = {
+            "high_density": "high",
+            "intermediate_density": "intermediate",
+            "low_density": "low",
+        }
+        for label, suffix in density_label_map.items():
+            row[f"frac_density_{suffix}"] = label_fraction(node_frame, "density_class", label)
+        orbit_label_map = {
+            "short_period": "short_period",
+            "intermediate_period": "intermediate_period",
+            "long_period": "long_period",
+        }
+        for label, suffix in orbit_label_map.items():
+            row[f"frac_orbit_{suffix}"] = label_fraction(node_frame, "orbit_class", label)
+        thermal_label_map = {
+            "very_hot": "very_hot",
+            "hot": "hot",
+            "warm": "warm",
+            "cool": "cool",
+        }
+        for label, suffix in thermal_label_map.items():
+            row[f"frac_thermal_{suffix}"] = label_fraction(node_frame, "thermal_class", label)
+        for label in [
+            "hot_jupiter_candidate",
+            "super_earth_candidate",
+            "sub_neptune_candidate",
+            "rocky_candidate",
+            "long_period_giant_candidate",
+        ]:
+            row[f"frac_{label}"] = label_fraction(node_frame, "candidate_population", label)
+
+        row["radius_class_entropy"] = planet_label_entropy(node_frame, "radius_class")
+        row["orbit_class_entropy"] = planet_label_entropy(node_frame, "orbit_class")
+        row["candidate_population_entropy"] = planet_label_entropy(node_frame, "candidate_population")
+        row["density_derived_sensitive_fraction"] = float(
+            pd.to_numeric(node_frame.get("density_derived_sensitive", pd.Series(False, index=node_frame.index)), errors="coerce")
+            .fillna(0)
+            .astype(bool)
+            .mean()
+        )
+        row["thermal_imputed_fraction"] = float(
+            pd.to_numeric(node_frame.get("thermal_imputed_flag", pd.Series(False, index=node_frame.index)), errors="coerce")
+            .fillna(0)
+            .astype(bool)
+            .mean()
+        )
+        row["orbital_imputed_fraction"] = float(
+            pd.to_numeric(node_frame.get("orbital_imputed_flag", pd.Series(False, index=node_frame.index)), errors="coerce")
+            .fillna(0)
+            .astype(bool)
+            .mean()
+        )
 
         rows.append(row)
     return pd.DataFrame(rows)

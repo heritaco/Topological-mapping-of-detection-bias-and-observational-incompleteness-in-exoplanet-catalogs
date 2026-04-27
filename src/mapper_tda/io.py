@@ -181,8 +181,12 @@ def ensure_mapper_output_tree(outputs_dir: Path) -> dict[str, Path]:
         "tables": outputs_dir / "tables",
         "figures_pdf": outputs_dir / "figures_pdf",
         "figures_png": outputs_dir / "figures_png",
+        "figures_interpretation_pdf": outputs_dir / "figures_pdf" / "interpretation",
+        "figures_interpretation_png": outputs_dir / "figures_png" / "interpretation",
         "latex_assets": outputs_dir / "latex_assets",
         "config": outputs_dir / "config",
+        "bootstrap": outputs_dir / "bootstrap",
+        "null_models": outputs_dir / "null_models",
         "logs": PROJECT_ROOT / "outputs" / "logs",
     }
     for path in tree.values():

@@ -12,7 +12,16 @@ from mapper_tda.io import (
     resolve_physical_csv_path,
 )
 from mapper_tda.pipeline import expand_configs_from_cli, run_mapper_batch
-from mapper_tda.static_outputs import write_comparison_tables, write_figures, write_latex_report, write_primary_artifacts
+from mapper_tda.static_outputs import (
+    write_comparison_tables,
+    write_figures,
+    write_interpretation_figures,
+    write_interpretation_tables,
+    write_latex_report,
+    write_presentation_figures,
+    write_primary_artifacts,
+    write_validation_outputs,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -37,7 +46,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--fast", action="store_true", help="Corre la configuracion principal base.")
     parser.add_argument("--presentation", action="store_true", help="Enfatiza figuras y tablas de presentacion.")
     parser.add_argument("--full-report", action="store_true", help="Genera todos los assets necesarios para el reporte.")
+    parser.add_argument("--full-validation", action="store_true", help="Equivale a interpretacion + presentacion + bootstrap + null models + LaTeX.")
+    parser.add_argument("--interpret-nodes", action="store_true", help="Genera clasificacion fisica, interpretacion nodal y figuras interpretativas.")
     parser.add_argument("--make-latex", action="store_true", help="Genera reporte LaTeX despues de crear figuras y tablas.")
+    parser.add_argument("--bootstrap", action="store_true", help="Corre bootstrap sobre grafos principales.")
+    parser.add_argument("--n-bootstrap", type=int, default=30)
+    parser.add_argument("--bootstrap-frac", type=float, default=0.8)
+    parser.add_argument("--null-models", action="store_true", help="Corre modelos nulos exploratorios.")
+    parser.add_argument("--n-null", type=int, default=30)
     parser.add_argument("--no-html", action="store_true", default=True, help="No generar HTML interactivo.")
     parser.add_argument("--static-only", action="store_true", help="Alias para reforzar salida estatica.")
     return parser.parse_args()
@@ -45,6 +61,17 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    if args.full_report:
+        args.interpret_nodes = True
+        args.presentation = True
+        args.make_latex = True
+    if args.full_validation:
+        args.interpret_nodes = True
+        args.presentation = True
+        args.bootstrap = True
+        args.null_models = True
+        args.make_latex = True
+
     mapper_features_path = resolve_mapper_features_path(args.mapper_features_csv, input_method=args.input_method)
     physical_csv_path = resolve_physical_csv_path(args.physical_csv, input_method=args.input_method)
     outputs_dir = resolve_outputs_dir(args.outputs_dir)
@@ -67,8 +94,28 @@ def main() -> None:
     write_comparison_tables(batch_result, outputs_dir, imputation_outputs_dir)
     write_figures(batch_result, outputs_dir)
 
+    interpretation_tables = {}
+    if args.interpret_nodes or args.presentation or args.make_latex or args.full_report or args.full_validation:
+        interpretation_tables = write_interpretation_tables(batch_result, outputs_dir)
+
+    validation_outputs = write_validation_outputs(
+        batch_result,
+        outputs_dir,
+        run_bootstrap=args.bootstrap,
+        n_bootstrap=args.n_bootstrap,
+        bootstrap_frac=args.bootstrap_frac,
+        run_null=args.null_models,
+        n_null=args.n_null,
+        run_imputation_comparison=args.interpret_nodes or args.full_report or args.full_validation,
+    )
+
+    if args.interpret_nodes or args.presentation or args.full_report or args.full_validation:
+        write_interpretation_figures(batch_result, outputs_dir, interpretation_tables, validation_outputs)
+    if args.presentation or args.full_report or args.full_validation:
+        write_presentation_figures(batch_result, outputs_dir, interpretation_tables, validation_outputs)
+
     if args.make_latex or args.full_report or args.presentation:
-        write_latex_report(batch_result, outputs_dir, PROJECT_ROOT / "latex" / "03_mapper")
+        write_latex_report(batch_result, outputs_dir, PROJECT_ROOT / "latex" / "03_mapper", interpretation_tables, validation_outputs)
 
     print("Mapper/TDA generado correctamente.")
     print(f"Mapper features: {mapper_features_path}")

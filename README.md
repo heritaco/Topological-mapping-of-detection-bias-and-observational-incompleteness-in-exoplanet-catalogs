@@ -159,12 +159,16 @@ fallbacks legacy, incluyendo KNN.
 
 El pipeline puede generar un reporte completo en `latex/03_mapper/mapper_report.tex`.
 
+Estilo visual por defecto:
+
+- Todas las figuras Matplotlib del proyecto deben usar el estilo compartido de `src/visual_style.py`.
+- La guia para humanos e IA esta en `VISUAL_STYLE_GUIDE.md`.
+
 Compilacion:
 
 ```powershell
 cd latex/03_mapper
-pdflatex mapper_report.tex
-pdflatex mapper_report.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error mapper_report.tex
 ```
 
 ## HTML interactivo

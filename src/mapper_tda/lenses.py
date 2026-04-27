@@ -100,8 +100,8 @@ def _domain_coordinates(physical_df: pd.DataFrame, space: str) -> tuple[pd.Serie
                 [column for column in ["pl_rade", "pl_bmasse", "pl_orbper", "pl_orbsmax", "pl_insol", "pl_eqt"] if column in physical_df.columns]
             ]
             .apply(pd.to_numeric, errors="coerce")
-            .fillna(method="ffill")
-            .fillna(method="bfill")
+            .ffill()
+            .bfill()
             .to_numpy(dtype=float),
             n_components=2,
         )

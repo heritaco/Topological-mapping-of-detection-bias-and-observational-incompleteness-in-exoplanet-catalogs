@@ -1,6 +1,8 @@
-\begin{table}
+\begin{table}[p]
+\centering
 \caption{Mapper space comparison.}
 \label{tab:mapper_space_comparison}
+\begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{llllrrlrrrrrrrrrrrrrrrrrrrrrrrrr}
 \toprule
 config\_id & input\_method & space & lens & n\_cubes & overlap & clusterer & min\_samples & eps\_percentile & rows\_used & n\_features & mean\_node\_imputation\_fraction & max\_node\_imputation\_fraction & mean\_node\_physically\_derived\_fraction & frac\_nodes\_high\_imputation & frac\_nodes\_high\_derived & config\_has\_density\_feature & n\_nodes & n\_edges & beta\_0 & beta\_1 & graph\_density & average\_degree & average\_clustering & transitivity & n\_isolates & largest\_component\_size & largest\_component\_fraction & mean\_node\_size & median\_node\_size & min\_node\_size & max\_node\_size \\
@@ -14,4 +16,5 @@ joint\_no\_density\_pca2\_cubes10\_overlap0p35 & iterative & joint\_no\_density 
 joint\_pca2\_cubes10\_overlap0p35 & iterative & joint & pca2 & 10 & 0.350 & dbscan & 4 & 90.000 & 6273 & 7 & 0.152 & 0.429 & 0.148 & 0.143 & 0.000 & True & 56 & 126 & 7 & 77 & 0.082 & 4.500 & 0.573 & 0.466 & 0 & 40 & 0.714 & 246.054 & 23.000 & 4 & 2384 \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}

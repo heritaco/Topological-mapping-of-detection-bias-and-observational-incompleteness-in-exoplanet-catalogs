@@ -30,6 +30,7 @@ from imputation.steps.knn_imputer import impute_with_knn
 from imputation.steps.log_transform import apply_log10_transform, invert_log10_transform, log_feature_subset
 from imputation.steps.physical_derivation import PhysicalDerivationAudit, apply_physical_derivations
 from imputation.steps.scaling import invert_robust_scale, robust_scale
+from visual_style import SOURCE_PALETTE, apply_axis_style, configure_matplotlib, style_colorbar
 
 
 VALID_METHODS = ("median", "knn", "iterative", "compare")
@@ -1419,7 +1420,7 @@ def export_summary_tables(
 def _import_matplotlib_pyplot():
     import matplotlib
 
-    matplotlib.use("Agg")
+    configure_matplotlib(matplotlib)
     import matplotlib.pyplot as plt
 
     return plt
@@ -1437,7 +1438,7 @@ def _message_pdf(path: Path, title: str, message: str) -> None:
     plt = _import_matplotlib_pyplot()
     fig, ax = plt.subplots(figsize=(11, 6))
     ax.axis("off")
-    ax.set_title(title, loc="left", fontsize=14, fontweight="bold")
+    ax.set_title(title, loc="left")
     ax.text(0.02, 0.7, message, transform=ax.transAxes, fontsize=11, wrap=True)
     _save_pdf(fig, path)
     plt.close(fig)
@@ -1451,9 +1452,7 @@ def _grouped_bar_pdf(df: pd.DataFrame, x: str, y: str, hue: str, title: str, yla
     pivot = df.pivot_table(index=x, columns=hue, values=y, aggfunc="mean").fillna(0)
     fig, ax = plt.subplots(figsize=(13, 7))
     pivot.plot(kind="bar", ax=ax, width=0.82)
-    ax.set_title(title, loc="left", fontsize=14, fontweight="bold")
-    ax.set_xlabel("")
-    ax.set_ylabel(ylabel)
+    apply_axis_style(ax, title=title, xlabel="", ylabel=ylabel)
     ax.tick_params(axis="x", labelrotation=25)
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=min(4, max(1, len(pivot.columns))))
     _save_pdf(fig, path)
@@ -1468,9 +1467,7 @@ def _stacked_bar_pdf(df: pd.DataFrame, x: str, y: str, hue: str, title: str, yla
     pivot = df.pivot_table(index=x, columns=hue, values=y, aggfunc="sum").fillna(0)
     fig, ax = plt.subplots(figsize=(13, 7))
     pivot.plot(kind="bar", stacked=True, ax=ax, width=0.82)
-    ax.set_title(title, loc="left", fontsize=14, fontweight="bold")
-    ax.set_xlabel("")
-    ax.set_ylabel(ylabel)
+    apply_axis_style(ax, title=title, xlabel="", ylabel=ylabel)
     ax.tick_params(axis="x", labelrotation=25)
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=min(4, max(1, len(pivot.columns))))
     _save_pdf(fig, path)
@@ -1489,11 +1486,11 @@ def _validation_spearman_pdf(metrics: pd.DataFrame, path: Path) -> None:
     plt = _import_matplotlib_pyplot()
     fig, ax = plt.subplots(figsize=(12, 6))
     image = ax.imshow(pivot.values, vmin=-1, vmax=1, cmap="RdBu_r", aspect="auto")
-    ax.set_title(title, loc="left", fontsize=14, fontweight="bold")
+    apply_axis_style(ax, title=title)
     ax.set_xticks(range(len(pivot.columns)), labels=pivot.columns, rotation=30, ha="right")
     ax.set_yticks(range(len(pivot.index)), labels=pivot.index)
     cbar = fig.colorbar(image, ax=ax)
-    cbar.set_label("Spearman")
+    style_colorbar(cbar, "Spearman")
     _save_pdf(fig, path)
     plt.close(fig)
 
@@ -1513,10 +1510,14 @@ def _distribution_pdf(
     fig, ax = plt.subplots(figsize=(12, 7))
     bins = max(12, min(55, int(math.sqrt(len(frame))) + 5))
     for source, group in frame.groupby("source"):
-        ax.hist(group["value"], bins=bins, alpha=0.55, label=f"{source} (n={len(group):,})")
-    ax.set_title(title, loc="left", fontsize=14, fontweight="bold")
-    ax.set_xlabel(x_label)
-    ax.set_ylabel("Rows")
+        ax.hist(
+            group["value"],
+            bins=bins,
+            alpha=0.58,
+            label=f"{source} (n={len(group):,})",
+            color=SOURCE_PALETTE.get(str(source), None),
+        )
+    apply_axis_style(ax, title=title, xlabel=x_label, ylabel="Rows")
     ax.text(0.01, 0.98, note[:220], transform=ax.transAxes, va="top", fontsize=9)
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=3)
     _save_pdf(fig, path)
@@ -1551,10 +1552,17 @@ def _scatter_pdf(method_result: MethodResult, x: str, y: str, title: str, path: 
         plt.close(fig)
         return
     for status, idx in plot_df.groupby("value_status").groups.items():
-        ax.scatter(x_values.loc[idx], y_values.loc[idx], s=18, alpha=0.58, label=f"{status} (n={len(idx):,})")
-    ax.set_title(f"{title} ({method_result.method})", loc="left", fontsize=14, fontweight="bold")
-    ax.set_xlabel(x_label)
-    ax.set_ylabel(y_label)
+        ax.scatter(
+            x_values.loc[idx],
+            y_values.loc[idx],
+            s=20,
+            alpha=0.58,
+            label=f"{status} (n={len(idx):,})",
+            color=SOURCE_PALETTE.get(str(status), None),
+            edgecolors="#ffffff",
+            linewidths=0.3,
+        )
+    apply_axis_style(ax, title=f"{title} ({method_result.method})", xlabel=x_label, ylabel=y_label)
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=2)
     _save_pdf(fig, path)
     plt.close(fig)

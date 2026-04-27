@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import shutil
 from pathlib import Path
 from typing import Any
@@ -10,12 +11,13 @@ import pandas as pd
 from .feature_sets import SPACE_COMPARISON_ORDER, has_density_feature
 from .interpretation import generate_interpretation_summary
 from .io import ensure_mapper_output_tree, write_json
+from visual_style import LENS_MARKERS, PROJECT_COLOR_CYCLE, SOURCE_PALETTE, apply_axis_style, configure_matplotlib, style_colorbar
 
 
 def _import_matplotlib():
     import matplotlib
 
-    matplotlib.use("Agg")
+    configure_matplotlib(matplotlib)
     import matplotlib.pyplot as plt
 
     return plt
@@ -33,7 +35,7 @@ def _message_figure(pdf_path: Path, title: str, message: str, png_path: Path | N
     plt = _import_matplotlib()
     fig, ax = plt.subplots(figsize=(11, 6))
     ax.axis("off")
-    ax.set_title(title, loc="left", fontsize=14, fontweight="bold")
+    ax.set_title(title, loc="left")
     ax.text(0.02, 0.7, message, transform=ax.transAxes, fontsize=11, wrap=True)
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
@@ -193,10 +195,10 @@ def _bar_complexity(metrics_df: pd.DataFrame, pdf_path: Path, png_path: Path) ->
     labels = _config_labels(metrics_df)
     x = np.arange(len(labels))
     fig, axes = plt.subplots(3, 1, figsize=(14, 10), sharex=True)
-    for ax, column, color in zip(axes, ["n_nodes", "n_edges", "beta_1"], ["#0f4c5c", "#e36414", "#6d597a"]):
-        ax.bar(x, pd.to_numeric(metrics_df[column], errors="coerce").fillna(0), color=color)
-        ax.set_ylabel(column)
-    axes[0].set_title("Mapper graph size and complexity", loc="left", fontsize=14, fontweight="bold")
+    for ax, column, color in zip(axes, ["n_nodes", "n_edges", "beta_1"], PROJECT_COLOR_CYCLE[:3]):
+        ax.bar(x, pd.to_numeric(metrics_df[column], errors="coerce").fillna(0), color=color, width=0.72)
+        apply_axis_style(ax, ylabel=column)
+    apply_axis_style(axes[0], title="Mapper graph size and complexity")
     axes[-1].set_xticks(x, labels, rotation=35, ha="right")
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
@@ -212,12 +214,12 @@ def _heatmap(frame: pd.DataFrame, columns: list[str], title: str, pdf_path: Path
     matrix = matrix.fillna(0.0)
     plt = _import_matplotlib()
     fig, ax = plt.subplots(figsize=(14, max(6, len(frame) * 0.45)))
-    image = ax.imshow(matrix.to_numpy(dtype=float), aspect="auto", cmap="coolwarm")
-    ax.set_title(title, loc="left", fontsize=14, fontweight="bold")
+    image = ax.imshow(matrix.to_numpy(dtype=float), aspect="auto", cmap="RdYlBu_r")
+    apply_axis_style(ax, title=title)
     ax.set_xticks(range(len(use_columns)), use_columns, rotation=35, ha="right")
     ax.set_yticks(range(len(frame)), _config_labels(frame))
     cbar = fig.colorbar(image, ax=ax)
-    cbar.set_label("z-score")
+    style_colorbar(cbar, "z-score")
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
 
@@ -236,12 +238,12 @@ def _distance_heatmap(distances_df: pd.DataFrame, pdf_path: Path, png_path: Path
         matrix.loc[row["graph_b"], row["graph_a"]] = value
     plt = _import_matplotlib()
     fig, ax = plt.subplots(figsize=(12, 10))
-    image = ax.imshow(matrix.to_numpy(dtype=float), aspect="auto", cmap="YlGnBu")
-    ax.set_title(title, loc="left", fontsize=14, fontweight="bold")
+    image = ax.imshow(matrix.to_numpy(dtype=float), aspect="auto", cmap="Blues")
+    apply_axis_style(ax, title=title)
     ax.set_xticks(range(len(labels)), labels, rotation=45, ha="right")
     ax.set_yticks(range(len(labels)), labels)
     cbar = fig.colorbar(image, ax=ax)
-    cbar.set_label("metric_zscore_l2_distance")
+    style_colorbar(cbar, "metric_zscore_l2_distance")
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
 
@@ -253,13 +255,19 @@ def _scatter_nodes_cycles(metrics_df: pd.DataFrame, pdf_path: Path, png_path: Pa
     plt = _import_matplotlib()
     fig, ax = plt.subplots(figsize=(10, 7))
     spaces = sorted(metrics_df["space"].astype(str).unique())
-    markers = {"pca2": "o", "density": "s", "domain": "^"}
-    colors = {space: color for space, color in zip(spaces, ["#0f4c5c", "#e36414", "#6d597a", "#2a9d8f", "#bc6c25", "#8a5a44", "#577590"])}
+    colors = {space: color for space, color in zip(spaces, PROJECT_COLOR_CYCLE)}
     for row in metrics_df.itertuples(index=False):
-        ax.scatter(row.n_nodes, row.beta_1, color=colors.get(str(row.space), "#333333"), marker=markers.get(str(row.lens), "o"), s=80, alpha=0.85)
-    ax.set_title("Mapper nodes vs cycles", loc="left", fontsize=14, fontweight="bold")
-    ax.set_xlabel("n_nodes")
-    ax.set_ylabel("beta_1")
+        ax.scatter(
+            row.n_nodes,
+            row.beta_1,
+            color=colors.get(str(row.space), "#334155"),
+            marker=LENS_MARKERS.get(str(row.lens), "o"),
+            s=92,
+            alpha=0.88,
+            edgecolors="#ffffff",
+            linewidths=0.8,
+        )
+    apply_axis_style(ax, title="Mapper nodes vs cycles", xlabel="n_nodes", ylabel="beta_1")
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
 
@@ -277,9 +285,7 @@ def _density_sensitivity_figure(table: pd.DataFrame, pdf_path: Path, png_path: P
     fig, ax = plt.subplots(figsize=(12, 7))
     numeric = table.set_index("comparison").select_dtypes(include=[np.number])
     numeric.plot(kind="bar", ax=ax)
-    ax.set_title("Density feature sensitivity", loc="left", fontsize=14, fontweight="bold")
-    ax.set_xlabel("")
-    ax.set_ylabel("delta")
+    apply_axis_style(ax, title="Density feature sensitivity", xlabel="", ylabel="delta")
     ax.tick_params(axis="x", rotation=25)
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
@@ -293,9 +299,7 @@ def _lens_sensitivity_figure(table: pd.DataFrame, pdf_path: Path, png_path: Path
     pivot = table.pivot_table(index="space", columns="lens", values="n_nodes", aggfunc="mean")
     fig, ax = plt.subplots(figsize=(12, 7))
     pivot.plot(kind="bar", ax=ax)
-    ax.set_title("Lens sensitivity by space", loc="left", fontsize=14, fontweight="bold")
-    ax.set_xlabel("")
-    ax.set_ylabel("mean n_nodes")
+    apply_axis_style(ax, title="Lens sensitivity by space", xlabel="", ylabel="mean n_nodes")
     ax.tick_params(axis="x", rotation=20)
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
@@ -316,7 +320,7 @@ def _graph_network_figure(result: dict[str, Any], color_column: str, pdf_path: P
     nx_graph = result["nx_graph"]
     if nx_graph.number_of_nodes() == 0:
         ax.axis("off")
-        ax.set_title(pdf_path.stem, loc="left", fontsize=14, fontweight="bold")
+        ax.set_title(pdf_path.stem, loc="left")
         ax.text(0.1, 0.6, "Mapper graph vacio para esta configuracion.", transform=ax.transAxes)
         _save_figure(fig, pdf_path, png_path)
         plt.close(fig)
@@ -326,17 +330,20 @@ def _graph_network_figure(result: dict[str, Any], color_column: str, pdf_path: P
     layout = nx.spring_layout(nx_graph, seed=42)
     node_table = result["node_table"].set_index("node_id")
     values = pd.to_numeric(node_table.get(color_column), errors="coerce").fillna(0.0)
-    nx.draw_networkx_edges(nx_graph, layout, ax=ax, edge_color="#a8b3c1", width=1.0, alpha=0.7)
+    nx.draw_networkx_edges(nx_graph, layout, ax=ax, edge_color="#c7d2df", width=1.0, alpha=0.8)
     nodes = nx.draw_networkx_nodes(
         nx_graph,
         layout,
         ax=ax,
         node_color=values.reindex(list(nx_graph.nodes())).fillna(0.0).to_numpy(dtype=float),
-        cmap="viridis",
+        cmap="cividis",
+        linewidths=0.9,
+        edgecolors="#ffffff",
         node_size=(pd.to_numeric(node_table["n_members"], errors="coerce").reindex(list(nx_graph.nodes())).fillna(1.0) * 16).to_numpy(),
     )
-    fig.colorbar(nodes, ax=ax, label=color_column)
-    ax.set_title(pdf_path.stem, loc="left", fontsize=14, fontweight="bold")
+    cbar = fig.colorbar(nodes, ax=ax)
+    style_colorbar(cbar, color_column)
+    ax.set_title(pdf_path.stem, loc="left")
     ax.axis("off")
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
@@ -354,13 +361,19 @@ def _lens_scatter_sources(result: dict[str, Any], pdf_path: Path, png_path: Path
     imputed = frame[source_cols].apply(pd.to_numeric, errors="coerce").fillna(0).any(axis=1) if source_cols else pd.Series(False, index=frame.index)
     derived = frame[derived_cols].apply(pd.to_numeric, errors="coerce").fillna(0).any(axis=1) if derived_cols else pd.Series(False, index=frame.index)
     status = np.where(imputed, "imputed", np.where(derived, "physically_derived", "observed"))
-    palette = {"observed": "#0f4c5c", "physically_derived": "#e36414", "imputed": "#8d99ae"}
     for label in ["observed", "physically_derived", "imputed"]:
         mask = status == label
-        ax.scatter(frame.loc[mask, "lens_x"], frame.loc[mask, "lens_y"], s=22, alpha=0.7, label=label, color=palette[label])
-    ax.set_title(pdf_path.stem, loc="left", fontsize=14, fontweight="bold")
-    ax.set_xlabel("lens_1")
-    ax.set_ylabel("lens_2")
+        ax.scatter(
+            frame.loc[mask, "lens_x"],
+            frame.loc[mask, "lens_y"],
+            s=24,
+            alpha=0.74,
+            label=label,
+            color=SOURCE_PALETTE[label],
+            edgecolors="#ffffff",
+            linewidths=0.35,
+        )
+    apply_axis_style(ax, title=pdf_path.stem, xlabel="lens_1", ylabel="lens_2")
     ax.legend()
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
@@ -376,9 +389,7 @@ def _node_feature_profiles(result: dict[str, Any], pdf_path: Path, png_path: Pat
     plt = _import_matplotlib()
     fig, ax = plt.subplots(figsize=(12, 7))
     top.T.plot(ax=ax)
-    ax.set_title(pdf_path.stem, loc="left", fontsize=14, fontweight="bold")
-    ax.set_xlabel("feature")
-    ax.set_ylabel("mean physical value")
+    apply_axis_style(ax, title=pdf_path.stem, xlabel="feature", ylabel="mean physical value")
     _save_figure(fig, pdf_path, png_path)
     plt.close(fig)
 
@@ -453,12 +464,27 @@ def _latex_escape(text: str) -> str:
     return text.replace("_", r"\_")
 
 
+def _latex_inline_code(text: str) -> str:
+    def repl(match: re.Match[str]) -> str:
+        return r"\texttt{" + _latex_escape(match.group(1)) + "}"
+
+    return re.sub(r"`([^`]+)`", repl, text)
+
+
+def _latexize_summary_text(text: str) -> str:
+    text = _latex_inline_code(text)
+    return text.replace("beta_1", r"\(\beta_1\)")
+
+
 def _write_table_tex(frame: pd.DataFrame, path: Path, caption: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if frame.empty:
         path.write_text("% No data available.\n", encoding="utf-8")
         return
     latex = frame.to_latex(index=False, escape=True, longtable=False, caption=caption, label=f"tab:{path.stem}", float_format="%.3f", na_rep="NA")
+    latex = latex.replace(r"\begin{table}", "\\begin{table}[p]\n\\centering", 1)
+    latex = latex.replace(r"\begin{tabular}", "\\begin{adjustbox}{max width=\\linewidth}\n\\begin{tabular}", 1)
+    latex = latex.replace(r"\end{tabular}", "\\end{tabular}\n\\end{adjustbox}", 1)
     path.write_text(latex, encoding="utf-8")
 
 
@@ -475,6 +501,10 @@ def write_latex_report(batch_result: dict[str, Any], outputs_dir: Path, latex_di
     lens_table = build_lens_sensitivity(metrics_df)
     space_table = build_space_comparison(metrics_df)
     interpretation = generate_interpretation_summary(metrics_df)
+    density_text = _latexize_summary_text(interpretation["density_sensitivity"])
+    imputation_text = _latexize_summary_text(interpretation["imputation_audit"])
+    lens_text = _latexize_summary_text(interpretation["lens_sensitivity"])
+    global_summary = _latexize_summary_text(interpretation["global_summary"])
 
     for figure in (outputs_dir / "figures_pdf").glob("*.pdf"):
         shutil.copyfile(figure, figures_dir / figure.name)
@@ -503,12 +533,14 @@ def write_latex_report(batch_result: dict[str, Any], outputs_dir: Path, latex_di
             "y que no estan dominadas por variables imputadas o derivadas."
         ),
         "02_data_and_imputation.tex": (
-            "El dataset usa siete variables principales: pl_rade, pl_bmasse, pl_dens, pl_orbper, pl_orbsmax, pl_insol y pl_eqt. "
+            "El dataset usa siete variables principales: \\texttt{pl\\_rade}, "
+            "\\texttt{pl\\_bmasse}, \\texttt{pl\\_dens}, \\texttt{pl\\_orbper}, "
+            "\\texttt{pl\\_orbsmax}, \\texttt{pl\\_insol} y \\texttt{pl\\_eqt}. "
             "Mapper usa una matriz transformada y escalada, mientras que la interpretacion usa el CSV fisico con unidades y banderas de procedencia. "
-            "Se distinguen explicitamente observed, physically_derived e imputed. "
+            "Se distinguen explicitamente \\texttt{observed}, \\texttt{physically\\_derived} e \\texttt{imputed}. "
             "Las derivaciones fisicas usadas incluyen $pl\\_dens = 5.514 \\cdot pl\\_bmasse / pl\\_rade^3$ y "
             "$pl\\_orbsmax = (st\\_mass \\cdot (pl\\_orbper / 365.25)^2)^{1/3}$. "
-            "pl\\_dens es mayoritariamente derivada desde pl\\_bmasse y pl\\_rade; por tanto, no debe tratarse como observacion independiente cuando se usa junto con masa y radio."
+            "\\texttt{pl\\_dens} es mayoritariamente derivada desde \\texttt{pl\\_bmasse} y \\texttt{pl\\_rade}; por tanto, no debe tratarse como observacion independiente cuando se usa junto con masa y radio."
         ),
         "03_mapper_methodology.tex": (
             "Sea $X = \\{x_1, \\ldots, x_n\\} \\subset \\mathbb{R}^p$. Sea $f: X \\to \\mathbb{R}^d$ un lens y $\\mathcal{U}=\\{U_\\alpha\\}$ una cubierta del espacio de lentes. "
@@ -517,15 +549,17 @@ def write_latex_report(batch_result: dict[str, Any], outputs_dir: Path, latex_di
             "La configuracion base usa n\\_cubes=10, overlap=0.35, DBSCAN, min\\_samples=4, eps\\_percentile=90 y random\\_state=42."
         ),
         "04_mapper_results.tex": (
-            "Los resultados principales se resumen en las figuras estaticas globales y en los grafos `joint_no_density` y `joint` con lens pca2. "
-            f"{interpretation['global_summary']} "
+            "Los resultados principales se resumen en las figuras estaticas globales y en "
+            "los grafos \\texttt{joint\\_no\\_density} y \\texttt{joint} con lens "
+            "\\texttt{pca2}. "
+            f"{global_summary} "
             "\\begin{figure}[H]\\centering\\includegraphics[width=0.95\\linewidth]{figures/01_mapper_graph_size_complexity.pdf}\\caption{Tamano y complejidad de los grafos Mapper.}\\end{figure}"
             "\\begin{figure}[H]\\centering\\includegraphics[width=0.95\\linewidth]{figures/02_mapper_metrics_zscore_heatmap.pdf}\\caption{Heatmap de metricas estandarizadas.}\\end{figure}"
             "\\begin{figure}[H]\\centering\\includegraphics[width=0.75\\linewidth]{figures/04_mapper_nodes_vs_cycles.pdf}\\caption{Relacion entre numero de nodos y ciclos.}\\end{figure}"
         ),
         "05_sensitivity_analysis.tex": (
-            f"{interpretation['density_sensitivity']} {interpretation['lens_sensitivity']} {interpretation['imputation_audit']} "
-            "\\begin{figure}[H]\\centering\\includegraphics[width=0.9\\linewidth]{figures/06_mapper_density_feature_sensitivity.pdf}\\caption{Sensibilidad al agregar pl\\_dens.}\\end{figure}"
+            f"{density_text} {lens_text} {imputation_text} "
+            "\\begin{figure}[H]\\centering\\includegraphics[width=0.9\\linewidth]{figures/06_mapper_density_feature_sensitivity.pdf}\\caption{Sensibilidad al agregar \\texttt{pl\\_dens}.}\\end{figure}"
             "\\begin{figure}[H]\\centering\\includegraphics[width=0.9\\linewidth]{figures/05_mapper_imputation_audit_by_config.pdf}\\caption{Auditoria de imputacion por configuracion.}\\end{figure}"
             "\\begin{figure}[H]\\centering\\includegraphics[width=0.9\\linewidth]{figures/07_mapper_lens_sensitivity.pdf}\\caption{Sensibilidad al lens.}\\end{figure}"
             "\\begin{figure}[H]\\centering\\includegraphics[width=0.9\\linewidth]{figures/08_mapper_imputation_method_sensitivity.pdf}\\caption{Sensibilidad al metodo de imputacion cuando hay insumos comparables.}\\end{figure}"
@@ -536,9 +570,14 @@ def write_latex_report(batch_result: dict[str, Any], outputs_dir: Path, latex_di
             "Las regiones compatibles con rocosos, super-Tierras, sub-Neptunos, gigantes gaseosos o hot Jupiters solo deben enfatizarse si los nodos correspondientes muestran consistencia fisica y baja dependencia de imputacion."
         ),
         "07_limitations.tex": (
-            "Las limitaciones principales incluyen sesgo observacional por discoverymethod, variables derivadas no independientes, imputacion que no equivale a observacion, dependencia de parametros Mapper, y el hecho de que un beta_1 alto no implica automaticamente estructura fisica. "
-            "La distancia metric\\_zscore\\_l2 es una distancia entre vectores de metricas estandarizadas, no una distancia topologica estricta. "
-            "observed != physically_derived != imputed."
+            "Las limitaciones principales incluyen sesgo observacional por "
+            "\\texttt{discoverymethod}, variables derivadas no independientes, imputacion que "
+            "no equivale a observacion, dependencia de parametros Mapper, y el hecho de que "
+            "un \\(\\beta_1\\) alto no implica automaticamente estructura fisica. "
+            "La distancia \\texttt{metric\\_zscore\\_l2} es una distancia entre vectores de "
+            "metricas estandarizadas, no una distancia topologica estricta. "
+            "\\texttt{observed} \\(\\neq\\) \\texttt{physically\\_derived} \\(\\neq\\) "
+            "\\texttt{imputed}. % observed != physically_derived != imputed"
         ),
         "08_conclusion.tex": (
             "El pipeline Mapper quedo actualizado para usar iterative por defecto, generar outputs estaticos en outputs/mapper y producir un reporte LaTeX autocontenido. "
@@ -561,6 +600,8 @@ def write_latex_report(batch_result: dict[str, Any], outputs_dir: Path, latex_di
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{placeins}
+\usepackage{pdflscape}
+\usepackage{adjustbox}
 \title{Mapper/TDA Report for Imputed PSCompPars}
 \date{}
 \begin{document}
@@ -583,18 +624,26 @@ def write_latex_report(batch_result: dict[str, Any], outputs_dir: Path, latex_di
 \section{Conclusion}
 \input{sections/08_conclusion.tex}
 \FloatBarrier
+\clearpage
+\begin{landscape}
+\footnotesize
 \input{tables/mapper_graph_metrics_summary.tex}
 \input{tables/mapper_space_comparison.tex}
 \input{tables/mapper_density_sensitivity.tex}
 \input{tables/mapper_lens_sensitivity.tex}
 \input{tables/mapper_imputation_audit_summary.tex}
+\end{landscape}
 \end{document}
 """
     report_path = latex_dir / "mapper_report.tex"
     report_path.write_text(report_body, encoding="utf-8")
     (latex_dir / "README.md").write_text(
-        "Compila con `pdflatex mapper_report.tex` o `xelatex mapper_report.tex`. Las figuras se copian desde `outputs/mapper/figures_pdf/`.\n",
+        "Compila con `latexmk -pdf -interaction=nonstopmode -halt-on-error mapper_report.tex`. "
+        "Las figuras se copian desde `outputs/mapper/figures_pdf/`.\n",
         encoding="utf-8",
     )
-    (latex_dir / "Makefile").write_text("all:\n\tpdflatex mapper_report.tex\n\tpdflatex mapper_report.tex\n", encoding="utf-8")
+    (latex_dir / "Makefile").write_text(
+        "all:\n\tlatexmk -pdf -interaction=nonstopmode -halt-on-error mapper_report.tex\n",
+        encoding="utf-8",
+    )
     return {"mapper_report_tex": report_path}

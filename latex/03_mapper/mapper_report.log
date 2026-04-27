@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.26)  26 APR 2026 16:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.26)  26 APR 2026 19:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -567,117 +567,136 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Warning: No \author given.
 
 (sections/00_abstract.tex) (sections/01_introduction.tex)
-(sections/02_data_and_imputation.tex) (sections/03_mapper_methodology.tex)
-(sections/04_mapper_results.tex
-<figures/01_mapper_graph_size_complexity.pdf, id=35, 836.25546pt x 671.20746pt>
+(sections/02_data_and_imputation.tex) (sections/03_key_findings.tex)
+(sections/04_mapper_methodology.tex) (sections/05_mapper_results.tex [1
+
+{C:/Users/herie/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+<figures/01_mapper_graph_size_complexity.pdf, id=70, 836.25546pt x 671.20746pt>
 
 File: figures/01_mapper_graph_size_complexity.pdf Graphic file (type pdf)
 <use figures/01_mapper_graph_size_complexity.pdf>
 Package pdftex.def Info: figures/01_mapper_graph_size_complexity.pdf  used on i
-nput line 1.
+nput line 5.
 (pdftex.def)             Requested size: 446.26582pt x 358.18605pt.
-
-Overfull \hbox (10.04184pt too wide) in paragraph at lines 1--1
-\OT1/cmr/m/n/10.95 Los re-sul-ta-dos prin-ci-pales se re-sumen en las fig-uras 
-estat-i-cas glob-ales y en los grafos \OT1/cmtt/m/n/10.95 joint[]no[]density
- []
-
-
-Overfull \hbox (101.09981pt too wide) in paragraph at lines 1--1
-\OT1/cmr/m/n/10.95 y \OT1/cmtt/m/n/10.95 joint \OT1/cmr/m/n/10.95 con lens \OT1
-/cmtt/m/n/10.95 pca2\OT1/cmr/m/n/10.95 . La con-fig-u-ra-cion con mayor com-ple
--ji-dad com-bi-nada fue \OT1/cmtt/m/n/10.95 thermal[]density[]cubes10[]overlap0
-p35\OT1/cmr/m/n/10.95 ,
- []
-
-<figures/02_mapper_metrics_zscore_heatmap.pdf, id=36, 825.18266pt x 690.2425pt>
-
+<figures/02_mapper_metrics_zscore_heatmap.pdf, id=71, 825.16606pt x 498.25723pt
+>
 File: figures/02_mapper_metrics_zscore_heatmap.pdf Graphic file (type pdf)
 <use figures/02_mapper_metrics_zscore_heatmap.pdf>
 Package pdftex.def Info: figures/02_mapper_metrics_zscore_heatmap.pdf  used on 
-input line 1.
-(pdftex.def)             Requested size: 446.26582pt x 373.29413pt.
-[1
-
-{C:/Users/herie/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-<figures/04_mapper_nodes_vs_cycles.pdf, id=52, 612.21852pt x 455.69812pt>
+input line 13.
+(pdftex.def)             Requested size: 446.26582pt x 269.46544pt.
+ [2 <./figures/01_mapper_graph_size_complexity.pdf>]
+<figures/04_mapper_nodes_vs_cycles.pdf, id=135, 605.8353pt x 455.69812pt>
 File: figures/04_mapper_nodes_vs_cycles.pdf Graphic file (type pdf)
 <use figures/04_mapper_nodes_vs_cycles.pdf>
 Package pdftex.def Info: figures/04_mapper_nodes_vs_cycles.pdf  used on input l
-ine 1.
-(pdftex.def)             Requested size: 352.31625pt x 262.25383pt.
- [2 <./figures/01_mapper_graph_size_complexity.pdf>]) [3 <./figures/02_mapper_m
-etrics_zscore_heatmap.pdf>] (sections/05_sensitivity_analysis.tex
-<figures/06_mapper_density_feature_sensitivity.pdf, id=179, 719.56328pt x 497.0
+ine 21.
+(pdftex.def)             Requested size: 352.31625pt x 265.01433pt.
+ [3 <./figures/02_mapper_metrics_zscore_heatmap.pdf>]) (sections/06_node_level_
+interpretation.tex
+<figures/01_main_graphs_by_population.pdf, id=201, 988.6883pt x 643.20299pt>
+File: figures/01_main_graphs_by_population.pdf Graphic file (type pdf)
+<use figures/01_main_graphs_by_population.pdf>
+Package pdftex.def Info: figures/01_main_graphs_by_population.pdf  used on inpu
+t line 5.
+(pdftex.def)             Requested size: 446.26582pt x 290.33179pt.
+ [4 <./figures/04_mapper_nodes_vs_cycles.pdf>]
+<figures/02_main_graphs_by_imputation.pdf, id=247, 988.6883pt x 643.20299pt>
+File: figures/02_main_graphs_by_imputation.pdf Graphic file (type pdf)
+<use figures/02_main_graphs_by_imputation.pdf>
+Package pdftex.def Info: figures/02_main_graphs_by_imputation.pdf  used on inpu
+t line 13.
+(pdftex.def)             Requested size: 446.26582pt x 290.33179pt.
+ [5 <./figures/01_main_graphs_by_population.pdf>]
+(tables/highlighted_nodes_summary.tex))
+(sections/07_main_graph_interpretation.tex
+<figures/04_orbital_mapper_interpretation.pdf, id=305, 568.45284pt x 489.01259p
+t>
+File: figures/04_orbital_mapper_interpretation.pdf Graphic file (type pdf)
+<use figures/04_orbital_mapper_interpretation.pdf>
+Package pdftex.def Info: figures/04_orbital_mapper_interpretation.pdf  used on 
+input line 3.
+(pdftex.def)             Requested size: 446.26582pt x 383.90556pt.
+ [6 <./figures/02_main_graphs_by_imputation.pdf>]
+<figures/05_joint_mapper_interpretation.pdf, id=361, 568.45284pt x 489.01259pt>
+
+File: figures/05_joint_mapper_interpretation.pdf Graphic file (type pdf)
+<use figures/05_joint_mapper_interpretation.pdf>
+Package pdftex.def Info: figures/05_joint_mapper_interpretation.pdf  used on in
+put line 11.
+(pdftex.def)             Requested size: 446.26582pt x 383.90556pt.
+ [7 <./figures/04_orbital_mapper_interpretation.pdf>]
+<figures/09_thermal_caution.pdf, id=410, 547.27998pt x 489.01259pt>
+File: figures/09_thermal_caution.pdf Graphic file (type pdf)
+<use figures/09_thermal_caution.pdf>
+Package pdftex.def Info: figures/09_thermal_caution.pdf  used on input line 19.
+
+(pdftex.def)             Requested size: 446.26582pt x 398.76932pt.
+ [8 <./figures/05_joint_mapper_interpretation.pdf>]) (sections/08_stability_dia
+gnostics.tex)
+(sections/09_null_model_diagnostics.tex) [9 <./figures/09_thermal_caution.pdf>]
+(sections/10_sensitivity_analysis.tex
+<figures/06_mapper_density_feature_sensitivity.pdf, id=507, 704.86775pt x 497.0
 3085pt>
 File: figures/06_mapper_density_feature_sensitivity.pdf Graphic file (type pdf)
 
 <use figures/06_mapper_density_feature_sensitivity.pdf>
 Package pdftex.def Info: figures/06_mapper_density_feature_sensitivity.pdf  use
-d on input line 1.
-(pdftex.def)             Requested size: 422.77664pt x 292.0398pt.
-<figures/05_mapper_imputation_audit_by_config.pdf, id=180, 834.76534pt x 668.31
-088pt>
-File: figures/05_mapper_imputation_audit_by_config.pdf Graphic file (type pdf)
-<use figures/05_mapper_imputation_audit_by_config.pdf>
-Package pdftex.def Info: figures/05_mapper_imputation_audit_by_config.pdf  used
- on input line 1.
-(pdftex.def)             Requested size: 422.77664pt x 338.4784pt.
- [4 <./figures/04_mapper_nodes_vs_cycles.pdf>]
-<figures/07_mapper_lens_sensitivity.pdf, id=223, 724.237pt x 468.21378pt>
+d on input line 5.
+(pdftex.def)             Requested size: 422.77664pt x 298.12221pt.
+<figures/07_mapper_lens_sensitivity.pdf, id=508, 709.2278pt x 474.44203pt>
 File: figures/07_mapper_lens_sensitivity.pdf Graphic file (type pdf)
 <use figures/07_mapper_lens_sensitivity.pdf>
 Package pdftex.def Info: figures/07_mapper_lens_sensitivity.pdf  used on input 
-line 1.
-(pdftex.def)             Requested size: 422.77664pt x 273.32169pt.
- [5 <./figures/06_mapper_density_feature_sensitivity.pdf>]
-<figures/08_mapper_imputation_method_sensitivity.pdf, id=280, 670.13277pt x 365
-.79724pt>
-File: figures/08_mapper_imputation_method_sensitivity.pdf Graphic file (type pd
-f)
-<use figures/08_mapper_imputation_method_sensitivity.pdf>
-Package pdftex.def Info: figures/08_mapper_imputation_method_sensitivity.pdf  u
-sed on input line 1.
-(pdftex.def)             Requested size: 422.77664pt x 230.7772pt.
-[6 <./figures/05_mapper_imputation_audit_by_config.pdf>])
-(sections/06_interpretation.tex) [7 <./figures/07_mapper_lens_sensitivity.pdf> 
-<./figures/08_mapper_imputation_method_sensitivity.pdf>]
-(sections/07_limitations.tex) (sections/08_conclusion.tex) [8]
-(tables/mapper_graph_metrics_summary.tex) (tables/mapper_space_comparison.tex)
-(tables/mapper_density_sensitivity.tex) (tables/mapper_lens_sensitivity.tex)
-(tables/mapper_imputation_audit_summary.tex) [9] [10] (mapper_report.aux)
+line 13.
+(pdftex.def)             Requested size: 422.77664pt x 282.82135pt.
+ [10 <./figures/06_mapper_density_feature_sensitivity.pdf>]
+<figures/11_imputation_method_comparison.pdf, id=565, 812.00146pt x 535.77913pt
+>
+File: figures/11_imputation_method_comparison.pdf Graphic file (type pdf)
+<use figures/11_imputation_method_comparison.pdf>
+Package pdftex.def Info: figures/11_imputation_method_comparison.pdf  used on i
+nput line 21.
+(pdftex.def)             Requested size: 422.77664pt x 278.96646pt.
+ [11 <./figures/07_mapper_lens_sensitivity.pdf>])
+(sections/11_limitations.tex) (sections/12_conclusion.tex)
+(sections/13_opinion.tex [12 <./figures/11_imputation_method_comparison.pdf>])
+[13] [14] (tables/mapper_graph_metrics_summary.tex)
+(tables/mapper_space_comparison.tex) (tables/mapper_density_sensitivity.tex)
+(tables/mapper_lens_sensitivity.tex)
+(tables/mapper_imputation_audit_summary.tex)
+(tables/main_graph_selection_summary.tex) (tables/component_summary_short.tex)
+[15] [16] (mapper_report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
  ***********
 Package rerunfilecheck Info: File `mapper_report.out' has not changed.
-(rerunfilecheck)             Checksum: 24CAF487C025B80A6D953711ECAD5D00;949.
+(rerunfilecheck)             Checksum: E90A6A3FFA391111882F4E88B11BEAC4;1645.
  ) 
 Here is how much of TeX's memory you used:
- 13735 strings out of 467691
- 224250 string characters out of 5414987
- 782495 words of memory out of 5000000
- 42530 multiletter control sequences out of 15000+600000
- 635285 words of font info for 69 fonts, out of 8000000 for 9000
+ 13842 strings out of 467691
+ 228151 string characters out of 5414987
+ 705986 words of memory out of 5000000
+ 42594 multiletter control sequences out of 15000+600000
+ 635626 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,1217b,561s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx12.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmmi8.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/herie/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/herie/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/herie/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/herie/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/h
-erie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C
-:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols
-/msbm10.pfb>
-Output written on mapper_report.pdf (10 pages, 291367 bytes).
+ 75i,10n,79p,714b,559s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\herie\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
+1095.pk><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmbx12.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/herie/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/herie/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/herie/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/her
+ie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/
+Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/m
+sbm10.pfb>
+Output written on mapper_report.pdf (16 pages, 608401 bytes).
 PDF statistics:
- 520 PDF objects out of 1000 (max. 8388607)
- 31 named destinations out of 1000 (max. 500000)
- 100 words of extra memory for PDF output out of 10000 (max. 10000000)
-
- 100 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 756 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
+ 160 words of extra memory for PDF output out of 10000 (max. 10000000)
 

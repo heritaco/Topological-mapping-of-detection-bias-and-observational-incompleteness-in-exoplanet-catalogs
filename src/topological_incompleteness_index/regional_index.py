@@ -1,52 +1,66 @@
 from __future__ import annotations
+
 import numpy as np
 import pandas as pd
 
-def _num(df: pd.DataFrame, col: str, default: float = 0.0) -> pd.Series:
-    if col in df.columns:
-        return pd.to_numeric(df[col], errors="coerce").fillna(default)
-    return pd.Series(default, index=df.index, dtype=float)
 
-def compute_regional_toi(nodes: pd.DataFrame, cfg: dict) -> pd.DataFrame:
-    out = nodes.copy()
+def reconstruct_shadow_score(frame: pd.DataFrame, epsilon: float) -> pd.Series:
+    top_method_fraction = pd.to_numeric(frame.get("top_method_fraction"), errors="coerce").fillna(0.0)
+    method_entropy_norm = pd.to_numeric(frame.get("method_entropy_norm"), errors="coerce").fillna(1.0)
+    boundary = pd.to_numeric(frame.get("method_l1_boundary_N1", frame.get("method_l1_boundary")), errors="coerce").fillna(0.0)
+    n_members = pd.to_numeric(frame.get("n_members"), errors="coerce").fillna(1.0).clip(lower=1.0)
+    n_max = float(n_members.max()) if float(n_members.max()) > 0 else 1.0
+    size_weight = np.log1p(n_members) / max(np.log1p(n_max), epsilon)
+    return top_method_fraction * (1.0 - method_entropy_norm) * boundary * size_weight
 
-    shadow = _num(out, "shadow_score")
-    if shadow.max() > 1:
-        shadow = shadow / shadow.max()
 
-    if "I_R3" in out.columns:
-        i_r3 = _num(out, "I_R3").clip(0, 1)
-    else:
-        i_r3 = _num(out, "mean_imputation_fraction").clip(0, 1)
+def physical_continuity(distance: pd.Series, sigma: float) -> pd.Series:
+    return np.exp(-((distance.astype(float) ** 2) / (2.0 * sigma**2)))
 
-    dist = _num(out, "physical_distance_v_to_N1", default=np.nan)
-    if dist.isna().all():
-        dist = _num(out, "physical_neighbor_distance", default=0.0)
-    sigma_cfg = cfg.get("physical_continuity_sigma")
-    if sigma_cfg is None:
-        positive = dist[np.isfinite(dist) & (dist > 0)]
-        sigma = float(positive.median()) if len(positive) else 1.0
-    else:
-        sigma = float(sigma_cfg)
-    if not np.isfinite(sigma) or sigma <= 0:
-        sigma = 1.0
-    c_phys = np.exp(-(dist.fillna(sigma) ** 2) / (2 * sigma**2))
 
-    n_members = _num(out, "n_members", 1).clip(lower=1)
-    size_weight = np.log1p(n_members) / np.log1p(float(n_members.max()))
-    degree = _num(out, "degree", 0).clip(lower=0)
-    dmax = float(degree.max()) if degree.max() > 0 else 1.0
-    degree_weight = 0.5 + 0.5 * np.log1p(degree) / np.log1p(dmax)
-    s_net = size_weight * degree_weight
+def compute_toi_scores(node_frame: pd.DataFrame, sigma: float, epsilon: float, min_node_members: int, high_priority_quantile: float) -> pd.DataFrame:
+    out = node_frame.copy()
+    if "shadow_score" not in out.columns or pd.to_numeric(out["shadow_score"], errors="coerce").isna().all():
+        out["shadow_score"] = reconstruct_shadow_score(out, epsilon)
+    shadow = pd.to_numeric(out["shadow_score"], errors="coerce").fillna(0.0).clip(lower=0.0)
+    i_r3 = pd.to_numeric(out["I_R3"], errors="coerce").fillna(1.0).clip(lower=0.0, upper=1.0)
+    d_phys = pd.to_numeric(out["physical_distance_v_to_N1"], errors="coerce")
+    c_phys_raw = physical_continuity(d_phys.fillna(np.nan), sigma)
+    out["C_phys"] = c_phys_raw.where(d_phys.notna(), np.nan)
+    c_phys_for_toi = c_phys_raw.where(d_phys.notna(), 0.0)
+    out["TOI"] = shadow * (1.0 - i_r3) * c_phys_for_toi * pd.to_numeric(out["S_net"], errors="coerce").fillna(0.0)
+    out = out.sort_values("TOI", ascending=False).reset_index(drop=True)
+    out["TOI_rank"] = np.arange(1, len(out) + 1)
 
-    out["toi_shadow_component"] = shadow
-    out["toi_imputation_component"] = 1 - i_r3
-    out["toi_physical_continuity_component"] = c_phys
-    out["toi_network_support_component"] = s_net
-    out["toi_score"] = shadow * (1 - i_r3) * c_phys * s_net
-    out["toi_sigma_used"] = sigma
+    p90 = float(out["TOI"].quantile(high_priority_quantile)) if len(out) else np.nan
+    p75 = float(out["TOI"].quantile(0.75)) if len(out) else np.nan
 
-    q = float(cfg.get("top_quantile", 0.90))
-    threshold = out["toi_score"].quantile(q) if len(out) else np.nan
-    out["toi_top_region"] = out["toi_score"] >= threshold
-    return out.sort_values("toi_score", ascending=False)
+    def _classify(row: pd.Series) -> str:
+        toi = float(row.get("TOI", 0.0))
+        n_members = float(pd.to_numeric(pd.Series([row.get("n_members")]), errors="coerce").fillna(0.0).iloc[0])
+        degree = float(pd.to_numeric(pd.Series([row.get("degree")]), errors="coerce").fillna(0.0).iloc[0])
+        i_r3_value = float(pd.to_numeric(pd.Series([row.get("I_R3")]), errors="coerce").fillna(1.0).iloc[0])
+        if n_members < min_node_members or degree <= 0:
+            return "isolated_or_low_support_region"
+        if np.isfinite(p90) and toi >= p90 and i_r3_value <= 0.2:
+            return "high_toi_region"
+        if np.isfinite(p90) and toi >= p90 and i_r3_value > 0.2:
+            return "imputation_sensitive_region"
+        if np.isfinite(p75) and toi >= p75:
+            return "moderate_toi_region"
+        return "low_toi_region"
+
+    out["region_class"] = out.apply(_classify, axis=1)
+    out["caution_text"] = (
+        "TOI es un ranking topologico para priorizacion observacional; no equivale a una confirmacion de objetos ausentes."
+    )
+    out["interpretation_text"] = out.apply(
+        lambda row: (
+            f"Nodo {row['node_id']} priorizado como {row['region_class']} con TOI={float(row['TOI']):.3f}, "
+            f"shadow_score={float(pd.to_numeric(pd.Series([row.get('shadow_score')]), errors='coerce').fillna(0.0).iloc[0]):.3f}, "
+            f"I_R3={float(pd.to_numeric(pd.Series([row.get('I_R3')]), errors='coerce').fillna(1.0).iloc[0]):.3f} y "
+            "lectura prudente de posible submuestreo topologico."
+        ),
+        axis=1,
+    )
+    return out

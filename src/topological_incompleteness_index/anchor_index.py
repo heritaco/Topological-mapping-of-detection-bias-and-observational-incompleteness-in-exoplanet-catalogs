@@ -1,120 +1,81 @@
 from __future__ import annotations
+
 import numpy as np
 import pandas as pd
-from .r3_geometry import choose_medoid, centroid, pairwise_distances_to_anchor
 
-def select_anchor(node_planets: pd.DataFrame, z_cols: list[str], preferred_method: str) -> pd.Series | None:
-    valid = node_planets.dropna(subset=z_cols).copy()
+from .neighbor_deficit import classify_deficit
+from .r3_geometry import R3Columns, anchor_imputed_fraction, anchor_r3_imputation_score, centroid, medoid_row, z_matrix
+
+
+def unique_planets(frame: pd.DataFrame) -> pd.DataFrame:
+    if frame.empty:
+        return frame.copy()
+    if "row_index" in frame.columns:
+        return frame.sort_values(["row_index", "node_id"]).drop_duplicates(subset=["row_index"], keep="first").copy()
+    if "pl_name" not in frame.columns:
+        return frame.copy()
+    if "node_id" not in frame.columns:
+        return frame.sort_values(["pl_name"]).drop_duplicates(subset=["pl_name"], keep="first").copy()
+    return frame.sort_values(["pl_name", "node_id"]).drop_duplicates(subset=["pl_name"], keep="first").copy()
+
+
+def select_anchor(node_members: pd.DataFrame, columns: R3Columns, prefer_method: str) -> tuple[pd.Series | None, str]:
+    valid = unique_planets(node_members.dropna(subset=columns.z).copy())
     if valid.empty:
-        return None
-    medoid = choose_medoid(valid, z_cols)
-    if medoid is not None:
-        m = medoid[z_cols].to_numpy(float)
-        x = valid[z_cols].to_numpy(float)
-        valid["distance_to_medoid"] = np.linalg.norm(x - m, axis=1)
-    else:
-        valid["distance_to_medoid"] = 0.0
-    valid["preferred_method"] = (valid.get("discoverymethod", "") == preferred_method).astype(int)
-    # If no explicit status columns exist, assume zero imputation penalty. The manifest will say this is a fallback.
-    status_cols = [c for c in valid.columns if "status" in c.lower()]
-    def score_status(row):
-        if not status_cols:
-            return 0.0
-        vals = [str(row[c]).lower() for c in status_cols if c in row.index]
-        if not vals:
-            return 0.0
-        return sum(1.0 if "imputed" in v else 0.5 if "derived" in v else 0.0 for v in vals) / len(vals)
-    valid["anchor_r3_imputation_score"] = valid.apply(score_status, axis=1)
+        return None, "No hay miembros con R3 valido."
+    medoid = medoid_row(valid, columns.z)
+    medoid_point = medoid[columns.z].to_numpy(dtype=float) if medoid is not None else np.zeros(len(columns.z))
+    valid["anchor_is_preferred_method"] = valid.get("discoverymethod", pd.Series(index=valid.index, dtype="string")).astype("string").eq(prefer_method)
+    valid["r3_imputation_score"] = valid.apply(lambda row: anchor_r3_imputation_score(row, columns), axis=1)
+    valid["anchor_imputed_fraction"] = valid.apply(lambda row: anchor_imputed_fraction(row, columns), axis=1)
+    valid["distance_to_medoid"] = np.linalg.norm(z_matrix(valid, columns.z) - medoid_point, axis=1)
+    valid["metadata_completeness"] = valid[["disc_year", "disc_facility"]].notna().sum(axis=1)
+    valid["name_completeness"] = valid.get("pl_name", pd.Series(index=valid.index, dtype="string")).astype("string").notna().astype(int)
     valid = valid.sort_values(
-        ["preferred_method", "anchor_r3_imputation_score", "distance_to_medoid"],
-        ascending=[False, True, True]
+        by=["anchor_is_preferred_method", "anchor_imputed_fraction", "r3_imputation_score", "distance_to_medoid", "metadata_completeness", "name_completeness"],
+        ascending=[False, True, True, True, False, False],
     )
-    return valid.iloc[0]
+    anchor = valid.iloc[0].copy()
+    if bool(anchor["anchor_is_preferred_method"]):
+        reason = "Selected among R3-valid preferred-method members, prioritizing lower imputation and medoid proximity."
+    else:
+        reason = "No preferred-method candidate dominated the filters; selected the least-imputed representative nearest to the medoid."
+    return anchor, reason
 
-def compute_neighbor_deficits(
-    anchor: pd.Series,
-    node_planets: pd.DataFrame,
-    n1_planets: pd.DataFrame,
-    n2_planets: pd.DataFrame,
-    z_cols: list[str],
-    cfg: dict,
-) -> pd.DataFrame:
-    eps = float(cfg.get("eps", 1e-9))
-    anchor_name = str(anchor.get("pl_name", "anchor"))
-    universe = pd.concat([node_planets, n1_planets, n2_planets], ignore_index=True).dropna(subset=z_cols)
 
-    node_valid = node_planets.dropna(subset=z_cols)
-    d_node = pairwise_distances_to_anchor(node_valid, anchor, z_cols)
-    if len(d_node):
-        # Exclude the anchor itself if present.
-        anchor_mask = node_valid.loc[d_node.index, "pl_name"].astype(str) != anchor_name
-        d_node = d_node[anchor_mask]
-    r_median = float(np.median(d_node)) if len(d_node) else 0.0
-    r_q75 = float(np.quantile(d_node, 0.75)) if len(d_node) else r_median
-
-    d_universe = pairwise_distances_to_anchor(universe, anchor, z_cols)
-    if len(d_universe):
-        anchor_mask = universe.loc[d_universe.index, "pl_name"].astype(str) != anchor_name
-        d_universe = d_universe[anchor_mask]
-    k = min(10, max(3, int(np.sqrt(max(len(universe), 1)))))
-    r_knn = float(np.sort(d_universe.to_numpy())[min(k - 1, len(d_universe) - 1)]) if len(d_universe) else 0.0
-
-    radii = {"r_node_median": r_median, "r_node_q75": r_q75, "r_kNN": r_knn}
-    reference = n1_planets.dropna(subset=z_cols)
-    if len(reference) < 3:
-        reference = n2_planets.dropna(subset=z_cols)
-
-    rows = []
-    for name, r in radii.items():
-        if r <= 0 or not np.isfinite(r):
-            n_obs = 0
-            n_exp = np.nan
-        else:
-            d_all = pairwise_distances_to_anchor(universe, anchor, z_cols)
-            if len(d_all):
-                mask_not_anchor = universe.loc[d_all.index, "pl_name"].astype(str) != anchor_name
-                n_obs = int(((d_all <= r) & mask_not_anchor).sum())
-            else:
-                n_obs = 0
-            d_ref = pairwise_distances_to_anchor(reference, anchor, z_cols)
-            n_exp = float((d_ref <= r).sum()) if len(d_ref) else np.nan
-        delta = n_exp - n_obs if np.isfinite(n_exp) else np.nan
-        delta_rel = delta / (n_exp + eps) if np.isfinite(n_exp) else np.nan
-        if not np.isfinite(delta_rel):
-            cls = "not_available"
-        elif delta_rel <= 0.1:
-            cls = "no_deficit"
-        elif delta_rel <= 0.3:
-            cls = "weak_deficit"
-        elif delta_rel <= 0.6:
-            cls = "moderate_deficit"
-        else:
-            cls = "strong_deficit"
-        rows.append({
-            "radius_type": name,
-            "radius_value": r,
-            "N_obs": n_obs,
-            "N_exp_neighbors": n_exp,
-            "delta_N_neighbors": delta,
-            "delta_rel_neighbors": delta_rel,
-            "deficit_class_neighbors": cls,
-        })
-    return pd.DataFrame(rows)
-
-def best_positive_deficit(deficits: pd.DataFrame) -> float:
-    if deficits.empty or "delta_rel_neighbors" not in deficits:
-        return 0.0
-    vals = pd.to_numeric(deficits["delta_rel_neighbors"], errors="coerce").dropna()
-    vals = vals[vals > 0]
-    return float(vals.max()) if len(vals) else 0.0
-
-def anchor_quality(anchor: pd.Series, node_planets: pd.DataFrame, z_cols: list[str]) -> float:
-    valid = node_planets.dropna(subset=z_cols)
+def anchor_representativeness(anchor: pd.Series, node_members: pd.DataFrame, z_columns: list[str], epsilon: float) -> tuple[float, float | None]:
+    valid = unique_planets(node_members.dropna(subset=z_columns).copy())
     if valid.empty:
-        return 0.0
-    c = centroid(valid, z_cols)
-    x = anchor[z_cols].to_numpy(float)
-    spread = np.linalg.norm(valid[z_cols].to_numpy(float) - c, axis=1).mean()
-    if not np.isfinite(spread) or spread <= 0:
-        spread = 1.0
-    return float(np.exp(-(np.linalg.norm(x - c) ** 2) / (2 * spread**2)))
+        return 0.0, None
+    center = centroid(valid, z_columns)
+    if center is None:
+        return 0.0, None
+    anchor_point = anchor[z_columns].to_numpy(dtype=float)
+    distances = np.linalg.norm(z_matrix(valid, z_columns) - center, axis=1)
+    spread = float(np.mean(distances)) if len(distances) else epsilon
+    spread = spread if np.isfinite(spread) and spread > 0 else epsilon
+    distance = float(np.linalg.norm(anchor_point - center))
+    value = float(np.exp(-(distance**2) / (2.0 * spread**2)))
+    return value, distance
+
+
+def compute_ati(toi: float, delta_rel_best: float | None, anchor_imputed_fraction_value: float, representativeness: float) -> float:
+    deficit_component = max(0.0, float(delta_rel_best or 0.0))
+    return float(toi * deficit_component * (1.0 - anchor_imputed_fraction_value) * representativeness)
+
+
+def expected_incompleteness_direction(discoverymethod: str) -> str:
+    if str(discoverymethod) == "Radial Velocity":
+        return "menor masa planetaria o menor proxy RV a escala orbital comparable"
+    return "vecinos compatibles bajo referencia local en region fisico-orbital comparable"
+
+
+def build_anchor_interpretation(row: pd.Series) -> str:
+    return (
+        f"Ancla {row['anchor_pl_name']} en {row['node_id']} con ATI={float(row['ATI']):.3f}, "
+        f"deficit {row['deficit_class']} y uso prudente para priorizacion observacional."
+    )
+
+
+def classify_anchor_deficit(value: float) -> str:
+    return classify_deficit(value)

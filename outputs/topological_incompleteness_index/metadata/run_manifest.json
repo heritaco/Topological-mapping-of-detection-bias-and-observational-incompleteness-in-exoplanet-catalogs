@@ -1,0 +1,269 @@
+{
+  "executed_at_utc": "2026-04-28T07:43:49.465254+00:00",
+  "commit_hash": "857c47e0be8b41f4888551d2036895888a64076a",
+  "config": {
+    "project": {
+      "name": "topological_incompleteness_index",
+      "random_state": 42
+    },
+    "inputs": {
+      "dataset": null,
+      "membership": null,
+      "edges": null,
+      "node_shadow_metrics": "outputs/observational_shadow/tables/node_observational_shadow_metrics.csv",
+      "top_shadow_candidates": "outputs/observational_shadow/tables/top_shadow_candidates.csv",
+      "node_method_metrics": "outputs/observational_bias_audit/tables/node_method_bias_metrics.csv",
+      "node_method_fraction_matrix": "outputs/observational_bias_audit/tables/node_method_fraction_matrix.csv"
+    },
+    "outputs": {
+      "base_dir": "outputs/topological_incompleteness_index",
+      "tables_dir": "outputs/topological_incompleteness_index/tables",
+      "figures_dir": "outputs/topological_incompleteness_index/figures_pdf",
+      "metadata_dir": "outputs/topological_incompleteness_index/metadata",
+      "logs_dir": "outputs/topological_incompleteness_index/logs",
+      "latex_dir": "latex/04_topological_incompleteness"
+    },
+    "analysis": {
+      "config_id": "orbital_pca2_cubes10_overlap0p35",
+      "r3_variables": {
+        "mass": "pl_bmasse",
+        "period": "pl_orbper",
+        "semimajor": "pl_orbsmax"
+      },
+      "discovery_method_column": "discoverymethod",
+      "planet_name_column": "pl_name",
+      "epsilon": 1e-09,
+      "min_r3_valid_fraction_for_analogs": 0.6
+    },
+    "toi": {
+      "use_shadow_score": true,
+      "use_r3_imputation": true,
+      "use_physical_continuity": true,
+      "use_network_support": true,
+      "physical_sigma": 1.0,
+      "min_node_members": 3,
+      "high_priority_quantile": 0.9
+    },
+    "ati": {
+      "max_anchors_per_node": 1,
+      "prefer_method": "Radial Velocity",
+      "prefer_low_imputation": true,
+      "prefer_medoid": true
+    },
+    "neighbor_deficit": {
+      "radii": [
+        "r_node_median",
+        "r_node_q75",
+        "r_kNN"
+      ],
+      "knn_min": 3,
+      "knn_max": 10,
+      "analog_min_nodes": 3,
+      "analog_shadow_quantile_max": 0.5,
+      "analog_physical_distance_quantile": 0.35,
+      "reference_min_planets": 3
+    },
+    "report": {
+      "make_latex": true,
+      "make_figures": true,
+      "make_summary": true
+    }
+  },
+  "input_paths": {
+    "dataset": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "membership": "outputs/observational_bias_audit/metadata/membership_with_observational_metadata_orbital_pca2_cubes10_overlap0p35.csv",
+    "edges": "outputs/mapper/edges/edges_orbital_pca2_cubes10_overlap0p35.csv",
+    "node_shadow_metrics": "outputs/observational_shadow/tables/node_observational_shadow_metrics.csv",
+    "top_shadow_candidates": "outputs/observational_shadow/tables/top_shadow_candidates.csv",
+    "node_method_metrics": "outputs/observational_bias_audit/tables/node_method_bias_metrics.csv",
+    "node_method_fraction_matrix": "outputs/observational_bias_audit/tables/node_method_fraction_matrix.csv"
+  },
+  "attempted_paths": {
+    "dataset": [
+      "outputs/imputation/data/mapper_features_imputed_iterative.csv",
+      "outputs/imputation/data/PSCompPars_imputed_iterative.csv",
+      "data/PSCompPars.csv",
+      "reports/imputation/PSCompPars_imputed_iterative.csv"
+    ],
+    "membership": [
+      "outputs/observational_bias_audit/metadata/membership_with_observational_metadata_orbital_pca2_cubes10_overlap0p35.csv"
+    ],
+    "edges": [
+      "outputs/mapper/edges/edges_orbital_pca2_cubes10_overlap0p35.csv"
+    ]
+  },
+  "output_paths": {
+    "base_dir": "outputs/topological_incompleteness_index",
+    "tables_dir": "outputs/topological_incompleteness_index/tables",
+    "figures_dir": "outputs/topological_incompleteness_index/figures_pdf",
+    "metadata_dir": "outputs/topological_incompleteness_index/metadata",
+    "logs_dir": "outputs/topological_incompleteness_index/logs",
+    "latex_path": "latex/04_topological_incompleteness/topological_incompleteness_index.tex"
+  },
+  "n_nodes": 124,
+  "n_planets": 5799,
+  "n_anchors": 124,
+  "r3_variables": {
+    "mass": "pl_bmasse",
+    "period": "pl_orbper",
+    "semimajor": "pl_orbsmax"
+  },
+  "thresholds": {
+    "high_priority_quantile": 0.9,
+    "physical_sigma": 1.0,
+    "analog_shadow_quantile_max": 0.5,
+    "analog_physical_distance_quantile": 0.35
+  },
+  "warnings": [
+    "WARNING: dataset imputado/base usa fallback legacy reports/imputation/PSCompPars_imputed_iterative.csv.",
+    "WARNING: cube12_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster6 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube25_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube24_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster10 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube6_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster8 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster12 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube24_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster14 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster10 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube24_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster6 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster7 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube18_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube1_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster9 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster13 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube5_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube11_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube11_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster11 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster7 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster8 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube24_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube25_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster11 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster7 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube11_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster7 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube33_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube33_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube0_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube2_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster9 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster8 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube25_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube32_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube11_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster12 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster6 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster10 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube32_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube2_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube11_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube11_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube12_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube1_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube6_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube5_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube0_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube5_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube0_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube0_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube5_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster6 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube2_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube1_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube2_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube1_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube1_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube1_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube8_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube6_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube6_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube6_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster9 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube13_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube8_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster8 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster7 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube7_cluster9 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube8_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster8 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube17_cluster11 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube24_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube19_cluster6 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube18_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube18_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube18_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube25_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube24_cluster6 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube24_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube25_cluster6 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube25_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube25_cluster8 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube25_cluster7 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube25_cluster3 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster1 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube26_cluster9 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube32_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube32_cluster2 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube32_cluster5 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube32_cluster4 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube33_cluster0 no tiene suficientes nodos analogos para referencia B.",
+    "WARNING: cube33_cluster2 no tiene suficientes nodos analogos para referencia B."
+  ],
+  "fallbacks_used": [
+    "WARNING: dataset imputado/base usa fallback legacy reports/imputation/PSCompPars_imputed_iterative.csv."
+  ],
+  "r3_meta": {
+    "r3_stats": {
+      "pl_bmasse": {
+        "mean": 1.3452183142842296,
+        "std": 1.0179811221278514
+      },
+      "pl_orbper": {
+        "mean": 1.2710288133024283,
+        "std": 0.8812413731962465
+      },
+      "pl_orbsmax": {
+        "mean": -0.8717923156898234,
+        "std": 0.5990468967889324
+      }
+    },
+    "invalid_counts": {
+      "pl_bmasse": 0,
+      "pl_orbper": 0,
+      "pl_orbsmax": 0
+    },
+    "n_r3_valid": 11355
+  }
+}

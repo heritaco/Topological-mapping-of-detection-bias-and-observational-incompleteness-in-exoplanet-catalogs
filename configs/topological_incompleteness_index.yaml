@@ -3,61 +3,61 @@ project:
   random_state: 42
 
 inputs:
-  # Set explicit paths here if auto-discovery does not match your local outputs.
-  node_shadow_metrics: null
-  mapper_membership: null
-  mapper_edges: null
-  imputed_catalog: null
+  dataset: null
+  membership: null
+  edges: null
+  node_shadow_metrics: outputs/observational_shadow/tables/node_observational_shadow_metrics.csv
+  top_shadow_candidates: outputs/observational_shadow/tables/top_shadow_candidates.csv
+  node_method_metrics: outputs/observational_bias_audit/tables/node_method_bias_metrics.csv
+  node_method_fraction_matrix: outputs/observational_bias_audit/tables/node_method_fraction_matrix.csv
 
-  node_shadow_metrics_patterns:
-    - outputs/observational_shadow/tables/node_observational_shadow_metrics.csv
-    - outputs/local_shadow_case_studies/tables/case_node_summary.csv
-    - outputs/**/node_observational_shadow_metrics.csv
-    - outputs/**/case_node_summary.csv
-
-  mapper_membership_patterns:
-    - outputs/mapper/data/*membership*.csv
-    - outputs/mapper/data/*members*.csv
-    - outputs/mapper/nodes/*membership*.csv
-    - outputs/mapper/nodes/*members*.csv
-    - outputs/**/membership*.csv
-    - outputs/**/*members*.csv
-
-  mapper_edges_patterns:
-    - outputs/mapper/edges/*.csv
-    - outputs/mapper/data/*edge*.csv
-    - outputs/**/edges*.csv
-    - outputs/**/*edge*.csv
-
-  imputed_catalog_patterns:
-    - outputs/imputation/data/mapper_features_imputed_iterative.csv
-    - outputs/imputation/data/PSCompPars_imputed_iterative.csv
-    - outputs/imputation/data/*.csv
-    - data/*.csv
+outputs:
+  base_dir: outputs/topological_incompleteness_index
+  tables_dir: outputs/topological_incompleteness_index/tables
+  figures_dir: outputs/topological_incompleteness_index/figures_pdf
+  metadata_dir: outputs/topological_incompleteness_index/metadata
+  logs_dir: outputs/topological_incompleteness_index/logs
+  latex_dir: latex/04_topological_incompleteness
 
 analysis:
   config_id: orbital_pca2_cubes10_overlap0p35
-  preferred_method: Radial Velocity
-  eps: 1.0e-9
   r3_variables:
     mass: pl_bmasse
     period: pl_orbper
     semimajor: pl_orbsmax
+  discovery_method_column: discoverymethod
+  planet_name_column: pl_name
+  epsilon: 1.0e-9
+  min_r3_valid_fraction_for_analogs: 0.60
 
-  top_quantile: 0.90
-  max_anchor_nodes: 50
-  min_members_for_regional_ranking: 3
-  physical_continuity_sigma: null
+toi:
+  use_shadow_score: true
+  use_r3_imputation: true
+  use_physical_continuity: true
+  use_network_support: true
+  physical_sigma: 1.0
+  min_node_members: 3
+  high_priority_quantile: 0.90
 
-outputs:
-  root: outputs/topological_incompleteness_index
-  tables: outputs/topological_incompleteness_index/tables
-  figures: outputs/topological_incompleteness_index/figures_pdf
-  metadata: outputs/topological_incompleteness_index/metadata
-  logs: outputs/topological_incompleteness_index/logs
-  latex_dir: latex/04_topological_incompleteness
+ati:
+  max_anchors_per_node: 1
+  prefer_method: Radial Velocity
+  prefer_low_imputation: true
+  prefer_medoid: true
 
-figures:
-  enabled: true
-  top_n_regions: 25
-  top_n_anchors: 25
+neighbor_deficit:
+  radii:
+    - r_node_median
+    - r_node_q75
+    - r_kNN
+  knn_min: 3
+  knn_max: 10
+  analog_min_nodes: 3
+  analog_shadow_quantile_max: 0.50
+  analog_physical_distance_quantile: 0.35
+  reference_min_planets: 3
+
+report:
+  make_latex: true
+  make_figures: true
+  make_summary: true

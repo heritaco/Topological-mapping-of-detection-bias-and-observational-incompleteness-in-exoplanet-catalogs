@@ -1,38 +1,43 @@
 from __future__ import annotations
+
 from pathlib import Path
-from typing import Iterable
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+CONFIGS_DIR = PROJECT_ROOT / "configs"
+LATEX_DIR = PROJECT_ROOT / "latex"
+
+
+def resolve_repo_path(value: str | None, default: Path) -> Path:
+    path = Path(value) if value else default
+    if not path.is_absolute():
+        path = PROJECT_ROOT / path
+    return path
+
 
 def ensure_dir(path: Path) -> Path:
     path.mkdir(parents=True, exist_ok=True)
     return path
 
-def resolve_output_dirs(root: Path, outputs_cfg: dict) -> dict[str, Path]:
-    out = {}
-    for key, value in outputs_cfg.items():
-        if value is None:
-            continue
-        p = Path(value)
-        if not p.is_absolute():
-            p = root / p
-        out[key] = ensure_dir(p)
-    return out
 
-def first_existing(root: Path, explicit: str | None, patterns: Iterable[str], label: str) -> Path:
-    if explicit:
-        p = Path(explicit)
-        if not p.is_absolute():
-            p = root / p
-        if p.exists():
-            return p
-        raise FileNotFoundError(f"Configured {label} does not exist: {p}")
+def ensure_output_tree(base_dir: Path, figures_dir: Path, tables_dir: Path, metadata_dir: Path, logs_dir: Path) -> dict[str, Path]:
+    tree = {
+        "base": ensure_dir(base_dir),
+        "figures": ensure_dir(figures_dir),
+        "tables": ensure_dir(tables_dir),
+        "metadata": ensure_dir(metadata_dir),
+        "logs": ensure_dir(logs_dir),
+    }
+    return tree
 
-    matches: list[Path] = []
-    for pattern in patterns:
-        matches.extend(sorted(root.glob(pattern)))
-    matches = [m for m in matches if m.is_file()]
-    if not matches:
-        raise FileNotFoundError(
-            f"Could not find {label}. Set it explicitly in configs/topological_incompleteness_index.yaml "
-            f"or run the upstream pipeline first. Patterns checked: {list(patterns)}"
-        )
-    return matches[0]
+
+def ensure_latex_dir(base_dir: Path) -> Path:
+    return ensure_dir(base_dir)
+
+
+def repo_relative(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(PROJECT_ROOT.resolve()).as_posix()
+    except ValueError:
+        return str(path)

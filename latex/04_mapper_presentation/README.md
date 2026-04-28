@@ -8,14 +8,17 @@ Compilar desde esta carpeta:
 latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-La narrativa es:
+La narrativa sigue CRISP-DM:
 
-1. datos e imputacion,
-2. seleccion de variables interpretables,
-3. Mapper y artefactos existentes,
-4. resultado orbital,
-5. auditoria de imputacion,
-6. auditoria de sesgo observacional,
-7. sintesis final de evidencia.
+1. Business Understanding: problema, pregunta y alcance.
+2. Data Understanding: PSCompPars, faltantes y metadata observacional.
+3. Data Preparation: imputacion, derivaciones fisicas y espacios de variables.
+4. Modeling: Mapper paso a paso, DBSCAN local, lentes y 21 grafos.
+5. Evaluation: comparacion de grafos, orbital principal, imputacion y sesgo.
+6. Deployment/Communication: mapa final de evidencia, limitaciones y conclusion.
+
+Mensaje central:
+
+> Mapper/TDA funciona aqui como una herramienta para priorizar regiones de inspeccion en el catalogo de exoplanetas, no como una taxonomia final.
 
 Las figuras fueron copiadas desde `latex/03_mapper/figures/` y `reports/imputation/outputs/figures_pdf/`.

@@ -1,0 +1,373 @@
+config_id,node_id,anchor_pl_name,radius_type,radius_value,N_obs,N_exp_neighbors,delta_N_neighbors,delta_rel_neighbors,N_exp_analog,delta_N_analog,delta_rel_analog,n_analog_nodes,reference_used,warning,delta_N_neighbors_recomputed,delta_rel_neighbors_recomputed,deficit_formula_check
+orbital_pca2_cubes10_overlap0p35,cube12_cluster0,HIP 97166 c,r_node_median,0.6365837064524409,1617,1144.0,-473.0,-0.413461538461177,,,,0,N1,insufficient_analogs,-473.0,-0.41346153846117706,ok
+orbital_pca2_cubes10_overlap0p35,cube12_cluster0,HIP 97166 c,r_node_q75,0.9576038797297672,2550,1914.0,-636.0,-0.3322884012537448,,,,0,N1,insufficient_analogs,-636.0,-0.33228840125374487,ok
+orbital_pca2_cubes10_overlap0p35,cube12_cluster0,HIP 97166 c,r_kNN,0.0356988863056207,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster2,HIP 90988 b,r_node_median,0.0929235663269286,8,9.0,1.0,0.1111111110987654,,,,0,N1,insufficient_analogs,1.0,0.11111111109876542,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster2,HIP 90988 b,r_node_q75,0.2448698637589844,62,63.0,1.0,0.0158730158727639,,,,0,N1,insufficient_analogs,1.0,0.01587301587276392,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster2,HIP 90988 b,r_kNN,0.1150653412548662,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster6,HD 42012 b,r_node_median,0.3771971429379755,120,121.0,1.0,0.008264462809849,,,,0,N1,insufficient_analogs,1.0,0.008264462809849054,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster6,HD 42012 b,r_node_q75,0.6724313701506812,293,294.0,1.0,0.0034013605442061,,,,0,N1,insufficient_analogs,1.0,0.003401360544206118,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster6,HD 42012 b,r_kNN,0.1232373880989304,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster5,HD 42012 b,r_node_median,0.3771971429379755,120,121.0,1.0,0.008264462809849,,,,0,N1,insufficient_analogs,1.0,0.008264462809849054,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster5,HD 42012 b,r_node_q75,0.6724313701506812,293,294.0,1.0,0.0034013605442061,,,,0,N1,insufficient_analogs,1.0,0.003401360544206118,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster5,HD 42012 b,r_kNN,0.1232373880989304,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster4,BD-17 63 b,r_node_median,0.5994997306679264,212,213.0,1.0,0.0046948356807291,,,,0,N1,insufficient_analogs,1.0,0.004694835680729132,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster4,BD-17 63 b,r_node_q75,2.4066647597373017,989,935.0,-54.0,-0.0577540106951253,,,,0,N1,insufficient_analogs,-54.0,-0.057754010695125396,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster4,BD-17 63 b,r_kNN,0.1682846116018199,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster4,BD-17 63 b,r_node_median,0.5994997306679264,212,213.0,1.0,0.0046948356807291,,,,0,N1,insufficient_analogs,1.0,0.004694835680729132,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster4,BD-17 63 b,r_node_q75,2.4066647597373017,989,935.0,-54.0,-0.0577540106951253,,,,0,N1,insufficient_analogs,-54.0,-0.057754010695125396,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster4,BD-17 63 b,r_kNN,0.1682846116018199,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster0,HD 221585 b,r_node_median,0.6375389211646458,263,215.0,-48.0,-0.2232558139524499,,,,0,N1,insufficient_analogs,-48.0,-0.22325581395244998,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster0,HD 221585 b,r_node_q75,0.929899152240152,453,369.0,-84.0,-0.2276422764221473,,,,0,N1,insufficient_analogs,-84.0,-0.22764227642214732,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster0,HD 221585 b,r_kNN,0.1416393621136689,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster1,24 Sex b,r_node_median,0.1959003112645385,42,43.0,1.0,0.0232558139529475,,,,0,N1,insufficient_analogs,1.0,0.02325581395294754,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster1,24 Sex b,r_node_q75,0.246846589559748,67,68.0,1.0,0.0147058823527249,,,,0,N1,insufficient_analogs,1.0,0.014705882352724913,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster1,24 Sex b,r_kNN,0.1048850698674357,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster0,HD 167677 b,r_node_median,0.4861285530216295,134,135.0,1.0,0.0074074074073525,,,,0,N1,insufficient_analogs,1.0,0.007407407407352538,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster0,HD 167677 b,r_node_q75,0.6945302927204386,243,244.0,1.0,0.0040983606557209,,,,0,N1,insufficient_analogs,1.0,0.004098360655720909,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster0,HD 167677 b,r_kNN,0.1401304719772647,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster10,HD 240210 b,r_node_median,0.6635589030737489,238,239.0,1.0,0.0041841004183925,,,,0,N1,insufficient_analogs,1.0,0.0041841004183925355,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster10,HD 240210 b,r_node_q75,1.2350354776200307,545,546.0,1.0,0.0018315018314984,,,,0,N1,insufficient_analogs,1.0,0.0018315018314984772,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster10,HD 240210 b,r_kNN,0.1626776617297629,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster0,GJ 3942 b,r_node_median,0.6403582249055743,1695,1366.0,-329.0,-0.2408491947289598,,,,0,N1,insufficient_analogs,-329.0,-0.24084919472895985,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster0,GJ 3942 b,r_node_q75,1.1654360789943077,3055,2498.0,-557.0,-0.2229783827060756,,,,0,N1,insufficient_analogs,-557.0,-0.22297838270607567,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster0,GJ 3942 b,r_kNN,0.0785530019512865,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster8,Kepler-48 e,r_node_median,0.4919084814683208,183,184.0,1.0,0.0054347826086661,,,,0,N1,insufficient_analogs,1.0,0.005434782608666116,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster8,Kepler-48 e,r_node_q75,0.7010844714834857,325,326.0,1.0,0.0030674846625672,,,,0,N1,insufficient_analogs,1.0,0.0030674846625672776,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster8,Kepler-48 e,r_kNN,0.0944570561487666,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster12,Kepler-48 e,r_node_median,0.4919084814683208,183,184.0,1.0,0.0054347826086661,,,,0,N1,insufficient_analogs,1.0,0.005434782608666116,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster12,Kepler-48 e,r_node_q75,0.7010844714834857,325,326.0,1.0,0.0030674846625672,,,,0,N1,insufficient_analogs,1.0,0.0030674846625672776,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster12,Kepler-48 e,r_kNN,0.0944570561487666,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster0,HD 60292 b,r_node_median,0.5051326173668874,132,133.0,1.0,0.0075187969924246,,,,0,N1,insufficient_analogs,1.0,0.007518796992424671,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster0,HD 60292 b,r_node_q75,0.5056571962797527,133,134.0,1.0,0.0074626865671084,,,,0,N1,insufficient_analogs,1.0,0.007462686567108488,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster0,HD 60292 b,r_kNN,0.1549698808369661,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster0,HD 60292 b,r_node_median,0.5051326173668874,132,133.0,1.0,0.0075187969924246,,,,0,N1,insufficient_analogs,1.0,0.007518796992424671,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster0,HD 60292 b,r_node_q75,0.5056571962797527,133,134.0,1.0,0.0074626865671084,,,,0,N1,insufficient_analogs,1.0,0.007462686567108488,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster0,HD 60292 b,r_kNN,0.1549698808369661,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster14,HD 89307 b,r_node_median,0.4674386238984355,106,107.0,1.0,0.009345794392436,,,,0,N1,insufficient_analogs,1.0,0.00934579439243602,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster14,HD 89307 b,r_node_q75,0.6984146297545085,216,217.0,1.0,0.0046082949308543,,,,0,N1,insufficient_analogs,1.0,0.0046082949308543395,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster14,HD 89307 b,r_kNN,0.1431679021641174,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster3,HD 114729 b,r_node_median,0.6676449114518498,230,231.0,1.0,0.0043290043289855,,,,0,N1,insufficient_analogs,1.0,0.004329004328985589,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster3,HD 114729 b,r_node_q75,0.967951578735297,444,445.0,1.0,0.0022471910112309,,,,0,N1,insufficient_analogs,1.0,0.002247191011230905,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster3,HD 114729 b,r_kNN,0.1176157825426781,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster0,HD 114729 b,r_node_median,0.6676449114518498,230,231.0,1.0,0.0043290043289855,,,,0,N1,insufficient_analogs,1.0,0.004329004328985589,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster0,HD 114729 b,r_node_q75,0.967951578735297,444,445.0,1.0,0.0022471910112309,,,,0,N1,insufficient_analogs,1.0,0.002247191011230905,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster0,HD 114729 b,r_kNN,0.1176157825426781,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster10,HD 4313 b,r_node_median,0.0754587385833811,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster10,HD 4313 b,r_node_q75,0.1000753363830075,11,12.0,1.0,0.0833333333263888,,,,0,N1,insufficient_analogs,1.0,0.08333333332638888,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster10,HD 4313 b,r_kNN,0.0967268944594391,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster4,HD 174205 b,r_node_median,0.2393050216420092,29,30.0,1.0,0.0333333333322222,,,,0,N1,insufficient_analogs,1.0,0.03333333333222222,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster4,HD 174205 b,r_node_q75,0.2599237717267016,32,33.0,1.0,0.030303030302112,,,,0,N1,insufficient_analogs,1.0,0.03030303030211203,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster4,HD 174205 b,r_kNN,0.1700015566720499,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster6,HD 174205 b,r_node_median,0.2393050216420092,29,30.0,1.0,0.0333333333322222,,,,0,N1,insufficient_analogs,1.0,0.03333333333222222,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster6,HD 174205 b,r_node_q75,0.2599237717267016,32,33.0,1.0,0.030303030302112,,,,0,N1,insufficient_analogs,1.0,0.03030303030211203,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster6,HD 174205 b,r_kNN,0.1700015566720499,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster0,Gl 49 b,r_node_median,0.3800781003576851,888,889.0,1.0,0.0011248593925746,,,,0,N1,insufficient_analogs,1.0,0.0011248593925746626,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster0,Gl 49 b,r_node_q75,0.5409176018253217,1468,1467.0,-1.0,-0.0006816632583499,,,,0,N1,insufficient_analogs,-1.0,-0.0006816632583499103,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster0,Gl 49 b,r_kNN,0.0784968859534052,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster7,HD 32963 b,r_node_median,0.3673001539326405,62,63.0,1.0,0.0158730158727639,,,,0,N1,insufficient_analogs,1.0,0.01587301587276392,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster7,HD 32963 b,r_node_q75,0.5533828094599157,125,126.0,1.0,0.0079365079364449,,,,0,N1,insufficient_analogs,1.0,0.007936507936444948,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster7,HD 32963 b,r_kNN,0.146629754978042,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster0,HD 11506 c,r_node_median,1.1896181266326018,548,383.0,-165.0,-0.4308093994766819,,,,0,N1,insufficient_analogs,-165.0,-0.43080939947668195,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster0,HD 11506 c,r_node_q75,1.4663578976473493,890,698.0,-192.0,-0.2750716332374283,,,,0,N1,insufficient_analogs,-192.0,-0.2750716332374283,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster0,HD 11506 c,r_kNN,0.1992330138702081,10,1.0,-9.0,-8.999999991,,,,0,N1,insufficient_analogs,-9.0,-8.999999991,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster1,GJ 3138 b,r_node_median,0.7270015216101038,258,259.0,1.0,0.0038610038609889,,,,0,N1,insufficient_analogs,1.0,0.0038610038609889537,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster1,GJ 3138 b,r_node_q75,2.3272779322274544,3375,2932.0,-443.0,-0.1510914051841231,,,,0,N1,insufficient_analogs,-443.0,-0.1510914051841231,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster1,GJ 3138 b,r_kNN,0.1915831943842442,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster3,HIP 38594 b,r_node_median,0.2912126923422064,211,212.0,1.0,0.0047169811320532,,,,0,N1,insufficient_analogs,1.0,0.004716981132053222,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster3,HIP 38594 b,r_node_q75,0.5207491956761997,552,552.0,0.0,0.0,,,,0,N1,insufficient_analogs,0.0,0.0,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster3,HIP 38594 b,r_kNN,0.0900384899882966,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster3,HD 40307 f,r_node_median,0.2283173490387842,140,141.0,1.0,0.0070921985815099,,,,0,N1,insufficient_analogs,1.0,0.007092198581509985,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster3,HD 40307 f,r_node_q75,0.4714932246664952,493,492.0,-1.0,-0.0020325203251991,,,,0,N1,insufficient_analogs,-1.0,-0.002032520325199121,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster3,HD 40307 f,r_kNN,0.0686718866001733,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster9,HD 173416 b,r_node_median,0.567951269587535,185,186.0,1.0,0.0053763440859926,,,,0,N1,insufficient_analogs,1.0,0.005376344085992601,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster9,HD 173416 b,r_node_q75,0.9085173679121152,402,403.0,1.0,0.0024813895781576,,,,0,N1,insufficient_analogs,1.0,0.0024813895781576143,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster9,HD 173416 b,r_kNN,0.1182055158012358,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster1,GJ 536 c,r_node_median,0.3147231212192423,394,389.0,-5.0,-0.0128534704369849,,,,0,N1,insufficient_analogs,-5.0,-0.012853470436984952,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster1,GJ 536 c,r_node_q75,0.6645962401487098,1338,1322.0,-16.0,-0.0121028744326686,,,,0,N1,insufficient_analogs,-16.0,-0.012102874432668605,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster1,GJ 536 c,r_kNN,0.0870294866427937,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster13,HD 154345 b,r_node_median,0.3481530444709749,28,29.0,1.0,0.0344827586195005,,,,0,N1,insufficient_analogs,1.0,0.03448275861950059,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster13,HD 154345 b,r_node_q75,0.4298888140528184,51,52.0,1.0,0.0192307692303994,,,,0,N1,insufficient_analogs,1.0,0.01923076923039941,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster13,HD 154345 b,r_kNN,0.1765321520582281,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster0,HD 109749 b,r_node_median,0.9681993860600064,991,986.0,-5.0,-0.0050709939148021,,,,0,N1,insufficient_analogs,-5.0,-0.00507099391480216,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster0,HD 109749 b,r_node_q75,1.349470728246438,2378,2355.0,-23.0,-0.0097664543524374,,,,0,N1,insufficient_analogs,-23.0,-0.009766454352437467,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster0,HD 109749 b,r_kNN,0.1006710820804506,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster2,GJ 3138 d,r_node_median,0.30201644233256,40,41.0,1.0,0.0243902439018441,,,,0,N1,insufficient_analogs,1.0,0.024390243901844143,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster2,GJ 3138 d,r_node_q75,0.512152838551744,114,115.0,1.0,0.0086956521738374,,,,0,N1,insufficient_analogs,1.0,0.008695652173837429,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster2,GJ 3138 d,r_kNN,0.1606218152598905,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster1,14 And b,r_node_median,0.2635519008649261,22,23.0,1.0,0.0434782608676748,,,,0,N1,insufficient_analogs,1.0,0.04347826086767486,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster1,14 And b,r_node_q75,0.3105607913689824,26,27.0,1.0,0.0370370370356652,,,,0,N1,insufficient_analogs,1.0,0.03703703703566529,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster1,14 And b,r_kNN,0.1907742527443572,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster1,HD 160691 d,r_node_median,0.6695408065606097,1763,1737.0,-26.0,-0.0149683362118509,,,,0,N1,insufficient_analogs,-26.0,-0.01496833621185091,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster1,HD 160691 d,r_node_q75,1.2762572820589888,3430,3373.0,-57.0,-0.0168989030536564,,,,0,N1,insufficient_analogs,-57.0,-0.01689890305365642,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster1,HD 160691 d,r_kNN,0.0665791823285659,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster4,HD 206255 b,r_node_median,0.4724643399159964,103,104.0,1.0,0.0096153846152921,,,,0,N1,insufficient_analogs,1.0,0.009615384615292159,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster4,HD 206255 b,r_node_q75,0.8186301055150074,435,436.0,1.0,0.0022935779816461,,,,0,N1,insufficient_analogs,1.0,0.0022935779816461157,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster4,HD 206255 b,r_kNN,0.1753849222667502,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster0,HD 206255 b,r_node_median,0.4724643399159964,103,104.0,1.0,0.0096153846152921,,,,0,N1,insufficient_analogs,1.0,0.009615384615292159,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster0,HD 206255 b,r_node_q75,0.8186301055150074,435,436.0,1.0,0.0022935779816461,,,,0,N1,insufficient_analogs,1.0,0.0022935779816461157,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster0,HD 206255 b,r_kNN,0.1753849222667502,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster11,HD 13931 b,r_node_median,0.174828855714723,8,9.0,1.0,0.1111111110987654,,,,0,N1,insufficient_analogs,1.0,0.11111111109876542,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster11,HD 13931 b,r_node_q75,0.3981727827894541,17,18.0,1.0,0.0555555555524691,,,,0,N1,insufficient_analogs,1.0,0.05555555555246913,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster11,HD 13931 b,r_kNN,0.1086914463726899,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster7,HIP 109384 b,r_node_median,0.8432715086197824,384,385.0,1.0,0.0025974025973958,,,,0,N1,insufficient_analogs,1.0,0.002597402597395851,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster7,HIP 109384 b,r_node_q75,1.3585964609885046,691,692.0,1.0,0.0014450867052002,,,,0,N1,insufficient_analogs,1.0,0.001445086705200224,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster7,HIP 109384 b,r_kNN,0.1132806528952934,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster8,HD 37605 c,r_node_median,0.3555454763848312,53,54.0,1.0,0.0185185185181755,,,,0,N1,insufficient_analogs,1.0,0.018518518518175583,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster8,HD 37605 c,r_node_q75,0.6771638003362245,154,155.0,1.0,0.0064516129031841,,,,0,N1,insufficient_analogs,1.0,0.0064516129031841835,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster8,HD 37605 c,r_kNN,0.1421799045508313,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster5,HD 110014 b,r_node_median,0.1871109174022064,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster5,HD 110014 b,r_node_q75,0.5582256888198439,134,135.0,1.0,0.0074074074073525,,,,0,N1,insufficient_analogs,1.0,0.007407407407352538,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster5,HD 110014 b,r_kNN,0.2129595894127735,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster3,HD 110014 b,r_node_median,0.1871109174022064,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster3,HD 110014 b,r_node_q75,0.5582256888198439,134,135.0,1.0,0.0074074074073525,,,,0,N1,insufficient_analogs,1.0,0.007407407407352538,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster3,HD 110014 b,r_kNN,0.2129595894127735,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster0,HD 48948 b,r_node_median,0.5122925907337261,1343,1336.0,-7.0,-0.0052395209580799,,,,0,N1,insufficient_analogs,-7.0,-0.005239520958079911,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster0,HD 48948 b,r_node_q75,0.7732301971440136,2186,2170.0,-16.0,-0.0073732718893975,,,,0,N1,insufficient_analogs,-16.0,-0.007373271889397524,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster0,HD 48948 b,r_kNN,0.058326388070218,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster5,HD 95872 b,r_node_median,0.2135503150497918,11,5.0,-6.0,-1.19999999976,,,,0,N1,insufficient_analogs,-6.0,-1.19999999976,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster5,HD 95872 b,r_node_q75,0.3403549136008657,16,6.0,-10.0,-1.666666666388889,,,,0,N1,insufficient_analogs,-10.0,-1.666666666388889,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster5,HD 95872 b,r_kNN,0.1248015600326779,4,3.0,-1.0,-0.3333333332222222,,,,0,N1,insufficient_analogs,-1.0,-0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster11,HD 20781 e,r_node_median,0.2210062305398185,68,69.0,1.0,0.0144927536229783,,,,0,N1,insufficient_analogs,1.0,0.014492753622978366,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster11,HD 20781 e,r_node_q75,0.2688439077100655,94,95.0,1.0,0.0105263157893628,,,,0,N1,insufficient_analogs,1.0,0.01052631578936288,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster11,HD 20781 e,r_kNN,0.1077206646928806,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster7,HD 20781 e,r_node_median,0.2210062305398185,68,69.0,1.0,0.0144927536229783,,,,0,N1,insufficient_analogs,1.0,0.014492753622978366,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster7,HD 20781 e,r_node_q75,0.2688439077100655,94,95.0,1.0,0.0105263157893628,,,,0,N1,insufficient_analogs,1.0,0.01052631578936288,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster7,HD 20781 e,r_kNN,0.1077206646928806,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster5,HD 72659 b,r_node_median,0.8122763353966514,161,162.0,1.0,0.0061728395061347,,,,0,N1,insufficient_analogs,1.0,0.006172839506134736,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster5,HD 72659 b,r_node_q75,0.843464982742972,170,171.0,1.0,0.00584795321634,,,,0,N1,insufficient_analogs,1.0,0.005847953216340071,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster5,HD 72659 b,r_kNN,0.2013945706396221,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster2,TOI-375 c,r_node_median,0.8488153971483032,190,191.0,1.0,0.0052356020942134,,,,0,N1,insufficient_analogs,1.0,0.005235602094213427,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster2,TOI-375 c,r_node_q75,1.2184160325165472,410,411.0,1.0,0.0024330900243249,,,,0,N1,insufficient_analogs,1.0,0.0024330900243249806,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster2,TOI-375 c,r_kNN,0.2370141550927011,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster7,TOI-375 c,r_node_median,0.8488153971483032,190,191.0,1.0,0.0052356020942134,,,,0,N1,insufficient_analogs,1.0,0.005235602094213427,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster7,TOI-375 c,r_node_q75,1.2184160325165472,410,411.0,1.0,0.0024330900243249,,,,0,N1,insufficient_analogs,1.0,0.0024330900243249806,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster7,TOI-375 c,r_kNN,0.2370141550927011,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster2,HD 217107 c,r_node_median,0.3273384169248367,16,17.0,1.0,0.0588235294083045,,,,0,N1,insufficient_analogs,1.0,0.0588235294083045,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster2,HD 217107 c,r_node_q75,0.3619124675062561,22,23.0,1.0,0.0434782608676748,,,,0,N1,insufficient_analogs,1.0,0.04347826086767486,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster2,HD 217107 c,r_kNN,0.1035938439692479,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster1,HD 217107 c,r_node_median,0.3273384169248367,16,17.0,1.0,0.0588235294083045,,,,0,N1,insufficient_analogs,1.0,0.0588235294083045,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster1,HD 217107 c,r_node_q75,0.3619124675062561,22,23.0,1.0,0.0434782608676748,,,,0,N1,insufficient_analogs,1.0,0.04347826086767486,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster1,HD 217107 c,r_kNN,0.1035938439692479,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster3,HD 11506 d,r_node_median,0.1309945294540594,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster3,HD 11506 d,r_node_q75,0.2582778323941188,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster3,HD 11506 d,r_kNN,0.1519918180061656,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster0,TOI-3071 b,r_node_median,1.0288831230601985,600,599.0,-1.0,-0.0016694490818002,,,,0,N1,insufficient_analogs,-1.0,-0.001669449081800218,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster0,TOI-3071 b,r_node_q75,1.424748461191791,1352,1343.0,-9.0,-0.0067014147431074,,,,0,N1,insufficient_analogs,-9.0,-0.006701414743107445,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster0,TOI-3071 b,r_kNN,0.371072815692929,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster0,Kepler-1350 c,r_node_median,0.9162819795874348,820,802.0,-18.0,-0.0224438902742862,,,,0,N1,insufficient_analogs,-18.0,-0.02244389027428623,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster0,Kepler-1350 c,r_node_q75,1.8865951451191945,3038,2780.0,-258.0,-0.09280575539565,,,,0,N1,insufficient_analogs,-258.0,-0.09280575539565007,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster0,Kepler-1350 c,r_kNN,0.1490613748367869,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster4,Kepler-1350 c,r_node_median,0.9162819795874348,820,802.0,-18.0,-0.0224438902742862,,,,0,N1,insufficient_analogs,-18.0,-0.02244389027428623,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster4,Kepler-1350 c,r_node_q75,1.8865951451191945,3038,2780.0,-258.0,-0.09280575539565,,,,0,N1,insufficient_analogs,-258.0,-0.09280575539565007,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster4,Kepler-1350 c,r_kNN,0.1490613748367869,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster5,HD 20794 d,r_node_median,0.1819921485774069,35,36.0,1.0,0.0277777777770061,,,,0,N1,insufficient_analogs,1.0,0.027777777777006175,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster5,HD 20794 d,r_node_q75,0.344522643491197,127,128.0,1.0,0.0078124999999389,,,,0,N1,insufficient_analogs,1.0,0.0078124999999389655,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster5,HD 20794 d,r_kNN,0.0992659847966104,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster9,HD 20794 d,r_node_median,0.1819921485774069,35,36.0,1.0,0.0277777777770061,,,,0,N1,insufficient_analogs,1.0,0.027777777777006175,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster9,HD 20794 d,r_node_q75,0.344522643491197,127,128.0,1.0,0.0078124999999389,,,,0,N1,insufficient_analogs,1.0,0.0078124999999389655,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster9,HD 20794 d,r_kNN,0.0992659847966104,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster8,GJ 3998 d,r_node_median,0.1516472676144483,53,54.0,1.0,0.0185185185181755,,,,0,N1,insufficient_analogs,1.0,0.018518518518175583,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster8,GJ 3998 d,r_node_q75,1.0407595464714192,2037,2008.0,-29.0,-0.01444223107569,,,,0,N1,insufficient_analogs,-29.0,-0.014442231075690018,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster8,GJ 3998 d,r_kNN,0.1012390488215324,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster2,HD 217107 c,r_node_median,0.3273384169248367,16,17.0,1.0,0.0588235294083045,,,,0,N1,insufficient_analogs,1.0,0.0588235294083045,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster2,HD 217107 c,r_node_q75,0.4269223874945434,24,25.0,1.0,0.0399999999984,,,,0,N1,insufficient_analogs,1.0,0.0399999999984,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster2,HD 217107 c,r_kNN,0.1035938439692479,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster1,HD 217107 c,r_node_median,0.3273384169248367,16,17.0,1.0,0.0588235294083045,,,,0,N1,insufficient_analogs,1.0,0.0588235294083045,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster1,HD 217107 c,r_node_q75,0.4269223874945434,24,25.0,1.0,0.0399999999984,,,,0,N1,insufficient_analogs,1.0,0.0399999999984,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster1,HD 217107 c,r_kNN,0.1035938439692479,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster2,BD-06 1339 c,r_node_median,0.6634752606486447,169,170.0,1.0,0.0058823529411418,,,,0,N1,insufficient_analogs,1.0,0.005882352941141869,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster2,BD-06 1339 c,r_node_q75,0.8786243415914275,381,382.0,1.0,0.0026178010471135,,,,0,N1,insufficient_analogs,1.0,0.002617801047113566,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster2,BD-06 1339 c,r_kNN,0.1644121032379221,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster1,BD-06 1339 c,r_node_median,0.6634752606486447,169,170.0,1.0,0.0058823529411418,,,,0,N1,insufficient_analogs,1.0,0.005882352941141869,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster1,BD-06 1339 c,r_node_q75,0.8786243415914275,381,382.0,1.0,0.0026178010471135,,,,0,N1,insufficient_analogs,1.0,0.002617801047113566,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster1,BD-06 1339 c,r_kNN,0.1644121032379221,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster4,Kepler-413 b,r_node_median,1.0557609825908232,707,706.0,-1.0,-0.0014164305948988,,,,0,N1,insufficient_analogs,-1.0,-0.0014164305948988435,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster4,Kepler-413 b,r_node_q75,1.113671146550466,830,829.0,-1.0,-0.0012062726176101,,,,0,N1,insufficient_analogs,-1.0,-0.0012062726176101251,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster4,Kepler-413 b,r_kNN,0.1856342092216527,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster12,Kepler-413 b,r_node_median,1.0557609825908232,707,706.0,-1.0,-0.0014164305948988,,,,0,N1,insufficient_analogs,-1.0,-0.0014164305948988435,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster12,Kepler-413 b,r_node_q75,1.113671146550466,830,829.0,-1.0,-0.0012062726176101,,,,0,N1,insufficient_analogs,-1.0,-0.0012062726176101251,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster12,Kepler-413 b,r_kNN,0.1856342092216527,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster6,HD 216520 c,r_node_median,0.2100386308999788,49,50.0,1.0,0.0199999999996,,,,0,N1,insufficient_analogs,1.0,0.0199999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster6,HD 216520 c,r_node_q75,0.4903036709967886,180,181.0,1.0,0.0055248618784225,,,,0,N1,insufficient_analogs,1.0,0.005524861878422515,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster6,HD 216520 c,r_kNN,0.0825432142609458,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster10,HD 216520 c,r_node_median,0.2100386308999788,49,50.0,1.0,0.0199999999996,,,,0,N1,insufficient_analogs,1.0,0.0199999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster10,HD 216520 c,r_node_q75,0.4903036709967886,180,181.0,1.0,0.0055248618784225,,,,0,N1,insufficient_analogs,1.0,0.005524861878422515,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster10,HD 216520 c,r_kNN,0.0825432142609458,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster3,HD 11506 d,r_node_median,0.1519918180061656,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster3,HD 11506 d,r_node_q75,0.5771358755579786,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster3,HD 11506 d,r_kNN,0.1519918180061656,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster1,K2-104 b,r_node_median,0.7727955745048452,699,700.0,1.0,0.0014285714285693,,,,0,N1,insufficient_analogs,1.0,0.0014285714285693879,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster1,K2-104 b,r_node_q75,1.278221429153536,1757,1758.0,1.0,0.000568828213879,,,,0,N1,insufficient_analogs,1.0,0.0005688282138790849,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster1,K2-104 b,r_kNN,0.1281637726950561,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster5,TOI-5110 b,r_node_median,2.179707888867152,2531,1633.0,-898.0,-0.5499081445189529,,,,0,N1,insufficient_analogs,-898.0,-0.5499081445189529,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster5,TOI-5110 b,r_node_q75,2.303340901059071,3077,2064.0,-1013.0,-0.4907945736431731,,,,0,N1,insufficient_analogs,-1013.0,-0.4907945736431731,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster5,TOI-5110 b,r_kNN,0.301988865799935,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster3,HD 156098 b,r_node_median,0.5982421610395032,977,968.0,-9.0,-0.0092975206611474,,,,0,N1,insufficient_analogs,-9.0,-0.00929752066114742,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster3,HD 156098 b,r_node_q75,1.2235282858987586,2806,2670.0,-136.0,-0.0509363295879959,,,,0,N1,insufficient_analogs,-136.0,-0.050936329587995904,ok
+orbital_pca2_cubes10_overlap0p35,cube11_cluster3,HD 156098 b,r_kNN,0.0960588315224557,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube12_cluster1,GJ 3293 b,r_node_median,0.504003170699193,374,29.0,-345.0,-11.896551723727706,,,,0,N1,insufficient_analogs,-345.0,-11.896551723727706,ok
+orbital_pca2_cubes10_overlap0p35,cube12_cluster1,GJ 3293 b,r_node_q75,0.6053576464091385,657,52.0,-605.0,-11.634615384391642,,,,0,N1,insufficient_analogs,-605.0,-11.634615384391642,ok
+orbital_pca2_cubes10_overlap0p35,cube12_cluster1,GJ 3293 b,r_kNN,0.1757008612838287,10,1.0,-9.0,-8.999999991,,,,0,N1,insufficient_analogs,-9.0,-8.999999991,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster0,55 Cnc e,r_node_median,0.580621725573379,57,58.0,1.0,0.0172413793100475,,,,0,N1,insufficient_analogs,1.0,0.017241379310047565,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster0,55 Cnc e,r_node_q75,1.077247570319576,85,86.0,1.0,0.0116279069766089,,,,0,N1,insufficient_analogs,1.0,0.011627906976608978,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster0,55 Cnc e,r_kNN,0.2646539631785437,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster1,55 Cnc e,r_node_median,0.580621725573379,57,58.0,1.0,0.0172413793100475,,,,0,N1,insufficient_analogs,1.0,0.017241379310047565,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster1,55 Cnc e,r_node_q75,1.077247570319576,85,86.0,1.0,0.0116279069766089,,,,0,N1,insufficient_analogs,1.0,0.011627906976608978,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster1,55 Cnc e,r_kNN,0.2646539631785437,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster1,Kepler-1323 b,r_node_median,0.596804704605394,76,74.0,-2.0,-0.0270270270266617,,,,0,N1,insufficient_analogs,-2.0,-0.027027027026661796,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster1,Kepler-1323 b,r_node_q75,2.234911956666754,104,102.0,-2.0,-0.0196078431370626,,,,0,N1,insufficient_analogs,-2.0,-0.019607843137062667,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster1,Kepler-1323 b,r_kNN,0.0942232243253534,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster1,Kepler-1323 b,r_node_median,0.596804704605394,76,74.0,-2.0,-0.0270270270266617,,,,0,N1,insufficient_analogs,-2.0,-0.027027027026661796,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster1,Kepler-1323 b,r_node_q75,2.234911956666754,104,102.0,-2.0,-0.0196078431370626,,,,0,N1,insufficient_analogs,-2.0,-0.019607843137062667,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster1,Kepler-1323 b,r_kNN,0.0942232243253534,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster2,HD 80653 b,r_node_median,0.5886478820259612,66,64.0,-2.0,-0.0312499999995117,,,,0,N1,insufficient_analogs,-2.0,-0.031249999999511717,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster2,HD 80653 b,r_node_q75,0.798555190704227,80,78.0,-2.0,-0.0256410256406969,,,,0,N1,insufficient_analogs,-2.0,-0.02564102564069691,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster2,HD 80653 b,r_kNN,0.2227250340668047,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster2,HD 80653 b,r_node_median,0.5886478820259612,66,64.0,-2.0,-0.0312499999995117,,,,0,N1,insufficient_analogs,-2.0,-0.031249999999511717,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster2,HD 80653 b,r_node_q75,0.798555190704227,80,78.0,-2.0,-0.0256410256406969,,,,0,N1,insufficient_analogs,-2.0,-0.02564102564069691,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster2,HD 80653 b,r_kNN,0.2227250340668047,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster3,Kepler-780 b,r_node_median,0.6620788285187432,56,55.0,-1.0,-0.0181818181814876,,,,0,N1,insufficient_analogs,-1.0,-0.018181818181487605,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster3,Kepler-780 b,r_node_q75,0.7794712690095069,76,74.0,-2.0,-0.0270270270266617,,,,0,N1,insufficient_analogs,-2.0,-0.027027027026661796,ok
+orbital_pca2_cubes10_overlap0p35,cube0_cluster3,Kepler-780 b,r_kNN,0.2474202277133778,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster3,Kepler-780 b,r_node_median,0.6620788285187432,56,55.0,-1.0,-0.0181818181814876,,,,0,N1,insufficient_analogs,-1.0,-0.018181818181487605,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster3,Kepler-780 b,r_node_q75,0.7794712690095069,76,74.0,-2.0,-0.0270270270266617,,,,0,N1,insufficient_analogs,-2.0,-0.027027027026661796,ok
+orbital_pca2_cubes10_overlap0p35,cube5_cluster3,Kepler-780 b,r_kNN,0.2474202277133778,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster6,Kepler-732 c,r_node_median,0.1354375804128774,6,7.0,1.0,0.1428571428367347,,,,0,N1,insufficient_analogs,1.0,0.1428571428367347,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster6,Kepler-732 c,r_node_q75,0.370835227662214,63,64.0,1.0,0.0156249999997558,,,,0,N1,insufficient_analogs,1.0,0.015624999999755858,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster6,Kepler-732 c,r_kNN,0.1502576126332738,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster3,Kepler-732 c,r_node_median,0.1354375804128774,6,7.0,1.0,0.1428571428367347,,,,0,N1,insufficient_analogs,1.0,0.1428571428367347,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster3,Kepler-732 c,r_node_q75,0.370835227662214,63,64.0,1.0,0.0156249999997558,,,,0,N1,insufficient_analogs,1.0,0.015624999999755858,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster3,Kepler-732 c,r_kNN,0.1502576126332738,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster5,Kepler-732 c,r_node_median,0.0962534214062889,2,2.0,0.0,0.0,,,,0,N1,insufficient_analogs,0.0,0.0,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster5,Kepler-732 c,r_node_q75,0.1158455009095831,4,2.0,-2.0,-0.9999999995,,,,0,N1,insufficient_analogs,-2.0,-0.9999999995,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster5,Kepler-732 c,r_kNN,0.1502576126332738,10,3.0,-7.0,-2.333333332555556,,,,0,N1,insufficient_analogs,-7.0,-2.3333333325555556,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster2,G 264-012 b,r_node_median,0.3343010630287086,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster2,G 264-012 b,r_node_q75,0.4016392186133156,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube2_cluster2,G 264-012 b,r_kNN,0.2929117308919391,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster2,TOI-1807 b,r_node_median,0.1357021438823967,8,8.0,0.0,0.0,,,,0,N1,insufficient_analogs,0.0,0.0,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster2,TOI-1807 b,r_node_q75,0.507103125994177,12,10.0,-2.0,-0.19999999998,,,,0,N1,insufficient_analogs,-2.0,-0.19999999998,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster2,TOI-1807 b,r_kNN,0.078854707250218,4,4.0,0.0,0.0,,,,0,N1,insufficient_analogs,0.0,0.0,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster3,TOI-2260 b,r_node_median,0.4139192368872182,2,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube1_cluster3,TOI-2260 b,r_node_q75,0.8610891956020457,3,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube1_cluster3,TOI-2260 b,r_kNN,0.4486366108934975,3,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube1_cluster4,K2-147 b,r_node_median,0.2441599892935389,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster4,K2-147 b,r_node_q75,0.6744993229900524,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube1_cluster4,K2-147 b,r_kNN,1.104838656686566,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube8_cluster2,GJ 3988 b,r_node_median,0.1705127541420243,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube8_cluster2,GJ 3988 b,r_node_q75,0.4010261155391618,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube8_cluster2,GJ 3988 b,r_kNN,0.6315394769362993,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster3,K2-147 b,r_node_median,0.2441599892935389,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster3,K2-147 b,r_node_q75,0.6744993229900524,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster3,K2-147 b,r_kNN,1.104838656686566,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster2,Kepler-828 b,r_node_median,0.07418024265167,7,8.0,1.0,0.124999999984375,,,,0,N1,insufficient_analogs,1.0,0.124999999984375,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster2,Kepler-828 b,r_node_q75,0.30620510669774,10,11.0,1.0,0.0909090909008264,,,,0,N1,insufficient_analogs,1.0,0.09090909090082644,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster2,Kepler-828 b,r_kNN,0.0395727910359294,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster4,Kepler-732 c,r_node_median,0.0962534214062889,2,2.0,0.0,0.0,,,,0,N1,insufficient_analogs,0.0,0.0,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster4,Kepler-732 c,r_node_q75,0.1158455009095831,4,2.0,-2.0,-0.9999999995,,,,0,N1,insufficient_analogs,-2.0,-0.9999999995,ok
+orbital_pca2_cubes10_overlap0p35,cube6_cluster4,Kepler-732 c,r_kNN,0.1502576126332738,10,3.0,-7.0,-2.333333332555556,,,,0,N1,insufficient_analogs,-7.0,-2.3333333325555556,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster1,GJ 1265 b,r_node_median,0.1657566623787072,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster1,GJ 1265 b,r_node_q75,0.5787009269846064,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster1,GJ 1265 b,r_kNN,0.1657566623787072,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster2,Wolf 1061 c,r_node_median,0.2040319921074062,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster2,Wolf 1061 c,r_node_q75,0.2195844366189408,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster2,Wolf 1061 c,r_kNN,0.2040319921074062,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster3,K2-146 b,r_node_median,0.509145531758229,2,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube7_cluster3,K2-146 b,r_node_q75,1.035272088381452,2,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube7_cluster3,K2-146 b,r_kNN,1.5613986450046746,3,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube17_cluster3,HD 11977 b,r_node_median,0.3967612158566878,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster3,HD 11977 b,r_node_q75,0.466664547730822,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster3,HD 11977 b,r_kNN,0.4143253535268329,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster9,GJ 667 C b,r_node_median,0.5546899821504823,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster9,GJ 667 C b,r_node_q75,0.6462047468387633,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster9,GJ 667 C b,r_kNN,0.7377195115270442,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster4,Wolf 1061 c,r_node_median,0.2040319921074062,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster4,Wolf 1061 c,r_node_q75,0.2195844366189408,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube13_cluster4,Wolf 1061 c,r_kNN,0.2040319921074062,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube8_cluster1,TOI-1680 b,r_node_median,0.3906976690957683,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube8_cluster1,TOI-1680 b,r_node_q75,0.4311173357922108,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube8_cluster1,TOI-1680 b,r_kNN,0.4715370024886532,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster8,TOI-1680 b,r_node_median,0.3906976690957683,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster8,TOI-1680 b,r_node_q75,0.4311173357922108,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster8,TOI-1680 b,r_kNN,0.4715370024886532,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster7,GJ 667 C b,r_node_median,0.5546899821504823,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster7,GJ 667 C b,r_node_q75,0.6462047468387633,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster7,GJ 667 C b,r_kNN,0.7377195115270442,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster5,G 264-012 b,r_node_median,0.3343010630287086,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster5,G 264-012 b,r_node_q75,0.4016392186133156,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster5,G 264-012 b,r_kNN,0.2929117308919391,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster9,GJ 3988 b,r_node_median,0.1705127541420243,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster9,GJ 3988 b,r_node_q75,0.4010261155391618,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube7_cluster9,GJ 3988 b,r_kNN,0.6315394769362993,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube8_cluster0,GJ 1265 b,r_node_median,0.1657566623787072,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube8_cluster0,GJ 1265 b,r_node_q75,0.5787009269846064,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube8_cluster0,GJ 1265 b,r_kNN,0.1657566623787072,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster8,HD 111591 b,r_node_median,0.4726722907004993,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster8,HD 111591 b,r_node_q75,0.6466327221562889,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster8,HD 111591 b,r_kNN,0.6282668493964481,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster11,HD 86950 b,r_node_median,0.1956300550191648,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster11,HD 86950 b,r_node_q75,0.3192940341064362,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube17_cluster11,HD 86950 b,r_kNN,0.4429580131937075,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster2,HD 11977 b,r_node_median,0.3967612158566878,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster2,HD 11977 b,r_node_q75,0.466664547730822,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster2,HD 11977 b,r_kNN,0.4143253535268329,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster6,TYC 2187-512-1 b,r_node_median,0.7995521508179706,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster6,TYC 2187-512-1 b,r_node_q75,0.8472956830718701,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube19_cluster6,TYC 2187-512-1 b,r_kNN,0.8950392153257697,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster3,HD 86950 b,r_node_median,0.1956300550191648,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster3,HD 86950 b,r_node_q75,0.3192940341064362,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster3,HD 86950 b,r_kNN,0.4429580131937075,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster1,HD 11977 b,r_node_median,0.3967612158566878,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster1,HD 11977 b,r_node_q75,0.466664547730822,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster1,HD 11977 b,r_kNN,0.4143253535268329,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster2,HD 111591 b,r_node_median,0.4726722907004993,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster2,HD 111591 b,r_node_q75,0.6466327221562889,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube18_cluster2,HD 111591 b,r_kNN,0.6282668493964481,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster1,HD 62549 b,r_node_median,0.187972308879056,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster1,HD 62549 b,r_node_q75,0.5281523959950776,7,8.0,1.0,0.124999999984375,,,,0,N1,insufficient_analogs,1.0,0.124999999984375,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster1,HD 62549 b,r_kNN,0.1256987285155465,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster6,HD 86950 b,r_node_median,0.1956300550191648,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster6,HD 86950 b,r_node_q75,0.3192940341064362,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster6,HD 86950 b,r_kNN,0.4429580131937075,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster5,HD 111591 b,r_node_median,0.4726722907004993,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster5,HD 111591 b,r_node_q75,0.6466327221562889,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube24_cluster5,HD 111591 b,r_kNN,0.6282668493964481,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster6,HD 142 c,r_node_median,0.358117800950199,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster6,HD 142 c,r_node_q75,0.5030820014805601,6,7.0,1.0,0.1428571428367347,,,,0,N1,insufficient_analogs,1.0,0.1428571428367347,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster6,HD 142 c,r_kNN,0.3176492103628987,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster4,HD 238914 b,r_node_median,0.5112964903843331,2,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube25_cluster4,HD 238914 b,r_node_q75,0.6651259599837527,2,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube25_cluster4,HD 238914 b,r_kNN,0.8189554295831721,3,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube25_cluster8,HD 86950 b,r_node_median,0.1956300550191648,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster8,HD 86950 b,r_node_q75,0.3192940341064362,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster8,HD 86950 b,r_kNN,0.4429580131937075,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster7,HD 111591 b,r_node_median,0.4726722907004993,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster7,HD 111591 b,r_node_q75,0.6466327221562889,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster7,HD 111591 b,r_kNN,0.6282668493964481,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster3,HD 11977 b,r_node_median,0.3967612158566878,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster3,HD 11977 b,r_node_q75,0.466664547730822,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube25_cluster3,HD 11977 b,r_kNN,0.4143253535268329,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster1,HD 62549 b,r_node_median,0.187972308879056,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster1,HD 62549 b,r_node_q75,0.5281523959950776,7,8.0,1.0,0.124999999984375,,,,0,N1,insufficient_analogs,1.0,0.124999999984375,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster1,HD 62549 b,r_kNN,0.1256987285155465,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster9,TYC 2187-512-1 b,r_node_median,0.7995521508179706,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster9,TYC 2187-512-1 b,r_node_q75,0.8472956830718701,2,3.0,1.0,0.3333333332222222,,,,0,N1,insufficient_analogs,1.0,0.3333333332222222,ok
+orbital_pca2_cubes10_overlap0p35,cube26_cluster9,TYC 2187-512-1 b,r_kNN,0.8950392153257697,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster0,HD 62549 b,r_node_median,0.187972308879056,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster0,HD 62549 b,r_node_q75,0.5281523959950776,7,8.0,1.0,0.124999999984375,,,,0,N1,insufficient_analogs,1.0,0.124999999984375,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster0,HD 62549 b,r_kNN,0.1256987285155465,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster2,HD 11112 b,r_node_median,0.2325314829277403,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster2,HD 11112 b,r_node_q75,0.3376119735420249,4,4.0,0.0,0.0,,,,0,N1,insufficient_analogs,0.0,0.0,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster2,HD 11112 b,r_kNN,0.2025201149458139,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster5,HD 151450 c,r_node_median,1.4330148135623964,2,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube32_cluster5,HD 151450 c,r_node_q75,1.7760793078816728,2,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube32_cluster5,HD 151450 c,r_kNN,2.119143802200949,3,,,,,,,0,unavailable,insufficient_neighbors,,,missing_expected_or_observed
+orbital_pca2_cubes10_overlap0p35,cube32_cluster4,HD 142 c,r_node_median,0.358117800950199,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster4,HD 142 c,r_node_q75,0.5030820014805601,6,7.0,1.0,0.1428571428367347,,,,0,N1,insufficient_analogs,1.0,0.1428571428367347,ok
+orbital_pca2_cubes10_overlap0p35,cube32_cluster4,HD 142 c,r_kNN,0.3176492103628987,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster0,HD 62549 b,r_node_median,0.187972308879056,5,6.0,1.0,0.1666666666388888,,,,0,N1,insufficient_analogs,1.0,0.16666666663888888,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster0,HD 62549 b,r_node_q75,0.5281523959950776,7,8.0,1.0,0.124999999984375,,,,0,N1,insufficient_analogs,1.0,0.124999999984375,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster0,HD 62549 b,r_kNN,0.1256987285155465,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster2,HD 155918 c,r_node_median,0.2237340593286599,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster2,HD 155918 c,r_node_q75,0.3265578350310306,4,5.0,1.0,0.19999999996,,,,0,N1,insufficient_analogs,1.0,0.19999999996,ok
+orbital_pca2_cubes10_overlap0p35,cube33_cluster2,HD 155918 c,r_kNN,0.2237340593286599,3,4.0,1.0,0.2499999999375,,,,0,N1,insufficient_analogs,1.0,0.2499999999375,ok

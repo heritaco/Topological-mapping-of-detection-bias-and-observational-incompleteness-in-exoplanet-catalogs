@@ -1,0 +1,61 @@
+project:
+  name: toi_ati_future_validation
+  random_state: 42
+
+inputs:
+  regional_toi_scores: outputs/topological_incompleteness_index/tables/regional_toi_scores.csv
+  anchor_ati_scores: outputs/topological_incompleteness_index/tables/anchor_ati_scores.csv
+  anchor_neighbor_deficits: outputs/topological_incompleteness_index/tables/anchor_neighbor_deficits.csv
+  top_anchor_radius_deficit_tables: outputs/toi_ati_case_anatomy/tables/top_anchor_radius_deficit_tables.csv
+  top_anchor_radius_deficit_summary: outputs/toi_ati_case_anatomy/tables/top_anchor_radius_deficit_summary.csv
+  final_presentation_cases: outputs/toi_ati_case_anatomy/tables/final_presentation_cases.csv
+  top_regions_case_anatomy: outputs/toi_ati_case_anatomy/tables/top_regions_case_anatomy.csv
+  top_anchors_case_anatomy: outputs/toi_ati_case_anatomy/tables/top_anchors_case_anatomy.csv
+  r3_node_geometry: outputs/topological_incompleteness_index/tables/r3_node_geometry.csv
+  dataset: null
+  membership: null
+  edges: null
+
+outputs:
+  base_dir: outputs/toi_ati_future_validation
+  tables_dir: outputs/toi_ati_future_validation/tables
+  figures_dir: outputs/toi_ati_future_validation/figures_pdf
+  metadata_dir: outputs/toi_ati_future_validation/metadata
+  logs_dir: outputs/toi_ati_future_validation/logs
+  latex_dir: latex/09_toi_ati_future_validation
+
+analysis:
+  config_id: orbital_pca2_cubes10_overlap0p35
+  epsilon: 1.0e-9
+  top_n_regions: 10
+  top_n_anchors: 10
+  exposure_cases_n: 3
+  candidate_cases_n: 10
+
+deficit_stability:
+  radii:
+    - r_kNN
+    - r_node_median
+    - r_node_q75
+  weak_threshold: 0.10
+  moderate_threshold: 0.30
+  strong_threshold: 0.60
+  require_positive_all_radii_for_stable: true
+
+robust_indices:
+  make_radius_penalized_ati: true
+  make_stability_adjusted_ati: true
+  penalize_negative_large_radius: true
+  penalize_imputation: true
+  penalize_small_nodes: true
+  weight_grid:
+    toi: [0.5, 1.0, 1.5]
+    deficit: [0.5, 1.0, 1.5]
+    imputation: [0.5, 1.0, 1.5]
+    representativeness: [0.5, 1.0, 1.5]
+
+report:
+  make_figures: true
+  make_latex: true
+  make_summary: true
+  compile_latex: false

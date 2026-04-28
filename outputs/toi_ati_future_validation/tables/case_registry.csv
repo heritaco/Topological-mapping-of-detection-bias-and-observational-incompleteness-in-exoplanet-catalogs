@@ -1,0 +1,249 @@
+case_kind,case_id,anchor_pl_name,node_id,TOI,ATI_original,ATI_conservative,deficit_stability_class,is_top_region,is_repeated_anchor,is_stable_deficit_case,is_radius_sensitive_case,high_toi_weak_deficit,low_toi_moderate_deficit,source,appears_in_final_cases
+region,cube12_cluster0,,cube12_cluster0,0.0766674525511436,,,,True,False,False,False,False,False,robust_region_indices,True
+region,cube17_cluster2,,cube17_cluster2,0.0627572653395493,,,,True,False,False,False,False,False,robust_region_indices,True
+region,cube26_cluster6,,cube26_cluster6,0.0581132674842715,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster5,,cube19_cluster5,0.0581132674842715,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster4,,cube19_cluster4,0.0578280248129117,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster4,,cube26_cluster4,0.0578280248129117,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube25_cluster0,,cube25_cluster0,0.0562810757788033,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube24_cluster1,,cube24_cluster1,0.0523779284684389,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster0,,cube26_cluster0,0.044261164864001,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster10,,cube26_cluster10,0.0435710279764328,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube6_cluster0,,cube6_cluster0,0.0412286279306651,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster8,,cube19_cluster8,0.0384850826108858,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster12,,cube26_cluster12,0.0384850826108858,,,,True,False,False,False,False,False,robust_region_indices,False
+region,cube24_cluster0,,cube24_cluster0,0.0380706636089236,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster0,,cube17_cluster0,0.0380706636089236,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster14,,cube26_cluster14,0.0362593186415595,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster3,,cube26_cluster3,0.0343515742645012,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster0,,cube19_cluster0,0.0343515742645012,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster10,,cube17_cluster10,0.0343040610223196,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube24_cluster4,,cube24_cluster4,0.0337806106131127,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster6,,cube17_cluster6,0.0337806106131127,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster0,,cube13_cluster0,0.0328292390642812,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster7,,cube26_cluster7,0.0310370910523289,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube18_cluster0,,cube18_cluster0,0.0309282146843902,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube1_cluster1,,cube1_cluster1,0.0291222330770633,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster3,,cube19_cluster3,0.027616611464549,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster3,,cube13_cluster3,0.0258071564483745,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster9,,cube17_cluster9,0.0253266998697796,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster1,,cube13_cluster1,0.0241222211655001,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster13,,cube26_cluster13,0.0240151375378837,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube5_cluster0,,cube5_cluster0,0.0225244780651935,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster2,,cube19_cluster2,0.0219930564164392,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster1,,cube17_cluster1,0.0211318747273045,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube11_cluster1,,cube11_cluster1,0.0210383664623445,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster4,,cube17_cluster4,0.0209022309932874,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube11_cluster0,,cube11_cluster0,0.0209022309932874,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster11,,cube26_cluster11,0.0202388317156348,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster7,,cube19_cluster7,0.0195590844428112,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster8,,cube26_cluster8,0.0186525040154074,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster5,,cube17_cluster5,0.0181358571688281,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube24_cluster3,,cube24_cluster3,0.0181358571688281,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster0,,cube7_cluster0,0.0180419867970998,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube25_cluster5,,cube25_cluster5,0.0163684176016325,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster11,,cube19_cluster11,0.0155180492176809,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster7,,cube13_cluster7,0.0155180492176809,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster5,,cube26_cluster5,0.0151296043423171,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube11_cluster2,,cube11_cluster2,0.0144945653929068,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster7,,cube17_cluster7,0.0144945653929068,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster2,,cube26_cluster2,0.0139415068092533,,,,False,False,False,False,False,False,robust_region_indices,True
+region,cube33_cluster1,,cube33_cluster1,0.0139415068092533,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube33_cluster3,,cube33_cluster3,0.0137730505169408,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube0_cluster0,,cube0_cluster0,0.0122817591013342,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube2_cluster0,,cube2_cluster0,0.0118471092695574,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster4,,cube7_cluster4,0.0118471092695574,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster5,,cube13_cluster5,0.0117841609001239,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster9,,cube19_cluster9,0.0117841609001239,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster8,,cube13_cluster8,0.0114968758442221,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube25_cluster2,,cube25_cluster2,0.0102629709385098,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube32_cluster1,,cube32_cluster1,0.0102629709385098,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster2,,cube13_cluster2,0.0100365219660367,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster1,,cube19_cluster1,0.0100365219660367,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube11_cluster4,,cube11_cluster4,0.0099036057070693,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster12,,cube17_cluster12,0.0099036057070693,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster6,,cube13_cluster6,0.0093776352040221,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster10,,cube19_cluster10,0.0093776352040221,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube32_cluster3,,cube32_cluster3,0.0085134054616624,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube2_cluster1,,cube2_cluster1,0.0084894746001759,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube11_cluster5,,cube11_cluster5,0.0071748400557279,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube11_cluster3,,cube11_cluster3,0.0069778156942031,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube12_cluster1,,cube12_cluster1,0.0034133246761632,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube1_cluster0,,cube1_cluster0,0.002119839151575,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube6_cluster1,,cube6_cluster1,0.002119839151575,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube5_cluster1,,cube5_cluster1,0.0016274857574724,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube0_cluster1,,cube0_cluster1,0.0016274857574724,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube5_cluster2,,cube5_cluster2,0.0011273806288534,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube0_cluster2,,cube0_cluster2,0.0011273806288534,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube0_cluster3,,cube0_cluster3,0.0010053329821541,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube5_cluster3,,cube5_cluster3,0.0010053329821541,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster6,,cube7_cluster6,0.0009789635300898,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube2_cluster3,,cube2_cluster3,0.0009789635300898,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube1_cluster5,,cube1_cluster5,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube2_cluster2,,cube2_cluster2,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube1_cluster2,,cube1_cluster2,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube1_cluster3,,cube1_cluster3,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube1_cluster4,,cube1_cluster4,0.0,,,,False,False,False,False,False,False,robust_region_indices,True
+region,cube8_cluster2,,cube8_cluster2,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube6_cluster3,,cube6_cluster3,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube6_cluster2,,cube6_cluster2,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube6_cluster4,,cube6_cluster4,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster1,,cube7_cluster1,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster2,,cube7_cluster2,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster3,,cube7_cluster3,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster3,,cube17_cluster3,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster9,,cube13_cluster9,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube13_cluster4,,cube13_cluster4,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube8_cluster1,,cube8_cluster1,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster8,,cube7_cluster8,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster7,,cube7_cluster7,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster5,,cube7_cluster5,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube7_cluster9,,cube7_cluster9,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube8_cluster0,,cube8_cluster0,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster8,,cube17_cluster8,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube17_cluster11,,cube17_cluster11,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube24_cluster2,,cube24_cluster2,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube19_cluster6,,cube19_cluster6,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube18_cluster3,,cube18_cluster3,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube18_cluster1,,cube18_cluster1,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube18_cluster2,,cube18_cluster2,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube25_cluster1,,cube25_cluster1,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube24_cluster6,,cube24_cluster6,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube24_cluster5,,cube24_cluster5,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube25_cluster6,,cube25_cluster6,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube25_cluster4,,cube25_cluster4,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube25_cluster8,,cube25_cluster8,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube25_cluster7,,cube25_cluster7,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube25_cluster3,,cube25_cluster3,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster1,,cube26_cluster1,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube26_cluster9,,cube26_cluster9,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube32_cluster0,,cube32_cluster0,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube32_cluster2,,cube32_cluster2,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube32_cluster5,,cube32_cluster5,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube32_cluster4,,cube32_cluster4,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube33_cluster0,,cube33_cluster0,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+region,cube33_cluster2,,cube33_cluster2,0.0,,,,False,False,False,False,False,False,robust_region_indices,False
+anchor,HIP 97166 c::cube12_cluster0,HIP 97166 c,cube12_cluster0,0.0766674525511436,0.0068528480823882,0.0011421413470647,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,True
+anchor,HIP 90988 b::cube17_cluster2,HIP 90988 b,cube17_cluster2,0.0627572653395493,0.0067455387709832,0.006389466032847364,small_but_stable_deficit,False,False,True,False,False,False,robust_anchor_indices,True
+anchor,HD 42012 b::cube26_cluster6,HD 42012 b,cube26_cluster6,0.0581132674842715,0.0051133340600407,0.0051133340600407,small_but_stable_deficit,False,True,True,False,False,False,robust_anchor_indices,False
+anchor,HD 42012 b::cube19_cluster5,HD 42012 b,cube19_cluster5,0.0581132674842715,0.0051133340600407,0.0051133340600407,small_but_stable_deficit,False,True,True,False,False,False,robust_anchor_indices,False
+anchor,HD 4313 b::cube17_cluster10,HD 4313 b,cube17_cluster10,0.0343040610223196,0.0050935128729779,0.004347585182760773,stable_positive_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,HD 221585 b::cube25_cluster0,HD 221585 b,cube25_cluster0,0.0562810757788033,0.005070342812419,0.0008450571354031667,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,24 Sex b::cube24_cluster1,24 Sex b,cube24_cluster1,0.0523779284684389,0.0046807935463178,0.004153260318351299,small_but_stable_deficit,False,False,True,False,False,False,robust_anchor_indices,False
+anchor,BD-17 63 b::cube26_cluster4,BD-17 63 b,cube26_cluster4,0.0578280248129117,0.0046770858527751,0.0013833234960151923,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,BD-17 63 b::cube19_cluster4,BD-17 63 b,cube19_cluster4,0.0578280248129117,0.0046770858527751,0.0013833234960151923,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,HD 11506 d::cube33_cluster3,HD 11506 d,cube33_cluster3,0.0137730505169408,0.0043487335823949,0.003711876294040001,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 167677 b::cube26_cluster0,HD 167677 b,cube26_cluster0,0.044261164864001,0.0039952396812571,0.0039952396812571,small_but_stable_deficit,False,False,True,False,False,False,robust_anchor_indices,False
+anchor,HD 13931 b::cube26_cluster11,HD 13931 b,cube26_cluster11,0.0202388317156348,0.003977720024333,0.0037677504861406406,stable_positive_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,GJ 3942 b::cube6_cluster0,GJ 3942 b,cube6_cluster0,0.0412286279306651,0.0035468622316803,0.00059114370528005,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,Kepler-48 e::cube19_cluster8,Kepler-48 e,cube19_cluster8,0.0384850826108858,0.0033651953995414,0.0033651953995414,small_but_stable_deficit,False,True,True,False,False,False,robust_anchor_indices,False
+anchor,Kepler-48 e::cube26_cluster12,Kepler-48 e,cube26_cluster12,0.0384850826108858,0.0033651953995414,0.0033651953995414,small_but_stable_deficit,False,True,True,False,False,False,robust_anchor_indices,False
+anchor,HD 89307 b::cube26_cluster14,HD 89307 b,cube26_cluster14,0.0362593186415595,0.003293536970708,0.002922349869121051,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,HD 60292 b::cube17_cluster0,HD 60292 b,cube17_cluster0,0.0380706636089236,0.0031128379328322,0.0027620159137462835,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 60292 b::cube24_cluster0,HD 60292 b,cube24_cluster0,0.0380706636089236,0.0031128379328322,0.0027620159137462835,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 240210 b::cube26_cluster10,HD 240210 b,cube26_cluster10,0.0435710279764328,0.0030686318582857,0.0025047025264166353,small_but_stable_deficit,False,False,True,False,False,False,robust_anchor_indices,False
+anchor,HD 174205 b::cube24_cluster4,HD 174205 b,cube24_cluster4,0.0337806106131127,0.0030194103694148,0.002577227958406492,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 174205 b::cube17_cluster6,HD 174205 b,cube17_cluster6,0.0337806106131127,0.0030194103694148,0.002577227958406492,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,Gl 49 b::cube13_cluster0,Gl 49 b,cube13_cluster0,0.0328292390642812,0.0029233050664184,0.0009744350221394666,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,HD 32963 b::cube26_cluster7,HD 32963 b,cube26_cluster7,0.0310370910523289,0.002819981355317,0.0024070046472406408,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,HD 114729 b::cube19_cluster0,HD 114729 b,cube19_cluster0,0.0343515742645012,0.002750427262456,0.002750427262456,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 114729 b::cube26_cluster3,HD 114729 b,cube26_cluster3,0.0343515742645012,0.002750427262456,0.002750427262456,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 110014 b::cube24_cluster3,HD 110014 b,cube24_cluster3,0.0181358571688281,0.0027033320063173,0.0024825509172265742,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 110014 b::cube17_cluster5,HD 110014 b,cube17_cluster5,0.0181358571688281,0.0027033320063173,0.0024825509172265742,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HIP 38594 b::cube19_cluster3,HIP 38594 b,cube19_cluster3,0.027616611464549,0.0023797752910336,0.0015865168606890667,radius_sensitive_deficit,False,False,False,True,False,True,robust_anchor_indices,False
+anchor,HD 217107 c::cube26_cluster2,HD 217107 c,cube26_cluster2,0.0139415068092533,0.0023043105024573,0.0023043105024573,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,True
+anchor,HD 217107 c::cube33_cluster1,HD 217107 c,cube33_cluster1,0.0139415068092533,0.0023043105024573,0.0023043105024573,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 173416 b::cube17_cluster9,HD 173416 b,cube17_cluster9,0.0253266998697796,0.0022554949294339,0.002136435461741008,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,HD 154345 b::cube26_cluster13,HD 154345 b,cube26_cluster13,0.0240151375378837,0.0021653811721827,0.0017674442367456072,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,GJ 536 c::cube13_cluster1,GJ 536 c,cube13_cluster1,0.0241222211655001,0.0021304958803922,0.0003550826467320333,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,HD 109749 b::cube5_cluster0,HD 109749 b,cube5_cluster0,0.0225244780651935,0.0020000586800244,0.00033334311333739995,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,HD 40307 f::cube13_cluster3,HD 40307 f,cube13_cluster3,0.0258071564483745,0.0019106295668311,0.0006368765222770332,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,GJ 3138 d::cube19_cluster2,GJ 3138 d,cube19_cluster2,0.0219930564164392,0.0018549748418486,0.0018549748418486,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,HD 11506 d::cube32_cluster3,HD 11506 d,cube32_cluster3,0.0085134054616624,0.0017116937804376,0.0015187830407629639,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 217107 c::cube32_cluster1,HD 217107 c,cube32_cluster1,0.0102629709385098,0.0016921101079596,0.0016921101079596,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 217107 c::cube25_cluster2,HD 217107 c,cube25_cluster2,0.0102629709385098,0.0016921101079596,0.0016921101079596,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 160691 d::cube11_cluster1,HD 160691 d,cube11_cluster1,0.0210383664623445,0.0016778286305877,0.00027963810509795,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,HIP 109384 b::cube19_cluster7,HIP 109384 b,cube19_cluster7,0.0195590844428112,0.001676276790206,0.0016332662919920787,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,HD 206255 b::cube11_cluster0,HD 206255 b,cube11_cluster0,0.0209022309932874,0.0016757461199938,0.0013677905119339234,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 206255 b::cube17_cluster4,HD 206255 b,cube17_cluster4,0.0209022309932874,0.0016757461199938,0.0013677905119339234,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,GJ 3138 b::cube1_cluster1,GJ 3138 b,cube1_cluster1,0.0291222330770633,0.0016316771433325,0.0005438923811108332,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,HD 48948 b::cube7_cluster0,HD 48948 b,cube7_cluster0,0.0180419867970998,0.0015930874991618,0.0002655145831936333,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,HD 37605 c::cube26_cluster8,HD 37605 c,cube26_cluster8,0.0186525040154074,0.0015082572004952,0.0014695578078847105,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,14 And b::cube17_cluster1,14 And b,cube17_cluster1,0.0211318747273045,0.0014964206920952,0.0012214201185302357,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,HD 72659 b::cube26_cluster5,HD 72659 b,cube26_cluster5,0.0151296043423171,0.0013695213037151,0.0011689595522757442,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,HD 20781 e::cube19_cluster11,HD 20781 e,cube19_cluster11,0.0155180492176809,0.0013128283130639,0.001015946997130226,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 20781 e::cube13_cluster7,HD 20781 e,cube13_cluster7,0.0155180492176809,0.0013128283130639,0.001015946997130226,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,TOI-375 c::cube11_cluster2,TOI-375 c,cube11_cluster2,0.0144945653929068,0.0012026066293328,0.0010264889660169599,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,TOI-375 c::cube17_cluster7,TOI-375 c,cube17_cluster7,0.0144945653929068,0.0012026066293328,0.0010264889660169599,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,TOI-3071 b::cube0_cluster0,TOI-3071 b,cube0_cluster0,0.0122817591013342,0.0011072227666127,0.00018453712776878332,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,Kepler-1350 c::cube7_cluster4,Kepler-1350 c,cube7_cluster4,0.0118471092695574,0.0009770971104006,0.00016284951840009999,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,Kepler-1350 c::cube2_cluster0,Kepler-1350 c,cube2_cluster0,0.0118471092695574,0.0009770971104006,0.00016284951840009999,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,Kepler-413 b::cube11_cluster4,Kepler-413 b,cube11_cluster4,0.0099036057070693,0.0008823669024852,0.00012003539427044864,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,Kepler-413 b::cube17_cluster12,Kepler-413 b,cube17_cluster12,0.0099036057070693,0.0008823669024852,0.00012003539427044864,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,GJ 3998 d::cube13_cluster8,GJ 3998 d,cube13_cluster8,0.0114968758442221,0.0008553029364333,0.000232707335024198,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,HD 20794 d::cube13_cluster5,HD 20794 d,cube13_cluster5,0.0117841609001239,0.0007739418592363,0.0007739418592363,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 20794 d::cube19_cluster9,HD 20794 d,cube19_cluster9,0.0117841609001239,0.0007739418592363,0.0007739418592363,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,K2-104 b::cube2_cluster1,K2-104 b,cube2_cluster1,0.0084894746001759,0.0007487781993325,0.0007092528904217214,small_but_stable_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,HD 216520 c::cube19_cluster10,HD 216520 c,cube19_cluster10,0.0093776352040221,0.0007309911586636,0.0007309911586636,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 216520 c::cube13_cluster6,HD 216520 c,cube13_cluster6,0.0093776352040221,0.0007309911586636,0.0007309911586636,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 156098 b::cube11_cluster3,HD 156098 b,cube11_cluster3,0.0069778156942031,0.0005863396577018,9.772327628363333e-05,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,BD-06 1339 c::cube13_cluster2,BD-06 1339 c,cube13_cluster2,0.0100365219660367,0.0005408483067593,0.0004798938018699749,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,BD-06 1339 c::cube19_cluster1,BD-06 1339 c,cube19_cluster1,0.0100365219660367,0.0005408483067593,0.0004798938018699749,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,TOI-5110 b::cube11_cluster5,TOI-5110 b,cube11_cluster5,0.0071748400557279,0.0002539351976985,3.4544826521748456e-05,unstable_due_to_large_radius,False,False,False,True,False,False,robust_anchor_indices,False
+anchor,55 Cnc e::cube1_cluster0,55 Cnc e,cube1_cluster0,0.002119839151575,0.0001747538717635,0.0001747538717635,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,55 Cnc e::cube6_cluster1,55 Cnc e,cube6_cluster1,0.002119839151575,0.0001747538717635,0.0001747538717635,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,Kepler-1323 b::cube5_cluster1,Kepler-1323 b,cube5_cluster1,0.0016274857574724,0.0001273870982902,2.1231183048366667e-05,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,Kepler-1323 b::cube0_cluster1,Kepler-1323 b,cube0_cluster1,0.0016274857574724,0.0001273870982902,2.1231183048366667e-05,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,Kepler-732 c::cube2_cluster3,Kepler-732 c,cube2_cluster3,0.0009789635300898,0.0001202549507132,9.815542977310019e-05,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,Kepler-732 c::cube7_cluster6,Kepler-732 c,cube7_cluster6,0.0009789635300898,0.0001202549507132,9.815542977310019e-05,small_but_stable_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 80653 b::cube5_cluster2,HD 80653 b,cube5_cluster2,0.0011273806288534,9.884223501608086e-05,1.40611874719655e-05,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,HD 80653 b::cube0_cluster2,HD 80653 b,cube0_cluster2,0.0011273806288534,9.884223501608086e-05,1.40611874719655e-05,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,Kepler-780 b::cube5_cluster3,Kepler-780 b,cube5_cluster3,0.0010053329821541,9.009095503765688e-05,1.4222562907207334e-05,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,Kepler-780 b::cube0_cluster3,Kepler-780 b,cube0_cluster3,0.0010053329821541,9.009095503765688e-05,1.4222562907207334e-05,unstable_due_to_large_radius,False,True,False,True,False,False,robust_anchor_indices,False
+anchor,HD 11506 c::cube18_cluster0,HD 11506 c,cube18_cluster0,0.0309282146843902,0.0,0.0,no_deficit_or_overpopulated,False,False,False,False,False,False,robust_anchor_indices,False
+anchor,HD 95872 b::cube25_cluster5,HD 95872 b,cube25_cluster5,0.0163684176016325,0.0,0.0,no_deficit_or_overpopulated,False,False,False,False,False,False,robust_anchor_indices,False
+anchor,GJ 3293 b::cube12_cluster1,GJ 3293 b,cube12_cluster1,0.0034133246761632,0.0,0.0,no_deficit_or_overpopulated,False,False,False,False,False,False,robust_anchor_indices,False
+anchor,Kepler-732 c::cube1_cluster5,Kepler-732 c,cube1_cluster5,0.0,0.0,0.0,no_deficit_or_overpopulated,False,True,False,False,False,False,robust_anchor_indices,False
+anchor,G 264-012 b::cube2_cluster2,G 264-012 b,cube2_cluster2,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,TOI-1807 b::cube1_cluster2,TOI-1807 b,cube1_cluster2,0.0,0.0,0.0,no_deficit_or_overpopulated,False,False,False,False,False,False,robust_anchor_indices,False
+anchor,TOI-2260 b::cube1_cluster3,TOI-2260 b,cube1_cluster3,0.0,0.0,0.0,nan,False,False,False,False,False,False,robust_anchor_indices,False
+anchor,K2-147 b::cube1_cluster4,K2-147 b,cube1_cluster4,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,True
+anchor,GJ 3988 b::cube8_cluster2,GJ 3988 b,cube8_cluster2,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,K2-147 b::cube6_cluster3,K2-147 b,cube6_cluster3,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,Kepler-828 b::cube6_cluster2,Kepler-828 b,cube6_cluster2,0.0,0.0,0.0,stable_positive_deficit,False,False,True,False,False,True,robust_anchor_indices,False
+anchor,Kepler-732 c::cube6_cluster4,Kepler-732 c,cube6_cluster4,0.0,0.0,0.0,no_deficit_or_overpopulated,False,True,False,False,False,False,robust_anchor_indices,False
+anchor,GJ 1265 b::cube7_cluster1,GJ 1265 b,cube7_cluster1,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,Wolf 1061 c::cube7_cluster2,Wolf 1061 c,cube7_cluster2,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,K2-146 b::cube7_cluster3,K2-146 b,cube7_cluster3,0.0,0.0,0.0,nan,False,False,False,False,False,False,robust_anchor_indices,False
+anchor,HD 11977 b::cube17_cluster3,HD 11977 b,cube17_cluster3,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,GJ 667 C b::cube13_cluster9,GJ 667 C b,cube13_cluster9,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,Wolf 1061 c::cube13_cluster4,Wolf 1061 c,cube13_cluster4,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,TOI-1680 b::cube8_cluster1,TOI-1680 b,cube8_cluster1,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,TOI-1680 b::cube7_cluster8,TOI-1680 b,cube7_cluster8,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,GJ 667 C b::cube7_cluster7,GJ 667 C b,cube7_cluster7,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,G 264-012 b::cube7_cluster5,G 264-012 b,cube7_cluster5,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,GJ 3988 b::cube7_cluster9,GJ 3988 b,cube7_cluster9,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,GJ 1265 b::cube8_cluster0,GJ 1265 b,cube8_cluster0,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 111591 b::cube17_cluster8,HD 111591 b,cube17_cluster8,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 86950 b::cube17_cluster11,HD 86950 b,cube17_cluster11,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 11977 b::cube24_cluster2,HD 11977 b,cube24_cluster2,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,TYC 2187-512-1 b::cube19_cluster6,TYC 2187-512-1 b,cube19_cluster6,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 86950 b::cube18_cluster3,HD 86950 b,cube18_cluster3,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 11977 b::cube18_cluster1,HD 11977 b,cube18_cluster1,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 111591 b::cube18_cluster2,HD 111591 b,cube18_cluster2,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 62549 b::cube25_cluster1,HD 62549 b,cube25_cluster1,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 86950 b::cube24_cluster6,HD 86950 b,cube24_cluster6,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 111591 b::cube24_cluster5,HD 111591 b,cube24_cluster5,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 142 c::cube25_cluster6,HD 142 c,cube25_cluster6,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 238914 b::cube25_cluster4,HD 238914 b,cube25_cluster4,0.0,0.0,0.0,nan,False,False,False,False,False,False,robust_anchor_indices,False
+anchor,HD 86950 b::cube25_cluster8,HD 86950 b,cube25_cluster8,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 111591 b::cube25_cluster7,HD 111591 b,cube25_cluster7,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 11977 b::cube25_cluster3,HD 11977 b,cube25_cluster3,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 62549 b::cube26_cluster1,HD 62549 b,cube26_cluster1,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,TYC 2187-512-1 b::cube26_cluster9,TYC 2187-512-1 b,cube26_cluster9,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 62549 b::cube32_cluster0,HD 62549 b,cube32_cluster0,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 11112 b::cube32_cluster2,HD 11112 b,cube32_cluster2,0.0,0.0,0.0,radius_sensitive_deficit,False,False,False,True,False,True,robust_anchor_indices,False
+anchor,HD 151450 c::cube32_cluster5,HD 151450 c,cube32_cluster5,0.0,0.0,0.0,nan,False,False,False,False,False,False,robust_anchor_indices,False
+anchor,HD 142 c::cube32_cluster4,HD 142 c,cube32_cluster4,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 62549 b::cube33_cluster0,HD 62549 b,cube33_cluster0,0.0,0.0,0.0,stable_positive_deficit,False,True,True,False,False,True,robust_anchor_indices,False
+anchor,HD 155918 c::cube33_cluster2,HD 155918 c,cube33_cluster2,0.0,0.0,0.0,stable_positive_deficit,False,False,True,False,False,True,robust_anchor_indices,False

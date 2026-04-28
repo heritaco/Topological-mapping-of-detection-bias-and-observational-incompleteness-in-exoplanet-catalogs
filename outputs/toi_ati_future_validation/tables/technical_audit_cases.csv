@@ -1,0 +1,175 @@
+issue_type,anchor_pl_name,node_id,ATI_original,ATI_conservative,delta_rel_best,delta_rel_mean,r3_imputation_score,n_members,note
+high_ATI_but_radius_sensitive,HIP 97166 c,cube12_cluster0,0.0068528480823882,0.0011421413470647,0.0909090909008264,-0.21828028293803184,0.0,3182.0,ATI alto con deficit sensible al radio.
+small_node_support,HIP 90988 b,cube17_cluster2,0.0067455387709832,0.006389466032847364,0.1111111110987654,0.0726310726241186,0.0,8.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 42012 b,cube26_cluster6,0.0051133340600407,0.0051133340600407,0.0909090909008264,0.034191638084960535,0.0,11.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 42012 b,cube19_cluster5,0.0051133340600407,0.0051133340600407,0.0909090909008264,0.034191638084960535,0.0,11.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 4313 b,cube17_cluster10,0.0050935128729779,0.004347585182760773,0.1666666666388888,0.11363636362203472,0.0,5.0,El soporte de nodo o de red es pequeno.
+high_ATI_but_radius_sensitive,HD 221585 b,cube25_cluster0,0.005070342812419,0.0008450571354031667,0.0909090909008264,-0.11999633315792362,0.0,527.0,ATI alto con deficit sensible al radio.
+small_node_support,24 Sex b,cube24_cluster1,0.0046807935463178,0.004153260318351299,0.0909090909008264,0.042956929068832965,0.0,6.0,El soporte de nodo o de red es pequeno.
+high_ATI_but_radius_sensitive,BD-17 63 b,cube26_cluster4,0.0046770858527751,0.0013833234960151923,0.0909090909008264,0.012616638628810059,0.0,6.0,ATI alto con deficit sensible al radio.
+small_node_support,BD-17 63 b,cube26_cluster4,0.0046770858527751,0.0013833234960151923,0.0909090909008264,0.012616638628810059,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,BD-17 63 b,cube26_cluster4,0.0046770858527751,0.0013833234960151923,0.0909090909008264,0.012616638628810059,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+high_ATI_but_radius_sensitive,BD-17 63 b,cube19_cluster4,0.0046770858527751,0.0013833234960151923,0.0909090909008264,0.012616638628810059,0.0,6.0,ATI alto con deficit sensible al radio.
+small_node_support,BD-17 63 b,cube19_cluster4,0.0046770858527751,0.0013833234960151923,0.0909090909008264,0.012616638628810059,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,BD-17 63 b,cube19_cluster4,0.0046770858527751,0.0013833234960151923,0.0909090909008264,0.012616638628810059,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 11506 d,cube33_cluster3,0.0043487335823949,0.003711876294040001,0.3333333332222222,0.277777777699074,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 11506 d,cube33_cluster3,0.0043487335823949,0.003711876294040001,0.3333333332222222,0.277777777699074,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 167677 b,cube26_cluster0,0.0039952396812571,0.0039952396812571,0.0909090909008264,0.03413828632129996,0.0,12.0,El soporte de nodo o de red es pequeno.
+small_node_support,HD 13931 b,cube26_cluster11,0.003977720024333,0.0037677504861406406,0.19999999996,0.12222222220374486,0.0,8.0,El soporte de nodo o de red es pequeno.
+high_ATI_but_radius_sensitive,GJ 3942 b,cube6_cluster0,0.0035468622316803,0.00059114370528005,0.0909090909008264,-0.12430616217806971,0.0,3316.0,ATI alto con deficit sensible al radio.
+repeated_anchor_needs_context,Kepler-48 e,cube19_cluster8,0.0033651953995414,0.0033651953995414,0.0909090909008264,0.03313711939068661,0.0,10.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,Kepler-48 e,cube26_cluster12,0.0033651953995414,0.0033651953995414,0.0909090909008264,0.03313711939068661,0.0,10.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 89307 b,cube26_cluster14,0.003293536970708,0.002922349869121051,0.0909090909008264,0.03495439340803893,0.0,6.0,El soporte de nodo o de red es pequeno.
+small_node_support,HD 60292 b,cube17_cluster0,0.0031128379328322,0.0027620159137462835,0.0909090909008264,0.0352968581534532,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 60292 b,cube17_cluster0,0.0031128379328322,0.0027620159137462835,0.0909090909008264,0.0352968581534532,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 60292 b,cube24_cluster0,0.0031128379328322,0.0027620159137462835,0.0909090909008264,0.0352968581534532,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 60292 b,cube24_cluster0,0.0031128379328322,0.0027620159137462835,0.0909090909008264,0.0352968581534532,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 240210 b,cube26_cluster10,0.0030686318582857,0.0025047025264166353,0.0909090909008264,0.03230823105023915,0.0,4.0,El soporte de nodo o de red es pequeno.
+small_node_support,HD 174205 b,cube24_cluster4,0.0030194103694148,0.002577227958406492,0.0909090909008264,0.05151515151172023,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 174205 b,cube24_cluster4,0.0030194103694148,0.002577227958406492,0.0909090909008264,0.05151515151172023,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 174205 b,cube17_cluster6,0.0030194103694148,0.002577227958406492,0.0909090909008264,0.05151515151172023,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 174205 b,cube17_cluster6,0.0030194103694148,0.002577227958406492,0.0909090909008264,0.05151515151172023,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 32963 b,cube26_cluster7,0.002819981355317,0.0024070046472406408,0.0909090909008264,0.03823953823667844,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 114729 b,cube19_cluster0,0.002750427262456,0.002750427262456,0.0909090909008264,0.03249509541368097,0.0,10.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 114729 b,cube26_cluster3,0.002750427262456,0.002750427262456,0.0909090909008264,0.03249509541368097,0.0,10.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 110014 b,cube24_cluster3,0.0027033320063173,0.0024825509172265742,0.1666666666388888,0.0883277216490226,0.0,7.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 110014 b,cube24_cluster3,0.0027033320063173,0.0024825509172265742,0.1666666666388888,0.0883277216490226,0.0,7.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 110014 b,cube17_cluster5,0.0027033320063173,0.0024825509172265742,0.1666666666388888,0.0883277216490226,0.0,7.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 110014 b,cube17_cluster5,0.0027033320063173,0.0024825509172265742,0.1666666666388888,0.0883277216490226,0.0,7.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 217107 c,cube26_cluster2,0.0023043105024573,0.0023043105024573,0.1666666666388888,0.08965615230495609,0.0,25.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 217107 c,cube33_cluster1,0.0023043105024573,0.0023043105024573,0.1666666666388888,0.08965615230495609,0.0,25.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 173416 b,cube17_cluster9,0.0022554949294339,0.002136435461741008,0.0909090909008264,0.032922274854992224,0.0,8.0,El soporte de nodo o de red es pequeno.
+small_node_support,HD 154345 b,cube26_cluster13,0.0021653811721827,0.0017674442367456072,0.0909090909008264,0.04820753958357548,0.0,4.0,El soporte de nodo o de red es pequeno.
+small_node_support,GJ 3138 d,cube19_cluster2,0.0018549748418486,0.0018549748418486,0.0909090909008264,0.04133166232550267,0.0,27.0,El soporte de nodo o de red es pequeno.
+small_node_support,HD 11506 d,cube32_cluster3,0.0017116937804376,0.0015187830407629639,0.2499999999375,0.2333333332783333,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 11506 d,cube32_cluster3,0.0017116937804376,0.0015187830407629639,0.2499999999375,0.2333333332783333,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 217107 c,cube32_cluster1,0.0016921101079596,0.0016921101079596,0.1666666666388888,0.0884967320151978,0.0,33.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 217107 c,cube25_cluster2,0.0016921101079596,0.0016921101079596,0.1666666666388888,0.0884967320151978,0.0,33.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HIP 109384 b,cube19_cluster7,0.001676276790206,0.0016332662919920787,0.0909090909008264,0.031650526734474174,0.0,9.0,El soporte de nodo o de red es pequeno.
+small_node_support,HD 206255 b,cube11_cluster0,0.0016757461199938,0.0013677905119339234,0.0909090909008264,0.034272684499254906,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 206255 b,cube11_cluster0,0.0016757461199938,0.0013677905119339234,0.0909090909008264,0.034272684499254906,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 206255 b,cube17_cluster4,0.0016757461199938,0.0013677905119339234,0.0909090909008264,0.034272684499254906,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 206255 b,cube17_cluster4,0.0016757461199938,0.0013677905119339234,0.0909090909008264,0.034272684499254906,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 37605 c,cube26_cluster8,0.0015082572004952,0.0014695578078847105,0.0909090909008264,0.03862640744072874,0.0,9.0,El soporte de nodo o de red es pequeno.
+small_node_support,14 And b,cube17_cluster1,0.0014964206920952,0.0012214201185302357,0.0909090909008264,0.0571414629347222,0.0,4.0,El soporte de nodo o de red es pequeno.
+small_node_support,HD 72659 b,cube26_cluster5,0.0013695213037151,0.0011689595522757442,0.0909090909008264,0.03430996120776708,0.0,5.0,El soporte de nodo o de red es pequeno.
+small_node_support,HD 20781 e,cube19_cluster11,0.0013128283130639,0.001015946997130226,0.0909090909008264,0.038642720104389225,0.0,3.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 20781 e,cube19_cluster11,0.0013128283130639,0.001015946997130226,0.0909090909008264,0.038642720104389225,0.0,3.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 20781 e,cube13_cluster7,0.0013128283130639,0.001015946997130226,0.0909090909008264,0.038642720104389225,0.0,3.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 20781 e,cube13_cluster7,0.0013128283130639,0.001015946997130226,0.0909090909008264,0.038642720104389225,0.0,3.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,TOI-375 c,cube11_cluster2,0.0012026066293328,0.0010264889660169599,0.0909090909008264,0.03285926100645495,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,TOI-375 c,cube11_cluster2,0.0012026066293328,0.0010264889660169599,0.0909090909008264,0.03285926100645495,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,TOI-375 c,cube17_cluster7,0.0012026066293328,0.0010264889660169599,0.0909090909008264,0.03285926100645495,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,TOI-375 c,cube17_cluster7,0.0012026066293328,0.0010264889660169599,0.0909090909008264,0.03285926100645495,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,Kepler-1350 c,cube7_cluster4,0.0009770971104006,0.00016284951840009999,0.0909090909008264,-0.008113518256369953,0.0,19.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,Kepler-1350 c,cube2_cluster0,0.0009770971104006,0.00016284951840009999,0.0909090909008264,-0.008113518256369953,0.0,19.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,Kepler-413 b,cube11_cluster4,0.0008823669024852,0.00012003539427044864,0.0909090909008264,0.029428795896105822,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Kepler-413 b,cube11_cluster4,0.0008823669024852,0.00012003539427044864,0.0909090909008264,0.029428795896105822,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,Kepler-413 b,cube17_cluster12,0.0008823669024852,0.00012003539427044864,0.0909090909008264,0.029428795896105822,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Kepler-413 b,cube17_cluster12,0.0008823669024852,0.00012003539427044864,0.0909090909008264,0.029428795896105822,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,GJ 3998 d,cube13_cluster8,0.0008553029364333,0.000232707335024198,0.0909090909008264,0.031661792781104,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 20794 d,cube13_cluster5,0.0007739418592363,0.0007739418592363,0.0909090909008264,0.042166456225923854,0.0,19.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 20794 d,cube19_cluster9,0.0007739418592363,0.0007739418592363,0.0909090909008264,0.042166456225923854,0.0,19.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,K2-104 b,cube2_cluster1,0.0007487781993325,0.0007092528904217214,0.0909090909008264,0.03096883018109164,0.0,8.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 216520 c,cube19_cluster10,0.0007309911586636,0.0007309911586636,0.0909090909008264,0.03881131759294965,0.0,19.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 216520 c,cube13_cluster6,0.0007309911586636,0.0007309911586636,0.0909090909008264,0.03881131759294965,0.0,19.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 156098 b,cube11_cluster3,0.0005863396577018,9.772327628363333e-05,0.0909090909008264,0.010225080217227706,0.0,38.0,El soporte de nodo o de red es pequeno.
+small_node_support,BD-06 1339 c,cube13_cluster2,0.0005408483067593,0.0004798938018699749,0.0909090909008264,0.03313641496302729,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,BD-06 1339 c,cube13_cluster2,0.0005408483067593,0.0004798938018699749,0.0909090909008264,0.03313641496302729,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,BD-06 1339 c,cube19_cluster1,0.0005408483067593,0.0004798938018699749,0.0909090909008264,0.03313641496302729,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,BD-06 1339 c,cube19_cluster1,0.0005408483067593,0.0004798938018699749,0.0909090909008264,0.03313641496302729,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,TOI-5110 b,cube11_cluster5,0.0002539351976985,3.4544826521748456e-05,0.0909090909008264,-0.31659787575376647,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,55 Cnc e,cube1_cluster0,0.0001747538717635,0.0001747538717635,0.0909090909008264,0.039926125729160995,0.0,110.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,55 Cnc e,cube6_cluster1,0.0001747538717635,0.0001747538717635,0.0909090909008264,0.039926125729160995,0.0,110.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,Kepler-1323 b,cube5_cluster1,0.0001273870982902,2.1231183048366667e-05,0.0909090909008264,0.014758073579033993,0.0,12.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,Kepler-1323 b,cube0_cluster1,0.0001273870982902,2.1231183048366667e-05,0.0909090909008264,0.014758073579033993,0.0,12.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,Kepler-732 c,cube2_cluster3,0.0001202549507132,9.815542977310019e-05,0.1428571428367347,0.08313041124577233,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Kepler-732 c,cube2_cluster3,0.0001202549507132,9.815542977310019e-05,0.1428571428367347,0.08313041124577233,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,Kepler-732 c,cube7_cluster6,0.0001202549507132,9.815542977310019e-05,0.1428571428367347,0.08313041124577233,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Kepler-732 c,cube7_cluster6,0.0001202549507132,9.815542977310019e-05,0.1428571428367347,0.08313041124577233,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 80653 b,cube5_cluster2,9.884223501608086e-05,1.40611874719655e-05,0.0909090909008264,0.011339355086872603,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 80653 b,cube5_cluster2,9.884223501608086e-05,1.40611874719655e-05,0.0909090909008264,0.011339355086872603,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 80653 b,cube0_cluster2,9.884223501608086e-05,1.40611874719655e-05,0.0909090909008264,0.011339355086872603,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 80653 b,cube0_cluster2,9.884223501608086e-05,1.40611874719655e-05,0.0909090909008264,0.011339355086872603,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,Kepler-780 b,cube5_cluster3,9.009095503765688e-05,1.4222562907207334e-05,0.0909090909008264,0.015233415230892347,0.0,8.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Kepler-780 b,cube5_cluster3,9.009095503765688e-05,1.4222562907207334e-05,0.0909090909008264,0.015233415230892347,0.0,8.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,Kepler-780 b,cube0_cluster3,9.009095503765688e-05,1.4222562907207334e-05,0.0909090909008264,0.015233415230892347,0.0,8.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Kepler-780 b,cube0_cluster3,9.009095503765688e-05,1.4222562907207334e-05,0.0909090909008264,0.015233415230892347,0.0,8.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 95872 b,cube25_cluster5,0.0,0.0,0.0,-1.066666666457037,0.0,22.0,El soporte de nodo o de red es pequeno.
+small_node_support,GJ 3293 b,cube12_cluster1,0.0,0.0,0.0,-10.843722366373116,0.0,4.0,El soporte de nodo o de red es pequeno.
+small_node_support,Kepler-732 c,cube1_cluster5,0.0,0.0,0.0,-1.1111111106851852,0.0,3.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Kepler-732 c,cube1_cluster5,0.0,0.0,0.0,-1.1111111106851852,0.0,3.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,G 264-012 b,cube2_cluster2,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,7.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,G 264-012 b,cube2_cluster2,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,7.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,TOI-1807 b,cube1_cluster2,0.0,0.0,0.0,-0.06666666666,0.0,17.0,El soporte de nodo o de red es pequeno.
+small_node_support,K2-147 b,cube1_cluster4,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,K2-147 b,cube1_cluster4,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,GJ 3988 b,cube8_cluster2,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,GJ 3988 b,cube8_cluster2,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,K2-147 b,cube6_cluster3,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,K2-147 b,cube6_cluster3,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,Kepler-828 b,cube6_cluster2,0.0,0.0,0.19999999996,0.13863636361506715,0.0,12.0,El soporte de nodo o de red es pequeno.
+small_node_support,Kepler-732 c,cube6_cluster4,0.0,0.0,0.0,-1.1111111106851852,0.0,3.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Kepler-732 c,cube6_cluster4,0.0,0.0,0.0,-1.1111111106851852,0.0,3.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,GJ 1265 b,cube7_cluster1,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,GJ 1265 b,cube7_cluster1,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,Wolf 1061 c,cube7_cluster2,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Wolf 1061 c,cube7_cluster2,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 11977 b,cube17_cluster3,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 11977 b,cube17_cluster3,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,GJ 667 C b,cube13_cluster9,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,GJ 667 C b,cube13_cluster9,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,Wolf 1061 c,cube13_cluster4,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,Wolf 1061 c,cube13_cluster4,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,TOI-1680 b,cube8_cluster1,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,TOI-1680 b,cube8_cluster1,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,TOI-1680 b,cube7_cluster8,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,TOI-1680 b,cube7_cluster8,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,GJ 667 C b,cube7_cluster7,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,GJ 667 C b,cube7_cluster7,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,G 264-012 b,cube7_cluster5,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,7.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,G 264-012 b,cube7_cluster5,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,7.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,GJ 3988 b,cube7_cluster9,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,GJ 3988 b,cube7_cluster9,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,GJ 1265 b,cube8_cluster0,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,6.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,GJ 1265 b,cube8_cluster0,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,6.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 111591 b,cube17_cluster8,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 111591 b,cube17_cluster8,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 86950 b,cube17_cluster11,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 86950 b,cube17_cluster11,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 11977 b,cube24_cluster2,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 11977 b,cube24_cluster2,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,TYC 2187-512-1 b,cube19_cluster6,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,TYC 2187-512-1 b,cube19_cluster6,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 86950 b,cube18_cluster3,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 86950 b,cube18_cluster3,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 11977 b,cube18_cluster1,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 11977 b,cube18_cluster1,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 111591 b,cube18_cluster2,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 111591 b,cube18_cluster2,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 62549 b,cube25_cluster1,0.0,0.0,0.2499999999375,0.18055555552025462,0.0,10.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 86950 b,cube24_cluster6,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 86950 b,cube24_cluster6,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 111591 b,cube24_cluster5,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 111591 b,cube24_cluster5,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 142 c,cube25_cluster6,0.0,0.0,0.2499999999375,0.19761904757807824,0.0,9.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 142 c,cube25_cluster6,0.0,0.0,0.2499999999375,0.19761904757807824,0.0,9.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 86950 b,cube25_cluster8,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 86950 b,cube25_cluster8,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 111591 b,cube25_cluster7,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 111591 b,cube25_cluster7,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 11977 b,cube25_cluster3,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 11977 b,cube25_cluster3,0.0,0.0,0.3333333332222222,0.277777777699074,0.0,5.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 62549 b,cube26_cluster1,0.0,0.0,0.2499999999375,0.18055555552025462,0.0,10.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,TYC 2187-512-1 b,cube26_cluster9,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,TYC 2187-512-1 b,cube26_cluster9,0.0,0.0,0.3333333332222222,0.3055555554606481,0.0,4.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 62549 b,cube32_cluster0,0.0,0.0,0.2499999999375,0.18055555552025462,0.0,10.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 11112 b,cube32_cluster2,0.0,0.0,0.2499999999375,0.166666666625,0.0,7.0,El soporte de nodo o de red es pequeno.
+small_node_support,HD 142 c,cube32_cluster4,0.0,0.0,0.2499999999375,0.19761904757807824,0.0,9.0,El soporte de nodo o de red es pequeno.
+repeated_anchor_needs_context,HD 142 c,cube32_cluster4,0.0,0.0,0.2499999999375,0.19761904757807824,0.0,9.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+repeated_anchor_needs_context,HD 62549 b,cube33_cluster0,0.0,0.0,0.2499999999375,0.18055555552025462,0.0,10.0,El ancla aparece en varios nodos y necesita contexto de solapamiento Mapper.
+small_node_support,HD 155918 c,cube33_cluster2,0.0,0.0,0.2499999999375,0.2333333332783333,0.0,6.0,El soporte de nodo o de red es pequeno.
+possible_units_issue,TOI-2260 b,cube1_cluster3,,,,,,,La formula del deficit no coincide con las columnas originales y se recomputo.
+possible_units_issue,K2-146 b,cube7_cluster3,,,,,,,La formula del deficit no coincide con las columnas originales y se recomputo.
+possible_units_issue,HD 238914 b,cube25_cluster4,,,,,,,La formula del deficit no coincide con las columnas originales y se recomputo.
+possible_units_issue,HD 151450 c,cube32_cluster5,,,,,,,La formula del deficit no coincide con las columnas originales y se recomputo.

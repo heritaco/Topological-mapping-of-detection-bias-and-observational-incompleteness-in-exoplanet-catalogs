@@ -1,0 +1,94 @@
+config_id,component_id,n_nodes,n_members,mean_shadow_score,max_shadow_score,dominant_method,mean_imputation_fraction,fraction_high_confidence_shadow,interpretation_text
+joint_no_density_pca2_cubes10_overlap0p35,0,47,13613,0.06093460277425588,0.218500087673489,Transit,0.14548738181695736,0.02127659574468085,Componente con regiones candidatas a incompletitud observacional.
+joint_no_density_pca2_cubes10_overlap0p35,2,2,6,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_no_density_pca2_cubes10_overlap0p35,4,2,8,0.0,0.0,Radial Velocity,0.25,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_no_density_pca2_cubes10_overlap0p35,6,4,20,0.0,0.0,Imaging,0.3333333333333333,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_no_density_pca2_cubes10_overlap0p35,7,2,14,0.0,0.0,Imaging,0.5,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_no_density_pca2_cubes10_overlap0p35,8,2,8,0.0,0.0,Imaging,0.5,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_no_density_pca2_cubes10_overlap0p35,1,1,4,,,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_no_density_pca2_cubes10_overlap0p35,3,1,3,,,Radial Velocity,0.0555555555555555,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_no_density_pca2_cubes10_overlap0p35,5,1,4,,,Radial Velocity,0.1666666666666666,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_pca2_cubes10_overlap0p35,1,40,13684,0.0711228211827418,0.18335380209356872,Transit,0.1613223182810605,0.025,Componente con regiones candidatas a incompletitud observacional.
+joint_pca2_cubes10_overlap0p35,0,2,8,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_pca2_cubes10_overlap0p35,2,2,8,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_pca2_cubes10_overlap0p35,3,4,28,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_pca2_cubes10_overlap0p35,4,2,12,0.0,0.0,Transit,0.0238095238095238,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_pca2_cubes10_overlap0p35,5,4,26,0.0,0.0,Imaging,0.2857142857142856,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+joint_pca2_cubes10_overlap0p35,6,2,13,0.0,0.0,Imaging,0.4285714285714285,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,0,62,10663,0.12740141841300243,0.27404943575735147,Radial Velocity,0.005116338290594414,0.03225806451612903,Componente con regiones candidatas a incompletitud observacional.
+orbital_pca2_cubes10_overlap0p35,19,2,30,0.07756840620111541,0.0901588499617182,Radial Velocity,0.04545454545454545,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,22,2,11,0.061416505376508126,0.0736729627932849,Radial Velocity,0.04166666666666665,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,17,4,116,0.03151528541198417,0.03648972912431027,Radial Velocity,0.0403030303030303,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,1,12,284,0.003520685083046012,0.005455071950733867,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,2,2,29,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,4,2,8,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,5,2,14,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,6,2,12,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,7,2,12,0.0,0.0,Radial Velocity,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,9,2,8,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,10,2,8,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,11,2,8,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,12,4,20,0.0,0.0,Radial Velocity,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,13,4,20,0.0,0.0,Radial Velocity,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,14,4,16,0.0,0.0,Radial Velocity,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,15,2,8,0.0,0.0,Radial Velocity,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,16,4,40,0.0,0.0,Radial Velocity,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,20,2,18,0.0,0.0,Radial Velocity,0.0555555555555555,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,21,2,13,0.0,0.0,Radial Velocity,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,3,1,5,,,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,8,1,4,,,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,18,1,4,,,Microlensing,0.25,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+orbital_pca2_cubes10_overlap0p35,23,1,4,,,Imaging,0.375,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,1,33,13189,0.0919081725734684,0.5523823966161706,Transit,0.03474050724624665,0.09090909090909091,Componente con regiones candidatas a incompletitud observacional.
+phys_min_pca2_cubes10_overlap0p35,0,4,20,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,2,4,16,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,4,2,10,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,5,4,24,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,7,4,30,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,11,3,17,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,12,2,10,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,13,4,24,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,3,1,4,,,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,6,1,3,,,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,8,1,7,,,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,9,1,5,,,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,10,1,5,,,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+phys_min_pca2_cubes10_overlap0p35,14,1,4,,,Imaging,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,4,35,11046,0.04408682451484379,0.18984617011849447,Radial Velocity,0.48964856099106757,0.17142857142857143,Componente con regiones candidatas a incompletitud observacional.
+thermal_pca2_cubes10_overlap0p35,5,4,30,0.013514452625143995,0.020258842224475108,Radial Velocity,0.7916666666666667,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,2,4,38,0.0006791415520027669,0.0013582831040055338,Radial Velocity,0.9666666666666666,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,0,2,74,0.00038734699686163745,0.0004262004016599941,Radial Velocity,0.9724702380952381,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,3,2,20,0.0,0.0,Radial Velocity,0.95,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,6,4,32,0.0,0.0,Radial Velocity,0.875,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,7,2,46,0.0,0.0,Radial Velocity,0.8913043478260869,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,8,2,12,0.0,0.0,Radial Velocity,0.9166666666666666,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,9,4,12,0.0,0.0,Radial Velocity,0.8333333333333334,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,10,4,20,0.0,0.0,Radial Velocity,0.9,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,11,2,10,0.0,0.0,Radial Velocity,0.7916666666666667,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,12,2,9,0.0,0.0,Imaging,1.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,15,2,12,0.0,0.0,Microlensing,1.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,18,2,8,0.0,0.0,Radial Velocity,0.5,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,19,2,10,0.0,0.0,Radial Velocity,0.6,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,20,4,16,0.0,0.0,Radial Velocity,1.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,21,2,28,0.0,0.0,Radial Velocity,1.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,22,2,8,0.0,0.0,Radial Velocity,1.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,23,2,6,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,24,2,14,0.0,0.0,Radial Velocity,0.5714285714285714,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,25,2,10,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,26,4,16,0.0,0.0,Transit,0.25,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,27,2,12,0.0,0.0,Transit,0.5,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,28,2,8,0.0,0.0,Radial Velocity,0.75,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,29,2,8,0.0,0.0,Radial Velocity,0.75,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,30,4,32,0.0,0.0,Transit,0.3125,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,31,2,8,0.0,0.0,Transit,0.75,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,32,4,16,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,33,2,10,0.0,0.0,Transit,0.1,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,34,2,8,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,35,2,11,0.0,0.0,Transit,0.0982142857142857,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,36,2,14,0.0,0.0,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,1,1,10,,,Imaging,0.95,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,13,1,4,,,Radial Velocity,0.75,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,14,1,5,,,Radial Velocity,1.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,16,1,4,,,Radial Velocity,0.625,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,17,1,4,,,Radial Velocity,0.625,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.
+thermal_pca2_cubes10_overlap0p35,37,1,4,,,Transit,0.0,0.0,Componente sin nodos de alta sombra segun cortes heuristicos.

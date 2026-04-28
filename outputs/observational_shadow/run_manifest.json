@@ -1,0 +1,127 @@
+{
+  "executed_at_utc": "2026-04-28T05:19:01.649346+00:00",
+  "commit_hash": "6f5d6589ebf0dbfe45caa796c63c61a6b4810adc",
+  "configuration": {
+    "mapper_outputs_dir": "outputs/mapper",
+    "audit_outputs_dir": "outputs/observational_bias_audit",
+    "shadow_outputs_dir": "outputs/observational_shadow",
+    "latex_dir": "latex/observational_shadow",
+    "physical_csv_path": null,
+    "primary_config_id": "orbital_pca2_cubes10_overlap0p35",
+    "comparison_config_ids": [
+      "phys_min_pca2_cubes10_overlap0p35",
+      "joint_no_density_pca2_cubes10_overlap0p35",
+      "joint_pca2_cubes10_overlap0p35",
+      "thermal_pca2_cubes10_overlap0p35"
+    ],
+    "physical_variables": [
+      "pl_rade",
+      "pl_bmasse",
+      "pl_dens",
+      "pl_orbper",
+      "pl_orbsmax",
+      "pl_insol",
+      "pl_eqt"
+    ],
+    "epsilon": 1e-09,
+    "shadow_percentile": 90.0,
+    "imputation_threshold": 0.2,
+    "min_high_confidence_members": 10,
+    "top_n_candidates": 25,
+    "peripheral_degree_threshold": 1,
+    "peripheral_component_max_nodes": 3,
+    "seed": 42
+  },
+  "input_paths": {
+    "orbital_pca2_cubes10_overlap0p35_physical_catalog": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "orbital_pca2_cubes10_overlap0p35_membership": "C:\\Users\\175199\\Downloads\\planetas\\outputs\\observational_bias_audit\\metadata\\membership_with_observational_metadata_orbital_pca2_cubes10_overlap0p35.csv",
+    "phys_min_pca2_cubes10_overlap0p35_physical_catalog": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "phys_min_pca2_cubes10_overlap0p35_membership": "C:\\Users\\175199\\Downloads\\planetas\\outputs\\observational_bias_audit\\metadata\\membership_with_observational_metadata_phys_min_pca2_cubes10_overlap0p35.csv",
+    "joint_no_density_pca2_cubes10_overlap0p35_physical_catalog": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "joint_no_density_pca2_cubes10_overlap0p35_membership": "C:\\Users\\175199\\Downloads\\planetas\\outputs\\observational_bias_audit\\metadata\\membership_with_observational_metadata_joint_no_density_pca2_cubes10_overlap0p35.csv",
+    "joint_pca2_cubes10_overlap0p35_physical_catalog": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "joint_pca2_cubes10_overlap0p35_membership": "C:\\Users\\175199\\Downloads\\planetas\\outputs\\observational_bias_audit\\metadata\\membership_with_observational_metadata_joint_pca2_cubes10_overlap0p35.csv",
+    "thermal_pca2_cubes10_overlap0p35_physical_catalog": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "thermal_pca2_cubes10_overlap0p35_membership": "C:\\Users\\175199\\Downloads\\planetas\\outputs\\observational_bias_audit\\metadata\\membership_with_observational_metadata_thermal_pca2_cubes10_overlap0p35.csv"
+  },
+  "output_paths": {
+    "root": "outputs/observational_shadow",
+    "figures": "outputs/observational_shadow/figures",
+    "tables": "outputs/observational_shadow/tables",
+    "latex": "latex/observational_shadow/main.tex"
+  },
+  "mapper_configurations_analyzed": [
+    "orbital_pca2_cubes10_overlap0p35",
+    "phys_min_pca2_cubes10_overlap0p35",
+    "joint_no_density_pca2_cubes10_overlap0p35",
+    "joint_pca2_cubes10_overlap0p35",
+    "thermal_pca2_cubes10_overlap0p35"
+  ],
+  "variables_used": {
+    "physical_variables": [
+      "pl_rade",
+      "pl_bmasse",
+      "pl_dens",
+      "pl_orbper",
+      "pl_orbsmax",
+      "pl_insol",
+      "pl_eqt"
+    ],
+    "available_by_config": {
+      "orbital_pca2_cubes10_overlap0p35": [
+        "pl_rade",
+        "pl_bmasse",
+        "pl_dens",
+        "pl_orbper",
+        "pl_orbsmax",
+        "pl_insol",
+        "pl_eqt"
+      ],
+      "phys_min_pca2_cubes10_overlap0p35": [
+        "pl_rade",
+        "pl_bmasse",
+        "pl_dens",
+        "pl_orbper",
+        "pl_orbsmax",
+        "pl_insol",
+        "pl_eqt"
+      ],
+      "joint_no_density_pca2_cubes10_overlap0p35": [
+        "pl_rade",
+        "pl_bmasse",
+        "pl_dens",
+        "pl_orbper",
+        "pl_orbsmax",
+        "pl_insol",
+        "pl_eqt"
+      ],
+      "joint_pca2_cubes10_overlap0p35": [
+        "pl_rade",
+        "pl_bmasse",
+        "pl_dens",
+        "pl_orbper",
+        "pl_orbsmax",
+        "pl_insol",
+        "pl_eqt"
+      ],
+      "thermal_pca2_cubes10_overlap0p35": [
+        "pl_rade",
+        "pl_bmasse",
+        "pl_dens",
+        "pl_orbper",
+        "pl_orbsmax",
+        "pl_insol",
+        "pl_eqt"
+      ]
+    }
+  },
+  "shadow_parameters": {
+    "epsilon": 1e-09,
+    "shadow_percentile": 90.0,
+    "imputation_threshold": 0.2,
+    "min_high_confidence_members": 10
+  },
+  "n_nodes_analyzed": 429,
+  "n_high_confidence_shadow": 13,
+  "warnings": []
+}

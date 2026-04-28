@@ -1,0 +1,5 @@
+top_method,n_nodes,mean_shadow_score,median_shadow_score,n_high_confidence_shadow,mean_imputation_fraction,most_common_expected_incompleteness_direction
+Radial Velocity,182,0.06130657574448726,0.026540841699658084,2,0.3829535676731311,masas menores y senales radiales mas debiles
+Microlensing,7,0.052166204061382525,0.04970311910741727,0,0.48588946856938264,ventana geometrica de deteccion distinta
+Transit,221,0.03577645930827279,0.017932606469589184,11,0.05094999354680027,menor radio y periodos mas largos
+Imaging,19,0.0,0.0,0,0.45570175438596483,"objetos menos masivos, menos luminosos o menos jovenes en separaciones menos favorables"

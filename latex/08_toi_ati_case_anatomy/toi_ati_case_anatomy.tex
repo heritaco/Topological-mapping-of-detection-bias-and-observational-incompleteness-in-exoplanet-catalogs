@@ -1,438 +1,106 @@
 \documentclass[11pt]{article}
-
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
 \usepackage[spanish,es-nodecimaldot]{babel}
 \usepackage[a4paper,margin=2.5cm]{geometry}
-\usepackage{amsmath,amssymb,booktabs,graphicx,float,hyperref,array,longtable,enumitem,xcolor}
-% Microtype se omite deliberadamente: en algunas instalaciones MiKTeX/pdfTeX produce
-% "auto expansion is only possible with scalable fonts" al activar expansion.
-% Si se desea usar microtype, activar solo protrusion:
-% \usepackage[protrusion=true,expansion=false]{microtype}
-
-\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
-\setlist[itemize]{topsep=0.25em,itemsep=0.15em}
-\setlist[enumerate]{topsep=0.25em,itemsep=0.15em}
-
+\usepackage{amsmath,amssymb,booktabs,graphicx,float,hyperref}
 \newcommand{\figroot}{../../outputs/toi_ati_case_anatomy/figures_pdf}
 \newcommand{\safeincludegraphics}[2][]{%
-  \IfFileExists{#2}{\includegraphics[#1]{#2}}{%
-  \fbox{\begin{minipage}{0.86\textwidth}\centering
-  \vspace{1em}
-  Figura no encontrada en la ruta esperada:\\[0.3em]
-  \texttt{\detokenize{#2}}\\[0.3em]
-  \small Copiar las figuras PDF generadas por el pipeline o ajustar \texttt{\string\figroot}.
-  \vspace{1em}
-  \end{minipage}}}%
+  \IfFileExists{#2}{\includegraphics[#1]{#2}}{\fbox{\begin{minipage}{0.86\textwidth}\centering Figura no encontrada: \texttt{#2}\end{minipage}}}%
 }
-
-\title{Anatomía de casos TOI/ATI: regiones Mapper y planetas ancla}
+\title{Anatomia de casos TOI/ATI: regiones Mapper y planetas ancla}
 \author{Proyecto Mapper/TDA de exoplanetas}
 \date{}
-
 \begin{document}
 \maketitle
 
-\begin{abstract}
-Este reporte interpreta los rankings generados por el módulo \texttt{toi\_ati\_case\_anatomy}. La finalidad no es introducir un índice nuevo ni afirmar descubrimientos de exoplanetas, sino abrir la anatomía de los índices ya calculados: \(\mathrm{TOI}\) para regiones Mapper y \(\mathrm{ATI}\) para planetas ancla. La pregunta central es por qué ciertas regiones y anclas fueron priorizadas. La respuesta se obtiene descomponiendo cada ranking en factores físicos, topológicos, observacionales y de imputación. En particular, se analiza qué parte del resultado viene de la sombra observacional, qué parte viene de la baja imputación en \(R^3\), qué parte viene de la continuidad física con el vecindario, qué parte viene del soporte de red y qué parte viene del déficit local de vecinos compatibles.
-\end{abstract}
+\section{Introduccion}
+Este reporte abre el ranking global TOI/ATI para explicar por que ciertas regiones Mapper y planetas ancla fueron priorizados. El objetivo no es afirmar descubrimientos de planetas, sino auditar la anatomia de los indices.
 
-\section{Glosario y notación}
+\section{Que problema resuelve la anatomia TOI/ATI}
+La salida principal es una anatomia de los casos top: que factor empuja cada indice, que factor lo limita y que tan estable parece el deficit relativo al cambiar de radio.
 
-\begin{description}[leftmargin=3.4cm,style=nextline]
-  \item[Mapper] Grafo construido a partir de cubiertas del espacio de lentes y clusters locales. Cada nodo representa una comunidad local de planetas en el espacio de variables usado por el pipeline.
-  \item[Nodo Mapper \(v\)] Comunidad topológica con un conjunto de miembros \(S_v\). Un planeta puede aparecer en más de un nodo por el solapamiento de la cubierta Mapper.
-  \item[Planeta ancla \(p^*\)] Planeta representativo elegido dentro de un nodo para estudiar déficit local de vecinos compatibles.
-  \item[Espacio \(R^3\)] Espacio físico-orbital definido por \(x_i=(\log_{10}M_{p,i},\log_{10}P_i,\log_{10}a_i)\), donde \(M_p\) es masa planetaria, \(P\) periodo orbital y \(a\) semieje mayor.
-  \item[Sombra observacional] Medida de frontera observacional: un nodo con alta pureza por método, baja entropía, baja imputación y contraste frente a vecinos.
-  \item[TOI] \emph{Topological Observational Incompleteness}. Prioridad regional de un nodo Mapper como candidato a incompletitud observacional topológica.
-  \item[ATI] \emph{Anchor Topological Incompleteness}. Prioridad local de un planeta ancla como representante de una vecindad potencialmente submuestreada.
-  \item[Déficit relativo] Diferencia normalizada entre vecinos esperados y observados alrededor de un ancla. No es un conteo absoluto de planetas reales ausentes.
-\end{description}
+\section{Datos usados}
+El modulo consume tablas generadas por \texttt{topological\_incompleteness\_index} y, cuando existen, tablas contextuales de sombra observacional y estudios locales.
 
-\section{Problema que resuelve la anatomía TOI/ATI}
-
-El pipeline anterior ya produjo rankings de regiones y planetas ancla. Sin embargo, un ranking por sí solo no explica el mecanismo. Saber que un nodo tiene alto \(\mathrm{TOI}\) o que un planeta tiene alto \(\mathrm{ATI}\) no basta para una interpretación científica, porque un valor alto puede venir de razones distintas: una frontera observacional fuerte, baja imputación, buen soporte de red, continuidad física con sus vecinos o un déficit local elevado.
-
-Este reporte resuelve ese problema abriendo los factores internos de los índices. La pregunta no es solamente:
+\section{Descomposicion de TOI}
 \[
-\text{¿qué regiones ganan?}
+\mathrm{TOI}(v)=\mathrm{Shadow}(v)(1-I_{R^3}(v))C_{\mathrm{phys}}(v)S_{\mathrm{net}}(v).
 \]
-sino:
+TOI debe leerse como una prioridad regional que combina frontera observacional, baja imputacion, continuidad fisica con vecinos y soporte de red.
+
+\section{Descomposicion de ATI}
 \[
-\text{¿por qué ganan y qué tan defendible es su interpretación?}
+\mathrm{ATI}(p^*)=\mathrm{TOI}(v)\Delta_{\mathrm{rel,best}}(p^*)(1-I_{R^3}(p^*))A(p^*).
 \]
+ATI debe leerse como una prioridad local de inspeccion. El termino $\Delta_{\mathrm{rel,best}}$ debe revisarse junto con los radios individuales.
 
-La lectura correcta debe mantenerse prudente. Los índices no prueban que existan planetas no observados. Señalan regiones donde el catálogo parece localmente incompleto bajo una referencia topológica y físico-orbital.
-
-\section{Datos usados y escala de análisis}
-
-El módulo consume las tablas generadas por \texttt{topological\_incompleteness\_index}, en particular las tablas de regiones \(\mathrm{TOI}\), planetas ancla \(\mathrm{ATI}\), déficit por radio y geometría en \(R^3\). Cuando existen, también usa tablas contextuales de sombra observacional y estudios locales.
-
-La escala de análisis es doble:
-\begin{enumerate}
-  \item \textbf{Región Mapper}: el nodo \(v\) se evalúa como una comunidad topológica.
-  \item \textbf{Planeta ancla}: un planeta \(p^*\in S_v\) se evalúa como representante local del nodo.
-\end{enumerate}
-
-Esta distinción es importante. Un nodo puede ser muy interesante como región, pero el ancla elegida puede no mostrar un déficit local fuerte. Inversamente, un planeta puede presentar déficit local, pero si su nodo tiene baja confianza o alta imputación, la interpretación se debilita.
-
-\section{Definición del espacio físico-orbital \texorpdfstring{\(R^3\)}{R3}}
-
-El análisis se formula en:
-\[
-  x_i=(\log_{10}M_{p,i},\log_{10}P_i,\log_{10}a_i)\in\mathbb{R}^3.
-\]
-
-Este espacio se eligió porque resume tres coordenadas directamente relevantes para comunidades dominadas por velocidad radial: masa planetaria, escala temporal orbital y escala espacial orbital. La lectura física es la siguiente:
-\begin{itemize}
-  \item una región con masas altas puede estar favorecida por velocidad radial porque planetas más masivos inducen señales dinámicas más fuertes;
-  \item una región con periodos y semiejes comparables permite preguntar si el catálogo está completo localmente o si falta muestreo hacia masas menores;
-  \item el uso de logaritmos evita que gigantes extremos dominen completamente la geometría euclidiana.
-\end{itemize}
-
-Aun así, \(R^3\) es una simplificación. No incluye masa estelar, inclinación, excentricidad, ruido instrumental, cadencia observacional ni función de completitud de cada método.
-
-\section{Índice regional TOI}
-
-El índice regional se define como:
-\[
-\mathrm{TOI}(v)=
-\mathrm{Shadow}(v)
-\left(1-I_{R^3}(v)\right)
-C_{\mathrm{phys}}(v)
-S_{\mathrm{net}}(v).
-\]
-
-Cada factor tiene una función específica:
-\begin{itemize}
-  \item \(\mathrm{Shadow}(v)\): mide si el nodo parece una frontera observacional frente a su vecindario.
-  \item \(1-I_{R^3}(v)\): penaliza nodos cuya interpretación depende de imputación en masa, periodo o semieje mayor.
-  \item \(C_{\mathrm{phys}}(v)\): favorece nodos físicamente continuos con sus vecinos. Esto evita confundir una frontera física real con incompletitud observacional.
-  \item \(S_{\mathrm{net}}(v)\): favorece nodos con soporte de red suficiente, penalizando comunidades demasiado pequeñas o aisladas.
-\end{itemize}
-
-La interpretación formal es:
-\[
-\mathrm{TOI}(v)\text{ alto}
-\Rightarrow
-\text{región Mapper candidata a incompletitud observacional topológica.}
-\]
-
-Pero la interpretación científica debe ser:
-\begin{quote}
-Un nodo con TOI alto es una región prioritaria para inspección, no una demostración de planetas ausentes.
-\end{quote}
-
-\section{Índice de planeta ancla ATI}
-
-El índice de ancla se define como:
-\[
-\mathrm{ATI}(p^*)=
-\mathrm{TOI}(v)
-\Delta_{\mathrm{rel,best}}(p^*)
-\left(1-I_{R^3}(p^*)\right)
-A(p^*).
-\]
-
-Donde \(p^*\in S_v\). Sus factores son:
-\begin{itemize}
-  \item \(\mathrm{TOI}(v)\): prioridad de la región donde vive el ancla.
-  \item \(\Delta_{\mathrm{rel,best}}(p^*)\): mayor déficit relativo positivo observado entre las escalas locales usadas.
-  \item \(1-I_{R^3}(p^*)\): confianza específica del planeta ancla en las variables de \(R^3\).
-  \item \(A(p^*)\): representatividad del ancla dentro de su nodo, usualmente mayor si el planeta está cerca del centroide o medoide local.
-\end{itemize}
-
-La advertencia principal es que \(\Delta_{\mathrm{rel,best}}\) selecciona la escala que más favorece la lectura de déficit. Por eso debe reportarse junto con los valores por radio. Usar solo el ``best'' puede inflar la narrativa.
-
-\section{Déficit relativo de vecinos}
-
-Para un planeta ancla \(p^*\), se define una bola local:
-\[
-B_r(p^*)=\{q:\lVert x(q)-x(p^*)\rVert\le r\}.
-\]
-
-El número observado de vecinos compatibles es:
-\[
-N_{\mathrm{obs}}(p^*,r)=|B_r(p^*)|,
-\]
-excluyendo al propio ancla. Luego se estima una referencia local:
-\[
-N_{\mathrm{exp}}(p^*,r),
-\]
-obtenida a partir del vecindario topológico o de nodos análogos. El déficit relativo es:
-\[
-\Delta_{\mathrm{rel}}(p^*,r)=
-\frac{N_{\mathrm{exp}}(p^*,r)-N_{\mathrm{obs}}(p^*,r)}{N_{\mathrm{exp}}(p^*,r)+\epsilon}.
-\]
-
-Interpretación:
-\begin{itemize}
-  \item \(\Delta_{\mathrm{rel}}\approx 0\): no hay evidencia de déficit local.
-  \item \(\Delta_{\mathrm{rel}}>0\): hay menos vecinos observados que los esperados bajo la referencia local.
-  \item \(\Delta_{\mathrm{rel}}<0\): hay más vecinos observados que los esperados.
-\end{itemize}
-
-La frase correcta es:
-\begin{quote}
-Faltan vecinos topológicos esperados bajo una referencia local, no planetas confirmados.
-\end{quote}
-
-\section{Resultados regionales: top regiones por TOI}
-
-\begin{figure}[H]
-\centering
+\section{Top regiones}
+\begin{figure}[H]\centering
 \safeincludegraphics[width=.9\textwidth]{\figroot/top_regions_toi_case_anatomy.pdf}
-\caption{Top regiones Mapper por TOI.}
-\label{fig:top-regions-toi}
+\caption{Top regiones por TOI.}
 \end{figure}
 
-\subsection*{Interpretación de la Figura~\ref{fig:top-regions-toi}}
-
-La Figura~\ref{fig:top-regions-toi} muestra las regiones Mapper con mayor prioridad regional \(\mathrm{TOI}\). Visualmente, \texttt{cube12\_cluster0} aparece como la región dominante, seguida por \texttt{cube17\_cluster2} y un bloque de nodos con valores cercanos, como \texttt{cube19\_cluster5}, \texttt{cube26\_cluster6}, \texttt{cube26\_cluster4}, \texttt{cube19\_cluster4}, \texttt{cube25\_cluster0}, \texttt{cube24\_cluster1}, \texttt{cube26\_cluster0} y \texttt{cube26\_cluster10}.
-
-El punto central es que \(\mathrm{TOI}\) no es simplemente una repetición de la sombra observacional. Si fuera solo sombra, bastaría con mirar \texttt{shadow\_score}. En cambio, esta figura muestra un ranking posterior al filtrado por confiabilidad: baja imputación en \(R^3\), continuidad física y soporte de red. Por eso una región con sombra moderada puede subir si está bien conectada, tiene buena continuidad física y baja dependencia de imputación.
-
-La lectura topológica es que estas regiones son vecindarios Mapper donde la red local y la geometría física sugieren que vale la pena inspeccionar incompletitud observacional. La lectura física es que, al vivir en el espacio \((\log M_p,\log P,\log a)\), los nodos priorizados probablemente representan regímenes masa-periodo-semieje donde el catálogo puede estar dominado por objetos más fáciles de detectar, especialmente si el método dominante es velocidad radial.
-
-Conclusión específica:
-\[
-\boxed{
-\texttt{cube12\_cluster0}\text{ es el candidato regional principal, pero }\texttt{cube17\_cluster2}\text{ sigue siendo un caso explicativo fuerte.}
-}
-\]
-
-\section{Descomposición de factores TOI}
-
-\begin{figure}[H]
-\centering
+\begin{figure}[H]\centering
 \safeincludegraphics[width=.9\textwidth]{\figroot/toi_factor_decomposition.pdf}
-\caption{Descomposición visual de los factores del índice TOI. La barra apilada es solo una auditoría visual de factores; el índice real es multiplicativo.}
-\label{fig:toi-decomposition}
+\caption{Descomposicion visual de factores TOI.}
 \end{figure}
 
-\subsection*{Interpretación de la Figura~\ref{fig:toi-decomposition}}
-
-La Figura~\ref{fig:toi-decomposition} abre el ranking regional y muestra los factores que alimentan \(\mathrm{TOI}\): \texttt{shadow\_score}, \(1-I_{R^3}\), \(C_{\mathrm{phys}}\) y \(S_{\mathrm{net}}\). Es fundamental no interpretar la barra como una suma física del índice. La figura es una auditoría visual; el índice se calcula como producto. Por tanto, un factor bajo puede limitar fuertemente el resultado aunque los demás sean altos.
-
-La primera observación es que \(1-I_{R^3}\) es alto para las regiones top. Eso significa que, en masa, periodo y semieje mayor, la interpretación no parece depender fuertemente de imputación. Esta es una fortaleza real del resultado. Si los nodos con mayor TOI estuvieran dominados por imputación, el ranking sería mucho menos defendible.
-
-La segunda observación es que el componente de continuidad física \(C_{\mathrm{phys}}\) parece contribuir de manera importante. Esto es metodológicamente deseable: buscamos regiones que no sean simplemente outliers físicos aislados. Una región de alta incompletitud observacional debería parecerse razonablemente a sus vecinos en \(R^3\), pero diferir en composición observacional o en densidad local de vecinos.
-
-La tercera observación es que \(S_{\mathrm{net}}\) diferencia los casos con mejor soporte topológico. Una región muy pequeña o aislada puede tener sombra alta por azar muestral, pero \(S_{\mathrm{net}}\) reduce su prioridad. En cambio, nodos con conexiones suficientes y tamaño razonable pueden subir porque su patrón no parece depender de una comunidad minúscula.
-
-Interpretación física-topológica:
-\begin{quote}
-Los nodos top no ganan solo porque estén sesgados; ganan porque el sesgo aparece en regiones con baja imputación, continuidad física y soporte de red.
-\end{quote}
-
-Esto es exactamente lo que se quería lograr con la anatomía TOI: separar una frontera observacional frágil de una frontera observacional interpretable.
-
-\section{Resultados por planeta: top anclas por ATI}
-
-\begin{figure}[H]
-\centering
+\section{Top planetas ancla}
+\begin{figure}[H]\centering
 \safeincludegraphics[width=.9\textwidth]{\figroot/top_anchors_ati_case_anatomy.pdf}
 \caption{Top planetas ancla por ATI.}
-\label{fig:top-anchors-ati}
 \end{figure}
 
-\subsection*{Interpretación de la Figura~\ref{fig:top-anchors-ati}}
-
-La Figura~\ref{fig:top-anchors-ati} muestra los planetas ancla priorizados por \(\mathrm{ATI}\). Entre los casos visibles aparecen \texttt{HIP 97166 c / cube12\_cluster0}, \texttt{HIP 90988 b / cube17\_cluster2}, \texttt{HD 42012 b / cube26\_cluster6}, \texttt{HD 42012 b / cube19\_cluster5}, \texttt{HD 4313 b / cube17\_cluster10}, \texttt{HD 221585 b / cube25\_cluster0}, \texttt{24 Sex b / cube24\_cluster1}, \texttt{BD-17 63 b / cube26\_cluster4}, \texttt{BD-17 63 b / cube19\_cluster4} y \texttt{HD 11506 d / cube33\_cluster3}.
-
-La presencia de un mismo planeta en más de un nodo no debe leerse como duplicación errónea. En Mapper, los nodos pueden solaparse porque la cubierta del espacio de lentes se solapa. Por eso un planeta puede ser miembro de más de una comunidad. Cuando un ancla aparece en dos nodos, como \texttt{HD 42012 b} o \texttt{BD-17 63 b}, eso puede indicar que el planeta vive en una zona de transición topológica. Esa transición puede ser científicamente interesante: el planeta puede estar conectando vecindarios físicos cercanos, o puede aparecer en diferentes contextos observacionales según la cubierta local.
-
-La lectura principal es que \(\mathrm{ATI}\) prioriza anclas que combinan cuatro condiciones:
-\begin{enumerate}
-  \item pertenecen a una región con TOI alto;
-  \item muestran déficit local positivo de vecinos compatibles;
-  \item tienen baja imputación específica en \(R^3\);
-  \item son representativas del nodo, no meros outliers.
-\end{enumerate}
-
-Por eso \(\mathrm{ATI}\) no debe interpretarse como ``este planeta tiene planetas faltantes''. Debe leerse como:
-\begin{quote}
-este planeta es un buen ancla para inspeccionar una vecindad físico-orbital posiblemente submuestreada.
-\end{quote}
-
-Conclusión específica:
-\[
-\boxed{
-\text{Las anclas priorizadas convierten regiones TOI en casos concretos que pueden explicarse planeta por planeta.}
-}
-\]
-
-\section{Descomposición de factores ATI}
-
-\begin{figure}[H]
-\centering
+\begin{figure}[H]\centering
 \safeincludegraphics[width=.9\textwidth]{\figroot/ati_factor_decomposition.pdf}
-\caption{Descomposición visual de los factores del índice ATI. La barra apilada es una auditoría visual; el índice real es multiplicativo.}
-\label{fig:ati-decomposition}
+\caption{Descomposicion visual de factores ATI.}
 \end{figure}
 
-\subsection*{Interpretación de la Figura~\ref{fig:ati-decomposition}}
+\section{Tablas de deficit por radio para las anclas principales}
+No basta con usar $\Delta_{\mathrm{rel,best}}$ porque ese maximo puede inflar la lectura de un caso local. Por eso se reportan los tres radios: $r_{\mathrm{kNN}}$, $r_{\mathrm{node\_median}}$ y $r_{\mathrm{node\_q75}}$. Cada tabla muestra $N_{\mathrm{obs}}$, la referencia local $N_{\mathrm{exp}}$, el deficit absoluto $\Delta N$ y el deficit relativo $\Delta_{\mathrm{rel}}$.
 
-La Figura~\ref{fig:ati-decomposition} muestra por qué ciertas anclas fueron priorizadas. Los factores visibles son \(\mathrm{TOI}\), \(\Delta_{\mathrm{rel,best}}^+\), \(1-I_{R^3}(p^*)\) y \(A(p^*)\). Aquí \(\Delta_{\mathrm{rel,best}}^+\) representa la parte positiva del déficit relativo; si el déficit es negativo o nulo, no debería impulsar \(\mathrm{ATI}\).
+La diferencia clave es que $\Delta N$ depende de la escala de conteo, mientras que $\Delta_{\mathrm{rel}}$ normaliza por la referencia esperada. Si el deficit permanece positivo en los tres radios, el caso es mas estable. Si solo aparece en una escala, debe presentarse como exploratorio.
 
-La interpretación central es que un ancla con \(\mathrm{ATI}\) alto puede ganar por dos rutas distintas. La primera ruta es regional: el planeta vive en un nodo con TOI alto. La segunda ruta es local: alrededor del planeta, el conteo de vecinos observados es menor que la referencia local. Para que el caso sea fuerte, ambas rutas deberían estar presentes.
+\input{top_anchor_deficit_tables.tex}
 
-Si una ancla tiene alto \(\mathrm{TOI}\) pero bajo déficit, entonces es un buen representante de una región interesante, pero no necesariamente un caso fuerte de submuestreo local. Si tiene alto déficit pero bajo \(\mathrm{TOI}\), entonces puede ser una fluctuación local en una región poco confiable. Los mejores casos son los que combinan:
-\[
-\mathrm{TOI}\text{ alto},\quad
-\Delta_{\mathrm{rel,best}}>0,\quad
-I_{R^3}(p^*)\text{ bajo},\quad
-A(p^*)\text{ alto}.
-\]
-
-La figura también muestra que la imputación del ancla no parece ser el factor que está impulsando artificialmente los casos top. Si \(1-I_{R^3}(p^*)\) es alto, la lectura del ancla depende poco de valores imputados en masa, periodo y semieje mayor. Eso aumenta la credibilidad del ranking.
-
-Conclusión específica:
-\begin{quote}
-La anatomía ATI transforma una lista de planetas en una explicación: cada ancla puede justificarse por la región donde vive, su déficit local, su baja imputación y su representatividad.
-\end{quote}
-
-\section{Déficit relativo por radio}
-
-\begin{figure}[H]
-\centering
+\section{Deficit por radio}
+\begin{figure}[H]\centering
 \safeincludegraphics[width=.8\textwidth]{\figroot/deficit_by_radius_summary.pdf}
-\caption{Resumen del déficit relativo por radio.}
-\label{fig:deficit-radius}
+\caption{Resumen del deficit relativo por radio.}
 \end{figure}
 
-\subsection*{Interpretación de la Figura~\ref{fig:deficit-radius}}
+\section{Tres casos finales para exposicion}
+El caso regional no afirma planetas faltantes; prioriza una zona Mapper. El caso ancla no afirma un objeto ausente; prioriza una vecindad local. El caso repetido no es duplicacion erronea; puede ser una senal de transicion topologica por solapamiento de cubiertas.
 
-La Figura~\ref{fig:deficit-radius} es una de las más importantes para controlar sobreinterpretación. Compara el déficit relativo usando distintas escalas locales: \texttt{r\_kNN}, \texttt{r\_node\_median} y \texttt{r\_node\_q75}. La razón para usar varios radios es que el déficit local puede depender fuertemente de la escala. Un ancla puede parecer submuestreada con un radio pequeño y no parecerlo con un radio más grande, o al revés.
+Si la tabla por radio muestra que $\Delta_{\mathrm{rel}}$ es alto solo en una escala, el caso debe presentarse como exploratorio. Si el deficit se mantiene positivo en los tres radios, el caso es mas estable.
 
-La lectura conceptual es:
-\[
-\Delta_{\mathrm{rel,best}} = \max_r \Delta_{\mathrm{rel}}(r)
-\]
-es útil para priorizar, pero no es suficiente para concluir. Si el valor alto solo aparece en una escala y desaparece en las otras, la evidencia es frágil. En cambio, si el déficit es positivo y consistente en \texttt{r\_kNN}, \texttt{r\_node\_median} y \texttt{r\_node\_q75}, la evidencia local es más robusta.
+\begin{table}[H]
+\centering
+\small
+\caption{Tres casos finales para exposicion.}
+\begin{tabular}{p{2.5cm}p{2.8cm}p{2.4cm}p{3.8cm}p{3.8cm}}
+\toprule
+Caso & Objeto & Nodo & Motivo de seleccion & Cautela principal \\
+\midrule
+top\_toi\_region & cube12\_cluster0 & cube12\_cluster0 & Presentar como la region Mapper con mayor prioridad regional. Explicar que gana por la combinacion de sombra observacional, baja imputacion, continuidad fisica y soporte de red. & El caso regional no afirma objetos ausentes; prioriza una zona Mapper para inspeccion observacional. \\
+top\_ati\_anchor & HIP 97166 c & cube12\_cluster0 & Presentar como el planeta ancla mas prioritario para inspeccion local. Explicar que combina una region TOI alta con deficit local y baja imputacion. & El caso ancla no afirma un objeto ausente; prioriza una vecindad local en R^3. \\
+repeated\_anchor\_multi\_node & HD 42012 b & cube26\_cluster6 & Presentar como un caso de transicion Mapper. El planeta aparece en varios nodos por el solapamiento de la cubierta, lo que puede indicar que vive en una frontera topologica entre vecindarios. & El caso repetido no es duplicacion erronea; puede reflejar solapamiento de cubiertas y transicion topologica. \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsection*{Diagnóstico crítico de la Figura~\ref{fig:deficit-radius}}
+\begin{figure}[H]\centering
+\safeincludegraphics[width=.95\textwidth]{\figroot/final_presentation_cases_summary.pdf}
+\caption{Resumen de los tres casos finales para exposicion.}
+\end{figure}
 
-Hay un punto técnico que debe revisarse. Según la definición
-\[
-\Delta_{\mathrm{rel}}=
-\frac{N_{\mathrm{exp}}-N_{\mathrm{obs}}}{N_{\mathrm{exp}}+\epsilon},
-\]
-si \(N_{\mathrm{obs}}\ge 0\) y \(N_{\mathrm{exp}}>0\), el déficit relativo positivo no debería exceder aproximadamente \(1\). Sin embargo, la gráfica de déficit por radio muestra valores positivos visualmente mucho mayores que \(1\). Esto sugiere una de estas posibilidades:
-\begin{enumerate}
-  \item la figura está graficando \(\Delta N=N_{\mathrm{exp}}-N_{\mathrm{obs}}\), pero el eje fue etiquetado como \(\Delta_{\mathrm{rel}}\);
-  \item la columna usada en la figura no corresponde a la fórmula relativa;
-  \item la normalización se aplicó con una referencia distinta;
-  \item hay valores esperados o transformaciones que no son conteos simples.
-\end{enumerate}
-
-Esto no invalida el proyecto, pero sí obliga a auditar el cálculo antes de usar \(\Delta_{\mathrm{rel,best}}\) como argumento fuerte. La recomendación es reportar siempre, para cada ancla:
-\[
-N_{\mathrm{obs}},\quad
-N_{\mathrm{exp}},\quad
-\Delta N,
-\quad
-\Delta_{\mathrm{rel}}
-\]
-por cada radio. De esa forma se evita confundir déficit absoluto con déficit relativo.
-
-Conclusión específica:
-\[
-\boxed{
-\text{La señal de déficit es útil para priorizar, pero la figura exige una auditoría de unidades y columnas.}
-}
-\]
-
-\section{Qué significa físicamente el patrón}
-
-El patrón general es físicamente plausible. Muchas de las anclas priorizadas son planetas que, por el tipo de nombres y el contexto del pipeline, parecen pertenecer a comunidades compatibles con detecciones dinámicas o gigantes de largo periodo. En comunidades dominadas por velocidad radial, se espera que el catálogo esté sesgado hacia objetos con mayor masa o mayor señal dinámica. Por eso, si una región tiene alto TOI, la dirección física de incompletitud esperada no es arbitraria. La hipótesis prudente es:
-\[
-\text{menor masa planetaria a periodo y semieje comparables,}
-\]
-o bien:
-\[
-\text{menor proxy de detectabilidad RV a escala orbital comparable.}
-\]
-
-Topológicamente, el patrón significa que ciertas comunidades Mapper no son islas físicas totalmente cerradas. Más bien, parecen vecindarios que se conectan con regiones cercanas en \(R^3\), pero muestran diferencias en composición observacional y densidad local. Esa combinación es exactamente lo que se busca en una región de incompletitud observacional: continuidad física más discontinuidad observacional.
-
-\section{Qué significa topológicamente el patrón}
-
-En términos de red, los nodos con alto TOI deben interpretarse como regiones donde el grafo Mapper ofrece suficiente soporte para una lectura local. Un nodo aislado puede tener sombra alta por azar; un nodo conectado dentro de una vecindad coherente es más interesante. El soporte \(S_{\mathrm{net}}\) intenta capturar esto.
-
-La lectura topológica sería:
-\begin{quote}
-Una región con alto TOI es un vecindario del grafo donde hay frontera observacional, pero no una ruptura física extrema. Por tanto, puede señalar una zona donde el catálogo está incompleto respecto a sus vecinos compatibles.
-\end{quote}
-
-Eso cambia la narrativa del proyecto. Ya no se trata solo de decir ``el catálogo está sesgado''. Ahora se puede decir:
-\[
-\boxed{
-\text{el sesgo tiene localización topológica y puede priorizar regiones de inspección.}
-}
-\]
-
-\section{Qué se puede concluir}
-
-\subsection{Conclusiones seguras}
-
-\begin{enumerate}
-  \item El módulo produce una anatomía interpretable de los rankings TOI/ATI.
-  \item Los top nodos por TOI no son solo nodos de alta sombra: también pasan filtros de baja imputación, continuidad física y soporte de red.
-  \item Los top planetas ancla por ATI son candidatos útiles para inspección local, porque combinan prioridad regional, déficit positivo, baja imputación y representatividad.
-  \item La repetición de algunos planetas en diferentes nodos debe interpretarse como efecto natural del solapamiento Mapper y puede señalar regiones de transición.
-\end{enumerate}
-
-\subsection{Conclusiones prudentes}
-
-\begin{enumerate}
-  \item Algunas regiones Mapper parecen candidatas a incompletitud observacional topológica.
-  \item Algunos planetas ancla pueden servir como representantes de vecindades físico-orbitales submuestreadas.
-  \item Si las comunidades son dominadas por velocidad radial, la dirección esperada de incompletitud es hacia menor masa o menor señal RV, no hacia cualquier tipo de planeta.
-\end{enumerate}
-
-\subsection{Conclusiones que no se deben hacer}
-
-\begin{enumerate}
-  \item No se puede afirmar que se descubrieron planetas faltantes.
-  \item No se puede afirmar que faltan exactamente \(N\) planetas.
-  \item No se puede convertir \(\Delta_{\mathrm{rel,best}}\) en evidencia cerrada sin revisar los radios individuales.
-  \item No se puede interpretar TOI/ATI sin revisar imputación y soporte de red.
-\end{enumerate}
+\section{Discusion}
+Una region con TOI alto puede ganar por sombra fuerte, baja imputacion, continuidad fisica o soporte de red. Un ancla con ATI alto puede ganar por pertenecer a una region TOI alta, por mostrar deficit local, por baja imputacion o por ser representativa del nodo.
 
 \section{Limitaciones}
+Este modulo no introduce una funcion de completitud instrumental, no estima cantidades absolutas de objetos reales ausentes y no convierte por si solo un caso priorizado en una conclusion observacional cerrada.
 
-\begin{enumerate}
-  \item \textbf{No hay función de completitud instrumental.} Sin una función \(P(\mathrm{detectado}\mid M_p,P,a,\mathrm{estrella},m)\), los déficits son referencias topológicas, no conteos astrofísicos absolutos.
-  \item \textbf{El espacio \(R^3\) simplifica la física.} Masa, periodo y semieje mayor no capturan toda la detectabilidad, especialmente para velocidad radial.
-  \item \textbf{El proxy RV no es amplitud RV real.} Sirve como indicador heurístico, no como señal radial calculada con todos los parámetros físicos.
-  \item \textbf{Los nodos pequeños pueden inflar índices.} Aunque \(S_{\mathrm{net}}\) intenta penalizar bajo soporte, las comunidades pequeñas siguen requiriendo inspección manual.
-  \item \textbf{El déficit por radio requiere auditoría.} La Figura~\ref{fig:deficit-radius} sugiere revisar si se está graficando déficit relativo o déficit absoluto.
-  \item \textbf{Mapper permite membresía múltiple.} Un mismo planeta puede aparecer en varios nodos; esto es esperado, pero debe explicarse para no parecer duplicación de resultados.
-\end{enumerate}
-
-\section{Recomendaciones para la siguiente iteración}
-
-\begin{enumerate}
-  \item Agregar tablas numéricas debajo de cada figura con los valores exactos de los factores.
-  \item Para cada top región, reportar \(\mathrm{Shadow}\), \(1-I_{R^3}\), \(C_{\mathrm{phys}}\), \(S_{\mathrm{net}}\) y \(\mathrm{TOI}\).
-  \item Para cada top ancla, reportar \(\mathrm{TOI}\), \(\Delta_{\mathrm{rel}}\) por radio, \(1-I_{R^3}(p^*)\), \(A(p^*)\) y \(\mathrm{ATI}\).
-  \item Corregir o aclarar la figura de déficit por radio si el eje realmente muestra \(\Delta N\) y no \(\Delta_{\mathrm{rel}}\).
-  \item Elegir tres casos líderes para explicación extendida: el nodo regional máximo, el ancla con ATI máximo y un caso repetido en múltiples nodos.
-  \item Añadir una ficha por caso con red local, posición en \(R^3\), imputación, método dominante y déficit local.
-\end{enumerate}
-
-\section{Conclusión}
-
-Este módulo cumple una función importante: no calcula otro índice, sino que abre los índices TOI/ATI para que sean auditables. La conclusión principal es que los rankings ya son interpretables, pero necesitan leerse mediante sus factores. La anatomía muestra que los mejores candidatos no deben describirse como planetas faltantes, sino como regiones y anclas donde el catálogo parece topológicamente submuestreado bajo una referencia local.
-
-La frase final adecuada es:
-\[
-\boxed{
-\text{TOI/ATI no descubre planetas ausentes; prioriza dónde buscar evidencia de incompletitud observacional.}
-}
-\]
-
+\section{Conclusion}
+Este modulo no calcula otro indice nuevo; abre los rankings TOI/ATI para explicar por que ciertas regiones y planetas ancla fueron priorizados. La salida principal es una anatomia de los casos top, no una afirmacion de objetos ausentes confirmados.
 \end{document}

@@ -32,5 +32,34 @@
 | BD-17 63 b | cube19_cluster4 | 0.0046770858527751 | 0.0578280248129117 | 0.0909090909008264 | no_deficit |
 | HD 11506 d | cube33_cluster3 | 0.0043487335823949 | 0.0137730505169408 | 0.3333333332222222 | moderate_deficit |
 
+## Top anchors with radius-by-radius deficit
+Estas tablas evitan sobreinterpretar `delta_rel_neighbors_best`: el valor maximo resume, pero no reemplaza, la lectura por los tres radios locales.
+| anchor_pl_name | node_id | ATI | best_radius_type | Delta_rel_neighbors_best | mean_Delta_rel_neighbors | median_Delta_rel_neighbors | deficit_stability_label | interpretation_short |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| HIP 97166 c | cube12_cluster0 | 0.0068528480823882 | r_kNN | 0.0909090909008264 | -0.2182802829380318 | -0.3322884012537448 | radius_sensitive_deficit | El deficit depende del radio y debe leerse como exploratorio. |
+| HIP 90988 b | cube17_cluster2 | 0.0067455387709832 | r_node_median | 0.1111111110987654 | 0.07263107262411857 | 0.0909090909008264 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
+| HD 42012 b | cube19_cluster5 | 0.0051133340600407 | r_kNN | 0.0909090909008264 | 0.0341916380849605 | 0.008264462809849 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
+| HD 42012 b | cube26_cluster6 | 0.0051133340600407 | r_kNN | 0.0909090909008264 | 0.0341916380849605 | 0.008264462809849 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
+| HD 4313 b | cube17_cluster10 | 0.0050935128729779 | r_node_median | 0.1666666666388888 | 0.11363636362203466 | 0.0909090909008264 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
+
+## Three final presentation cases
+| case_type | anchor_pl_name | node_id | TOI | ATI | Delta_rel_neighbors_best | deficit_stability_label | how_to_present | caution_text |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| top_toi_region |  | cube12_cluster0 | 0.0766674525511436 |  |  | not_anchor_case | Presentar como la region Mapper con mayor prioridad regional. Explicar que gana por la combinacion de sombra observacional, baja imputacion, continuidad fisica y soporte de red. | El caso regional no afirma objetos ausentes; prioriza una zona Mapper para inspeccion observacional. |
+| top_ati_anchor | HIP 97166 c | cube12_cluster0 | 0.0766674525511436 | 0.0068528480823882 | 0.0909090909008264 | radius_sensitive_deficit | Presentar como el planeta ancla mas prioritario para inspeccion local. Explicar que combina una region TOI alta con deficit local y baja imputacion. | El caso ancla no afirma un objeto ausente; prioriza una vecindad local en R^3. |
+| repeated_anchor_multi_node | HD 42012 b | cube26_cluster6 | 0.0581132674842715 | 0.0051133340600407 | 0.0909090909008264 | consistent_positive_deficit | Presentar como un caso de transicion Mapper. El planeta aparece en varios nodos por el solapamiento de la cubierta, lo que puede indicar que vive en una frontera topologica entre vecindarios. | El caso repetido no es duplicacion erronea; puede reflejar solapamiento de cubiertas y transicion topologica. |
+
+## Recommended presentation sequence
+1. Explicar primero la region top por TOI para abrir el indice regional.
+2. Explicar despues el ancla top por ATI para aterrizar la priorizacion local en R^3.
+3. Explicar al final el ancla repetida en varios nodos como caso de transicion Mapper por solapamiento de cubiertas.
+4. Cerrar con limitaciones: no hay completitud instrumental, no hay confirmacion de objetos ausentes y el deficit puede ser sensible al radio.
+
+## Deficit formula audit
+- Raw `delta_rel` > 1 count: 0
+- Recomputed `Delta_rel` > 1 count: 0
+- Formula mismatches recomputed: 0
+- La auditoria no encontro `Delta_rel` recomputado mayor que 1. Si una figura previa parecia exceder 1, la lectura mas probable es que estaba mostrando `Delta_N` o una escala mal rotulada.
+
 ## Caution
-TOI y ATI priorizan regiones y anclas; no equivalen a confirmaciones de objetos ausentes.
+TOI/ATI no descubre planetas ausentes; prioriza donde buscar evidencia de incompletitud observacional.

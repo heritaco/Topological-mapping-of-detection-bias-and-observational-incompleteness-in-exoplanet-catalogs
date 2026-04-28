@@ -20,14 +20,16 @@ outputs:
   figures_dir: outputs/toi_ati_case_anatomy/figures_pdf
   metadata_dir: outputs/toi_ati_case_anatomy/metadata
   logs_dir: outputs/toi_ati_case_anatomy/logs
-  latex_dir: latex/05_toi_ati_case_anatomy
+  latex_dir: latex/08_toi_ati_case_anatomy
 
 analysis:
   config_id: orbital_pca2_cubes10_overlap0p35
   top_n_regions: 10
   top_n_anchors: 10
+  top_n_anchors_for_tables: 5
   detailed_case_count: 5
   required_columns_policy: warn
+  epsilon: 1.0e-9
   planet_name_column: pl_name
   node_id_column: node_id
   method_column: discoverymethod

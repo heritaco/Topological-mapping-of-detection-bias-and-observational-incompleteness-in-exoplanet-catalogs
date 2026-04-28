@@ -1,0 +1,467 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{amsmath}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{itemize item}{\raisebox{0.2ex}{\scriptsize$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.2ex}{\tiny$\bullet$}}
+
+\definecolor{deepblue}{HTML}{1F4E79}
+\definecolor{softblue}{HTML}{EAF2F8}
+\definecolor{darkgreen}{HTML}{2E7D32}
+\definecolor{warnorange}{HTML}{F39C12}
+\definecolor{alertred}{HTML}{C62828}
+\definecolor{quietgray}{HTML}{555555}
+
+\setbeamercolor{title}{fg=white,bg=deepblue}
+\setbeamercolor{frametitle}{fg=white,bg=deepblue}
+\setbeamercolor{block title}{fg=white,bg=deepblue}
+\setbeamercolor{block body}{bg=softblue}
+\setbeamercolor{alerted text}{fg=alertred}
+
+\newcommand{\fig}[2][0.86\linewidth]{\includegraphics[width=#1]{figures/#2}}
+\newcommand{\smalltt}[1]{{\scriptsize\texttt{#1}}}
+
+\title[Mapper/TDA exoplanetas]{Lectura topológica crítica de exoplanetas con Mapper/TDA}
+\subtitle{Estructura astrofísica plausible, imputación y sesgo observacional}
+\author{Proyecto de análisis de exoplanetas}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vspace{-1.2em}
+  \begin{center}
+    \small NASA Exoplanet Archive PSCompPars $\rightarrow$ imputación $\rightarrow$ Mapper $\rightarrow$ auditorías $\rightarrow$ síntesis de evidencia
+  \end{center}
+\end{frame}
+
+\begin{frame}{La idea central}
+  \begin{block}{Tesis del proyecto}
+    Mapper revela regiones candidatas en el catálogo de exoplanetas, especialmente en el espacio orbital, pero esas regiones no deben interpretarse como clases planetarias definitivas porque están mezcladas con sesgo observacional, imputación y decisiones metodológicas.
+  \end{block}
+
+  \vspace{0.6em}
+  La historia completa es:
+
+  \begin{center}
+    \large datos $\rightarrow$ espacios de variables $\rightarrow$ Mapper $\rightarrow$ interpretación $\rightarrow$ auditoría de imputación $\rightarrow$ auditoría de sesgo $\rightarrow$ síntesis final
+  \end{center}
+\end{frame}
+
+\begin{frame}{Problema}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.52\textwidth}
+      \begin{itemize}
+        \item Los exoplanetas no forman necesariamente clusters limpios.
+        \item Hay transiciones: tamaño, masa, órbita, temperatura y método de detección se mezclan.
+        \item El catálogo también contiene sesgos: no observamos todos los planetas con la misma facilidad.
+        \item Una visualización bonita no basta: necesitamos saber qué sostiene cada región.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{block}{Pregunta}
+        ¿Mapper puede revelar regiones estructuradas en variables físicas, orbitales y térmicas, separando señal astrofísica plausible de sesgo e imputación?
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Dataset}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item Fuente: NASA Exoplanet Archive.
+        \item Tabla usada: \texttt{PSCompPars}.
+        \item Tamaño usado: 6273 exoplanetas.
+        \item Método principal de imputación: \texttt{iterative}.
+        \item Metadata para auditoría: \texttt{discoverymethod}, \texttt{disc\_year}, \texttt{disc\_facility}.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \fig[0.98\linewidth]{01_missingness_before_after.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Por qué fue necesaria la imputación}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.45\textwidth}
+      \begin{itemize}
+        \item Mapper necesita una matriz numérica completa.
+        \item Variables térmicas tenían muchos faltantes: \texttt{pl\_insol} y \texttt{pl\_eqt}.
+        \item La imputación no se ocultó: se registró por planeta y por nodo.
+        \item Las regiones con alta imputación se interpretan con cautela.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \fig[0.98\linewidth]{02_value_source_composition.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Por qué no usamos todas las variables}
+  \begin{block}{Decisión metodológica}
+    El catálogo tiene muchas columnas, pero no todas son variables físicas independientes.
+  \end{block}
+  \begin{itemize}
+    \item Muchas columnas son identificadores, referencias, incertidumbres, flags o metadata observacional.
+    \item Usarlas todas podría producir una geometría dominada por ruido, redundancia o proceso de descubrimiento.
+    \item Por eso se construyeron espacios pequeños, interpretables y auditables.
+  \end{itemize}
+  \vspace{0.3em}
+  \begin{center}
+    \textbf{Los espacios son vistas interpretables, no una trampa ni una taxonomía final.}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Espacios de variables}
+  \small
+  \begin{tabular}{lll}
+    \toprule
+    Espacio & Variables & Lectura \\
+    \midrule
+    \texttt{phys\_min} & \texttt{pl\_rade}, \texttt{pl\_bmasse} & qué es el planeta \\
+    \texttt{phys\_density} & + \texttt{pl\_dens} & control con densidad derivada \\
+    \texttt{orbital} & \texttt{pl\_orbper}, \texttt{pl\_orbsmax} & dónde vive \\
+    \texttt{thermal} & \texttt{pl\_insol}, \texttt{pl\_eqt} & ambiente energético \\
+    \texttt{orb\_thermal} & orbital + térmico & órbita y energía \\
+    \texttt{joint\_no\_density} & físico + orbital + térmico & vista conjunta sin densidad \\
+    \texttt{joint} & joint + \texttt{pl\_dens} & control conjunto con densidad \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{1em}
+  \begin{alertblock}{Nota importante}
+    El espacio orbital actual no incluye \texttt{pl\_orbeccen}; la excentricidad queda como extensión futura.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Qué hace Mapper}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      \begin{itemize}
+        \item Mapper resume la forma de los datos como un grafo.
+        \item Un nodo es una región local con planetas parecidos.
+        \item Una arista indica que dos nodos comparten planetas.
+        \item Un ciclo \(\beta_1\) indica complejidad topológica.
+      \end{itemize}
+      \[
+        \beta_1 = |E| - |V| + \beta_0
+      \]
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Lentes}
+        La interpretación principal usa \texttt{pca2}. \texttt{domain} y \texttt{density} sirven como sensibilidad.
+      \end{block}
+      \begin{block}{Cover}
+        Los artefactos reconciliados usan \texttt{n\_cubes = 10} y \texttt{overlap = 0.35}.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Qué se generó realmente}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \begin{itemize}
+        \item 21 grafos JSON.
+        \item 21 tablas de nodos.
+        \item 21 tablas de aristas.
+        \item 21 configuraciones.
+        \item 7 espacios de variables \(\times\) 3 lentes.
+      \end{itemize}
+      \begin{alertblock}{Cuidado}
+        No es un full grid search de \texttt{n\_cubes} \(\times\) \texttt{overlap}; es una comparación bajo cover fijo.
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \fig[0.98\linewidth]{07_mapper_lens_sensitivity.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Resultado estructural global}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      \fig[0.98\linewidth]{01_mapper_graph_size_complexity.pdf}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \fig[0.98\linewidth]{04_mapper_nodes_vs_cycles.pdf}
+    \end{column}
+  \end{columns}
+  \vspace{0.4em}
+  \begin{center}
+    El grafo orbital es el candidato más interesante: 124 nodos, 196 aristas, \(\beta_1=96\), imputación media 0.011.
+  \end{center}
+\end{frame}
+
+\begin{frame}{El patrón principal: espacio orbital}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.56\textwidth}
+      \fig[0.98\linewidth]{astro_orbital_graph_by_orbit_class.pdf}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+        \item Usa \texttt{pl\_orbper} y \texttt{pl\_orbsmax}.
+        \item Organiza regiones por periodo corto, intermedio y largo.
+        \item Tiene alta complejidad topológica.
+        \item Tiene baja dependencia de imputación.
+      \end{itemize}
+      \begin{block}{Lectura prudente}
+        Es un candidato fuerte de inspección, no una prueba de topología real.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Interpretación astrofísica: poblaciones candidatas}
+  \fig[0.94\linewidth]{astro_main_graphs_by_candidate_population.pdf}
+  \vspace{-0.2em}
+  \begin{center}
+    Las etiquetas ayudan a leer regiones, pero no convierten Mapper en una clasificación final.
+  \end{center}
+\end{frame}
+
+\begin{frame}{Clases por radio}
+  \fig[0.94\linewidth]{astro_main_graphs_by_radius_class.pdf}
+  \vspace{-0.2em}
+  \begin{center}
+    Aparecen regiones compatibles con planetas pequeños, sub-Neptunos y gigantes, especialmente en espacios físicos.
+  \end{center}
+\end{frame}
+
+\begin{frame}{Imputación: qué regiones son más confiables}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.57\textwidth}
+      \fig[0.98\linewidth]{astro_main_graphs_by_imputation_fraction.pdf}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+        \item Físico mínimo: imputación baja, 0.017.
+        \item Orbital: imputación baja, 0.011.
+        \item Joint: imputación moderada, 0.176.
+        \item Térmico: imputación alta, 0.588.
+      \end{itemize}
+      \begin{alertblock}{Idea clave}
+        Complejidad topológica no equivale automáticamente a evidencia física fuerte.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{El caso térmico: estructura con cautela}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.54\textwidth}
+      \fig[0.98\linewidth]{astro_thermal_graph_by_thermal_class.pdf}
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \begin{itemize}
+        \item \(\beta_1=67\): sí hay estructura.
+        \item Imputación media nodal: 0.588.
+        \item Fracción de nodos con alta imputación: 0.719.
+      \end{itemize}
+      \begin{block}{Conclusión}
+        El espacio térmico funciona como advertencia metodológica: se ve estructurado, pero depende mucho de datos completados.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Densidad: control, no evidencia independiente}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.54\textwidth}
+      \fig[0.98\linewidth]{06_mapper_density_feature_sensitivity.pdf}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{itemize}
+        \item \texttt{pl\_dens} fue derivada de masa y radio para muchos planetas.
+        \item Agregar densidad reduce ligeramente la complejidad.
+        \item \texttt{phys\_min}: \(\beta_1=54\).
+        \item \texttt{phys\_density}: \(\beta_1=52\).
+        \item \texttt{joint\_no\_density}: \(\beta_1=81\).
+        \item \texttt{joint}: \(\beta_1=77\).
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Espacio conjunto}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.56\textwidth}
+      \fig[0.98\linewidth]{astro_joint_no_density_graph_by_candidate_population.pdf}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+        \item Integra propiedades físicas, orbitales y térmicas.
+        \item \texttt{joint\_no\_density}: \(\beta_1=81\).
+        \item Imputación media: 0.176.
+        \item Más informativo que térmico, pero menos limpio que orbital.
+      \end{itemize}
+      \begin{block}{Lectura}
+        Muchas regiones conjuntas son candidatas mixtas: alinean física y órbita, pero también heredan imputación y sesgo.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Auditoría de sesgo observacional}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.56\textwidth}
+      \fig[0.98\linewidth]{orbital_graph_discoverymethod.pdf}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+        \item \texttt{discoverymethod} no entra al Mapper.
+        \item Se usa después como etiqueta externa.
+        \item Permite saber si una región está dominada por tránsito, velocidad radial o imagen directa.
+        \item El grafo orbital muestra asociación fuerte con método de descubrimiento.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Prueba nula por permutación}
+  \begin{block}{Hipótesis nula}
+    Las etiquetas \texttt{discoverymethod} no están especialmente asociadas con la estructura Mapper.
+  \end{block}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item Se mantiene fijo el grafo.
+        \item Se mantienen fijas las membresías de nodos.
+        \item Se permutan las etiquetas \texttt{discoverymethod}.
+        \item Corrida final: 1000 permutaciones.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \small
+      \begin{tabular}{lr}
+        \toprule
+        Métrica orbital & Valor \\
+        \midrule
+        Pureza observada & 0.842 \\
+        Pureza nula media & 0.773 \\
+        \texttt{purity\_z} & 26.630 \\
+        NMI observado & 0.254 \\
+        NMI nulo medio & 0.009 \\
+        \texttt{nmi\_p} & 0.001 \\
+        \bottomrule
+      \end{tabular}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Síntesis final de regiones}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \fig[0.98\linewidth]{region_class_counts.pdf}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \small
+      \begin{tabular}{lrr}
+        \toprule
+        Etiqueta & Nodos & Componentes \\
+        \midrule
+        \texttt{physical} & 10 & 0 \\
+        \texttt{observational} & 1 & 4 \\
+        \texttt{mixed} & 240 & 36 \\
+        \texttt{weak} & 245 & 70 \\
+        \bottomrule
+      \end{tabular}
+      \vspace{0.8em}
+      \begin{block}{Lectura}
+        Predominan regiones mixtas y débiles: la estructura existe, pero no es señal astrofísica limpia en bloque.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Mapa de evidencia}
+  \fig[0.94\linewidth]{main_graphs_by_evidence_class.pdf}
+  \vspace{-0.2em}
+  \begin{center}
+    La figura resume la conclusión: Mapper encuentra estructura, pero la mayoría de regiones requiere cautela.
+  \end{center}
+\end{frame}
+
+\begin{frame}{El orbital después de auditarlo}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.52\textwidth}
+      \fig[0.98\linewidth]{orbital_graph_evidence_class.pdf}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{itemize}
+        \item Sigue siendo el grafo más informativo.
+        \item Baja imputación: buen soporte de datos.
+        \item Alta asociación con \texttt{discoverymethod}: lectura mixta.
+      \end{itemize}
+      \begin{block}{Conclusión orbital}
+        No queda invalidado, pero no debe venderse como estructura orbital pura.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Qué sí afirmamos / qué no afirmamos}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Sí afirmamos}
+        \begin{itemize}
+          \item Mapper encontró regiones estructuradas.
+          \item El espacio orbital fue el candidato más informativo.
+          \item La imputación y el sesgo cambian la interpretación.
+          \item Hay regiones candidatas para inspección posterior.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{No afirmamos}
+        \begin{itemize}
+          \item Que descubrimos clases definitivas de exoplanetas.
+          \item Que la topología observada es la topología real del universo.
+          \item Que usar más variables siempre sería mejor.
+          \item Que \texttt{discoverymethod} causa la estructura.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Conclusión}
+  \begin{block}{Conclusión defendible}
+    Mapper/TDA es útil para construir una lectura topológica crítica del catálogo de exoplanetas, separando estructura astrofísica plausible de sesgo observacional e incertidumbre por imputación.
+  \end{block}
+
+  \begin{itemize}
+    \item El resultado más fuerte es orbital, por complejidad alta e imputación baja.
+    \item La auditoría de sesgo impide sobreafirmarlo como señal física pura.
+    \item La síntesis final convierte los grafos en un mapa de evidencia: regiones \texttt{physical}, \texttt{observational}, \texttt{mixed} y \texttt{weak}.
+  \end{itemize}
+\end{frame}
+
+\appendix
+
+\begin{frame}{Backup: métricas estandarizadas}
+  \fig[0.86\linewidth]{02_mapper_metrics_zscore_heatmap.pdf}
+\end{frame}
+
+\begin{frame}{Backup: auditoría de imputación por configuración}
+  \fig[0.86\linewidth]{05_mapper_imputation_audit_by_config.pdf}
+\end{frame}
+
+\begin{frame}{Backup: imputación orbital}
+  \fig[0.82\linewidth]{orbital_graph_imputation.pdf}
+\end{frame}
+
+\end{document}

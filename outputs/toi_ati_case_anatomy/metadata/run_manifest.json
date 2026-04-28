@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-04-28T12:56:04.421639+00:00",
+  "config_path": "configs\\toi_ati_case_anatomy.yaml",
+  "inputs_loaded_rows": {
+    "regional_toi_scores": 124,
+    "anchor_ati_scores": 124,
+    "anchor_neighbor_deficits": 372,
+    "r3_node_geometry": 124,
+    "node_shadow_metrics": 429,
+    "case_node_summary": 3,
+    "case_anchor_planets": 3,
+    "membership": 0,
+    "edges": 0,
+    "imputed_dataset": 0
+  },
+  "warnings": {
+    "membership": "Optional input missing or empty: None",
+    "edges": "Optional input missing or empty: None",
+    "imputed_dataset": "Optional input missing or empty: None"
+  }
+}

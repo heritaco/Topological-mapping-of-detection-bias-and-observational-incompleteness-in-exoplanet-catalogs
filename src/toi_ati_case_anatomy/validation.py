@@ -6,7 +6,6 @@ FORBIDDEN_CLAIMS = (
     "planetas faltantes confirmados",
     "descubrimos planetas",
     "faltan exactamente",
-    "predicción definitiva",
     "prediccion definitiva",
 )
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.26)  28 APR 2026 07:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.26)  28 APR 2026 09:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -98,8 +98,8 @@ Package babel Info: Making " an active character on input line 570.
 Package babel Info: Making < an active character on input line 722.
 Package babel Info: Making > an active character on input line 722.
 ))
-LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) on input line 7.
-LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1) on input line 7.
+LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) on input line 12.
+LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1) on input line 12.
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
@@ -385,14 +385,35 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen192
+\captionmargin=\dimen193
+\caption@leftmargin=\dimen194
+\caption@rightmargin=\dimen195
+\caption@width=\dimen196
+\caption@indent=\dimen197
+\caption@parindent=\dimen198
+\caption@hangindent=\dimen199
+Package caption Info: Standard document class detected.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 14.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 34.
+\c@caption@flags=\count325
+\c@continuedfloat=\count326
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+ (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 16.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 53.
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count325
+\l__color_backend_stack_int=\count327
 ) (toi_ati_case_anatomy.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
@@ -401,26 +422,26 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `toi_ati_case_anatomy.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Info: Redefining \. on input line 34.
-LaTeX Info: Redefining \% on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Info: Redefining \. on input line 53.
+LaTeX Info: Redefining \% on input line 53.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -458,16 +479,16 @@ LaTeX Info: Redefining \% on input line 34.
 
 (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count326
-\scratchdimen=\dimen192
+\scratchcounter=\count328
+\scratchdimen=\dimen256
 \scratchbox=\box65
-\nofMPsegments=\count327
-\nofMParguments=\count328
+\nofMPsegments=\count329
+\nofMParguments=\count330
 \everyMPshowfont=\toks32
-\MPscratchCnt=\count329
-\MPscratchDim=\dimen193
-\MPnumerator=\count330
-\makeMPintoPDFobject=\count331
+\MPscratchCnt=\count331
+\MPscratchDim=\dimen257
+\MPnumerator=\count332
+\makeMPintoPDFobject=\count333
 \everyMPtoPDFconversion=\toks33
 ) (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -475,136 +496,157 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring ON on input line 34.
+Package hyperref Info: Link coloring ON on input line 53.
  (toi_ati_case_anatomy.out) (toi_ati_case_anatomy.out)
 \@outlinefile=\write3
 \openout3 = `toi_ati_case_anatomy.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 36.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 55.
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 36.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 55.
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 36.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 55.
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 36.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 55.
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 36.
+(Font)              <12> on input line 55.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 36.
+(Font)              <8> on input line 55.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 36.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
+(Font)              <6> on input line 55.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 38.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 57.
  (C:\Users\herie\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 38.
+(Font)              <10> on input line 57.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 38.
+(Font)              <7> on input line 57.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 38.
+(Font)              <5> on input line 57.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 45.
+(Font)              <10.95> on input line 64.
  [1
 
 {C:/Users/herie/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 81.
- [2] [3]
-<../../outputs/toi_ati_case_anatomy/figures_pdf/top_regions_toi_case_anatomy.pdf, id=119, 580.80986pt x 282.68486pt>
+(Font)              <14.4> on input line 101.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 101.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 101.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 101.
+
+[2]
+<../../outputs/toi_ati_case_anatomy/figures_pdf/top_regions_toi_case_anatomy.pdf, id=151, 580.80986pt x 282.68486pt>
 File: ../../outputs/toi_ati_case_anatomy/figures_pdf/top_regions_toi_case_anatomy.pdf Graphic file (type pdf)
 <use ../../outputs/toi_ati_case_anatomy/figures_pdf/top_regions_toi_case_anatomy.pdf>
-Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/top_regions_toi_case_anatomy.pdf  used on input line 186.
+Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/top_regions_toi_case_anatomy.pdf  used on input line 167.
 (pdftex.def)             Requested size: 409.71692pt x 199.41794pt.
-
-Overfull \hbox (11.86354pt too wide) in paragraph at lines 193--194
-\T1/lmtt/m/n/10.95 cube19_cluster4\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 cube25_cluster0\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 cube24_cluster1\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 cube26_cluster0 \T1/lmr/m/n/10.95 y \T1/lmtt/m/n/10.95 cube26_cluster10\T1/lmr/m/n/10.95 . 
- []
-
-
-Overfull \hbox (107.32866pt too wide) detected at line 204
-[]
- []
-
-<../../outputs/toi_ati_case_anatomy/figures_pdf/toi_factor_decomposition.pdf, id=122, 614.70901pt x 283.15536pt>
+ [3 <../../outputs/toi_ati_case_anatomy/figures_pdf/top_regions_toi_case_anatomy.pdf>]
+<../../outputs/toi_ati_case_anatomy/figures_pdf/toi_factor_decomposition.pdf, id=196, 614.70901pt x 283.15536pt>
 File: ../../outputs/toi_ati_case_anatomy/figures_pdf/toi_factor_decomposition.pdf Graphic file (type pdf)
 <use ../../outputs/toi_ati_case_anatomy/figures_pdf/toi_factor_decomposition.pdf>
-Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/toi_factor_decomposition.pdf  used on input line 210.
+Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/toi_factor_decomposition.pdf  used on input line 186.
 (pdftex.def)             Requested size: 409.71692pt x 188.73232pt.
-[4 <../../outputs/toi_ati_case_anatomy/figures_pdf/top_regions_toi_case_anatomy.pdf>]
-Overfull \hbox (0.67157pt too wide) in paragraph at lines 217--218
-[]\T1/lmr/m/n/10.95 La Fi-gu-ra [][]2[][] abre el ran-king re-gio-nal y mues-tra los fac-to-res que ali-men-tan $[]$: \T1/lmtt/m/n/10.95 shadow_score\T1/lmr/m/n/10.95 ,
+
+Overfull \hbox (112.621pt too wide) detected at line 201
+[]
  []
 
-<../../outputs/toi_ati_case_anatomy/figures_pdf/top_anchors_ati_case_anatomy.pdf, id=168, 698.84813pt x 282.68486pt>
+<../../outputs/toi_ati_case_anatomy/figures_pdf/top_anchors_ati_case_anatomy.pdf, id=200, 698.84813pt x 282.68486pt>
 File: ../../outputs/toi_ati_case_anatomy/figures_pdf/top_anchors_ati_case_anatomy.pdf Graphic file (type pdf)
 <use ../../outputs/toi_ati_case_anatomy/figures_pdf/top_anchors_ati_case_anatomy.pdf>
-Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/top_anchors_ati_case_anatomy.pdf  used on input line 236.
+Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/top_anchors_ati_case_anatomy.pdf  used on input line 207.
 (pdftex.def)             Requested size: 409.71692pt x 165.73013pt.
-[5 <../../outputs/toi_ati_case_anatomy/figures_pdf/toi_factor_decomposition.pdf>]
-Overfull \hbox (53.141pt too wide) in paragraph at lines 243--244
-\T1/lmtt/m/n/10.95 HIP 97166 c / cube12_cluster0\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 HIP 90988 b / cube17_cluster2\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 HD 42012 b / cube26_cluster6\T1/lmr/m/n/10.95 ,
+[4 <../../outputs/toi_ati_case_anatomy/figures_pdf/toi_factor_decomposition.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
+\T1/lmtt/m/n/10.95 / cube26_cluster6\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 HD 42012 b / cube19_cluster5\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 HD 4313 b / cube17_cluster10\T1/lmr/m/n/10.95 ,
  []
 
 
-Overfull \hbox (47.39227pt too wide) in paragraph at lines 243--244
-\T1/lmtt/m/n/10.95 HD 42012 b / cube19_cluster5\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 HD 4313 b / cube17_cluster10\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 HD 221585 b / cube25_cluster0\T1/lmr/m/n/10.95 ,
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
+\T1/lmtt/m/n/10.95 HD 221585 b / cube25_cluster0\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 24 Sex b / cube24_cluster1\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 BD-17 63 b /
  []
 
-
-Overfull \hbox (27.10443pt too wide) in paragraph at lines 243--244
-\T1/lmtt/m/n/10.95 24 Sex b / cube24_cluster1\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 BD-17 63 b / cube26_cluster4\T1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 BD-17 63 b / cube19_cluster4
- []
-
-
-Overfull \hbox (76.18306pt too wide) detected at line 265
-[]
- []
-
-<../../outputs/toi_ati_case_anatomy/figures_pdf/ati_factor_decomposition.pdf, id=224, 684.45396pt x 283.15536pt>
+<../../outputs/toi_ati_case_anatomy/figures_pdf/ati_factor_decomposition.pdf, id=259, 684.45396pt x 283.15536pt>
 File: ../../outputs/toi_ati_case_anatomy/figures_pdf/ati_factor_decomposition.pdf Graphic file (type pdf)
 <use ../../outputs/toi_ati_case_anatomy/figures_pdf/ati_factor_decomposition.pdf>
-Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/ati_factor_decomposition.pdf  used on input line 271.
+Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/ati_factor_decomposition.pdf  used on input line 224.
 (pdftex.def)             Requested size: 409.71692pt x 169.50134pt.
-[6 <../../outputs/toi_ati_case_anatomy/figures_pdf/top_anchors_ati_case_anatomy.pdf>]
-<../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_by_radius_summary.pdf, id=280, 504.73254pt x 325.36243pt>
-File: ../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_by_radius_summary.pdf Graphic file (type pdf)
-<use ../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_by_radius_summary.pdf>
-Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_by_radius_summary.pdf  used on input line 301.
-(pdftex.def)             Requested size: 364.19667pt x 234.77213pt.
- [7 <../../outputs/toi_ati_case_anatomy/figures_pdf/ati_factor_decomposition.pdf>] [8 <../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_by_radius_summary.pdf>]
-Overfull \hbox (28.79237pt too wide) detected at line 346
+[5 <../../outputs/toi_ati_case_anatomy/figures_pdf/top_anchors_ati_case_anatomy.pdf> <../../outputs/toi_ati_case_anatomy/figures_pdf/ati_factor_decomposition.pdf>]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 249.
+ [6]
+<../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_relative_by_radius.pdf, id=379, 507.97905pt x 339.08557pt>
+File: ../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_relative_by_radius.pdf Graphic file (type pdf)
+<use ../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_relative_by_radius.pdf>
+Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_relative_by_radius.pdf  used on input line 349.
+(pdftex.def)             Requested size: 373.3035pt x 249.19127pt.
+ [7]
+<../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_absolute_by_radius.pdf, id=392, 513.17032pt x 339.08557pt>
+File: ../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_absolute_by_radius.pdf Graphic file (type pdf)
+<use ../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_absolute_by_radius.pdf>
+Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_absolute_by_radius.pdf  used on input line 366.
+(pdftex.def)             Requested size: 373.3035pt x 246.67152pt.
+ [8 <../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_relative_by_radius.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 398--398
+[]|\T1/lmtt/m/n/10 cube26_cluster6
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--398
+\T1/lmr/m/n/10 y
+ []
+
+
+Overfull \hbox (11.5796pt too wide) in paragraph at lines 390--401
+ [][] 
+ []
+
+[9 <../../outputs/toi_ati_case_anatomy/figures_pdf/deficit_absolute_by_radius.pdf>]
+<../../outputs/toi_ati_case_anatomy/figures_pdf/final_presentation_cases_summary.pdf, id=500, 891.30807pt x 345.8452pt>
+File: ../../outputs/toi_ati_case_anatomy/figures_pdf/final_presentation_cases_summary.pdf Graphic file (type pdf)
+<use ../../outputs/toi_ati_case_anatomy/figures_pdf/final_presentation_cases_summary.pdf>
+Package pdftex.def Info: ../../outputs/toi_ati_case_anatomy/figures_pdf/final_presentation_cases_summary.pdf  used on input line 405.
+(pdftex.def)             Requested size: 418.82375pt x 162.5156pt.
+ [10 <../../outputs/toi_ati_case_anatomy/figures_pdf/final_presentation_cases_summary.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
+[]\T1/lmr/bx/n/10.95 No hay fun-ción de com-ple-ti-tud ins-tru-men-tal. \T1/lmr/m/n/10.95 Sin $\OML/lmm/m/it/10.95 P\OT1/lmr/m/n/10.95 ([] \OMS/lmsy/m/n/10.95 j
+ []
+
+[11] [12]
+Overfull \hbox (56.68437pt too wide) detected at line 526
 []
  []
 
-[9]
-Overfull \hbox (58.9993pt too wide) in paragraph at lines 408--409
-[]\T1/lmr/bx/n/10.95 No hay fun-ción de com-ple-ti-tud ins-tru-men-tal. \T1/lmr/m/n/10.95 Sin una fun-ción $\OML/lmm/m/it/10.95 P\OT1/lmr/m/n/10.95 ([] \OMS/lmsy/m/n/10.95 j \OML/lmm/m/it/10.95 M[]; P; a; []; m\OT1/lmr/m/n/10.95 )$\T1/lmr/m/n/10.95 ,
- []
-
-[10]
-Overfull \hbox (56.68437pt too wide) detected at line 436
-[]
- []
-
-[11] (toi_ati_case_anatomy.aux
+[13] (toi_ati_case_anatomy.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -613,20 +655,20 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
  ***********
 Package rerunfilecheck Info: File `toi_ati_case_anatomy.out' has not changed.
-(rerunfilecheck)             Checksum: 888280A012F173792B3B05DAC18E8D5A;4298.
+(rerunfilecheck)             Checksum: CA4F89F304ED2939956D899641F51523;6256.
  ) 
 Here is how much of TeX's memory you used:
- 13270 strings out of 467691
- 209438 string characters out of 5414987
- 647879 words of memory out of 5000000
- 42050 multiletter control sequences out of 15000+600000
- 699613 words of font info for 99 fonts, out of 8000000 for 9000
+ 14671 strings out of 467691
+ 237809 string characters out of 5414987
+ 671807 words of memory out of 5000000
+ 43422 multiletter control sequences out of 15000+600000
+ 705904 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,1069b,610s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on toi_ati_case_anatomy.pdf (11 pages, 419335 bytes).
+ 75i,14n,79p,1028b,567s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/herie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on toi_ati_case_anatomy.pdf (13 pages, 504882 bytes).
 PDF statistics:
- 525 PDF objects out of 1000 (max. 8388607)
- 77 named destinations out of 1000 (max. 500000)
- 194 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 701 PDF objects out of 1000 (max. 8388607)
+ 94 named destinations out of 1000 (max. 500000)
+ 276 words of extra memory for PDF output out of 10000 (max. 10000000)
 

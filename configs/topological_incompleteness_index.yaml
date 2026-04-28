@@ -1,0 +1,63 @@
+project:
+  name: topological_incompleteness_index
+  random_state: 42
+
+inputs:
+  # Set explicit paths here if auto-discovery does not match your local outputs.
+  node_shadow_metrics: null
+  mapper_membership: null
+  mapper_edges: null
+  imputed_catalog: null
+
+  node_shadow_metrics_patterns:
+    - outputs/observational_shadow/tables/node_observational_shadow_metrics.csv
+    - outputs/local_shadow_case_studies/tables/case_node_summary.csv
+    - outputs/**/node_observational_shadow_metrics.csv
+    - outputs/**/case_node_summary.csv
+
+  mapper_membership_patterns:
+    - outputs/mapper/data/*membership*.csv
+    - outputs/mapper/data/*members*.csv
+    - outputs/mapper/nodes/*membership*.csv
+    - outputs/mapper/nodes/*members*.csv
+    - outputs/**/membership*.csv
+    - outputs/**/*members*.csv
+
+  mapper_edges_patterns:
+    - outputs/mapper/edges/*.csv
+    - outputs/mapper/data/*edge*.csv
+    - outputs/**/edges*.csv
+    - outputs/**/*edge*.csv
+
+  imputed_catalog_patterns:
+    - outputs/imputation/data/mapper_features_imputed_iterative.csv
+    - outputs/imputation/data/PSCompPars_imputed_iterative.csv
+    - outputs/imputation/data/*.csv
+    - data/*.csv
+
+analysis:
+  config_id: orbital_pca2_cubes10_overlap0p35
+  preferred_method: Radial Velocity
+  eps: 1.0e-9
+  r3_variables:
+    mass: pl_bmasse
+    period: pl_orbper
+    semimajor: pl_orbsmax
+
+  top_quantile: 0.90
+  max_anchor_nodes: 50
+  min_members_for_regional_ranking: 3
+  physical_continuity_sigma: null
+
+outputs:
+  root: outputs/topological_incompleteness_index
+  tables: outputs/topological_incompleteness_index/tables
+  figures: outputs/topological_incompleteness_index/figures_pdf
+  metadata: outputs/topological_incompleteness_index/metadata
+  logs: outputs/topological_incompleteness_index/logs
+  latex_dir: latex/04_topological_incompleteness
+
+figures:
+  enabled: true
+  top_n_regions: 25
+  top_n_anchors: 25

@@ -1,0 +1,56 @@
+case_id,node_id,region_type,method,count,fraction
+case_1,cube17_cluster2,node,Radial Velocity,8,1.0
+case_1,cube17_cluster2,N1,Astrometry,2,0.0015987210231814548
+case_1,cube17_cluster2,N1,Eclipse Timing Variations,4,0.0031974420463629096
+case_1,cube17_cluster2,N1,Imaging,3,0.002398081534772182
+case_1,cube17_cluster2,N1,Microlensing,241,0.1926458832933653
+case_1,cube17_cluster2,N1,Pulsar Timing,2,0.0015987210231814548
+case_1,cube17_cluster2,N1,Pulsation Timing Variations,1,0.0007993605115907274
+case_1,cube17_cluster2,N1,Radial Velocity,563,0.45003996802557955
+case_1,cube17_cluster2,N1,Transit,424,0.33892885691446845
+case_1,cube17_cluster2,N1,Transit Timing Variations,11,0.008792965627498001
+case_1,cube17_cluster2,N2,Eclipse Timing Variations,2,0.0006004202942059442
+case_1,cube17_cluster2,N2,Imaging,1,0.0003002101471029721
+case_1,cube17_cluster2,N2,Microlensing,14,0.004202942059441609
+case_1,cube17_cluster2,N2,Pulsar Timing,3,0.0009006304413089162
+case_1,cube17_cluster2,N2,Pulsation Timing Variations,1,0.0003002101471029721
+case_1,cube17_cluster2,N2,Radial Velocity,470,0.1410987691383969
+case_1,cube17_cluster2,N2,Transit,2816,0.8453917742419694
+case_1,cube17_cluster2,N2,Transit Timing Variations,24,0.00720504353047133
+case_2,cube26_cluster0,node,Eclipse Timing Variations,1,0.08333333333333333
+case_2,cube26_cluster0,node,Radial Velocity,11,0.9166666666666666
+case_2,cube26_cluster0,N1,Astrometry,1,0.0018975332068311196
+case_2,cube26_cluster0,N1,Eclipse Timing Variations,3,0.0056925996204933585
+case_2,cube26_cluster0,N1,Imaging,2,0.003795066413662239
+case_2,cube26_cluster0,N1,Microlensing,187,0.3548387096774194
+case_2,cube26_cluster0,N1,Pulsation Timing Variations,1,0.0018975332068311196
+case_2,cube26_cluster0,N1,Radial Velocity,319,0.6053130929791272
+case_2,cube26_cluster0,N1,Transit,10,0.018975332068311195
+case_2,cube26_cluster0,N1,Transit Timing Variations,4,0.007590132827324478
+case_2,cube26_cluster0,N2,Astrometry,1,0.0008976660682226212
+case_2,cube26_cluster0,N2,Eclipse Timing Variations,2,0.0017953321364452424
+case_2,cube26_cluster0,N2,Imaging,2,0.0017953321364452424
+case_2,cube26_cluster0,N2,Microlensing,171,0.15350089766606823
+case_2,cube26_cluster0,N2,Pulsar Timing,2,0.0017953321364452424
+case_2,cube26_cluster0,N2,Pulsation Timing Variations,1,0.0008976660682226212
+case_2,cube26_cluster0,N2,Radial Velocity,502,0.4506283662477558
+case_2,cube26_cluster0,N2,Transit,424,0.38061041292639136
+case_2,cube26_cluster0,N2,Transit Timing Variations,9,0.00807899461400359
+case_3,cube24_cluster0,node,Radial Velocity,6,1.0
+case_3,cube24_cluster0,N1,Astrometry,2,0.0015987210231814548
+case_3,cube24_cluster0,N1,Eclipse Timing Variations,4,0.0031974420463629096
+case_3,cube24_cluster0,N1,Imaging,3,0.002398081534772182
+case_3,cube24_cluster0,N1,Microlensing,241,0.1926458832933653
+case_3,cube24_cluster0,N1,Pulsar Timing,2,0.0015987210231814548
+case_3,cube24_cluster0,N1,Pulsation Timing Variations,1,0.0007993605115907274
+case_3,cube24_cluster0,N1,Radial Velocity,563,0.45003996802557955
+case_3,cube24_cluster0,N1,Transit,424,0.33892885691446845
+case_3,cube24_cluster0,N1,Transit Timing Variations,11,0.008792965627498001
+case_3,cube24_cluster0,N2,Eclipse Timing Variations,2,0.0006000600060006001
+case_3,cube24_cluster0,N2,Imaging,1,0.00030003000300030005
+case_3,cube24_cluster0,N2,Microlensing,14,0.0042004200420042
+case_3,cube24_cluster0,N2,Pulsar Timing,3,0.0009000900090009
+case_3,cube24_cluster0,N2,Pulsation Timing Variations,1,0.00030003000300030005
+case_3,cube24_cluster0,N2,Radial Velocity,472,0.1416141614161416
+case_3,cube24_cluster0,N2,Transit,2816,0.8448844884488449
+case_3,cube24_cluster0,N2,Transit Timing Variations,24,0.0072007200720072

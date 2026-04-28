@@ -1,0 +1,34 @@
+{
+  "mapper_outputs_dir": "outputs/mapper",
+  "audit_outputs_dir": "outputs/observational_bias_audit",
+  "shadow_outputs_dir": "outputs/observational_shadow",
+  "local_outputs_dir": "outputs/local_shadow_case_studies",
+  "latex_dir": "latex/local_shadow_case_studies",
+  "physical_csv_path": null,
+  "primary_config_id": "orbital_pca2_cubes10_overlap0p35",
+  "requested_node_ids": [
+    "cube17_cluster2",
+    "cube26_cluster0",
+    "cube24_cluster0"
+  ],
+  "top_method_required": "Radial Velocity",
+  "n_cases": 3,
+  "min_case_members": 5,
+  "max_mean_imputation_fraction": 0.25,
+  "peripheral_degree_threshold": 1,
+  "peripheral_component_max_nodes": 3,
+  "epsilon": 1e-9,
+  "analog_shadow_quantile": 0.5,
+  "analog_centroid_distance_tau": 1.5,
+  "analog_min_nodes": 2,
+  "analog_min_members": 5,
+  "analog_min_r3_valid_fraction": 0.6,
+  "neighbor_reference_min_size": 3,
+  "analog_count_cap": 8,
+  "seed": 42,
+  "r3_variables": [
+    "pl_bmasse",
+    "pl_orbper",
+    "pl_orbsmax"
+  ]
+}

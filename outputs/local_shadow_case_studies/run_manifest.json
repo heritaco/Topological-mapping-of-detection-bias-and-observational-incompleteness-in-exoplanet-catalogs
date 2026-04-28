@@ -1,0 +1,55 @@
+{
+  "executed_at_utc": "2026-04-28T06:45:08.944321+00:00",
+  "commit_hash": "0940ed5614a5b55fa2699329b6677f30960a3fb4",
+  "mapper_configuration_used": "orbital_pca2_cubes10_overlap0p35",
+  "requested_nodes": [
+    "cube17_cluster2",
+    "cube26_cluster0",
+    "cube24_cluster0"
+  ],
+  "analyzed_nodes": [
+    "cube17_cluster2",
+    "cube26_cluster0",
+    "cube24_cluster0"
+  ],
+  "replacements": [],
+  "input_paths": {
+    "physical_path": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "node_path": "outputs/mapper/nodes/nodes_orbital_pca2_cubes10_overlap0p35.csv",
+    "edge_path": "outputs/mapper/edges/edges_orbital_pca2_cubes10_overlap0p35.csv",
+    "membership_path": "outputs/observational_bias_audit/metadata/membership_with_observational_metadata_orbital_pca2_cubes10_overlap0p35.csv",
+    "shadow_metrics_path": "outputs/observational_shadow/tables/node_observational_shadow_metrics.csv",
+    "top_candidates_path": "outputs/observational_shadow/tables/top_shadow_candidates.csv",
+    "method_bias_path": "outputs/observational_bias_audit/tables/node_method_bias_metrics.csv",
+    "method_fraction_path": "outputs/observational_bias_audit/tables/node_method_fraction_matrix.csv"
+  },
+  "output_paths": {
+    "root": "outputs/local_shadow_case_studies",
+    "figures": "outputs/local_shadow_case_studies/figures",
+    "tables": "outputs/local_shadow_case_studies/tables",
+    "metadata": "outputs/local_shadow_case_studies/metadata",
+    "logs": "outputs/local_shadow_case_studies/logs",
+    "latex": "latex/local_shadow_case_studies/main.tex"
+  },
+  "variables_r3": [
+    "pl_bmasse",
+    "pl_orbper",
+    "pl_orbsmax"
+  ],
+  "radius_parameters": [
+    "r_node_median",
+    "r_node_q75",
+    "r_kNN"
+  ],
+  "thresholds": {
+    "analog_shadow_quantile": 0.5,
+    "analog_centroid_distance_tau": 1.5,
+    "analog_min_nodes": 2,
+    "analog_min_members": 5,
+    "analog_min_r3_valid_fraction": 0.6,
+    "neighbor_reference_min_size": 3
+  },
+  "warnings": [],
+  "n_planets_analyzed": 5799,
+  "n_planets_r3_valid": 5799
+}

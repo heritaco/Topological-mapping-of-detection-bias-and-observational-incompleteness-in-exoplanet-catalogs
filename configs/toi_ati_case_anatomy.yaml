@@ -1,0 +1,54 @@
+project:
+  name: toi_ati_case_anatomy
+  random_state: 42
+
+inputs:
+  regional_toi_scores: outputs/topological_incompleteness_index/tables/regional_toi_scores.csv
+  anchor_ati_scores: outputs/topological_incompleteness_index/tables/anchor_ati_scores.csv
+  anchor_neighbor_deficits: outputs/topological_incompleteness_index/tables/anchor_neighbor_deficits.csv
+  r3_node_geometry: outputs/topological_incompleteness_index/tables/r3_node_geometry.csv
+  node_shadow_metrics: outputs/observational_shadow/tables/node_observational_shadow_metrics.csv
+  case_node_summary: outputs/local_shadow_case_studies/tables/case_node_summary.csv
+  case_anchor_planets: outputs/local_shadow_case_studies/tables/case_anchor_planets.csv
+  membership: null
+  edges: null
+  imputed_dataset: null
+
+outputs:
+  base_dir: outputs/toi_ati_case_anatomy
+  tables_dir: outputs/toi_ati_case_anatomy/tables
+  figures_dir: outputs/toi_ati_case_anatomy/figures_pdf
+  metadata_dir: outputs/toi_ati_case_anatomy/metadata
+  logs_dir: outputs/toi_ati_case_anatomy/logs
+  latex_dir: latex/05_toi_ati_case_anatomy
+
+analysis:
+  config_id: orbital_pca2_cubes10_overlap0p35
+  top_n_regions: 10
+  top_n_anchors: 10
+  detailed_case_count: 5
+  required_columns_policy: warn
+  planet_name_column: pl_name
+  node_id_column: node_id
+  method_column: discoverymethod
+  default_case_nodes:
+    - cube24_cluster4
+    - cube26_cluster10
+    - cube24_cluster0
+    - cube17_cluster2
+  default_anchor_names:
+    - HD 174205 b
+    - HD 240210 b
+    - HD 60292 b
+    - HIP 90988 b
+
+figures:
+  make_figures: true
+  top_n_bars: 20
+  save_format: pdf
+  bbox_inches: tight
+
+report:
+  make_latex: true
+  make_markdown_summary: true
+  include_placeholders_for_missing_figures: true

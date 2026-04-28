@@ -36,11 +36,11 @@
 Estas tablas evitan sobreinterpretar `delta_rel_neighbors_best`: el valor maximo resume, pero no reemplaza, la lectura por los tres radios locales.
 | anchor_pl_name | node_id | ATI | best_radius_type | Delta_rel_neighbors_best | mean_Delta_rel_neighbors | median_Delta_rel_neighbors | deficit_stability_label | interpretation_short |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| HIP 97166 c | cube12_cluster0 | 0.0068528480823882 | r_kNN | 0.0909090909008264 | -0.2182802829380318 | -0.3322884012537448 | radius_sensitive_deficit | El deficit depende del radio y debe leerse como exploratorio. |
-| HIP 90988 b | cube17_cluster2 | 0.0067455387709832 | r_node_median | 0.1111111110987654 | 0.07263107262411857 | 0.0909090909008264 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
-| HD 42012 b | cube19_cluster5 | 0.0051133340600407 | r_kNN | 0.0909090909008264 | 0.0341916380849605 | 0.008264462809849 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
-| HD 42012 b | cube26_cluster6 | 0.0051133340600407 | r_kNN | 0.0909090909008264 | 0.0341916380849605 | 0.008264462809849 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
-| HD 4313 b | cube17_cluster10 | 0.0050935128729779 | r_node_median | 0.1666666666388888 | 0.11363636362203466 | 0.0909090909008264 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
+| HIP 97166 c | cube12_cluster0 | 0.0068528480823882 | r_kNN | 0.09090909090082644 | -0.21828028293803184 | -0.33228840125374487 | radius_sensitive_deficit | El deficit depende del radio y debe leerse como exploratorio. |
+| HIP 90988 b | cube17_cluster2 | 0.0067455387709832 | r_node_median | 0.11111111109876542 | 0.0726310726241186 | 0.09090909090082644 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
+| HD 42012 b | cube19_cluster5 | 0.0051133340600407 | r_kNN | 0.09090909090082644 | 0.034191638084960535 | 0.008264462809849054 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
+| HD 42012 b | cube26_cluster6 | 0.0051133340600407 | r_kNN | 0.09090909090082644 | 0.034191638084960535 | 0.008264462809849054 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
+| HD 4313 b | cube17_cluster10 | 0.0050935128729779 | r_node_median | 0.16666666663888888 | 0.11363636362203472 | 0.09090909090082644 | consistent_positive_deficit | El deficit aparece en las tres escalas locales y resulta mas estable. |
 
 ## Three final presentation cases
 | case_type | anchor_pl_name | node_id | TOI | ATI | Delta_rel_neighbors_best | deficit_stability_label | how_to_present | caution_text |
@@ -60,6 +60,16 @@ Estas tablas evitan sobreinterpretar `delta_rel_neighbors_best`: el valor maximo
 - Recomputed `Delta_rel` > 1 count: 0
 - Formula mismatches recomputed: 0
 - La auditoria no encontro `Delta_rel` recomputado mayor que 1. Si una figura previa parecia exceder 1, la lectura mas probable es que estaba mostrando `Delta_N` o una escala mal rotulada.
+
+## Figure 5 audit
+- Previous y column: summary_radius_columns
+- Previous y max: 0.3333333332222222
+- Recomputed Delta_rel max: 0.3333333332222222
+- Recomputed Delta_N max: 1.0
+- Decision: plot_delta_rel
+- Reason: La version corregida separa el deficit relativo recomputado desde N_obs y N_exp_neighbors del deficit absoluto, para evitar confundir escalas de conteo con fracciones normalizadas.
+- Esta versión separa explícitamente déficit relativo y déficit absoluto. El primero sirve para comparar radios con escalas distintas; el segundo depende fuertemente del tamaño de la bola local.
+- Ninguno debe interpretarse como cantidad confirmada de planetas ausentes.
 
 ## Caution
 TOI/ATI no descubre planetas ausentes; prioriza donde buscar evidencia de incompletitud observacional.

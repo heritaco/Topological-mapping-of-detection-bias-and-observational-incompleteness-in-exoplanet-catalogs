@@ -54,6 +54,7 @@ def write_markdown_summary(
     top_anchor_radius_summary: pd.DataFrame,
     final_cases: pd.DataFrame,
     deficit_audit: Dict[str, int] | None = None,
+    figure5_audit: Dict[str, object] | None = None,
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     lines = ["# TOI/ATI case anatomy summary", ""]
@@ -144,6 +145,20 @@ def write_markdown_summary(
         lines.append("No deficit audit available.")
     lines.append("")
 
+    lines.append("## Figure 5 audit")
+    if figure5_audit:
+        lines.append(f"- Previous y column: {figure5_audit.get('previous_y_column')}")
+        lines.append(f"- Previous y max: {figure5_audit.get('previous_y_max')}")
+        lines.append(f"- Recomputed Delta_rel max: {figure5_audit.get('recomputed_delta_rel_max')}")
+        lines.append(f"- Recomputed Delta_N max: {figure5_audit.get('recomputed_delta_N_max')}")
+        lines.append(f"- Decision: {figure5_audit.get('decision')}")
+        lines.append(f"- Reason: {figure5_audit.get('reason')}")
+        lines.append("- Esta versión separa explícitamente déficit relativo y déficit absoluto. El primero sirve para comparar radios con escalas distintas; el segundo depende fuertemente del tamaño de la bola local.")
+        lines.append("- Ninguno debe interpretarse como cantidad confirmada de planetas ausentes.")
+    else:
+        lines.append("No Figure 5 audit available.")
+    lines.append("")
+
     lines.append("## Caution")
     lines.append("TOI/ATI no descubre planetas ausentes; prioriza donde buscar evidencia de incompletitud observacional.")
     text = "\n".join(lines)
@@ -188,8 +203,8 @@ def write_top_anchor_deficit_tables_tex(
                 f"{_latex_radius(row.get('radius_type'))} & "
                 f"{_fmt(row.get('N_obs'))} & "
                 f"{_fmt(row.get('N_exp_neighbors'))} & "
-                f"{_fmt(row.get('Delta_N_neighbors'))} & "
-                f"{_fmt(row.get('Delta_rel_neighbors'), digits=3)} \\\\"
+                f"{_fmt(row.get('delta_N_neighbors_recomputed', row.get('Delta_N_neighbors')))} & "
+                f"{_fmt(row.get('delta_rel_neighbors_recomputed', row.get('Delta_rel_neighbors')), digits=3)} \\\\"
             )
         lines.append("\\bottomrule")
         lines.append("\\end{tabular}")
@@ -271,17 +286,26 @@ ATI debe leerse como una prioridad local de inspeccion. El termino $\Delta_{\mat
 \caption{Descomposicion visual de factores ATI.}
 \end{figure}
 
-\section{Tablas de deficit por radio para las anclas principales}
-No basta con usar $\Delta_{\mathrm{rel,best}}$ porque ese maximo puede inflar la lectura de un caso local. Por eso se reportan los tres radios: $r_{\mathrm{kNN}}$, $r_{\mathrm{node\_median}}$ y $r_{\mathrm{node\_q75}}$. Cada tabla muestra $N_{\mathrm{obs}}$, la referencia local $N_{\mathrm{exp}}$, el deficit absoluto $\Delta N$ y el deficit relativo $\Delta_{\mathrm{rel}}$.
+\section{Tablas de déficit por radio para las anclas principales}
+No basta con usar $\Delta_{\mathrm{rel,best}}$ porque ese máximo puede inflar la lectura de un caso local. Por eso se reportan los tres radios: $r_{\mathrm{kNN}}$, $r_{\mathrm{node\_median}}$ y $r_{\mathrm{node\_q75}}$. Cada tabla muestra $N_{\mathrm{obs}}$, la referencia local $N_{\mathrm{exp}}$, el déficit absoluto $\Delta N$ y el déficit relativo $\Delta_{\mathrm{rel}}$.
 
-La diferencia clave es que $\Delta N$ depende de la escala de conteo, mientras que $\Delta_{\mathrm{rel}}$ normaliza por la referencia esperada. Si el deficit permanece positivo en los tres radios, el caso es mas estable. Si solo aparece en una escala, debe presentarse como exploratorio.
+La versión relativa usa $\Delta_{\mathrm{rel}}$ recomputado desde $N_{\mathrm{obs}}$ y $N_{\mathrm{exp}}$. Esto permite comparar radios con escalas de conteo distintas. En cambio, $\Delta N$ puede ser útil como conteo exploratorio, pero depende fuertemente del tamaño de la bola local. Un caso es más estable si $\Delta_{\mathrm{rel}}$ permanece positivo en los tres radios; es sensible al radio si solo aparece en una escala. Valores negativos indican más vecinos observados que los esperados bajo la referencia local. Ninguno debe interpretarse como número de planetas reales faltantes.
+
+En una versión previa, la figura de déficit por radio podía confundirse porque el eje estaba rotulado como déficit relativo aunque la escala visual era compatible con déficit absoluto o con una columna no normalizada. En esta versión se separan explícitamente el déficit relativo y el déficit absoluto.
 
 \input{__TOP_ANCHOR_DEFICIT_INPUT__}
 
-\section{Deficit por radio}
+\section{Déficit por radio}
 \begin{figure}[H]\centering
-\safeincludegraphics[width=.8\textwidth]{\figroot/deficit_by_radius_summary.pdf}
-\caption{Resumen del deficit relativo por radio.}
+\safeincludegraphics[width=.82\textwidth]{\figroot/deficit_relative_by_radius.pdf}
+\caption{Déficit relativo por radio. Se grafica $\Delta_{\mathrm{rel}}=(N_{\mathrm{exp}}-N_{\mathrm{obs}})/(N_{\mathrm{exp}}+\epsilon)$ recomputado desde los conteos observados y esperados. Valores positivos indican menos vecinos observados que los esperados bajo la referencia local; valores negativos indican más vecinos observados que los esperados.}
+\label{fig:deficit-relative-by-radius}
+\end{figure}
+
+\begin{figure}[H]\centering
+\safeincludegraphics[width=.82\textwidth]{\figroot/deficit_absolute_by_radius.pdf}
+\caption{Déficit absoluto por radio. Esta figura muestra $\Delta N=N_{\mathrm{exp}}-N_{\mathrm{obs}}$ y no debe confundirse con el déficit relativo.}
+\label{fig:deficit-absolute-by-radius}
 \end{figure}
 
 \section{Tres casos finales para exposicion}

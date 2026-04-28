@@ -205,6 +205,12 @@ def audit_deficit_formulas(deficits: pd.DataFrame, *, epsilon: float = 1e-9) -> 
     audit = {
         "raw_delta_rel_gt_one_count": int((pd.to_numeric(df["delta_rel_neighbors"], errors="coerce") > 1).sum()),
         "recomputed_delta_rel_gt_one_count": int((pd.to_numeric(df["Delta_rel_neighbors"], errors="coerce") > 1).sum()),
+        "recomputed_delta_n_max": float(pd.to_numeric(df["delta_N_neighbors_recomputed"], errors="coerce").max(skipna=True))
+        if not df["delta_N_neighbors_recomputed"].dropna().empty
+        else 0.0,
+        "recomputed_delta_rel_max": float(pd.to_numeric(df["delta_rel_neighbors_recomputed"], errors="coerce").max(skipna=True))
+        if not df["delta_rel_neighbors_recomputed"].dropna().empty
+        else 0.0,
         "mismatch_count": int(df["deficit_formula_check"].eq("mismatch_recomputed_used").sum()),
     }
     return df, audit
@@ -260,6 +266,8 @@ def build_top_anchor_radius_tables(
         "N_exp_neighbors",
         "Delta_N_neighbors",
         "Delta_rel_neighbors",
+        "delta_N_neighbors_recomputed",
+        "delta_rel_neighbors_recomputed",
         "N_exp_analog",
         "Delta_N_analog",
         "Delta_rel_analog",
@@ -274,8 +282,8 @@ def build_top_anchor_radius_tables(
     summary_rows = []
     for (anchor_name, node_id), group in merged.groupby(["anchor_pl_name", "node_id"], dropna=False):
         group = group.sort_values("radius_order")
-        delta_values = group["Delta_rel_neighbors"].tolist()
-        best_idx = group["Delta_rel_neighbors"].fillna(-np.inf).idxmax()
+        delta_values = group["delta_rel_neighbors_recomputed"].tolist()
+        best_idx = group["delta_rel_neighbors_recomputed"].fillna(-np.inf).idxmax()
         best_row = group.loc[best_idx] if best_idx in group.index else group.iloc[0]
         summary_rows.append({
             "anchor_pl_name": anchor_name,
@@ -285,13 +293,13 @@ def build_top_anchor_radius_tables(
             "best_radius_type": best_row.get("radius_type"),
             "N_obs_best": best_row.get("N_obs"),
             "N_exp_neighbors_best": best_row.get("N_exp_neighbors"),
-            "Delta_N_neighbors_best": best_row.get("Delta_N_neighbors"),
-            "Delta_rel_neighbors_best": max(0.0, float(best_row.get("Delta_rel_neighbors", np.nan))) if pd.notna(best_row.get("Delta_rel_neighbors")) else np.nan,
+            "Delta_N_neighbors_best": best_row.get("delta_N_neighbors_recomputed"),
+            "Delta_rel_neighbors_best": max(0.0, float(best_row.get("delta_rel_neighbors_recomputed", np.nan))) if pd.notna(best_row.get("delta_rel_neighbors_recomputed")) else np.nan,
             "mean_Delta_rel_neighbors": pd.Series(delta_values, dtype=float).mean(skipna=True),
             "median_Delta_rel_neighbors": pd.Series(delta_values, dtype=float).median(skipna=True),
             "max_Delta_rel_neighbors": pd.Series(delta_values, dtype=float).max(skipna=True),
             "deficit_stability_label": deficit_stability_label(delta_values),
-            "interpretation_short": _group_interpretation(group["Delta_rel_neighbors"].tolist()),
+            "interpretation_short": _group_interpretation(group["delta_rel_neighbors_recomputed"].tolist()),
         })
     summary = pd.DataFrame(summary_rows).sort_values(["ATI", "Delta_rel_neighbors_best"], ascending=[False, False]).reset_index(drop=True)
     return detail, summary

@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-04-28T13:32:50.771084+00:00",
+  "created_at_utc": "2026-04-28T13:51:36.021523+00:00",
   "config_path": "configs\\toi_ati_case_anatomy.yaml",
   "inputs_loaded_rows": {
     "regional_toi_scores": 124,
@@ -21,6 +21,8 @@
   "audit": {
     "raw_delta_rel_gt_one_count": 0,
     "recomputed_delta_rel_gt_one_count": 0,
+    "recomputed_delta_n_max": 1.0,
+    "recomputed_delta_rel_max": 0.3333333332222222,
     "mismatch_count": 0
   }
 }

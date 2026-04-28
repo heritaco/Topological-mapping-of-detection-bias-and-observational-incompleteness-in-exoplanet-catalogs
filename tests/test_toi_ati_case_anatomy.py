@@ -10,9 +10,11 @@ from src.toi_ati_case_anatomy.decomposition import (
     add_ati_decomposition,
     add_toi_decomposition,
     audit_deficit_formulas,
+    build_top_anchor_radius_tables,
     summarize_deficit_by_radius,
 )
-from src.toi_ati_case_anatomy.reporting import write_markdown_summary
+from src.toi_ati_case_anatomy.plotting import plot_deficit_absolute_by_radius, plot_deficit_relative_by_radius
+from src.toi_ati_case_anatomy.reporting import write_latex_report, write_markdown_summary
 from src.toi_ati_case_anatomy.validation import (
     compute_delta_n,
     compute_delta_rel,
@@ -75,6 +77,39 @@ def test_delta_rel_formula():
     assert np.isclose(compute_delta_rel(11, 10), (11 - 10) / (11 + 1e-9))
 
 
+def test_delta_n_recomputed():
+    raw = pd.DataFrame({
+        "anchor_pl_name": ["p"],
+        "node_id": ["n"],
+        "radius_type": ["r_kNN"],
+        "N_obs": [10],
+        "N_exp_neighbors": [11],
+    })
+    audited, _ = audit_deficit_formulas(raw)
+    assert np.isclose(audited.loc[0, "delta_N_neighbors_recomputed"], 1.0)
+
+
+def test_delta_rel_recomputed():
+    raw = pd.DataFrame({
+        "anchor_pl_name": ["p"],
+        "node_id": ["n"],
+        "radius_type": ["r_kNN"],
+        "N_obs": [10],
+        "N_exp_neighbors": [11],
+    })
+    audited, _ = audit_deficit_formulas(raw)
+    assert np.isclose(audited.loc[0, "delta_rel_neighbors_recomputed"], 1.0 / (11 + 1e-9))
+
+
+def test_delta_rel_bounds_for_positive_counts():
+    n_obs = 3
+    n_exp = 8
+    delta_n = compute_delta_n(n_exp, n_obs)
+    delta_rel = compute_delta_rel(n_exp, n_obs)
+    assert delta_n <= n_exp
+    assert delta_rel <= 1
+
+
 def test_delta_rel_not_confused_with_delta_n():
     raw = pd.DataFrame({
         "anchor_pl_name": ["p"],
@@ -102,6 +137,36 @@ def test_summarize_deficit_by_radius():
     out = summarize_deficit_by_radius(df)
     assert np.isclose(out.loc[0, "delta_rel_neighbors_best"], 0.3)
     assert out.loc[0, "best_radius"] == "r_node_median"
+
+
+def test_figure5_uses_recomputed_relative_column(tmp_path: Path):
+    detail = pd.DataFrame({
+        "anchor_pl_name": ["p", "p", "p"],
+        "node_id": ["n", "n", "n"],
+        "radius_type": ["r_kNN", "r_node_median", "r_node_q75"],
+        "delta_rel_neighbors_recomputed": [0.1, 0.2, -0.1],
+        "delta_N_neighbors_recomputed": [1.0, 2.0, -1.0],
+    })
+    info = plot_deficit_relative_by_radius(detail, tmp_path / "deficit_relative_by_radius.pdf")
+    assert info["y_col"] == "delta_rel_neighbors_recomputed"
+
+
+def test_absolute_and_relative_figures_have_distinct_names(tmp_path: Path):
+    detail = pd.DataFrame({
+        "anchor_pl_name": ["p", "p", "p"],
+        "node_id": ["n", "n", "n"],
+        "radius_type": ["r_kNN", "r_node_median", "r_node_q75"],
+        "delta_rel_neighbors_recomputed": [0.1, 0.2, -0.1],
+        "delta_N_neighbors_recomputed": [1.0, 2.0, -1.0],
+    })
+    rel_path = tmp_path / "deficit_relative_by_radius.pdf"
+    abs_path = tmp_path / "deficit_absolute_by_radius.pdf"
+    plot_deficit_relative_by_radius(detail, rel_path)
+    plot_deficit_absolute_by_radius(detail, abs_path)
+    assert rel_path.name == "deficit_relative_by_radius.pdf"
+    assert abs_path.name == "deficit_absolute_by_radius.pdf"
+    assert rel_path.exists()
+    assert abs_path.exists()
 
 
 def test_deficit_stability_label():
@@ -168,6 +233,38 @@ def test_final_cases_has_three_rows():
     assert len(out) == 3
 
 
+def test_top_anchor_radius_summary_uses_recomputed_values():
+    top_anchors = pd.DataFrame({
+        "anchor_pl_name": ["planet A"],
+        "node_id": ["n1"],
+        "ATI": [0.4],
+        "TOI": [0.3],
+    })
+    audited = pd.DataFrame({
+        "anchor_pl_name": ["planet A", "planet A", "planet A"],
+        "node_id": ["n1", "n1", "n1"],
+        "radius_type": ["r_kNN", "r_node_median", "r_node_q75"],
+        "radius_value": [0.1, 0.2, 0.3],
+        "N_obs": [10, 10, 10],
+        "N_exp_neighbors": [11, 15, 9],
+        "Delta_N_neighbors": [999, 999, 999],
+        "Delta_rel_neighbors": [999, 999, 999],
+        "delta_N_neighbors_recomputed": [1, 5, -1],
+        "delta_rel_neighbors_recomputed": [1/11, 5/15, -1/9],
+        "N_exp_analog": [np.nan, np.nan, np.nan],
+        "Delta_N_analog": [np.nan, np.nan, np.nan],
+        "Delta_rel_analog": [np.nan, np.nan, np.nan],
+        "deficit_class_neighbors": ["no_deficit", "moderate_deficit", "overpopulated_reference"],
+        "deficit_class_analog": ["undefined_reference"] * 3,
+        "deficit_formula_check": ["mismatch_recomputed_used"] * 3,
+        "interpretation_short": ["", "", ""],
+    })
+    _, summary = build_top_anchor_radius_tables(top_anchors, audited, top_n=1)
+    assert summary.loc[0, "best_radius_type"] == "r_node_median"
+    assert np.isclose(summary.loc[0, "Delta_N_neighbors_best"], 5)
+    assert np.isclose(summary.loc[0, "Delta_rel_neighbors_best"], 5 / 15)
+
+
 def test_no_forbidden_claims(tmp_path: Path):
     path = tmp_path / "summary.md"
     write_markdown_summary(
@@ -181,3 +278,21 @@ def test_no_forbidden_claims(tmp_path: Path):
     )
     text = path.read_text(encoding="utf-8")
     assert not contains_forbidden_claim(text)
+
+
+def test_latex_mentions_relative_vs_absolute(tmp_path: Path):
+    tex_path = tmp_path / "toi_ati_case_anatomy.tex"
+    final_cases = pd.DataFrame({
+        "case_type": ["top_toi_region"],
+        "anchor_pl_name": [np.nan],
+        "selected_id": ["n1"],
+        "node_id": ["n1"],
+        "how_to_present": ["Presentar como región top."],
+        "caution_text": ["Lectura prudente."],
+    })
+    write_latex_report(tex_path, final_cases=final_cases)
+    text = tex_path.read_text(encoding="utf-8")
+    lower = text.lower()
+    assert "déficit relativo" in lower
+    assert "déficit absoluto" in lower
+    assert "no debe confundirse" in lower

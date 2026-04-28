@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 from .case_profiles import build_interpretation_sentences, make_anchor_profile, make_region_profile
@@ -22,7 +23,9 @@ from .io import load_input_tables, write_table
 from .paths import find_repo_root, output_paths
 from .plotting import (
     plot_ati_decomposition,
+    plot_deficit_absolute_by_radius,
     plot_deficit_by_radius,
+    plot_deficit_relative_by_radius,
     plot_final_presentation_cases_summary,
     plot_toi_decomposition,
     plot_top_anchors,
@@ -132,8 +135,38 @@ def main() -> None:
         plot_top_anchors(top_anchors, out["figures"] / "top_anchors_ati_case_anatomy.pdf")
         plot_toi_decomposition(top_regions, out["figures"] / "toi_factor_decomposition.pdf")
         plot_ati_decomposition(top_anchors, out["figures"] / "ati_factor_decomposition.pdf")
-        plot_deficit_by_radius(deficit_by_radius, out["figures"] / "deficit_by_radius_summary.pdf")
+        legacy_figure_info = plot_deficit_by_radius(deficit_by_radius, out["figures"] / "deficit_by_radius_summary.pdf")
+        relative_figure_info = plot_deficit_relative_by_radius(top_anchor_radius_tables, out["figures"] / "deficit_relative_by_radius.pdf")
+        absolute_figure_info = plot_deficit_absolute_by_radius(top_anchor_radius_tables, out["figures"] / "deficit_absolute_by_radius.pdf")
         plot_final_presentation_cases_summary(final_cases, out["figures"] / "final_presentation_cases_summary.pdf")
+    else:
+        legacy_figure_info = {"previous_y_column": None, "previous_y_max": None}
+        relative_figure_info = {"y_col": None, "y_max": None}
+        absolute_figure_info = {"y_col": None, "y_max": None}
+
+    figure5_audit = {
+        "figure": "deficit_by_radius_summary.pdf",
+        "previous_y_column": legacy_figure_info.get("previous_y_column"),
+        "previous_y_max": legacy_figure_info.get("previous_y_max"),
+        "recomputed_delta_rel_max": deficit_audit.get("recomputed_delta_rel_max"),
+        "recomputed_delta_N_max": deficit_audit.get("recomputed_delta_n_max"),
+        "decision": "plot_delta_rel",
+        "reason": "La version corregida separa el deficit relativo recomputado desde N_obs y N_exp_neighbors del deficit absoluto, para evitar confundir escalas de conteo con fracciones normalizadas.",
+        "warnings": [
+            warning
+            for warning in [
+                "recomputed_delta_rel_gt_one_unexpected" if deficit_audit.get("recomputed_delta_rel_gt_one_count", 0) > 0 else "",
+                "legacy_figure_visual_scale_did_not_match_recomputed_delta_rel" if legacy_figure_info.get("previous_y_max", 0) and deficit_audit.get("recomputed_delta_rel_max", 0) and legacy_figure_info.get("previous_y_max", 0) > max(1.0, 5 * deficit_audit.get("recomputed_delta_rel_max", 0)) else "",
+            ]
+            if warning
+        ],
+        "relative_figure": {"file": "deficit_relative_by_radius.pdf", "y_column": relative_figure_info.get("y_col"), "y_max": relative_figure_info.get("y_max")},
+        "absolute_figure": {"file": "deficit_absolute_by_radius.pdf", "y_column": absolute_figure_info.get("y_col"), "y_max": absolute_figure_info.get("y_max")},
+    }
+    (out["metadata"] / "figure5_deficit_audit.json").write_text(
+        json.dumps(figure5_audit, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
 
     sentences = build_interpretation_sentences(region_profile, anchor_profile)
     write_markdown_summary(
@@ -144,6 +177,7 @@ def main() -> None:
         top_anchor_radius_summary=top_anchor_radius_summary,
         final_cases=final_cases,
         deficit_audit=deficit_audit,
+        figure5_audit=figure5_audit,
     )
     write_manifest(
         out["metadata"] / "run_manifest.json",

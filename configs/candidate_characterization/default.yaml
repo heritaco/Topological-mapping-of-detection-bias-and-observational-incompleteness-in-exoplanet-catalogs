@@ -7,6 +7,11 @@ paths:
   output_dir: "outputs/candidate_characterization"
   report_dir: "reports/candidate_characterization"
   model_dir: "outputs/candidate_characterization/models"
+feature_set: "candidate_characterization_minimal"
+feature_registry: "configs/features/feature_registry.yaml"
+feature_sets: "configs/features/feature_sets.yaml"
+allow_audit_features: false
+allow_observed_diagnostic: false
 model:
   prefer_gpu: true
   random_state: 42

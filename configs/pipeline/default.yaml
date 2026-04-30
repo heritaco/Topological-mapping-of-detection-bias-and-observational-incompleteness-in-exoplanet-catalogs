@@ -28,6 +28,11 @@ stages:
   data_audit:
     enabled: true
 
+  feature_audit:
+    enabled: true
+    feature_registry: "configs/features/feature_registry.yaml"
+    feature_sets: "configs/features/feature_sets.yaml"
+
   imputation:
     enabled: false
     mode: legacy_subprocess
@@ -90,6 +95,7 @@ stages:
   candidate_characterization:
     enabled: true
     config: "configs/candidate_characterization/default.yaml"
+    feature_set: "candidate_characterization_minimal"
     module: "src.candidate_characterization.run_characterization"
     outputs_dir: "outputs/candidate_characterization"
     report_dir: "reports/candidate_characterization"

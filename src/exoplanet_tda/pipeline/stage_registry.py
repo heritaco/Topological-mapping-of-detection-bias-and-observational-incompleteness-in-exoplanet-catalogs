@@ -5,6 +5,7 @@ from __future__ import annotations
 from .stages import (
     CandidateCharacterizationStage,
     DataAuditStage,
+    FeatureAuditStage,
     ImputationStage,
     LegacyOutputStage,
     MapperStage,
@@ -17,6 +18,7 @@ from .stages import (
 def build_stage_registry() -> dict[str, PipelineStage]:
     return {
         "data_audit": DataAuditStage(),
+        "feature_audit": FeatureAuditStage(),
         "imputation": ImputationStage(),
         "mapper": MapperStage(),
         "observational_bias": LegacyOutputStage("observational_bias", module="src.observational_bias_audit.run_bias_audit"),

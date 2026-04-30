@@ -1,0 +1,57 @@
+version: 1
+default_candidate_characterization: candidate_characterization_minimal
+
+feature_sets:
+  candidate_characterization_minimal:
+    include:
+      - candidate_orbital
+      - stellar_base
+      - system_architecture
+      - topological_context
+      - detectability_proxy
+    exclude:
+      - observational_audit
+    leakage_safe: true
+
+  candidate_characterization_with_audit_controls:
+    include:
+      - candidate_orbital
+      - stellar_base
+      - system_architecture
+      - topological_context
+      - detectability_proxy
+      - observational_audit
+    audit_only:
+      - observational_audit
+    leakage_safe: true
+
+  mapper_orbital_base:
+    include:
+      - orbital_base
+    leakage_safe: true
+
+  mapper_orbital_extended:
+    include:
+      - orbital_extended
+    leakage_safe: true
+
+  mapper_joint_cautious:
+    include:
+      - physical_base
+      - orbital_base
+      - thermal
+    leakage_safe: false
+    notes: use only for Mapper geometry or observed-planet diagnostics, not mass/radius prediction
+
+feature_ablation_plan:
+  experiments:
+    - name: minimal_orbital_only
+      feature_set: candidate_orbital
+    - name: orbital_plus_stellar
+      feature_set: candidate_orbital + stellar_base
+    - name: orbital_stellar_architecture
+      feature_set: candidate_orbital + stellar_base + system_architecture
+    - name: full_without_audit
+      feature_set: candidate_characterization_minimal
+    - name: full_with_audit_sensitivity
+      feature_set: candidate_characterization_with_audit_controls

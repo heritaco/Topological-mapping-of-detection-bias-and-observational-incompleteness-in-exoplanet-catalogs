@@ -1,0 +1,25 @@
+{
+  "name": "topological_incompleteness_index",
+  "status": "skipped",
+  "outputs": [
+    {
+      "stage": "topological_incompleteness_index",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/topological_incompleteness_index",
+      "relative_path": "outputs/topological_incompleteness_index",
+      "kind": "other",
+      "description": "Expected legacy output directory",
+      "created_at": "2026-04-30T20:51:27.672367+00:00",
+      "exists": true,
+      "size_bytes": null,
+      "metadata": {
+        "dry_run": true
+      }
+    }
+  ],
+  "metrics": {
+    "dry_run": true
+  },
+  "warnings": [],
+  "error": null,
+  "elapsed_seconds": 0.004040600004373118
+}

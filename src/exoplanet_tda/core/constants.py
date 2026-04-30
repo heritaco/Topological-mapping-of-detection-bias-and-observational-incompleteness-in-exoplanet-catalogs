@@ -4,6 +4,7 @@ from __future__ import annotations
 
 STAGE_NAMES: tuple[str, ...] = (
     "data_audit",
+    "feature_audit",
     "imputation",
     "mapper",
     "observational_bias",
@@ -30,6 +31,7 @@ ARTIFACT_KINDS: tuple[str, ...] = (
 
 STAGE_DIR_NAMES: dict[str, str] = {
     "data_audit": "data_audit",
+    "feature_audit": "feature_audit",
     "imputation": "imputation",
     "mapper": "mapper",
     "observational_bias": "observational_bias",

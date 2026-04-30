@@ -55,9 +55,24 @@ def validate_property_models(
     random_state: int = 42,
     mode: str = "random",
     test_size: float = 0.2,
+    feature_set: str | None = None,
+    registry_path: str = "configs/features/feature_registry.yaml",
+    feature_sets_path: str = "configs/features/feature_sets.yaml",
+    allow_audit_features: bool = False,
+    allow_observed_diagnostic: bool = False,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     train, test = make_validation_split(catalog, mode=mode, test_size=test_size, random_state=random_state)
-    models = train_models(train, quantiles=quantiles, prefer_gpu=prefer_gpu, random_state=random_state)
+    models = train_models(
+        train,
+        quantiles=quantiles,
+        prefer_gpu=prefer_gpu,
+        random_state=random_state,
+        feature_set=feature_set,
+        registry_path=registry_path,
+        feature_sets_path=feature_sets_path,
+        allow_audit_features=allow_audit_features,
+        allow_observed_diagnostic=allow_observed_diagnostic,
+    )
     # Use observed planets as pseudo-candidates; target physical columns are ignored by model features.
     pred, _ = predict_candidates(test, train, models, quantiles=quantiles, analog_k=30)
 
@@ -67,6 +82,8 @@ def validate_property_models(
             "target": "pl_rade",
             "mode": mode,
             "n_test": int(len(test)),
+            "n_rows_train": int(models.metadata.get("n_train_radius", len(train))),
+            "n_features_available": int(len(models.model_features)),
             "mae_q50": float(mean_absolute_error(test["pl_rade"], pred["pl_rade_q50"])),
             "coverage_q05_q95": interval_coverage(test["pl_rade"], pred.get("pl_rade_q05"), pred.get("pl_rade_q95")),
         })
@@ -75,6 +92,8 @@ def validate_property_models(
             "target": "pl_bmasse",
             "mode": mode,
             "n_test": int(len(test)),
+            "n_rows_train": int(models.metadata.get("n_train_mass", len(train))),
+            "n_features_available": int(len(models.model_features)),
             "mae_q50": float(mean_absolute_error(test["pl_bmasse"], pred["pl_bmasse_q50"])),
             "coverage_q05_q95": interval_coverage(test["pl_bmasse"], pred.get("pl_bmasse_q05"), pred.get("pl_bmasse_q95")),
         })
@@ -84,6 +103,8 @@ def validate_property_models(
             "target": "radius_class",
             "mode": mode,
             "n_test": int(len(test)),
+            "n_rows_train": int(models.metadata.get("n_train_radius", len(train))),
+            "n_features_available": int(len(models.model_features)),
             "accuracy": float(accuracy_score(true_class, pred["predicted_radius_class"])),
         })
 

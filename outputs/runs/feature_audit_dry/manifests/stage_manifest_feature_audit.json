@@ -1,0 +1,58 @@
+{
+  "name": "feature_audit",
+  "status": "success",
+  "outputs": [
+    {
+      "stage": "feature_audit",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/feature_audit_dry/tables/feature_audit/feature_availability.csv",
+      "relative_path": "outputs/runs/feature_audit_dry/tables/feature_audit/feature_availability.csv",
+      "kind": "table",
+      "description": "Feature availability by registry group",
+      "created_at": "2026-04-30T20:51:27.610634+00:00",
+      "exists": true,
+      "size_bytes": 9269,
+      "metadata": {}
+    },
+    {
+      "stage": "feature_audit",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/feature_audit_dry/tables/feature_audit/feature_missingness.csv",
+      "relative_path": "outputs/runs/feature_audit_dry/tables/feature_audit/feature_missingness.csv",
+      "kind": "table",
+      "description": "Feature missingness by registry group",
+      "created_at": "2026-04-30T20:51:27.613726+00:00",
+      "exists": true,
+      "size_bytes": 9269,
+      "metadata": {}
+    },
+    {
+      "stage": "feature_audit",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/feature_audit_dry/tables/feature_audit/feature_set_summary.csv",
+      "relative_path": "outputs/runs/feature_audit_dry/tables/feature_audit/feature_set_summary.csv",
+      "kind": "table",
+      "description": "Feature-set availability summary",
+      "created_at": "2026-04-30T20:51:27.617407+00:00",
+      "exists": true,
+      "size_bytes": 439,
+      "metadata": {}
+    },
+    {
+      "stage": "feature_audit",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/feature_audit_dry/reports/stage_summaries/feature_audit.md",
+      "relative_path": "outputs/runs/feature_audit_dry/reports/stage_summaries/feature_audit.md",
+      "kind": "report",
+      "description": "Feature audit stage summary",
+      "created_at": "2026-04-30T20:51:27.621256+00:00",
+      "exists": true,
+      "size_bytes": 480,
+      "metadata": {}
+    }
+  ],
+  "metrics": {
+    "features_registered": 72,
+    "features_available": 0,
+    "dry_run": true
+  },
+  "warnings": [],
+  "error": null,
+  "elapsed_seconds": 0.06527380000625271
+}

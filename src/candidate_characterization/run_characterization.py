@@ -38,6 +38,11 @@ def parse_args(argv=None):
     p.add_argument("--force-retrain", action="store_true", help="Retrain even if saved models exist.")
     p.add_argument("--analog-k", type=int, default=None, help="Number of analog planets per candidate.")
     p.add_argument("--random-state", type=int, default=None)
+    p.add_argument("--feature-set", default=None, help="Named feature governance set for leakage-safe model inputs.")
+    p.add_argument("--feature-registry", default=None, help="Feature registry YAML path.")
+    p.add_argument("--feature-sets", default=None, help="Feature set YAML path.")
+    p.add_argument("--allow-audit-features", action="store_true", help="Enable audit-only controls for sensitivity analysis.")
+    p.add_argument("--allow-observed-diagnostic", action="store_true", help="Allow target-defining variables for observed-planet diagnostics.")
     return p.parse_args(argv)
 
 
@@ -60,6 +65,16 @@ def apply_arg_overrides(cfg: CharacterizationConfig, args) -> CharacterizationCo
         cfg.model.analog_k = args.analog_k
     if args.random_state is not None:
         cfg.model.random_state = args.random_state
+    if args.feature_set is not None:
+        cfg.feature_set = args.feature_set
+    if args.feature_registry is not None:
+        cfg.feature_registry = args.feature_registry
+    if args.feature_sets is not None:
+        cfg.feature_sets = args.feature_sets
+    if args.allow_audit_features:
+        cfg.allow_audit_features = True
+    if args.allow_observed_diagnostic:
+        cfg.allow_observed_diagnostic = True
     return cfg
 
 
@@ -73,6 +88,12 @@ def main(argv=None) -> int:
     ensure_dir(output_dir)
     ensure_dir(report_dir)
     ensure_dir(model_dir)
+    feature_registry_path = Path(cfg.feature_registry)
+    if not feature_registry_path.is_absolute():
+        feature_registry_path = repo_root / feature_registry_path
+    feature_sets_path = Path(cfg.feature_sets)
+    if not feature_sets_path.is_absolute():
+        feature_sets_path = repo_root / feature_sets_path
 
     print("[candidate_characterization] accelerator:", detect_accelerator(cfg.model.prefer_gpu).to_dict())
     cfg.save_json(output_dir / "config_used.json")
@@ -92,6 +113,11 @@ def main(argv=None) -> int:
             prefer_gpu=cfg.model.prefer_gpu,
             random_state=cfg.model.random_state,
             calibration_cv=cfg.model.calibration_cv,
+            feature_set=cfg.feature_set,
+            registry_path=str(feature_registry_path),
+            feature_sets_path=str(feature_sets_path),
+            allow_audit_features=cfg.allow_audit_features,
+            allow_observed_diagnostic=cfg.allow_observed_diagnostic,
         )
         models.save(model_dir)
         print(f"[candidate_characterization] saved models: {model_dir}")
@@ -109,6 +135,11 @@ def main(argv=None) -> int:
             random_state=cfg.model.random_state,
             mode=args.validation_mode,
             test_size=cfg.model.test_size,
+            feature_set=cfg.feature_set,
+            registry_path=str(feature_registry_path),
+            feature_sets_path=str(feature_sets_path),
+            allow_audit_features=cfg.allow_audit_features,
+            allow_observed_diagnostic=cfg.allow_observed_diagnostic,
         )
         paths = write_validation_outputs(validation_metrics, validation_details, output_dir)
         print(f"[candidate_characterization] wrote validation: {paths}")

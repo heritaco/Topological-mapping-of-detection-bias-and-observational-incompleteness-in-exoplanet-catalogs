@@ -88,6 +88,11 @@ class CharacterizationConfig:
     paths: PathConfig = field(default_factory=PathConfig)
     model: ModelConfig = field(default_factory=ModelConfig)
     physical: PhysicalConfig = field(default_factory=PhysicalConfig)
+    feature_set: str = "candidate_characterization_minimal"
+    feature_registry: str = "configs/features/feature_registry.yaml"
+    feature_sets: str = "configs/features/feature_sets.yaml"
+    allow_audit_features: bool = False
+    allow_observed_diagnostic: bool = False
 
     def to_dict(self) -> Dict:
         return asdict(self)
@@ -125,6 +130,11 @@ def load_config(path: Optional[str] = None) -> CharacterizationConfig:
         paths=PathConfig(**merged.get("paths", {})),
         model=ModelConfig(**merged.get("model", {})),
         physical=PhysicalConfig(**merged.get("physical", {})),
+        feature_set=str(merged.get("feature_set", "candidate_characterization_minimal")),
+        feature_registry=str(merged.get("feature_registry", "configs/features/feature_registry.yaml")),
+        feature_sets=str(merged.get("feature_sets", "configs/features/feature_sets.yaml")),
+        allow_audit_features=bool(merged.get("allow_audit_features", False)),
+        allow_observed_diagnostic=bool(merged.get("allow_observed_diagnostic", False)),
     )
 
 

@@ -18,7 +18,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder
 from sklearn.calibration import CalibratedClassifierCV
 
-from .features import add_engineered_features, build_xy, make_preprocessor, BASE_MODEL_FEATURES
+from .features import add_engineered_features, build_xy, make_preprocessor, BASE_MODEL_FEATURES, model_features_from_feature_set
 from .gpu import detect_accelerator, xgb_tree_params
 from .labels import radius_class, RADIUS_CLASS_ORDER
 from .utils import ensure_dir, write_json
@@ -251,10 +251,44 @@ class TrainedCharacterizationModels:
         return joblib.load(model_dir / "candidate_characterization_models.joblib")
 
 
-def train_models(catalog: pd.DataFrame, quantiles: Sequence[float], prefer_gpu: bool = True, random_state: int = 42, calibration_cv: int = 3) -> TrainedCharacterizationModels:
+def train_models(
+    catalog: pd.DataFrame,
+    quantiles: Sequence[float],
+    prefer_gpu: bool = True,
+    random_state: int = 42,
+    calibration_cv: int = 3,
+    feature_set: str | None = None,
+    registry_path: str = "configs/features/feature_registry.yaml",
+    feature_sets_path: str = "configs/features/feature_sets.yaml",
+    allow_audit_features: bool = False,
+    allow_observed_diagnostic: bool = False,
+) -> TrainedCharacterizationModels:
     df = add_engineered_features(catalog)
-    X_r, y_r, features = build_xy(df, "log_pl_rade", include_topological_context=False)
-    X_m, y_m, features_m = build_xy(df, "log_pl_bmasse", include_topological_context=False)
+    radius_features = None
+    mass_features = None
+    leakage_warnings: list[str] = []
+    if feature_set:
+        radius_features, radius_warnings = model_features_from_feature_set(
+            df,
+            feature_set,
+            target="log_pl_rade",
+            registry_path=registry_path,
+            feature_sets_path=feature_sets_path,
+            allow_audit_features=allow_audit_features,
+            allow_observed_diagnostic=allow_observed_diagnostic,
+        )
+        mass_features, mass_warnings = model_features_from_feature_set(
+            df,
+            feature_set,
+            target="log_pl_bmasse",
+            registry_path=registry_path,
+            feature_sets_path=feature_sets_path,
+            allow_audit_features=allow_audit_features,
+            allow_observed_diagnostic=allow_observed_diagnostic,
+        )
+        leakage_warnings = radius_warnings + [warning for warning in mass_warnings if warning not in radius_warnings]
+    X_r, y_r, features = build_xy(df, "log_pl_rade", include_topological_context=False, feature_names=radius_features)
+    X_m, y_m, features_m = build_xy(df, "log_pl_bmasse", include_topological_context=False, feature_names=mass_features)
     features = [f for f in features if f in features_m]
     X_r = X_r[features]
     X_m = X_m[features]
@@ -288,5 +322,7 @@ def train_models(catalog: pd.DataFrame, quantiles: Sequence[float], prefer_gpu: 
         "n_train_radius": int(len(X_r)),
         "n_train_mass": int(len(X_m)),
         "model_features": features,
+        "feature_set": feature_set or "legacy_base_model_features",
+        "leakage_warnings": leakage_warnings,
     }
     return TrainedCharacterizationModels(radius_model, mass_model, class_model, features, metadata)

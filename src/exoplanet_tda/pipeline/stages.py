@@ -13,6 +13,7 @@ from typing import Any
 from src.exoplanet_tda.core.io import ensure_dir, write_json
 from src.exoplanet_tda.core.paths import resolve_repo_path
 from src.exoplanet_tda.core.run_context import RunContext
+from src.exoplanet_tda.features.audit import run_feature_audit
 from src.exoplanet_tda.core.subprocess_utils import run_command
 
 
@@ -160,6 +161,21 @@ class DataAuditStage(PipelineStage):
             ctx.log_artifact(self.name, summary_path, "report", "Data audit stage summary"),
         ]
         return StageResult(self.name, "success", outputs, {"items": len(rows)}, warnings, elapsed_seconds=time.perf_counter() - start)
+
+
+class FeatureAuditStage(PipelineStage):
+    name = "feature_audit"
+
+    def run(self, ctx: RunContext) -> StageResult:
+        start = time.perf_counter()
+        paths, metrics, warnings = run_feature_audit(ctx)
+        outputs = [
+            ctx.log_artifact(self.name, paths["availability"], "table", "Feature availability by registry group"),
+            ctx.log_artifact(self.name, paths["missingness"], "table", "Feature missingness by registry group"),
+            ctx.log_artifact(self.name, paths["summary"], "table", "Feature-set availability summary"),
+            ctx.log_artifact(self.name, paths["report"], "report", "Feature audit stage summary"),
+        ]
+        return StageResult(self.name, "success", outputs, metrics, warnings, elapsed_seconds=time.perf_counter() - start)
 
 
 class LegacyOutputStage(PipelineStage):
@@ -312,6 +328,8 @@ class CandidateCharacterizationStage(LegacyOutputStage):
         if cfg.get("validate", True):
             command.append("--validate")
         command.extend(["--validation-mode", str(cfg.get("validation_mode", "multiplanet"))])
+        if cfg.get("feature_set"):
+            command.extend(["--feature-set", str(cfg["feature_set"])])
         if ctx.use_gpu == "false":
             command.append("--cpu")
         return command

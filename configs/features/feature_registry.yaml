@@ -1,0 +1,183 @@
+version: 1
+description: >
+  Feature governance registry for leakage-safe features, observational audit
+  controls, derived proxies, and prediction targets.
+
+feature_groups:
+  orbital_base:
+    purpose: mapper_geometry
+    role: geometry
+    leakage_risk: low
+    recommended_action: safe for orbital Mapper geometry and sensitivity analysis
+    features:
+      - pl_orbper
+      - pl_orbsmax
+
+  orbital_extended:
+    purpose: mapper_geometry
+    role: geometry
+    leakage_risk: low
+    recommended_action: use as Mapper sensitivity analysis; eccentricity missingness should be audited
+    features:
+      - pl_orbper
+      - pl_orbsmax
+      - pl_orbeccen
+
+  candidate_orbital:
+    purpose: candidate_characterization
+    role: prediction
+    leakage_risk: low
+    recommended_action: default orbital inputs for hypothetical candidate prioritization
+    features:
+      - name: candidate_pl_orbper
+        aliases: [pl_orbper, period_days, candidate_period_days]
+      - name: candidate_pl_orbsmax
+        aliases: [pl_orbsmax, a_au, candidate_semimajor_au]
+
+  physical_base:
+    purpose: physical_context
+    role: prediction
+    leakage_risk: high
+    recommended_action: exclude when predicting mass, radius, or classes derived from mass/radius
+    features:
+      - pl_rade
+      - pl_bmasse
+
+  physical_density:
+    purpose: physical_context
+    role: prediction
+    leakage_risk: high
+    recommended_action: diagnostic only for target-derived experiments unless explicitly allowed
+    features:
+      - pl_rade
+      - pl_bmasse
+      - pl_dens
+
+  thermal:
+    purpose: mapper_or_prediction_context
+    role: prediction
+    leakage_risk: medium
+    recommended_action: audit derivation path before use; include in ablation and sensitivity analysis
+    features:
+      - pl_insol
+      - pl_eqt
+
+  stellar_base:
+    purpose: candidate_characterization
+    role: prediction
+    leakage_risk: low
+    recommended_action: default stellar host controls when available
+    features:
+      - st_mass
+      - st_rad
+      - st_teff
+      - st_lum
+      - st_met
+      - st_logg
+      - st_age
+
+  observational_audit:
+    purpose: observational_audit
+    role: audit
+    leakage_risk: medium
+    recommended_action: audit-only by default; use for bias analysis, stratified validation, or sensitivity analysis
+    features:
+      - discoverymethod
+      - disc_year
+      - disc_facility
+      - sy_dist
+      - sy_vmag
+      - sy_kmag
+
+  system_architecture:
+    purpose: derived_system_context
+    role: derived
+    leakage_risk: low
+    recommended_action: derive from hostname-level grouping; safe if based only on known architecture at prediction time
+    features:
+      - n_known_planets
+      - candidate_position_index
+      - inner_neighbor_period
+      - outer_neighbor_period
+      - inner_neighbor_radius
+      - outer_neighbor_radius
+      - inner_neighbor_mass
+      - outer_neighbor_mass
+      - period_ratio_inner
+      - period_ratio_outer
+      - log_gap_width
+      - normalized_gap_position
+
+  topological_context:
+    purpose: mapper_toi_ati_context
+    role: derived
+    leakage_risk: medium
+    recommended_action: read from Mapper/TOI/ATI outputs when available; include in ablation and sensitivity analysis
+    features:
+      - shadow_score
+      - TOI
+      - ATI_region_context
+      - node_degree
+      - node_size
+      - component_size
+      - distance_to_node_medoid
+      - local_method_entropy
+      - local_method_purity
+
+  detectability_proxy:
+    purpose: derived_physical_proxy
+    role: derived
+    leakage_risk: medium
+    recommended_action: derive only from candidate orbital and stellar inputs; keep separate from calibrated detection claims
+    features:
+      - transit_probability_proxy
+      - rv_amplitude_proxy
+      - candidate_insol
+      - candidate_eqt
+
+  data_quality_uncertainty:
+    purpose: data_quality
+    role: quality
+    leakage_risk: low
+    recommended_action: use for audit tables and sensitivity analysis rather than default physical prediction
+    features:
+      - pl_orbpererr1
+      - pl_orbpererr2
+      - pl_orbsmaxerr1
+      - pl_orbsmaxerr2
+      - pl_radeerr1
+      - pl_radeerr2
+      - pl_bmasseerr1
+      - pl_bmasseerr2
+      - st_masserr1
+      - st_masserr2
+      - st_raderr1
+      - st_raderr2
+      - st_tefferr1
+      - st_tefferr2
+
+  targets:
+    purpose: prediction_targets
+    role: target
+    leakage_risk: high
+    recommended_action: never include as model inputs for their own prediction target
+    features:
+      - pl_rade
+      - pl_bmasse
+      - pl_dens
+      - radius_class
+      - mass_class
+      - planet_class
+
+target_rules:
+  pl_bmasse:
+    exclude: [pl_bmasse, log_pl_bmasse, pl_dens, physical_base, physical_density, targets]
+  pl_rade:
+    exclude: [pl_rade, log_pl_rade, pl_dens, physical_base, physical_density, targets]
+  radius_class:
+    exclude: [pl_rade, log_pl_rade, pl_bmasse, log_pl_bmasse, pl_dens, physical_base, physical_density, targets]
+  planet_class:
+    exclude: [pl_rade, log_pl_rade, pl_bmasse, log_pl_bmasse, pl_dens, physical_base, physical_density, targets]
+
+audit_only_groups:
+  - observational_audit

@@ -1,0 +1,25 @@
+{
+  "name": "toi_ati_future_validation",
+  "status": "skipped",
+  "outputs": [
+    {
+      "stage": "toi_ati_future_validation",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/toi_ati_future_validation",
+      "relative_path": "outputs/toi_ati_future_validation",
+      "kind": "other",
+      "description": "Expected legacy output directory",
+      "created_at": "2026-04-30T20:51:27.691690+00:00",
+      "exists": true,
+      "size_bytes": null,
+      "metadata": {
+        "dry_run": true
+      }
+    }
+  ],
+  "metrics": {
+    "dry_run": true
+  },
+  "warnings": [],
+  "error": null,
+  "elapsed_seconds": 0.0036447000020416453
+}

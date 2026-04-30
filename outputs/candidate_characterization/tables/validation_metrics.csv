@@ -1,0 +1,4 @@
+target,mode,n_test,mae_q50,coverage_q05_q95,accuracy
+pl_rade,multiplanet,1048,1.1771943216513316,0.8501908396946565,
+pl_bmasse,multiplanet,1048,173.60790035654057,0.8606870229007634,
+radius_class,multiplanet,1048,,,0.5811068702290076

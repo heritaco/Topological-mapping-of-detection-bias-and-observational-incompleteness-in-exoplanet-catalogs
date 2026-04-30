@@ -1,0 +1,9 @@
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+joblib>=1.3
+pyyaml>=6.0
+# Optional GPU-capable tree backend. CPU fallback works without it.
+xgboost>=2.0
+# Optional CUDA detector. Main pipeline does not require PyTorch.
+torch>=2.0

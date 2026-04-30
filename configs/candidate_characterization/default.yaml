@@ -1,0 +1,24 @@
+paths:
+  repo_root: "."
+  catalog_csv: "reports/imputation/PSCompPars_imputed_iterative.csv"
+  candidates_csv: "outputs/system_missing_planets/candidate_missing_planets_by_system.csv"
+  toi_regions_csv: "outputs/topological_incompleteness_index/tables/regional_toi_scores.csv"
+  ati_anchors_csv: "outputs/topological_incompleteness_index/tables/anchor_ati_scores.csv"
+  output_dir: "outputs/candidate_characterization"
+  report_dir: "reports/candidate_characterization"
+  model_dir: "outputs/candidate_characterization/models"
+model:
+  prefer_gpu: true
+  random_state: 42
+  test_size: 0.20
+  quantiles: [0.05, 0.50, 0.95]
+  analog_k: 75
+  analog_temperature: 1.0
+  min_training_rows: 80
+  use_xgboost_if_available: true
+  calibration_cv: 3
+physical:
+  default_bond_albedo: 0.30
+  density_earth_g_cm3: 5.514
+  r_sun_au: 0.00465047
+  min_positive_value: 1.0e-12

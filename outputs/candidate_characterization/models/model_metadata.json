@@ -1,0 +1,102 @@
+{
+  "accelerator": {
+    "cudf_installed": false,
+    "cupy_installed": false,
+    "prefer_gpu": false,
+    "selected_device": "cpu",
+    "torch_cuda_available": false,
+    "torch_device_count": 0,
+    "torch_installed": true,
+    "xgboost_installed": true
+  },
+  "class_model": {
+    "backend": "sklearn_random_forest_cpu",
+    "classes": [
+      "jovian_size",
+      "neptune_sub_jovian_size",
+      "rocky_size",
+      "sub_neptune_size",
+      "super_earth_size"
+    ],
+    "features": [
+      "log_pl_orbper",
+      "log_pl_orbsmax",
+      "log_pl_insol",
+      "pl_eqt",
+      "st_mass",
+      "st_rad",
+      "st_teff",
+      "st_met",
+      "st_logg",
+      "sy_dist",
+      "sy_pnum"
+    ]
+  },
+  "mass_model": {
+    "backend_by_quantile": {
+      "0.05": "sklearn_gradient_boosting_quantile_cpu",
+      "0.5": "sklearn_gradient_boosting_quantile_cpu",
+      "0.95": "sklearn_gradient_boosting_quantile_cpu"
+    },
+    "features": [
+      "log_pl_orbper",
+      "log_pl_orbsmax",
+      "log_pl_insol",
+      "pl_eqt",
+      "st_mass",
+      "st_rad",
+      "st_teff",
+      "st_met",
+      "st_logg",
+      "sy_dist",
+      "sy_pnum"
+    ],
+    "quantiles": [
+      0.05,
+      0.5,
+      0.95
+    ],
+    "target": "log_pl_bmasse"
+  },
+  "model_features": [
+    "log_pl_orbper",
+    "log_pl_orbsmax",
+    "log_pl_insol",
+    "pl_eqt",
+    "st_mass",
+    "st_rad",
+    "st_teff",
+    "st_met",
+    "st_logg",
+    "sy_dist",
+    "sy_pnum"
+  ],
+  "n_train_mass": 6273,
+  "n_train_radius": 6273,
+  "radius_model": {
+    "backend_by_quantile": {
+      "0.05": "sklearn_gradient_boosting_quantile_cpu",
+      "0.5": "sklearn_gradient_boosting_quantile_cpu",
+      "0.95": "sklearn_gradient_boosting_quantile_cpu"
+    },
+    "features": [
+      "log_pl_orbper",
+      "log_pl_orbsmax",
+      "log_pl_insol",
+      "pl_eqt",
+      "st_mass",
+      "st_rad",
+      "st_teff",
+      "st_met",
+      "st_logg",
+      "sy_dist",
+      "sy_pnum"
+    ],
+    "quantiles": [
+      0.05,
+      0.5,
+      0.95
+    ],
+    "target": "log_pl_rade"
+  }
+}

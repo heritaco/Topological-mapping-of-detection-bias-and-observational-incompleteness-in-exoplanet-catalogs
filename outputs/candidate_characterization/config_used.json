@@ -1,0 +1,33 @@
+{
+  "model": {
+    "analog_k": 75,
+    "analog_temperature": 1.0,
+    "calibration_cv": 3,
+    "min_training_rows": 80,
+    "prefer_gpu": false,
+    "quantiles": [
+      0.05,
+      0.5,
+      0.95
+    ],
+    "random_state": 42,
+    "test_size": 0.2,
+    "use_xgboost_if_available": true
+  },
+  "paths": {
+    "ati_anchors_csv": "outputs/topological_incompleteness_index/tables/anchor_ati_scores.csv",
+    "candidates_csv": "outputs/system_missing_planets/candidate_missing_planets_by_system.csv",
+    "catalog_csv": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "model_dir": "outputs/candidate_characterization/models",
+    "output_dir": "outputs/candidate_characterization",
+    "repo_root": ".",
+    "report_dir": "reports/candidate_characterization",
+    "toi_regions_csv": "outputs/topological_incompleteness_index/tables/regional_toi_scores.csv"
+  },
+  "physical": {
+    "default_bond_albedo": 0.3,
+    "density_earth_g_cm3": 5.514,
+    "min_positive_value": 1e-12,
+    "r_sun_au": 0.00465047
+  }
+}

@@ -1,0 +1,595 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{etoolbox}
+
+\usetikzlibrary{arrows.meta,calc,positioning,fit,backgrounds,shapes.geometric}
+\pgfplotsset{compat=1.18}
+
+\graphicspath{{figures/}{../04_mapper_presentation/figures/}}
+\input{theme/colors.tex}
+
+\usetheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=0.55cm,text margin right=0.55cm}
+
+\setbeamercolor{background canvas}{bg=night}
+\setbeamercolor{normal text}{fg=textmain,bg=night}
+\setbeamercolor{frametitle}{fg=textmain,bg=panel}
+\setbeamercolor{block title}{fg=textmain,bg=panelsoft}
+\setbeamercolor{block body}{fg=textmain,bg=panel}
+\setbeamercolor{title}{fg=textmain}
+\setbeamercolor{subtitle}{fg=accentsoft}
+\setbeamercolor{structure}{fg=accent}
+
+\setbeamertemplate{itemize item}{\color{accent}\raisebox{0.15ex}{\tiny$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\color{accent}\tiny$\bullet$}
+
+\setbeamertemplate{frametitle}{
+  \vspace*{0.16cm}
+  \begin{beamercolorbox}[wd=\dimexpr\paperwidth-1.1cm\relax,ht=2.9ex,dp=0.9ex,rounded=true,leftskip=0.35cm]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle
+  \end{beamercolorbox}
+}
+
+\newcommand{\ProjectAuthor}{[MI NOMBRE]}
+
+\newcommand{\safeincludegraphics}[2][]{%
+  \IfFileExists{figures/#2}{%
+    \includegraphics[#1]{figures/#2}%
+  }{%
+    \IfFileExists{../04_mapper_presentation/figures/#2}{%
+      \includegraphics[#1]{../04_mapper_presentation/figures/#2}%
+    }{%
+      \begin{tikzpicture}
+        \node[draw=panelline,rounded corners=5pt,fill=panel,minimum width=0.92\linewidth,minimum height=0.24\textheight,align=center,text width=0.80\linewidth] {\scriptsize Figura no disponible\\\texttt{\detokenize{#2}}};
+      \end{tikzpicture}%
+    }%
+  }%
+}
+
+\newcommand{\astrobackground}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[night] (current page.south west) rectangle (current page.north east);
+    \fill[accentdeep!18] ($(current page.north east)+(-1.5,-1.3)$) circle[radius=3.0cm];
+    \fill[accent!9] ($(current page.south east)+(-1.7,1.1)$) circle[radius=2.2cm];
+    \draw[panelline,opacity=0.50,line width=0.35pt] ($(current page.south east)+(-1.9,1.3)$) circle[radius=1.8cm];
+    \draw[panelline,opacity=0.30,line width=0.35pt] ($(current page.south east)+(-1.9,1.3)$) circle[radius=2.7cm];
+    \fill[accent] ($(current page.south east)+(-0.45,1.3)$) circle[radius=0.10cm];
+    \fill[good] ($(current page.south east)+(-3.9,1.3)$) circle[radius=0.08cm];
+    \foreach \x/\y/\r in {
+      0.8/6.8/0.022, 1.9/6.0/0.018, 3.0/7.1/0.024, 4.5/6.5/0.016,
+      6.0/7.5/0.026, 7.5/6.2/0.018, 8.9/7.3/0.020, 10.2/6.1/0.015,
+      11.9/7.0/0.021, 13.6/6.4/0.017, 14.8/7.2/0.019, 2.1/4.0/0.014,
+      5.1/4.3/0.016, 8.1/3.8/0.014, 11.5/4.1/0.016, 13.7/4.5/0.014
+    }{
+      \fill[textmain,opacity=0.82] ($(current page.south west)+(\x,\y)$) circle[radius=\r];
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\phasebar}[1]{
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.24em,rounded=true]{block body}
+    {\scriptsize\color{accent}\bfseries CRISP-DM \hspace{0.6em}\color{textmuted}#1}
+  \end{beamercolorbox}
+}
+
+\newcommand{\badge}[2]{%
+  \fcolorbox{#1}{panelsoft}{\textcolor{textmain}{\scriptsize\strut\hspace{0.28em}#2\hspace{0.28em}}}%
+}
+
+\newcommand{\statcard}[3]{
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.34em,rounded=true]{block body}
+    {\scriptsize\color{textmuted}#1}\par
+    {\fontsize{16}{17}\selectfont\bfseries #2}\par
+    {\scriptsize #3}
+  \end{beamercolorbox}
+}
+
+\newcommand{\infocard}[2]{
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.38em,rounded=true]{block body}
+    {\small\bfseries #1}\par
+    \vspace{0.04em}
+    {\scriptsize #2}
+  \end{beamercolorbox}
+}
+
+\newcommand{\rankbar}[4]{%
+  {\tiny\color{textmain}#2\hfill #3}\par
+  \begin{tikzpicture}
+    \fill[panelsoft] (0,0) rectangle (4.35,0.17);
+    \pgfmathsetmacro{\barw}{4.35*(#4)}
+    \fill[#1] (0,0) rectangle (\barw,0.17);
+  \end{tikzpicture}\par
+  \vspace{0.04cm}
+}
+
+\begin{document}
+
+\begin{frame}[plain,noframenumbering]
+  \astrobackground
+  \vspace*{0.55cm}
+  {\color{accent}\normalsize\bfseries Ciencia de datos aplicada a astronomia}\par
+  \vspace{0.34cm}
+  {\fontsize{24}{26}\selectfont\bfseries Topologia del Universo Observable de Exoplanetas}\par
+  \vspace{0.16cm}
+  {\large\color{accentsoft}Una lectura critica del catalogo NASA mediante Mapper/TDA}\par
+  \vspace{0.16cm}
+  {\normalsize\color{textmuted}De sesgos de deteccion a regiones observacionalmente informativas}\par
+  \vspace{0.55cm}
+  \begin{beamercolorbox}[wd=0.64\linewidth,sep=0.80em,rounded=true]{block body}
+    {\small\bfseries Mensaje del proyecto}\par
+    \vspace{0.08em}
+    {\small El catalogo de exoplanetas no representa el universo real de planetas. Representa el universo observable de planetas: aquello que nuestros instrumentos, metodos y decisiones historicas han podido registrar.}
+  \end{beamercolorbox}
+  \vspace{0.32cm}
+  \badge{accentdeep}{NASA Exoplanet Archive}\hspace{0.08cm}
+  \badge{good}{Mapper / TDA}\hspace{0.08cm}
+  \badge{accentdeep}{CRISP-DM}
+  \vfill
+  {\small\color{textmuted}\ProjectAuthor}
+\end{frame}
+
+\begin{frame}[t]{La idea central}
+  \phasebar{1. Business Understanding}
+  \vspace{0.10cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.45\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.60em,rounded=true]{block body}
+        {\large\bfseries ``No observamos planetas.}\\[0.08cm]
+        {\large\bfseries Observamos los planetas que podemos detectar.''}
+      \end{beamercolorbox}
+      \vspace{0.12cm}
+      \infocard{Lectura correcta}{Nuestro objeto de estudio no es el universo planetario completo. Es la geometria del universo observable que el catalogo NASA deja ver.}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \begin{center}
+        \begin{tikzpicture}[
+          every node/.style={font=\small},
+          big/.style={draw=panelline,fill=panel,rounded corners=10pt,minimum width=3.4cm,minimum height=2.4cm,align=center},
+          mid/.style={draw=panelline,fill=panelsoft,rounded corners=8pt,minimum width=2.55cm,minimum height=0.88cm,align=center},
+          arr/.style={-{Latex[length=2.2mm]},line width=0.9pt,color=accent}
+        ]
+          \node[big] (real) at (0,0) {\textbf{Universo real}\\\scriptsize poblacion continua\\\scriptsize y parcialmente oculta};
+          \node[mid] (inst) at (4.3,1.15) {limites instrumentales};
+          \node[mid] (meth) at (4.3,0.05) {metodos de descubrimiento};
+          \node[mid] (hist) at (4.3,-1.05) {historia observacional};
+          \node[big] (obs) at (8.9,0) {\textbf{Universo observable}\\\scriptsize catalogo detectado\\\scriptsize y estructuralmente sesgado};
+          \draw[arr] (real) -- (inst);
+          \draw[arr] (real) -- (meth);
+          \draw[arr] (real) -- (hist);
+          \draw[arr] (inst) -- (obs);
+          \draw[arr] (meth) -- (obs);
+          \draw[arr] (hist) -- (obs);
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+  \end{columns}
+  \vspace{0.10cm}
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.34em,rounded=true]{block title}
+    \centering\small\bfseries Universo real $\neq$ Universo observable
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}[t]{Problema cientifico}
+  \phasebar{1. Business Understanding}
+  \vspace{0.08cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \infocard{Transit}{Favorece radios grandes, periodos cortos y geometria de alineacion favorable.}
+      \vspace{0.06cm}
+      \infocard{Radial Velocity}{Favorece masas grandes y senales dinamicas suficientemente intensas.}
+      \vspace{0.06cm}
+      \infocard{Imaging}{Favorece objetos brillantes, jovenes o con separacion angular amplia.}
+      \vspace{0.06cm}
+      \infocard{Microlensing y seleccion humana}{Dependen de geometria rara, disponibilidad de targets y decisiones historicas de observacion.}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.36em,rounded=true]{block body}
+        {\small\bfseries Lo observado ya llega deformado}
+      \end{beamercolorbox}
+      \vspace{0.06cm}
+      \safeincludegraphics[width=\linewidth,height=0.48\textheight,keepaspectratio]{16_scatter_orbper_orbsmax.pdf}
+      \vspace{0.06cm}
+      {\scriptsize\color{textmuted}Periodo orbital vs. semieje mayor: la nube no es una fotografia neutral del espacio planetario, sino una proyeccion filtrada por detectabilidad.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Pregunta de investigacion}
+  \phasebar{1. Business Understanding}
+  \vspace{0.12cm}
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.72em,rounded=true]{block body}
+    \centering
+    {\Large\bfseries ?Puede Mapper revelar la geometria del universo observable}\\[0.12cm]
+    {\Large\bfseries y localizar regiones moldeadas por sesgos de observacion?}
+  \end{beamercolorbox}
+  \vspace{0.20cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.32\textwidth}
+      \statcard{Buscamos}{cartografia interpretable}{Nodos, ramas, puentes y regiones donde la cobertura observacional cambia localmente.}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \statcard{No buscamos}{descubrimientos directos}{No afirmamos planetas faltantes ni reconstruccion completa del universo real.}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \statcard{Entregable}{priorizacion futura}{Regiones y anclas donde nuevas observaciones podrian aportar mayor valor cientifico.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Datos usados}
+  \phasebar{2. Data Understanding}
+  \vspace{0.08cm}
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.34em,rounded=true]{block body}
+    {\scriptsize\textcolor{accent}{\bfseries Fuente:} NASA Exoplanet Archive \texttt{PSCompPars}\hspace{0.9em}
+    \textcolor{accent}{\bfseries Tamano:} 6273 exoplanetas\hspace{0.9em}
+    \textcolor{accent}{\bfseries Variables:} masa, radio, densidad, periodo, semieje mayor, insolacion, temperatura de equilibrio}
+  \end{beamercolorbox}
+  \vspace{0.10cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.32em,rounded=true]{block body}
+        {\small\bfseries Missingness y recuperacion}
+      \end{beamercolorbox}
+      \vspace{0.05cm}
+      \safeincludegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{f1.pdf}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.32em,rounded=true]{block body}
+        {\small\bfseries Trazabilidad del valor}
+      \end{beamercolorbox}
+      \vspace{0.05cm}
+      \safeincludegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{f2.pdf}
+    \end{column}
+  \end{columns}
+  \vspace{0.08cm}
+  \infocard{Lectura}{No usamos todas las columnas. Priorizamos variables con significado fisico claro, menor redundancia y mejor trazabilidad entre observado, derivado e imputado.}
+\end{frame}
+
+\begin{frame}[t]{Pipeline CRISP-DM}
+  \phasebar{3--6. Preparation, Modeling, Evaluation y Deployment}
+  \vspace{0.10cm}
+  \begin{center}
+    \begin{tikzpicture}[
+      stage/.style={draw=panelline,fill=panel,rounded corners=8pt,minimum width=2.3cm,minimum height=1.4cm,align=center},
+      arr/.style={-{Latex[length=2.2mm]},line width=0.9pt,color=accent}
+    ]
+      \node[stage] (b) at (0,0) {\textbf{Business}\\\scriptsize sesgo observacional\\\scriptsize como oportunidad};
+      \node[stage] (d) at (2.8,0) {\textbf{Data}\\\scriptsize PSCompPars\\\scriptsize missingness y metodo};
+      \node[stage] (p) at (5.6,0) {\textbf{Preparation}\\\scriptsize log, scaling\\\scriptsize derivaciones, imputacion};
+      \node[stage] (m) at (8.4,0) {\textbf{Modeling}\\\scriptsize 21 Mapper\\\scriptsize PCA2 + DBSCAN};
+      \node[stage] (e) at (11.2,0) {\textbf{Evaluation}\\\scriptsize beta$_1$, imputacion\\\scriptsize auditoria observacional};
+      \node[stage] (dep) at (14.0,0) {\textbf{Deployment}\\\scriptsize Shadow $\rightarrow$ TOI\\\scriptsize ATI conservador};
+      \draw[arr] (b) -- (d);
+      \draw[arr] (d) -- (p);
+      \draw[arr] (p) -- (m);
+      \draw[arr] (m) -- (e);
+      \draw[arr] (e) -- (dep);
+    \end{tikzpicture}
+  \end{center}
+  \vspace{0.18cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.24\textwidth}
+      \statcard{Espacios}{7}{fisico, orbital, termico y combinados}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \statcard{Lentes}{3}{PCA2, domain y density}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \statcard{Cover}{10 / 0.35}{10 cubos y overlap 0.35}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \statcard{Cluster local}{DBSCAN}{sin imponer k fijo}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Que es Mapper}
+  \phasebar{4. Modeling}
+  \vspace{0.08cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.24\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.28em,rounded=true]{block body}
+        {\scriptsize\bfseries 1. Proyeccion}
+      \end{beamercolorbox}
+      \vspace{0.05cm}
+      \safeincludegraphics[width=\linewidth,height=0.23\textheight,keepaspectratio]{16_scatter_orbper_orbsmax.pdf}
+      \vspace{0.04cm}
+      {\tiny\color{textmuted}Estructura continua dificil de segmentar con cortes rigidos.}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.28em,rounded=true]{block body}
+        {\scriptsize\bfseries 2. Cubiertas solapadas}
+      \end{beamercolorbox}
+      \vspace{0.06cm}
+      \begin{tikzpicture}[scale=0.76]
+        \fill[panel] (0,0) rectangle (4.2,3.0);
+        \foreach \x/\y in {0.4/0.6,0.8/1.0,1.1/1.8,1.4/0.9,1.8/1.4,2.0/2.3,2.5/0.8,2.8/1.8,3.1/1.2,3.4/2.2,3.7/1.4}{
+          \fill[accent!85] (\x,\y) circle[radius=0.05];
+        }
+        \draw[accentdeep,line width=0.7pt,rounded corners=4pt] (0.3,0.4) rectangle (1.9,2.3);
+        \draw[good,line width=0.7pt,rounded corners=4pt] (1.4,0.7) rectangle (3.0,2.6);
+        \draw[warn,line width=0.7pt,rounded corners=4pt] (2.4,0.4) rectangle (4.0,2.2);
+      \end{tikzpicture}
+      \vspace{0.04cm}
+      {\tiny\color{textmuted}Analizamos vecindarios que se traslapan entre si.}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.28em,rounded=true]{block body}
+        {\scriptsize\bfseries 3. Grafo topologico}
+      \end{beamercolorbox}
+      \vspace{0.05cm}
+      \safeincludegraphics[width=\linewidth,height=0.23\textheight,keepaspectratio]{f3.pdf}
+      \vspace{0.04cm}
+      {\tiny\color{textmuted}Nodos = comunidades locales. Aristas = continuidad por solapamiento.}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.28em,rounded=true]{block body}
+        {\scriptsize\bfseries 4. Salida interpretable}
+      \end{beamercolorbox}
+      \vspace{0.06cm}
+      \begin{itemize}
+        \item \scriptsize regiones densas
+        \item \scriptsize transiciones
+        \item \scriptsize periferias
+        \item \scriptsize zonas prioritarias
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{0.08cm}
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.34em,rounded=true]{block title}
+    \centering\small\bfseries Mapper no fuerza clusters rigidos. Conserva estructura y permite priorizacion interpretable.
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}[t]{Que representa ahora el grafo}
+  \phasebar{4. Modeling}
+  \vspace{0.08cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.56\textwidth}
+      \safeincludegraphics[width=\linewidth,height=0.55\textheight,keepaspectratio]{f4.pdf}
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \infocard{Nodo denso}{Zona altamente observable o muy poblada dentro del espacio orbital.}
+      \vspace{0.06cm}
+      \infocard{Rama aislada}{Regimen especializado o metodo que opera sobre una franja mas estrecha.}
+      \vspace{0.06cm}
+      \infocard{Puente}{Transicion entre regimens observacionales o fisicos conectados.}
+      \vspace{0.06cm}
+      \infocard{Hueco}{Region poco cubierta, poco conectada o potencialmente subobservada.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Resultado principal: espacio orbital}
+  \phasebar{5. Evaluation}
+  \vspace{0.08cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.52\textwidth}
+      \safeincludegraphics[width=\linewidth,height=0.35\textheight,keepaspectratio]{orbital_graph_imputation.pdf}
+      \vspace{0.06cm}
+      \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.49\textwidth}
+          \safeincludegraphics[width=\linewidth,height=0.14\textheight,keepaspectratio]{f5.pdf}
+        \end{column}
+        \begin{column}{0.49\textwidth}
+          \safeincludegraphics[width=\linewidth,height=0.14\textheight,keepaspectratio]{f6.pdf}
+        \end{column}
+      \end{columns}
+      \vspace{0.03cm}
+      {\tiny\color{textmuted}Complejidad global y sensibilidad por lente: el espacio orbital conserva buena estructura sin depender de imputacion alta.}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.48\textwidth}
+          \statcard{Nodos}{124}{comunidades locales}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+          \statcard{Aristas}{196}{continuidad topologica}
+        \end{column}
+      \end{columns}
+      \vspace{0.08cm}
+      \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.48\textwidth}
+          \statcard{$\beta_1$}{96}{alta complejidad y ciclos}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+          \statcard{Imputacion}{0.011}{dependencia muy baja}
+        \end{column}
+      \end{columns}
+      \vspace{0.10cm}
+      \infocard{Por que es el mejor candidato}{Combina estructura rica, baja imputacion y asociacion observacional significativa con \texttt{discoverymethod}.}
+      \vspace{0.08cm}
+      \infocard{Lectura prudente}{No es el mapa del universo real. Es el mapa mas util y mas defendible del universo observable orbital.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Shadow Score}
+  \phasebar{6. Deployment / Communication}
+  \vspace{0.08cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.54\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.60em,rounded=true]{block body}
+        {\small\bfseries Shadow Score = indice de frontera observacional local}
+        \[
+        \mathrm{Shadow}(v)\propto f_{\mathrm{dom}}(v)\,(1-H(v))\,(1-I(v))\,B(v)\,S(v)
+        \]
+        {\scriptsize donde la senal crece cuando un nodo combina dominancia metodologica, baja entropia, baja imputacion, contraste con vecinos y soporte suficiente.}
+      \end{beamercolorbox}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \infocard{Detecta nodos donde}{domina un metodo, difiere del vecindario, conserva baja imputacion y tiene soporte local interpretable.}
+      \vspace{0.08cm}
+      \infocard{No detecta}{planetas faltantes ni probabilidad calibrada de ausencia.}
+      \vspace{0.08cm}
+      \infocard{Si detecta}{cambios locales en cobertura observacional y posibles fronteras de detectabilidad.}
+    \end{column}
+  \end{columns}
+  \vspace{0.12cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.24\textwidth}
+      \statcard{Metodo}{alto}{top\_method\_fraction}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \statcard{Mezcla}{baja}{entropia nodal}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \statcard{Imputacion}{baja}{mayor confianza}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \statcard{Frontera}{alta}{cambio respecto a vecinos}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Interpretacion de Shadow alto}
+  \phasebar{6. Deployment / Communication}
+  \vspace{0.08cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \safeincludegraphics[width=\linewidth,height=0.45\textheight,keepaspectratio]{f3.pdf}
+      \vspace{0.05cm}
+      {\scriptsize\color{textmuted}El contraste entre nodos RV puros y su periferia mezclada es una lectura compatible con frontera local de detectabilidad.}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \infocard{Caso poblacional fuerte}{\texttt{cube51\_cluster1} en el espacio fisico minimo alcanza Shadow $=0.552$, dominado por Transit, con $n=79$ e imputacion media $=0.000$.}
+      \vspace{0.08cm}
+      \infocard{Caso orbital clave}{\texttt{cube17\_cluster2} alcanza Shadow $=0.274$, dominado por Radial Velocity, con $n=8$ e imputacion media $=0.000$.}
+      \vspace{0.08cm}
+      \infocard{Lectura correcta}{Shadow alto = posible frontera de detectabilidad. No equivale a evidencia cerrada de objetos ausentes.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{De Shadow a priorizacion}
+  \phasebar{6. Deployment / Communication}
+  \vspace{0.04cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.39\textwidth}
+      \begin{center}
+        \begin{tikzpicture}[scale=0.87,transform shape,
+          pipebox/.style={draw=panelline,fill=panel,rounded corners=7pt,minimum width=3.7cm,minimum height=0.78cm,align=center,font=\scriptsize},
+          arr/.style={-{Latex[length=2.2mm]},line width=0.9pt,color=accent}
+        ]
+          \node[pipebox] (a) at (0,0) {sesgo de observacion};
+          \node[pipebox] (b) at (0,-1.0) {Shadow Score};
+          \node[pipebox] (c) at (0,-2.0) {TOI regional};
+          \node[pipebox] (d) at (0,-3.0) {ATI por planeta ancla};
+          \node[pipebox] (e) at (0,-4.0) {ATI conservador};
+          \node[pipebox] (f) at (0,-5.0) {prioridad observacional futura};
+          \draw[arr] (a) -- (b);
+          \draw[arr] (b) -- (c);
+          \draw[arr] (c) -- (d);
+          \draw[arr] (d) -- (e);
+          \draw[arr] (e) -- (f);
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+    \begin{column}{0.59\textwidth}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.34em,rounded=true]{block body}
+        {\scriptsize\bfseries Top regiones por TOI}\par
+        \vspace{0.04cm}
+        \rankbar{accentdeep}{cube12\_cluster0}{0.07667}{1.00}
+        \rankbar{accentdeep}{cube17\_cluster2}{0.06276}{0.82}
+        \rankbar{accentdeep}{cube26\_cluster6}{0.05811}{0.76}
+      \end{beamercolorbox}
+      \vspace{0.08cm}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.34em,rounded=true]{block body}
+        {\scriptsize\bfseries Top anclas por ATI conservador}\par
+        \vspace{0.04cm}
+        \rankbar{accent}{HIP 90988 b}{0.006389}{1.00}
+        \rankbar{good}{HD 42012 b}{0.005113}{0.80}
+        \rankbar{good}{HD 4313 b}{0.004348}{0.68}
+      \end{beamercolorbox}
+      \vspace{0.05cm}
+      {\tiny\color{textmuted}TOI ordena regiones. ATI conservador refina anclas con estabilidad local, baja imputacion y lectura topologica consistente.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Impacto cientifico}
+  \phasebar{6. Deployment / Communication}
+  \vspace{0.08cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.50\textwidth}
+      \safeincludegraphics[width=\linewidth,height=0.48\textheight,keepaspectratio]{ati_vs_ati_conservative.pdf}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \infocard{Que entrega el sistema}{No solo rankings. Entrega regiones y objetivos concretos donde nuevas observaciones podrian ser mas informativas.}
+      \vspace{0.08cm}
+      \infocard{Aplicaciones}{priorizar follow-up, comparar misiones, estudiar completitud, orientar campanas RV y actualizar catalogos dinamicos.}
+      \vspace{0.08cm}
+      \infocard{Valor cientifico}{Transforma sesgos de observacion en una herramienta interpretable para decidir donde mirar con mas cuidado.}
+      \vspace{0.10cm}
+      \badge{accentdeep}{TOI regional}\hspace{0.06cm}
+      \badge{good}{ATI conservador}\hspace{0.06cm}
+      \badge{accentdeep}{prioridad futura}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Limitaciones honestas}
+  \phasebar{5--6. Evaluation y Communication}
+  \vspace{0.08cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \infocard{No reconstruimos}{el universo real de exoplanetas.}
+      \vspace{0.06cm}
+      \infocard{No probamos}{planetas faltantes ni completitud instrumental total.}
+      \vspace{0.06cm}
+      \infocard{No evitamos por completo}{dependencia de la funcion de seleccion, la historia observacional o el preprocesamiento.}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \infocard{Si ofrecemos}{un mapa interpretable del universo observable.}
+      \vspace{0.06cm}
+      \infocard{Si controlamos}{imputacion, redundancia fisica y sensibilidad entre lentes.}
+      \vspace{0.06cm}
+      \infocard{Si abrimos}{una ruta clara hacia completitud instrumental, injection-recovery y catalogos dinamicos.}
+    \end{column}
+  \end{columns}
+  \vspace{0.10cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.50\textwidth}
+      \safeincludegraphics[width=\linewidth,height=0.18\textheight,keepaspectratio]{09_thermal_caution.pdf}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      {\scriptsize\color{textmuted}Ejemplo de cautela metodologica: el espacio termico presenta estructura, pero su imputacion media alta debilita una lectura fuerte.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+  \astrobackground
+  \vspace*{1.0cm}
+  {\color{accent}\large\bfseries Cierre}\par
+  \vspace{0.28cm}
+  {\fontsize{27}{29}\selectfont\bfseries El catalogo de exoplanetas no es el universo planetario.}\par
+  \vspace{0.16cm}
+  {\fontsize{27}{29}\selectfont\bfseries Es la huella de como la humanidad lo ha observado.}\par
+  \vspace{0.52cm}
+  \begin{beamercolorbox}[wd=0.78\linewidth,sep=0.90em,rounded=true]{block body}
+    {\small Mapper/TDA nos permite cartografiar esa huella, detectar fronteras locales de cobertura observacional y convertir sesgo en una herramienta de priorizacion cientifica.}
+  \end{beamercolorbox}
+  \vfill
+  \badge{accentdeep}{universo observable}\hspace{0.08cm}
+  \badge{good}{frontera observacional}\hspace{0.08cm}
+  \badge{accentdeep}{prioridad futura}
+\end{frame}
+
+\end{document}

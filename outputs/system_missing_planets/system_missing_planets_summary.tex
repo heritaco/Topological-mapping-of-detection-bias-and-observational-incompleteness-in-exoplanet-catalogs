@@ -1,0 +1,61 @@
+\section{Busqueda intra-sistema de candidatos a planetas no detectados}
+
+\subsection{Motivacion}
+
+Este modulo traslada la incompletitud topologica global a la escala de sistemas planetarios conocidos. El objetivo no es afirmar detecciones fisicas directas, sino priorizar intervalos orbitales donde podria existir submuestreo intra-sistema.
+
+\subsection{Metodologia}
+
+Cada sistema se ordena por periodo orbital y se analizan gaps adyacentes. Para gaps grandes se generan candidatos sinteticos en escala logaritmica de periodo y semieje mayor, con apoyo adicional de analogos globales y proxies de detectabilidad por transito o velocidad radial.
+
+\subsection{Uso de resultados previos TOI/ATI/sombra}
+
+Cuando existen tablas previas, el modulo incorpora TOI regional, ATI por planeta ancla y sombra observacional por nodo Mapper. Esto convierte la topologia global mas la sombra observacional mas la arquitectura intra-sistema en un ranking de intervalos orbitales prioritarios.
+
+\subsection{Resultados principales}
+
+Los resultados priorizan candidatos topologicos y regiones sugeridas para seguimiento observacional. No se detectan planetas reales ni se afirma un conteo verdadero de planetas ausentes.
+
+\begin{itemize}
+
+\item WASP-132: max score=0.972, n candidatos=6.
+
+\item HD 27894: max score=0.971, n candidatos=4.
+
+\item HD 153557: max score=0.954, n candidatos=4.
+
+\item TOI-4010: max score=0.953, n candidatos=5.
+
+\item KOI-142: max score=0.947, n candidatos=4.
+
+\end{itemize}
+
+\paragraph{Top candidatos}
+
+\begin{itemize}
+
+\item WASP-132: intervalo entre WASP-132 b y WASP-132 d, periodo sugerido=198.097 dias, clase=high.
+
+\item HD 27894: intervalo entre HD 27894 c y HD 27894 d, periodo sugerido=259.749 dias, clase=high.
+
+\item WASP-132: intervalo entre WASP-132 b y WASP-132 d, periodo sugerido=65.416 dias, clase=high.
+
+\item HD 153557: intervalo entre HD 153557 c y HD 153557 d, periodo sugerido=73.943 dias, clase=high.
+
+\item TOI-4010: intervalo entre TOI-4010 d y TOI-4010 e, periodo sugerido=157.110 dias, clase=high.
+
+\end{itemize}
+
+\subsection{Validacion leave-one-out}
+
+La validacion interna retira temporalmente planetas intermedios conocidos y verifica si el modulo vuelve a priorizar candidatos cercanos en periodo orbital.
+
+Se ejecutaron 524 pruebas. El error mediano en log10(P) fue 0.063, con recall dentro de 0.1 dex de 0.544 y dentro de 0.2 dex de 0.761.
+
+\subsection{Limitaciones}
+
+El ranking no modela completitud instrumental ni sustituye analisis de inyeccion-recuperacion. Las estimaciones de masa, radio y detectabilidad son proxies para priorizacion, no inferencias fisicas definitivas.
+
+\subsection{Trabajo futuro}
+
+Los siguientes pasos incluyen incorporar completitud instrumental, seguimiento observacional real y validacion cruzada con catalogos futuros.

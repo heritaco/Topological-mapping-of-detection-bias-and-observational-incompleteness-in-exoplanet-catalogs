@@ -1,0 +1,8 @@
+{
+  "n_holdout_tests": 524,
+  "median_abs_logP_error": 0.06280898437931026,
+  "recall_within_0p1_dex": 0.5438931297709924,
+  "recall_within_0p2_dex": 0.7614503816793893,
+  "recall_within_factor_1p5": 0.7366412213740458,
+  "recall_within_factor_2": 0.7862595419847328
+}

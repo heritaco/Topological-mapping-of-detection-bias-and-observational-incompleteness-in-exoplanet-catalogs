@@ -1,0 +1,133 @@
+% Compile locally with:
+% cd tex/11_stars
+% latexmk -pdf system_missing_planets_report.tex
+% or:
+% pdflatex system_missing_planets_report.tex
+% biber system_missing_planets_report
+% pdflatex system_missing_planets_report.tex
+% pdflatex system_missing_planets_report.tex
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{adjustbox}
+\usepackage{csquotes}
+\usepackage{ifthen}
+\usepackage{fancyvrb}
+\usepackage[backend=biber,style=authoryear,maxcitenames=2,maxbibnames=99]{biblatex}
+
+\addbibresource{references_system_missing_planets.bib}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue,
+  pdftitle={Priorizacion intra-sistema de candidatos a planetas no detectados usando topologia, gaps orbitales y sesgos de descubrimiento}
+}
+
+\setlist[itemize]{topsep=0.3em,itemsep=0.2em}
+\setlist[enumerate]{topsep=0.3em,itemsep=0.2em}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+
+\newcommand{\reporttitle}{Priorizaci\'on intra-sistema de candidatos a planetas no detectados usando topolog\'ia, gaps orbitales y sesgos de descubrimiento}
+\newcommand{\reportsubtitle}{De Mapper global a intervalos orbitales prioritarios alrededor de estrellas conocidas}
+\newcommand{\figroot}{../../outputs/system_missing_planets/figures}
+\newcommand{\outroot}{../../outputs/system_missing_planets}
+\newcommand{\locfigroot}{figures/system_missing_planets}
+\newcommand{\loctabroot}{tables/system_missing_planets}
+
+\newcommand{\safeincludegraphics}[2][]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \fbox{\parbox{0.85\textwidth}{\centering Figura pendiente: \texttt{\detokenize{#2}}}}%
+  }%
+}
+
+\newcommand{\safetableinput}[1]{%
+  \IfFileExists{#1}{%
+    \input{#1}%
+  }{%
+    \fbox{\parbox{0.9\textwidth}{\centering Tabla pendiente: \texttt{\detokenize{#1}}}}%
+  }%
+}
+
+\title{\reporttitle\\[0.4em]\large \reportsubtitle}
+\author{Proyecto Mapper/TDA de exoplanetas}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\input{sections/system_missing_planets/00_abstract.tex}
+\tableofcontents
+\clearpage
+
+\section{Introducci\'on}
+\input{sections/system_missing_planets/01_introduction.tex}
+
+\section{Datos y variables}
+\input{sections/system_missing_planets/02_methodology.tex}
+
+\section{Integraci\'on con resultados previos: Mapper, sombra, TOI y ATI}
+\input{sections/system_missing_planets/03_topological_prior.tex}
+
+\section{Modelo de gaps orbitales intra-sistema}
+\input{sections/system_missing_planets/04_intrasystem_gap_model.tex}
+
+\section{Detectabilidad por m\'etodo}
+\input{sections/system_missing_planets/05_detectability.tex}
+
+\section{Validaci\'on leave-one-out}
+\input{sections/system_missing_planets/06_validation.tex}
+
+\section{Resultados esperados y resultados generados}
+\input{sections/system_missing_planets/07_results.tex}
+
+\section{Tres casos finales de candidatos intra-sistema}
+\input{sections/system_missing_planets/10_three_case_studies.tex}
+
+\section{Limitaciones}
+\input{sections/system_missing_planets/08_limitations.tex}
+
+\section{Trabajo futuro}
+\input{sections/system_missing_planets/09_future_work.tex}
+
+\section*{Conclusi\'on}
+Este subproyecto no afirma descubrimientos de planetas reales ni detecciones definitivas. Su aporte es convertir una se\~nal topol\'ogica global de posible incompletitud observacional en un ranking intra-sistema de intervalos orbitales prioritarios para seguimiento, combinando arquitectura orbital, soporte topol\'ogico previo, an\'alogos globales y dificultad relativa de detectabilidad.
+
+Los tres casos finales muestran que el m\'etodo puede pasar de una se\~nal topol\'ogica global a hip\'otesis observacionales concretas: un sistema, un intervalo orbital, una posici\'on candidata y una raz\'on plausible de no detecci\'on.
+
+\[
+\boxed{
+\text{Mapper global}
++
+\text{sombra observacional}
++
+\text{arquitectura intra-sistema}
+\Rightarrow
+\text{ranking de intervalos orbitales prioritarios}
+}
+\]
+
+\nocite{singh2007topological,carlsson2009topology,nasaexoplanetarchive,borucki2010kepler,ricker2015tess,winn2010transits,lovis2011radialvelocity,gaudi2012microlensing,bowler2016imaging}
+\printbibliography[title={Referencias m\'inimas de contexto}]
+
+\end{document}

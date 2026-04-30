@@ -1,0 +1,14 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'system_missing_planets_report.blg'
+[89] biber-MSWIN64:342> INFO - === 
+[565] Biber.pm:421> INFO - Reading 'system_missing_planets_report.bcf'
+[654] Biber.pm:1002> INFO - Found 9 citekeys in bib section 0
+[666] Biber.pm:4487> INFO - Processing section 0
+[676] Biber.pm:4678> INFO - Looking for bibtex file 'references_system_missing_planets.bib' for section 0
+[731] bibtex.pm:1713> INFO - LaTeX decoding ...
+[741] bibtex.pm:1519> INFO - Found BibTeX data source 'references_system_missing_planets.bib'
+[807] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[807] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[808] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'es-ES'
+[817] bbl.pm:676> INFO - Writing 'system_missing_planets_report.bbl' with encoding 'UTF-8'
+[821] bbl.pm:779> INFO - Output to system_missing_planets_report.bbl

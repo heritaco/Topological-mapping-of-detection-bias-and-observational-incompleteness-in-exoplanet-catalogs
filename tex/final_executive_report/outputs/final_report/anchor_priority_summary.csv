@@ -1,0 +1,12 @@
+anchor,region,ATI_original,ATI_cons,rank_final,class
+HIP 97166 c,cube12_cluster0,0.011,0.001,,unstable_due_to_large_radius
+HIP 90988 b,cube17_cluster2,0.0075,0.006,1.0,small_but_stable_deficit
+HD 42012 b,cube19_cluster5,0.0064,0.0049,2.0,transition_mapper
+HD 42012 b,cube26_cluster6,0.0061,0.0046,3.0,transition_mapper
+HD 4313 b,cube17_cluster10,0.0056,0.0041,6.0,stable_secondary
+HD 11506 d,cube33_cluster3,0.0052,0.0038,4.0,priority_complementary
+24 Sex b,cube24_cluster1,0.0049,0.0036,5.0,priority_complementary
+HD 167677 b,cube26_cluster0,0.0044,0.0032,7.0,priority_complementary
+HD 13931 b,cube26_cluster11,0.004,0.0029,8.0,priority_complementary
+Kepler-48 e,cube26_cluster12,0.0037,0.0027,9.0,priority_complementary
+Kepler-48 e,cube19_cluster8,0.0035,0.0025,10.0,priority_complementary

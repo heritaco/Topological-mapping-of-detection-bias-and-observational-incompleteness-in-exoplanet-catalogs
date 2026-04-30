@@ -1,0 +1,143 @@
+\subsection{Criterio de selecci\'on}
+
+La selecci\'on final se construy\'o a partir de los archivos ya generados por el pipeline, en particular \texttt{outputs/system\_missing\_planets/high\_priority\_candidates.csv}, \texttt{system\_gap\_summary.csv} y \texttt{system\_missing\_planets\_validation\_summary.json}. Se favorecieron casos con \texttt{candidate\_priority\_score} alto, clase \texttt{high}, gap orbital amplio, estimaciones plausibles de masa y radio, raz\'on interpretable de no detecci\'on y figuras de arquitectura disponibles o regenerables.
+
+La capa topol\'ogica heredada se obtuvo, en esta corrida, desde:
+\begin{itemize}
+\item \texttt{outputs/topological\_incompleteness\_index/tables/regional\_toi\_scores.csv},
+\item \texttt{outputs/topological\_incompleteness\_index/tables/anchor\_ati\_scores.csv},
+\item \texttt{outputs/observational\_shadow/tables/node\_observational\_shadow\_metrics.csv},
+\item \texttt{outputs/observational\_shadow/metadata/membership\_with\_shadow\_inputs\_orbital\_pca2\_cubes10\_overlap0p35.csv}.
+\end{itemize}
+
+La frase base que debe acompa\~nar toda la interpretaci\'on es:
+\begin{quote}
+El pipeline no detecta planetas reales; prioriza intervalos orbitales donde un candidato no detectado ser\'ia plausible bajo la arquitectura observada, el soporte topol\'ogico previo y la dificultad relativa de detecci\'on.
+\end{quote}
+
+Antes, el proyecto priorizaba regiones globales mediante
+\[
+TOI(v)=Shadow(v)(1-I_{R^3}(v))C_{\rm phys}(v)S_{\rm net}(v).
+\]
+Ahora esa se\~nal se hereda a un gap intra-sistema usando una regla del tipo
+\[
+T_{\rm gap} =
+\max\{
+TOI(v_{\rm in}),
+TOI(v_{\rm out}),
+ATI(p_{\rm in}),
+ATI(p_{\rm out}),
+Shadow(v_{\rm in}),
+Shadow(v_{\rm out})
+\}.
+\]
+Si $T_{\rm gap}$ es alto, el intervalo no solo es amplio: tambi\'en queda cerca de objetos o nodos previamente marcados como observacionalmente sospechosos. Si $T_{\rm gap}$ es bajo o no est\'a disponible, el intervalo puede seguir siendo geom\'etricamente interesante, pero sin soporte topol\'ogico fuerte. En los tres casos elegidos, \texttt{topology\_score=1.0}; en cambio, \texttt{gap\_ATI\_score} no qued\'o disponible a nivel de gap en esta corrida, de modo que el soporte local proviene sobre todo de TOI y sombra.
+
+\begin{table}[htbp]
+\centering
+\caption{Tres casos finales de candidatos intra-sistema.}
+\label{tab:three-final-cases}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.14\textwidth} >{\raggedright\arraybackslash}p{0.19\textwidth} c c c >{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.17\textwidth}}
+\toprule
+Sistema & Intervalo & \(P^\ast\) [d] & \(a^\ast\) [AU] & Score & Raz\'on probable de no detecci\'on & Lectura \\
+\midrule
+WASP-132 & WASP-132 b -- WASP-132 d & 198.10 & 0.615 & 0.972 & long period & Caso visual top con soporte topol\'ogico y lectura tipo tr\'ansito. \\
+HD 27894 & HD 27894 c -- HD 27894 d & 259.75 & 0.743 & 0.971 & weak RV signal & Caso radial-velocity-like con gap amplio y seguimiento RV plausible. \\
+HAT-P-17 & HAT-P-17 b -- HAT-P-17 c & 128.07 & 0.490 & 0.937 & weak RV signal & Caso mixto/fallback donde el gap une un planeta de tr\'ansito con uno RV. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Caso 1: WASP-132}
+
+\paragraph{Arquitectura observada.}
+WASP-132 aparece como el caso visual top de la selecci\'on final. El sistema tiene tres planetas observados en la corrida actual y el gap prioritario se ubica entre \texttt{WASP-132 b} y \texttt{WASP-132 d}. El tama\~no del hueco es particularmente llamativo: \(\texttt{gap\_period\_ratio}\approx 254.66\), con ancho logar\'itmico \(\texttt{gap\_log\_width}\approx 2.406\). Esa amplitud por s\'i sola no prueba un planeta intermedio, pero s\'i vuelve al intervalo muy competitivo frente al fondo emp\'irico de gaps.
+
+\paragraph{Candidato propuesto.}
+El pipeline prioriza el candidato sint\'etico \texttt{WASP-132::WASP-132 b::WASP-132 d::3}, con una posici\'on orbital plausible en \(P^\ast \approx 198.10\) d\'ias y \(a^\ast \approx 0.615\) AU. La estimaci\'on por an\'alogos globales sugiere una masa mediana de aproximadamente \(9.85\,M_\oplus\), con rango intercuartil ampliado \(5.84\) -- \(65.27\,M_\oplus\), y un radio mediano de \(3.11\,R_\oplus\), con rango aproximado \(2.29\) -- \(9.47\,R_\oplus\). Estas cantidades son rangos de priorizaci\'on y no propiedades medidas.
+
+\paragraph{Raz\'on de prioridad.}
+Este caso combina casi todas las capas de evidencia disponibles: \(\texttt{candidate\_priority\_score}\approx 0.972\), \(\texttt{gap\_score}\approx 0.975\), \(\texttt{topology\_score}=1.0\), \(\texttt{analog\_support\_score}=1.0\), \(\texttt{missing\_detectability\_score}\approx 0.917\) y \(\texttt{data\_quality\_score}\approx 0.919\). A nivel topol\'ogico, el intervalo hereda \(\texttt{gap\_shadow\_score}\approx 0.198\) y \(\texttt{gap\_TOI\_score}\approx 0.0767\), lo que lo ubica cerca de objetos o nodos con se\~nal previa de incompletitud observacional.
+
+\paragraph{Por qu\'e podr\'ia no haber sido detectado.}
+El sistema tiene lectura dominante de tr\'ansito, aunque el planeta exterior del gap proviene de velocidad radial. La raz\'on prioritaria de no detecci\'on se clasifica como \texttt{long\_period}. En la pr\'actica, eso significa que un candidato intermedio tendr\'ia menos oportunidades geom\'etricas de transitar, menor cobertura temporal efectiva y una ventana de observaci\'on m\'as costosa que la de los planetas interiores. La probabilidad geom\'etrica estimada \(\texttt{transit\_probability\_proxy}\approx 5.74\times 10^{-3}\) y la profundidad aproximada \(\texttt{transit\_depth\_proxy}\approx 1.41\times 10^{-3}\) apoyan una lectura de detecci\'on m\'as dif\'icil que la de planetas m\'as cercanos.
+
+\paragraph{Seguimiento sugerido.}
+La recomendaci\'on principal es fotometr\'ia adicional y revisi\'on de se\~nales d\'ebiles cerca del periodo candidato, idealmente complementadas con RV de precisi\'on o TTV si existiera soporte independiente. La figura de arquitectura en la Figura~\ref{fig:final-wasp132} sirve como ficha visual de presentaci\'on.
+
+\paragraph{Cautela.}
+Este caso no debe interpretarse como un planeta faltante confirmado. Es un intervalo orbital prioritario donde un candidato no detectado podr\'ia ser plausible bajo la arquitectura observada, el soporte topol\'ogico previo y la dificultad relativa de detecci\'on.
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.88\textwidth]{\figroot/final_case_WASP-132.pdf}
+\caption{Ficha final de arquitectura para WASP-132. Los candidatos son puntos sint\'eticos de priorizaci\'on, no planetas confirmados.}
+\label{fig:final-wasp132}
+\end{figure}
+
+\subsection{Caso 2: HD 27894}
+
+\paragraph{Arquitectura observada.}
+HD 27894 representa el caso radial-velocity-like m\'as claro de la selecci\'on final. El sistema tiene tres planetas observados y el intervalo prioritario cae entre \texttt{HD 27894 c} y \texttt{HD 27894 d}. El hueco es muy amplio, con \(\texttt{gap\_period\_ratio}\approx 139.16\) y \(\texttt{gap\_log\_width}\approx 2.144\), suficiente para sostener varios candidatos sint\'eticos sin necesidad de forzar una lectura extrema.
+
+\paragraph{Candidato propuesto.}
+El pipeline selecciona \texttt{HD 27894::HD 27894 c::HD 27894 d::2}, ubicado en \(P^\ast \approx 259.75\) d\'ias y \(a^\ast \approx 0.743\) AU. La masa mediana sugerida es de aproximadamente \(12.6\,M_\oplus\), con rango \(6.12\) -- \(204.92\,M_\oplus\). El radio mediano estimado es \(3.60\,R_\oplus\), con rango \(2.23\) -- \(12.89\,R_\oplus\). Igual que en el resto de los casos, estos valores deben leerse como escalas plausibles de prioridad observacional.
+
+\paragraph{Raz\'on de prioridad.}
+HD 27894 combina un \(\texttt{candidate\_priority\_score}\approx 0.971\) con \(\texttt{gap\_score}\approx 0.965\), \(\texttt{topology\_score}=1.0\), \(\texttt{analog\_support\_score}=1.0\), \(\texttt{missing\_detectability\_score}\approx 0.927\) y \(\texttt{data\_quality\_score}\approx 0.919\). La se\~nal topol\'ogica heredada es m\'as moderada que en WASP-132, pero sigue presente: \(\texttt{gap\_shadow\_score}\approx 0.0855\) y \(\texttt{gap\_TOI\_score}\approx 0.0767\). Adem\'as, el error mediano leave-one-out asociado al sistema es de aproximadamente \(0.188\) dex, lo que mantiene una recuperaci\'on interna razonable sin ser una garant\'ia f\'isica.
+
+\paragraph{Por qu\'e podr\'ia no haber sido detectado.}
+Aqu\'i la historia observacional es claramente RV. El sistema es dominado por velocidad radial tanto a nivel global como en sus planetas frontera, y la raz\'on de no detecci\'on se clasifica como \texttt{weak\_RV\_signal}. El proxy din\'amico estimado \(\texttt{rv\_K\_proxy}\approx 2.27\) sugiere una se\~nal relativamente discreta frente a otros planetas del mismo sistema, mientras que el periodo propuesto es suficientemente largo como para exigir un seguimiento m\'as sostenido.
+
+\paragraph{Seguimiento sugerido.}
+La recomendaci\'on natural es seguimiento RV m\'as sensible, junto con rean\'alisis de series temporales ya disponibles y un estudio de completitud din\'amica en torno al periodo candidato. Si se quisiera presentar un caso donde el pipeline traduzca bien la idea de ``posible submuestreo intra-sistema'' al lenguaje de velocidad radial, este es probablemente el mejor ejemplo.
+
+\paragraph{Cautela.}
+El caso no demuestra que exista un planeta intermedio real. Solo indica que, dados el gap, los an\'alogos y la dificultad relativa de detecci\'on, el intervalo entre \texttt{HD 27894 c} y \texttt{HD 27894 d} merece atenci\'on observacional.
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.88\textwidth]{\figroot/final_case_HD_27894.pdf}
+\caption{Ficha final de arquitectura para HD 27894. El candidato marcado es un punto sint\'etico de priorizaci\'on observacional.}
+\label{fig:final-hd27894}
+\end{figure}
+
+\subsection{Caso 3: HAT-P-17}
+
+\paragraph{Arquitectura observada.}
+HAT-P-17 se eligi\'o como caso mixto/fallback porque cuenta una historia distinta a las dos anteriores. El sistema tiene dos planetas observados y el gap prioritario une a \texttt{HAT-P-17 b}, detectado por tr\'ansito, con \texttt{HAT-P-17 c}, detectado por velocidad radial. La amplitud es extrema: \(\texttt{gap\_period\_ratio}\approx 540.12\) y \(\texttt{gap\_log\_width}\approx 2.732\). Eso convierte al sistema en un buen ejemplo para exposici\'on, aunque la ausencia de un tercer planeta observado impide una validaci\'on leave-one-out espec\'ifica del sistema.
+
+\paragraph{Candidato propuesto.}
+El candidato sint\'etico final es \texttt{HAT-P-17::HAT-P-17 b::HAT-P-17 c::2}, con \(P^\ast \approx 128.07\) d\'ias y \(a^\ast \approx 0.490\) AU. Las escalas plausibles sugeridas son una masa mediana de \(14.4\,M_\oplus\), con rango \(7.71\) -- \(297.51\,M_\oplus\), y un radio mediano de \(3.68\,R_\oplus\), con rango \(2.69\) -- \(8.96\,R_\oplus\).
+
+\paragraph{Raz\'on de prioridad.}
+Su score final es \(\texttt{candidate\_priority\_score}\approx 0.937\), con \(\texttt{gap\_score}\approx 0.983\), \(\texttt{topology\_score}=1.0\), \(\texttt{analog\_support\_score}=1.0\), \(\texttt{missing\_detectability\_score}\approx 0.665\) y \(\texttt{data\_quality\_score}\approx 0.919\). El soporte topol\'ogico heredado es moderado, con \(\texttt{gap\_shadow\_score}\approx 0.0855\) y \(\texttt{gap\_TOI\_score}\approx 0.0767\), suficiente para reforzar la historia orbital sin volverla dependiente de una sola capa.
+
+\paragraph{Por qu\'e podr\'ia no haber sido detectado.}
+Este es un caso mixto: el sistema combina informaci\'on de tr\'ansito y RV, mientras que la raz\'on principal de no detecci\'on aparece como \texttt{weak\_RV\_signal}. La lectura m\'as prudente es que el candidato podr\'ia haber quedado por debajo del umbral din\'amico relativo de detecci\'on, al mismo tiempo que la geometr\'ia y la cobertura temporal hacen costoso verlo por tr\'ansito. El sistema es \'util precisamente porque obliga a traducir la se\~nal topol\'ogica global a una pregunta observacional concreta sin depender de un \'unico m\'etodo.
+
+\paragraph{Seguimiento sugerido.}
+La recomendaci\'on principal es seguimiento RV m\'as sensible, acompa\~nado de an\'alisis de completitud y, si la geometr\'ia lo permite, chequeo fotom\'etrico adicional. En una presentaci\'on, HAT-P-17 funciona bien como caso donde el pipeline no solo punt\'ua un gap, sino que tambi\'en sugiere por qu\'e el candidato habr\'ia sido dif\'icil de consolidar con un m\'etodo aislado.
+
+\paragraph{Cautela.}
+HAT-P-17 no debe interpretarse como evidencia de que el sistema tenga necesariamente otro planeta. Es un caso de priorizaci\'on donde el tama\~no del gap, la herencia topol\'ogica y el contexto observacional convergen en una posici\'on orbital plausible.
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.88\textwidth]{\figroot/final_case_HAT-P-17.pdf}
+\caption{Ficha final de arquitectura para HAT-P-17. El marcador destacado representa un candidato sint\'etico, no un objeto confirmado.}
+\label{fig:final-hatp17}
+\end{figure}
+
+\subsection{Lectura comparativa}
+
+Los tres casos elegidos muestran que el pipeline puede contar historias observacionales distintas sin salir del mismo marco metodol\'ogico. WASP-132 representa un caso visual fuerte dominado por tr\'ansito y per\'iodo largo; HD 27894 ofrece la lectura RV m\'as limpia; HAT-P-17 sirve como ejemplo mixto donde el gap es grande y la narrativa no depende de una sola t\'ecnica de detecci\'on.
+
+En conjunto, estos sistemas ilustran el paso clave del proyecto:
+\begin{itemize}
+\item antes se priorizaban regiones globales del cat\'alogo;
+\item ahora se formulan hip\'otesis observacionales concretas alrededor de estrellas conocidas;
+\item en cada caso, la salida relevante es un sistema, un intervalo orbital, una posici\'on candidata y una raz\'on plausible de no detecci\'on.
+\end{itemize}
+
+Ese es precisamente el tipo de lectura que vuelve al m\'odulo \'util para exposici\'on: no propone descubrimientos, sino casos para seguimiento donde la convergencia entre arquitectura intra-sistema, se\~nal topol\'ogica exploratoria y detectabilidad relativa merece atenci\'on adicional.

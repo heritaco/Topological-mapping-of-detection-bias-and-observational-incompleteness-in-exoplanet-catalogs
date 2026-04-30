@@ -1,0 +1,325 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+
+\geometry{margin=2.15cm}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black,citecolor=blue!50!black}
+\setlength{\parskip}{0.55em}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.18}
+
+\definecolor{mainblue}{HTML}{1F618D}
+\definecolor{softblue}{HTML}{EAF2F8}
+\definecolor{accentgold}{HTML}{D4AC0D}
+\definecolor{softgray}{HTML}{F4F6F7}
+\definecolor{darkgray}{HTML}{2C3E50}
+\definecolor{goodgreen}{HTML}{2E8B57}
+
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Priorización topológica de incompletitud observacional}
+\rhead{Reporte final ejecutivo}
+\cfoot{\thepage}
+
+\newtcolorbox{keybox}[1][]{colback=softblue,colframe=mainblue,arc=2mm,boxrule=0.8pt,left=2mm,right=2mm,top=1.5mm,bottom=1.5mm,#1}
+\newtcolorbox{resultbox}[1][]{colback=softgray,colframe=darkgray,arc=2mm,boxrule=0.6pt,left=2mm,right=2mm,top=1.5mm,bottom=1.5mm,#1}
+\newcommand{\figpath}{../../outputs/final_report/figures}
+\newcommand{\case}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\title{\vspace{-1.2cm}\textbf{Priorización Topológica de Incompletitud Observacional en Catálogos de Exoplanetas}\\[0.25em]
+\large De sesgos de descubrimiento a rankings observacionales interpretables}
+\author{Proyecto Mapper/TDA de exoplanetas}
+\date{Reporte final ejecutivo}
+
+\begin{document}
+\maketitle
+
+\begin{keybox}
+\textbf{Resultado ejecutivo.} El proyecto consolida una metodología que transforma sesgos de descubrimiento en una herramienta accionable de priorización observacional. TOI identifica regiones Mapper informativas; ATI traduce esas regiones en anclas locales; y ATI conservador refina el ranking hacia casos más estables y defendibles.
+\end{keybox}
+
+\tableofcontents
+\newpage
+
+\section{Resumen ejecutivo}
+
+El resultado final del trabajo es una metodología completa de \textbf{priorización topológica de incompletitud observacional}. La contribución central es convertir la estructura del catálogo de exoplanetas en una lectura ordenada de regiones y anclas donde futuras observaciones podrían aportar mayor valor científico.
+
+\begin{resultbox}
+\textbf{Cadena metodológica final:}
+\[
+\text{sesgo de descubrimiento}
+\rightarrow
+\text{sombra observacional}
+\rightarrow
+\mathrm{TOI}(v)
+\rightarrow
+\mathrm{ATI}(p^*)
+\rightarrow
+\mathrm{ATI}_{\mathrm{cons}}
+\rightarrow
+\text{prioridad observacional}.
+\]
+\end{resultbox}
+
+El pipeline integra cinco ideas: sesgo observacional, sombra observacional, organización Mapper, continuidad físico--orbital y estabilidad multiescala. La lectura final es positiva y accionable: \textbf{TOI/ATI prioriza regiones y planetas ancla donde el catálogo parece topológicamente incompleto}, ofreciendo una ruta ordenada para inspección futura.
+
+Los resultados principales son:
+
+\begin{itemize}[leftmargin=1.4em]
+    \item \textbf{Región top:} \code{cube12\_cluster0}, con $\mathrm{TOI}\approx 0.077$.
+    \item \textbf{Ancla exploratoria original:} \case{HIP 97166 c / cube12\_cluster0}, destacada por ATI original y refinada por validación multiescala.
+    \item \textbf{Ancla conservadora final:} \case{HIP 90988 b / cube17\_cluster2}, con $\mathrm{TOI}\approx 0.063$ y $\mathrm{ATI}_{\mathrm{cons}}\approx 0.006$.
+    \item \textbf{Caso de transición Mapper:} \case{HD 42012 b}, presente en \code{cube19\_cluster5} y \code{cube26\_cluster6}.
+    \item \textbf{Candidato secundario estable:} \case{HD 4313 b / cube17\_cluster10}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\linewidth]{\figpath/01_pipeline_flow.pdf}
+\caption{Evolución ejecutiva del pipeline: el análisis transforma sesgos de descubrimiento en una priorización observacional interpretable mediante TOI, ATI y ATI conservador.}
+\end{figure}
+
+\section{Evolución del pipeline}
+
+La trayectoria del proyecto avanzó desde una auditoría de sesgos hacia una metodología con salida interpretable. Cada etapa agrega una capa de control:
+
+\begin{itemize}[leftmargin=1.4em]
+    \item \textbf{Sesgo de descubrimiento:} reconoce que diferentes métodos observacionales ocupan regiones distintas del espacio físico--orbital.
+    \item \textbf{Sombra observacional:} localiza zonas con cobertura relativa menor frente a una referencia local.
+    \item \textbf{Mapper:} organiza el espacio en comunidades topológicas con solapamiento controlado.
+    \item \textbf{TOI regional:} prioriza nodos Mapper combinando sombra, baja imputación, continuidad física y soporte de red.
+    \item \textbf{ATI local:} traduce regiones prioritarias en planetas ancla interpretables.
+    \item \textbf{ATI conservador:} favorece anclas cuya señal permanece estable al cambiar el radio local.
+\end{itemize}
+
+\begin{keybox}
+\textbf{Lectura estratégica.} El proyecto convierte una lectura de sesgos observacionales en una herramienta accionable para priorizar regiones del catálogo donde nuevas observaciones podrían aportar mayor valor científico.
+\end{keybox}
+
+\section{Resultado regional: TOI}
+
+El índice regional TOI resume una lectura de región Mapper. Conceptualmente, pondera sombra observacional, calidad de soporte en variables físicas, continuidad local y soporte estructural de red:
+
+\[
+\mathrm{TOI}(v)=\mathrm{Shadow}(v)\,(1-I_{R^3}(v))\,C_{\mathrm{phys}}(v)\,S_{\mathrm{net}}(v),
+\qquad
+R^3=(\log M_p,\log P,\log a).
+\]
+
+TOI identifica regiones Mapper donde convergen señales de sombra observacional, consistencia física y soporte estructural. La región más importante del análisis final es \code{cube12\_cluster0}, con $\mathrm{TOI}\approx 0.077$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.84\linewidth]{\figpath/02_top_regions_toi.pdf}
+\caption{Top regiones Mapper por TOI. \code{cube12\_cluster0} concentra la lectura regional más informativa del pipeline.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.84\linewidth]{\figpath/03_mapper_toi_stylized.pdf}
+\caption{Visualización Mapper estilizada. Los nodos de mayor tamaño e intensidad representan regiones con mayor prioridad regional TOI.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{\figpath/04_toi_components_heatmap.pdf}
+\caption{Descomposición ejecutiva de TOI. La lectura final combina sombra observacional, baja imputación, continuidad física y soporte de red.}
+\end{figure}
+
+\begin{resultbox}
+\textbf{Conclusión regional.} \code{cube12\_cluster0} funciona como la región más clara para explicar el índice regional: combina sombra observacional, consistencia físico--orbital y soporte topológico suficiente para justificar inspección prioritaria.
+\end{resultbox}
+
+\section{Resultado local: ATI original}
+
+ATI original permitió traducir regiones Mapper en planetas ancla. Su función principal fue exploratoria: revelar casos locales destacados que luego podían evaluarse bajo una validación más conservadora.
+
+\[
+\mathrm{ATI}(p^*)=
+\mathrm{TOI}(v)\,\Delta_{\mathrm{rel,best}}(p^*)\,(1-I_{R^3}(p^*))\,A(p^*),
+\qquad
+\Delta_{\mathrm{rel,best}}=\max_r \Delta_{\mathrm{rel}}(r).
+\]
+
+Bajo esta lectura, \case{HIP 97166 c / cube12\_cluster0} emergió como una ancla exploratoria prominente. Su valor dentro del proyecto fue mostrar que el índice podía localizar señales locales fuertes y convertirlas en casos interpretables.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\linewidth]{\figpath/05_top_anchors_ati_original.pdf}
+\caption{Top anclas por ATI original. HIP 97166 c aparece como caso exploratorio dominante antes del refinamiento conservador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\linewidth]{\figpath/06_hip97166_multiradius.pdf}
+\caption{Anatomía multirradio de HIP 97166 c. La lectura exploratoria identifica una señal local fuerte y la validación multiescala permite refinar su interpretación.}
+\end{figure}
+
+\section{Validación multiescala y ATI conservador}
+
+La etapa final fortalece la metodología al distinguir señales exploratorias de prioridades conservadoras. ATI conservador penaliza sensibilidad al radio y favorece casos con déficit más estable.
+
+\begin{keybox}
+\textbf{Contribución metodológica.} ATI original explora; ATI conservador prioriza con mayor cautela. Esta transición convierte una lista de señales locales en un ranking más defendible para comunicación final y planeación observacional.
+\end{keybox}
+
+El resultado principal de esta fase es \case{HIP 90988 b / cube17\_cluster2}. Este caso queda como la ancla conservadora más defendible, con $\mathrm{TOI}\approx 0.063$, $\mathrm{ATI}_{\mathrm{cons}}\approx 0.006$ y clase \code{small\_but\_stable\_deficit}. Su fuerza narrativa no depende de ser el déficit más extremo, sino de sostener una señal más estable bajo los radios evaluados.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.78\linewidth]{\figpath/07_ati_original_vs_conservative.pdf}
+\caption{Comparación entre ATI original y ATI conservador. La validación multiescala separa señales exploratorias de prioridades más estables.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\linewidth]{\figpath/08_top_anchors_ati_conservative.pdf}
+\caption{Ranking conservador de anclas observacionales. HIP 90988 b emerge como caso final principal bajo estabilidad multiescala.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.86\linewidth]{\figpath/09_ranking_shift.pdf}
+\caption{Cambio de lectura entre ATI original y ATI conservador. El refinamiento conserva el valor exploratorio inicial y ordena la prioridad final hacia casos más estables.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\linewidth]{\figpath/10_stable_multiradius.pdf}
+\caption{Déficit multirradio para casos estables. HIP 90988 b y HD 4313 b muestran señales positivas con mejor comportamiento relativo bajo cambios de escala.}
+\end{figure}
+
+\section{Casos principales finales}
+
+El reporte final se organiza alrededor de cuatro resultados interpretativos: una región top, una ancla conservadora, una ancla de transición Mapper y un candidato secundario estable.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\linewidth]{\figpath/11_candidate_cards.pdf}
+\caption{Fichas ejecutivas de resultados principales. Cada ficha resume el rol interpretativo de la región o ancla dentro del pipeline final.}
+\end{figure}
+
+\subsection{\code{cube12\_cluster0}: región top por TOI}
+
+\code{cube12\_cluster0} sintetiza la contribución regional del proyecto. Es el nodo Mapper donde la combinación de sombra, baja imputación, continuidad física y soporte de red alcanza la prioridad más alta.
+
+\subsection{HIP 90988 b: ancla conservadora principal}
+
+\case{HIP 90988 b / cube17\_cluster2} es el caso más sólido para la narrativa final. Su clasificación como \code{small\_but\_stable\_deficit} permite comunicar una lectura prudente y útil: el entorno local mantiene una señal de déficit estable y por ello se vuelve una prioridad informativa.
+
+\subsection{HD 42012 b: transición Mapper}
+
+\case{HD 42012 b} aparece en \code{cube19\_cluster5} y \code{cube26\_cluster6}. Esta presencia múltiple es una fortaleza interpretativa de Mapper: la cubierta solapada permite representar anclas de frontera entre vecindarios físico--orbitales. HD 42012 b funciona como caso de transición topológica.
+
+\subsection{HD 4313 b: candidato secundario estable}
+
+\case{HD 4313 b / cube17\_cluster10} ofrece soporte adicional para la narrativa conservadora. Su déficit positivo y relativamente estable lo convierten en un candidato secundario útil para respaldar la lectura final.
+
+\section{Ranking final de prioridad observacional}
+
+El ranking final organiza anclas donde futuras observaciones podrían resultar más informativas bajo una referencia topológica local.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\linewidth]{\figpath/12_final_priority_ranking.pdf}
+\caption{Top 10 prioridades observacionales. El ranking traduce la lectura TOI/ATI en una lista ejecutiva de anclas informativas.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.68\linewidth]{\figpath/13_priority_classes.pdf}
+\caption{Composición interpretativa del ranking final: caso conservador principal, transiciones Mapper, candidato secundario y prioridades complementarias.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\linewidth}{c l l X}
+\toprule
+\textbf{Rank} & \textbf{Ancla} & \textbf{Nodo Mapper} & \textbf{Lectura ejecutiva} \\
+\midrule
+1 & HIP 90988 b & \code{cube17\_cluster2} & Ancla conservadora principal; señal estable bajo radios evaluados. \\
+2 & HD 42012 b & \code{cube19\_cluster5} & Caso de transición Mapper; frontera topológica informativa. \\
+3 & HD 42012 b & \code{cube26\_cluster6} & Segunda lectura de transición por solapamiento de cubierta. \\
+4 & HD 11506 d & \code{cube33\_cluster3} & Prioridad complementaria dentro del ranking final. \\
+5 & 24 Sex b & \code{cube24\_cluster1} & Ancla informativa de apoyo para inspección topológica. \\
+6 & HD 4313 b & \code{cube17\_cluster10} & Candidato secundario estable con lectura favorable. \\
+7 & HD 167677 b & \code{cube26\_cluster0} & Prioridad complementaria en vecindario Mapper. \\
+8 & HD 13931 b & \code{cube26\_cluster11} & Ancla complementaria para exploración futura. \\
+9 & Kepler-48 e & \code{cube26\_cluster12} & Prioridad complementaria en región de tránsito. \\
+10 & Kepler-48 e & \code{cube19\_cluster8} & Segunda aparición informativa por estructura Mapper. \\
+\bottomrule
+\end{tabularx}
+\caption{Ranking final de prioridad observacional. La tabla resume las anclas donde la inspección futura puede aportar mayor valor bajo la referencia topológica local.}
+\end{table}
+
+\section{Lectura final del proyecto}
+
+La lectura final es directa: el pipeline convierte sesgos de descubrimiento en una estrategia ordenada de priorización observacional. La estructura Mapper ofrece la geometría; TOI selecciona regiones informativas; ATI identifica anclas locales; ATI conservador refina el ranking hacia señales más estables.
+
+\begin{keybox}
+\textbf{Conclusión final.} TOI/ATI prioriza incompletitud topológica observacional y convierte sesgos de descubrimiento en un ranking interpretable de regiones y anclas para exploración futura.
+\end{keybox}
+
+Esta formulación permite comunicar el resultado con precisión científica y valor ejecutivo. La salida principal no es una afirmación puntual sobre objetos individuales, sino una priorización estructurada de dónde el catálogo parece ofrecer mayor valor para inspección posterior.
+
+\section{Trabajo futuro}
+
+Las siguientes extensiones permitirán convertir la priorización topológica en una plataforma aún más cercana a la planeación observacional:
+
+\begin{itemize}[leftmargin=1.4em]
+    \item \textbf{Completitud instrumental:} incorporar sensibilidad por instrumento, ventana temporal y régimen de detección.
+    \item \textbf{Validación con catálogos futuros:} comparar rankings TOI/ATI contra nuevas versiones del catálogo.
+    \item \textbf{Inyección--recuperación sintética:} simular poblaciones de planetas bajo funciones de selección y medir recuperación local.
+    \item \textbf{Propiedades estelares:} añadir masa, radio, metalicidad, actividad y ruido estelar para mejorar la lectura RV.
+    \item \textbf{Rankings por método de descubrimiento:} separar RV, tránsito, imaging y microlensing para diagnósticos más finos.
+    \item \textbf{Fichas observacionales:} convertir cada prioridad en una ficha con contexto físico, vecindario Mapper, radios, soporte y lectura de seguimiento.
+\end{itemize}
+
+\section*{Cierre}
+\addcontentsline{toc}{section}{Cierre}
+
+En conjunto, el proyecto consolida una metodología que convierte la estructura topológica del catálogo de exoplanetas en una herramienta de priorización observacional. TOI identifica regiones Mapper informativas; ATI traduce esas regiones en anclas locales; y ATI conservador refina el ranking hacia casos más estables y defendibles. El resultado final es una lectura ejecutiva, visual y accionable de dónde el catálogo parece ofrecer mayor valor para inspección futura.
+
+\begin{resultbox}
+\centering
+\Large
+\textbf{Resultado final}\par
+\normalsize
+\vspace{0.35em}
+\[
+\boxed{\mathrm{Sesgo}\rightarrow\mathrm{Sombra}\rightarrow\mathrm{TOI}\rightarrow\mathrm{ATI}\rightarrow\mathrm{ATI}_{\mathrm{cons}}\rightarrow\mathrm{Prioridad\ observacional}}
+\]
+\end{resultbox}
+
+\appendix
+\section{Apéndice técnico breve}
+
+\textbf{Mapper.} Representa el catálogo mediante una cubierta solapada del espacio de lentes. El solapamiento permite que un mismo planeta aparezca en más de un nodo, lo cual es útil para interpretar casos de frontera como HD 42012 b.
+
+\textbf{TOI.} Índice regional de incompletitud topológica. Combina sombra observacional, baja imputación en $R^3$, continuidad física y soporte de red.
+
+\textbf{ATI original.} Índice local de ancla. Toma la región TOI y la combina con un déficit relativo local máximo sobre radios.
+
+\textbf{ATI conservador.} Variante final que penaliza sensibilidad al radio. Su función es favorecer señales que permanecen defendibles bajo cambios de escala.
+
+\end{document}

@@ -1,0 +1,351 @@
+\documentclass[11pt]{article}
+
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{caption}
+
+\geometry{margin=2.5cm}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
+\setlist[itemize]{topsep=0.25em,itemsep=0.15em}
+\setlist[enumerate]{topsep=0.25em,itemsep=0.15em}
+
+% Rutas esperadas dentro del repositorio. Si el documento se compila desde
+% latex/observational_shadow/, estas rutas apuntan a los outputs del subproyecto.
+\newcommand{\figroot}{../../outputs/observational_shadow/figures}
+\newcommand{\tabroot}{../../outputs/observational_shadow/tables}
+
+% Insercion robusta de figuras: permite compilar el LaTeX aunque las figuras
+% no esten presentes en la maquina actual.
+\newcommand{\maybeincludegraphics}[2][]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \fbox{\parbox{0.88\linewidth}{\centering
+    Figura no disponible en la ruta esperada:\\[0.4em]
+    \texttt{\detokenize{#2}}\\[0.4em]
+    Copiar los PDF generados por \texttt{observational\_shadow} o ajustar \texttt{\string\figroot}.}}
+  }%
+}
+
+\title{Comunidades topológicas e incompletitud observacional en el catálogo de exoplanetas}
+\author{Proyecto Mapper/TDA de exoplanetas}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Este trabajo no interpreta Mapper como una máquina para descubrir planetas faltantes, sino como una herramienta para localizar regiones donde la geometría del catálogo cambia de manera observacionalmente sospechosa. En particular, una comunidad Mapper se entiende como una vecindad topológica inducida por variables físico-orbitales: puede contener señal física real, pero también está atravesada por la función de selección, la imputación y las decisiones del pipeline. Bajo esta lectura, las regiones de alta sombra no prueban incompletitud, pero sí funcionan como candidatos razonables para estudiar dónde el catálogo podría estar observando solo una parte de la población planetaria.
+\end{abstract}
+
+\section{Resumen ejecutivo}
+
+El análisis previo de auditoría observacional mostró que la topología Mapper no es neutral respecto al método de descubrimiento. Este reporte da un paso adicional: usa la composición local de cada nodo y la compara con la de sus vecinos topológicos para estimar un índice de \emph{sombra observacional}. La idea central es:
+\[
+\text{sesgo por método} \;\longrightarrow\; \text{frontera topológica local} \;\longrightarrow\; \text{candidato a incompletitud observacional}.
+\]
+
+El resultado más importante es que los principales candidatos de sombra observacional están dominados por \textbf{velocidad radial}. Por tanto, la interpretación más natural no es ``faltan planetas en general'', sino una hipótesis más específica:
+\[
+\boxed{\text{las comunidades RV de alta sombra son candidatas a incompletitud hacia masas menores o señales radiales débiles.}}
+\]
+
+Esta conclusión es propositiva pero no definitiva. El análisis no estima cuántos planetas faltan ni confirma poblaciones no observadas. Para eso se necesitarían funciones de completitud instrumental, modelos de detectabilidad o simulaciones de inyección-recuperación.
+
+\section{Motivación astronómica}
+
+La motivación astronómica del análisis es que los sesgos de detección no solo contaminan el catálogo: también dejan estructura. Si los métodos de descubrimiento seleccionan distintas regiones del espacio físico-orbital, entonces sus fronteras pueden aparecer como discontinuidades locales dentro del Mapper. El objetivo es aprovechar esa discontinuidad, no esconderla.
+
+Por eso, la sombra observacional se interpreta como una señal diagnóstica. Un nodo dominado por tránsito puede apuntar hacia planetas de menor radio, periodos más largos o menor probabilidad geométrica de tránsito. Un nodo dominado por velocidad radial puede apuntar hacia planetas de menor masa, menor amplitud RV o señales dinámicas más débiles. Un nodo dominado por imagen directa puede sugerir objetos menos luminosos, menos masivos, más viejos o con separación angular menos favorable.
+
+La lectura no es que el método “cause” la comunidad, sino que el método puede revelar qué parte del espacio planetario está siendo observada con más facilidad y qué parte podría quedar en sombra.
+\[
+\text{método dominante} + \text{contraste con vecinos} + \text{baja imputación}
+\Rightarrow
+\text{región candidata a submuestreo}.
+\]
+
+\begin{table}[H]
+\centering
+\small
+\caption{Direcciones esperadas de incompletitud por método dominante.}
+\label{tab:direcciones}
+\begin{tabular}{p{0.24\linewidth}p{0.66\linewidth}}
+\toprule
+\textbf{Método dominante} & \textbf{Dirección plausible de incompletitud} \\
+\midrule
+Transit & Planetas de menor radio, periodos más largos o menor probabilidad geométrica de tránsito. \\
+Radial Velocity & Planetas de menor masa, menor amplitud RV, señales dinámicas más débiles o mayor ruido estelar/instrumental. \\
+Imaging & Planetas menos luminosos, menos masivos, más viejos o con menor separación angular respecto a la estrella. \\
+Microlensing & Regiones dependientes de geometrías de lente favorables; no debe leerse como taxonomía física directa. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{De la auditoría de sesgo a la sombra observacional}
+
+La auditoría de sesgo permite saber si el método de descubrimiento está asociado con la estructura global del Mapper. La sombra observacional da un paso más local: pregunta si un nodo se parece o no se parece a sus vecinos en términos de composición por método.
+\begin{quote}
+¿En qué nodos la composición por método difiere fuertemente de la composición de sus vecinos topológicos?
+\end{quote}
+
+Esta diferencia es el centro del subproyecto. Un nodo puro por método no basta para hablar de sombra, porque podría representar una población físicamente distinta. Lo interesante aparece cuando un nodo está conectado topológicamente con otros, pero su composición observacional cambia de forma fuerte.
+
+La diferencia es importante. Un nodo puro por método no necesariamente es una sombra observacional; podría ser simplemente una región física distinta. En cambio, un nodo puro que está físicamente cerca de sus vecinos pero observacionalmente contrastado es más interesante, porque sugiere una frontera de selección.
+
+\section{Datos y grafos analizados}
+
+La interpretación principal se apoya en el Mapper orbital, porque es el espacio donde la sombra tiene una lectura física más directa y donde la imputación media es baja. Esto no significa que las otras configuraciones sean irrelevantes, sino que deben leerse con distinto peso. Cuando existen artefactos compatibles, se resumen también:
+\begin{itemize}
+  \item \texttt{phys\_min\_pca2\_cubes10\_overlap0p35};
+  \item \texttt{joint\_no\_density\_pca2\_cubes10\_overlap0p35};
+  \item \texttt{joint\_pca2\_cubes10\_overlap0p35};
+  \item \texttt{thermal\_pca2\_cubes10\_overlap0p35}.
+\end{itemize}
+
+La comparación entre configuraciones debe interpretarse con cautela: un índice alto en el espacio térmico no tiene la misma fuerza que un índice alto en el espacio orbital, porque el espacio térmico depende mucho más de imputación.
+
+\section{Metodología}
+
+Sea $G=(V,E)$ el grafo Mapper. Cada nodo $v\in V$ contiene un conjunto de planetas. Para cada método de descubrimiento $m$, se define:
+\[
+p_v(m)=\frac{n_v(m)}{\sum_m n_v(m)}.
+\]
+
+El vecindario topológico de $v$ es:
+\[
+N(v)=\{u:(u,v)\in E\}.
+\]
+
+La composición observacional del vecindario es:
+\[
+p_{N(v)}(m)=\frac{\sum_{u\in N(v)} n_u(m)}{\sum_m\sum_{u\in N(v)}n_u(m)}.
+\]
+
+El contraste local por método se resume con:
+\[
+D_v(m)=p_{N(v)}(m)-p_v(m),\qquad
+R_v(m)=\frac{p_v(m)+\epsilon}{p_{N(v)}(m)+\epsilon}.
+\]
+
+La frontera composicional se mide con distancia L1:
+\[
+B(v)=\mathrm{method\_l1\_boundary}(v)=\sum_m |p_v(m)-p_{N(v)}(m)|.
+\]
+
+El índice principal de sombra observacional es:
+\[
+\mathrm{Shadow}(v)=f_{\mathrm{top}}(v)\,[1-H_{\mathrm{norm}}(v)]\,[1-I(v)]\,B(v)\,S(v),
+\]
+con:
+\[
+S(v)=\frac{\log(1+n_v)}{\log(1+n_{\max})}.
+\]
+
+Aquí $f_{\mathrm{top}}$ es la fracción del método dominante, $H_{\mathrm{norm}}$ la entropía normalizada de métodos, $I(v)$ la fracción media de imputación, $B(v)$ el contraste local de método y $S(v)$ una ponderación por tamaño nodal. La forma multiplicativa implica que un nodo recibe sombra alta solo si combina varios criterios a la vez: dominancia metodológica, baja mezcla, baja imputación, contraste con vecinos y tamaño no trivial.
+
+El índice de sombra no debe leerse como una probabilidad calibrada de que falten planetas. Es una heurística de priorización. Su valor está en combinar varias condiciones que, por separado, serían insuficientes: dominancia por método, baja entropía, baja imputación, tamaño nodal no trivial y contraste con vecinos.
+
+La parte más importante es el contraste local. Mapper permite definir un vecindario topológico (N(v)), y por eso la pregunta no es solo qué contiene un nodo, sino cómo cambia respecto a lo que lo rodea. Esta es una ventaja frente a un clustering clásico: la sombra observacional depende de la frontera entre comunidades, no solo de la asignación de puntos a grupos.
+
+
+\section{Resultados e interpretación}
+
+\subsection{Distribución espacial de la sombra observacional}
+
+\begin{figure}[H]
+\centering
+\maybeincludegraphics[width=0.92\linewidth]{\figroot/orbital_graph_by_shadow_score.pdf}
+\caption{Grafo orbital coloreado por \texttt{shadow\_score}. Valores altos sugieren una posible frontera de selección local.}
+\label{fig:shadow-score}
+\end{figure}
+
+La Figura~\ref{fig:shadow-score} muestra que los valores altos de \texttt{shadow\_score} no se distribuyen de forma homogénea sobre el grafo. Aparecen en regiones localizadas, especialmente en zonas ramificadas del Mapper orbital. Esto es relevante porque la hipótesis de sombra observacional requiere localización: si todo el grafo tuviera valores altos, el índice no distinguiría regiones prioritarias.
+
+La lectura principal es:
+\[
+\text{sombra alta localizada} \Rightarrow \text{posible frontera local de selección observacional}.
+\]
+La distribución espacial de la sombra es relevante porque el índice no marca todo el grafo de manera uniforme. Si la sombra apareciera en todas partes, sería difícil defenderla como una señal útil. En cambio, al concentrarse en regiones localizadas, especialmente en zonas ramificadas del Mapper orbital, el resultado sugiere que algunas comunidades tienen una relación más fuerte con la función de selección que otras.
+
+Esta localización es lo que permite pasar a una afirmación más operativa: “hay vecindarios concretos donde esos sesgos parecen formar una frontera topológica”.
+
+
+\subsection{Clases heurísticas de sombra}
+
+\begin{figure}[H]
+\centering
+\maybeincludegraphics[width=0.92\linewidth]{\figroot/orbital_graph_by_shadow_class.pdf}
+\caption{Clasificación heurística de nodos por sombra observacional.}
+\label{fig:shadow-class}
+\end{figure}
+
+La Figura~\ref{fig:shadow-class} separa nodos de alta confianza, nodos de muestra pequeña, nodos mixtos o de baja sombra y nodos sin información suficiente de vecinos. El resultado deseable es que los nodos de alta sombra sean pocos y localizados, no que todo el grafo quede marcado como problemático. En ese sentido, el índice parece funcionar como un filtro de priorización.
+
+La categoría \texttt{small\_sample\_shadow} debe tratarse con especial cautela: un nodo pequeño puede parecer puro por azar. Por eso los mejores candidatos no son simplemente los de mayor pureza, sino los que combinan sombra alta, baja imputación y tamaño suficiente.
+
+\subsection{Sombra observacional e imputación}
+
+\begin{figure}[H]
+\centering
+\maybeincludegraphics[width=0.76\linewidth]{\figroot/orbital_shadow_vs_imputation.pdf}
+\caption{Relación entre sombra observacional e imputación media.}
+\label{fig:shadow-imputation}
+\end{figure}
+
+La Figura~\ref{fig:shadow-imputation} muestra que varios nodos con sombra alta tienen imputación cercana a cero. Este es uno de los resultados más favorables del análisis, porque reduce la posibilidad de que la sombra observacional sea solo un artefacto del pipeline de imputación. La interpretación prudente es:
+\[
+\text{sombra alta + baja imputación} \Rightarrow \text{candidato confiable a frontera observacional}.
+\]
+Uno de los puntos más favorables del Mapper orbital es que varias comunidades de alta sombra tienen imputación muy baja o nula. Esto no prueba que la señal sea completamente independiente del preprocesamiento, pero sí reduce una explicación débil: que la sombra sea solamente un artefacto de valores imputados.
+
+La conclusión prudente es que la sombra orbital principal no parece ser un artefacto obvio de imputación. Sin embargo, todavía falta una prueba más fuerte: repetir el análisis en un subconjunto complete-case o comparar contra un pipeline donde se excluyan las variables más sensibles a imputación. Esa prueba permitiría separar con más claridad la estructura observacional de la estructura inducida por el tratamiento de datos.
+
+\subsection{Contraste método-vecindario}
+
+\begin{figure}[H]
+\centering
+\maybeincludegraphics[width=0.76\linewidth]{\figroot/orbital_method_boundary_vs_shadow.pdf}
+\caption{Sombra observacional frente al contraste local de métodos.}
+\label{fig:method-boundary}
+\end{figure}
+
+La Figura~\ref{fig:method-boundary} muestra una relación fuerte entre \texttt{method\_l1\_boundary} y \texttt{shadow\_score}. Esto es esperable porque la frontera L1 forma parte del índice. Aun así, la figura es útil como diagnóstico: confirma que los nodos de mayor sombra son precisamente aquellos cuya composición por método difiere de sus vecinos.
+
+La interpretación conceptual es:
+\[
+\text{nodo puro} + \text{vecindario distinto} \neq \text{simple pureza};
+\]
+\[
+\text{nodo puro} + \text{vecindario distinto} = \text{candidato a frontera de selección}.
+\]
+
+En el Mapper orbital, los nodos de mayor interés están dominados por velocidad radial. Por eso la hipótesis física más natural no es una incompletitud genérica, sino una incompletitud dirigida: regiones donde el catálogo podría estar observando preferentemente objetos con masa suficiente o señal radial fuerte, dejando en sombra objetos de menor masa o menor amplitud RV.
+\subsection{Distancia físico-orbital al vecindario}
+
+\begin{figure}[H]
+\centering
+\maybeincludegraphics[width=0.76\linewidth]{\figroot/orbital_physical_neighbor_distance_vs_shadow.pdf}
+\caption{Sombra observacional frente a distancia físico-orbital al vecindario.}
+\label{fig:physical-distance}
+\end{figure}
+
+La Figura~\ref{fig:physical-distance} es clave para separar dos explicaciones. Si un nodo tiene sombra alta y además está muy lejos físicamente de sus vecinos, la diferencia podría ser una separación física real. En cambio, si tiene sombra alta y distancia físico-orbital baja o moderada, la explicación de frontera observacional gana plausibilidad.
+
+La región más interesante de la figura es, por tanto:
+\[
+\boxed{\text{sombra alta} + \text{distancia física baja/moderada}.}
+\]
+
+La región más importante no es simplemente la de mayor sombra, sino la de mayor tensión: comunidades que siguen siendo cercanas en el espacio físico-orbital, pero se separan por método de descubrimiento. Ahí es donde Mapper aporta más que un agrupamiento clásico, porque permite estudiar continuidad y ruptura al mismo tiempo. Es el caso más cercano a la idea de comunidad topológica submuestreada.
+
+\subsection{Comparación entre configuraciones}
+
+\begin{figure}[H]
+\centering
+\maybeincludegraphics[width=0.82\linewidth]{\figroot/config_shadow_comparison.pdf}
+\caption{Comparación resumida entre configuraciones disponibles.}
+\label{fig:config-comparison}
+\end{figure}
+
+La Figura~\ref{fig:config-comparison} indica que la sombra observacional aparece en varias configuraciones, no solo en el Mapper orbital.La comparación entre configuraciones debe leerse como análisis de sensibilidad, no como prueba completa de robustez. El hecho de que existan señales de sombra en más de un espacio sugiere que el fenómeno no depende exclusivamente de una sola construcción del Mapper. Sin embargo, todavía no se ha probado estabilidad sistemática contra una grilla completa de parámetros como número de cubos, porcentaje de solapamiento o elección de lens.
+
+Por eso, la afirmación más defendible es intermedia: la sombra aparece en configuraciones principales y es especialmente interpretable en el espacio orbital, pero queda pendiente una validación formal de robustez paramétrica.
+
+
+La jerarquía interpretativa recomendada es:
+\[
+\text{orbital} > \text{joint / joint no density} > \text{thermal}.
+\]
+
+\section{Comunidades candidatas a incompletitud}
+
+\begin{figure}[H]
+\centering
+\maybeincludegraphics[width=0.86\linewidth]{\figroot/orbital_top_shadow_candidates.pdf}
+\caption{Comunidades principales por índice de sombra observacional.}
+\label{fig:top-candidates}
+\end{figure}
+
+La Figura~\ref{fig:top-candidates} contiene el resultado sustantivo más importante del subproyecto: las comunidades superiores por \texttt{shadow\_score} están dominadas por \textbf{Radial Velocity}. Esto desplaza la interpretación desde una afirmación genérica de sesgo hacia una hipótesis más específica:
+\[
+\boxed{\text{las comunidades RV de alta sombra son candidatos a incompletitud hacia planetas menos masivos.}}
+\]
+
+En términos físicos, velocidad radial detecta mejor planetas que inducen señales dinámicas suficientemente fuertes en su estrella. Por tanto, una comunidad topológica dominada por RV, contrastante con su vecindario y de baja imputación, puede interpretarse como una región donde el catálogo observa preferentemente la parte de alta masa o alta señal de una población más amplia.
+
+Las comunidades candidatas no deben presentarse como planetas faltantes ni como clases planetarias nuevas. Son regiones de prioridad. En el Mapper orbital, los candidatos superiores están dominados por velocidad radial, lo que sugiere una dirección física concreta: buscar señales de incompletitud hacia planetas de menor masa, menor amplitud radial o detección dinámica más difícil.
+
+Esta es una de las partes más valiosas del subproyecto, porque convierte un sesgo conocido en una hipótesis local. No se afirma solamente que RV favorece objetos masivos; eso ya se sabe. Lo nuevo es localizar comunidades topológicas específicas donde esa función de selección parece marcar una frontera frente al vecindario.
+
+\section{Conclusiones por nivel de fuerza}
+
+El resultado más sólido de este trabajo no es la afirmación de objetos no detectados, sino algo metodológicamente más defendible: el sesgo observacional deja geometría local detectable dentro del catálogo de exoplanetas. En el Mapper orbital, y de forma consistente en el análisis local de comunidades, aparecen nodos cuya composición por método de descubrimiento cambia de manera marcada respecto a la de sus vecinos topológicos. Esta estructura no se distribuye de forma homogénea sobre el grafo, sino que se concentra en regiones específicas, lo que sugiere fronteras locales asociadas a la función de selección observacional.
+
+Ese hallazgo es importante porque desplaza la lectura tradicional del sesgo. En lugar de considerarlo únicamente como una limitación que contamina la interpretación física del catálogo, aquí se muestra que también puede funcionar como señal diagnóstica. Cuando una comunidad mantiene cercanía topológica con su entorno, pero presenta una composición observacional contrastante, emerge una zona razonable de interés científico: una región donde el catálogo podría estar representando preferentemente una fracción de la población planetaria accesible a cierto método de detección.
+
+En este sentido, el índice de sombra observacional no debe interpretarse como una prueba de incompletitud real ni como evidencia directa de planetas faltantes. Su papel es más prudente y más útil: priorizar regiones candidatas a incompletitud observacional. En particular, dentro del espacio orbital, varias de las comunidades principales están dominadas por velocidad radial, lo que es compatible con una posible subrepresentación de objetos de menor masa o de señales dinámicas más débiles dentro de vecindarios físico-orbitales similares.
+
+Desde el punto de vista metodológico, Mapper aporta una ventaja central frente a enfoques clásicos de agrupamiento: no solo identifica conjuntos de objetos similares, sino también fronteras locales entre comunidades conectadas. La comparación nodo-vecindario es precisamente lo que permite formular la noción de sombra observacional y distinguir entre pureza composicional simple y contraste topológico significativo.
+
+Por tanto, la conclusión principal de este proyecto es deliberadamente sobria. Mapper no demuestra la existencia de planetas ausentes ni cuantifica cuántos podrían faltar. Lo que sí muestra es dónde el sesgo observacional del catálogo se vuelve una frontera topológica detectable. Esas regiones constituyen candidatos naturales para campañas futuras de observación, validación instrumental o modelado explícito de completitud.
+
+[
+\boxed{\text{Mapper no encuentra planetas ausentes; encuentra dónde el catálogo deja sombras.}}
+]
+
+\section{Discusión}
+
+La principal ganancia conceptual del subproyecto es que cambia la función del sesgo. En la auditoría observacional, el sesgo era una advertencia: impedía leer Mapper como taxonomía física directa. En la sombra observacional, el sesgo se vuelve una herramienta: permite priorizar regiones donde el catálogo puede estar incompleto.
+
+La síntesis es:
+\[
+G_{\mathrm{Mapper}} = \text{estructura física} + \text{función de selección} + \text{imputación} + \text{decisiones del pipeline}.
+\]
+
+
+Los resultados sugieren que la estructura del catálogo de exoplanetas no es puramente física ni puramente instrumental, sino una combinación de ambas. El grafo Mapper parece capturar simultáneamente similitudes reales entre planetas y la huella que dejan los métodos de descubrimiento. Por ello, una comunidad Mapper no debe interpretarse automáticamente como una clase planetaria natural, sino como una vecindad topológica donde interactúan propiedades físicas, disponibilidad de datos y función de selección observacional.
+
+Bajo esta lectura, el sesgo observacional deja de ser solo una limitación y también puede convertirse en información útil. Cuando un nodo presenta una composición por método claramente distinta a la de sus vecinos, emerge una frontera local compatible con incompletitud observacional. Esa es la lógica central del índice de sombra: no probar objetos faltantes, sino localizar regiones donde el catálogo podría estar observando solo la parte más detectable de una población más amplia.
+
+El predominio de comunidades dominadas por velocidad radial en el espacio orbital es consistente con esta interpretación. Dado que este método favorece señales dinámicas más intensas, resulta plausible que algunas de estas regiones representen vecindarios donde objetos de menor masa o menor amplitud radial estén subrepresentados. Sin embargo, esta lectura sigue siendo hipotética y requeriría modelos explícitos de completitud para confirmarse.
+
+Metodológicamente, Mapper aporta una ventaja clara frente a agrupamientos clásicos: permite estudiar no solo comunidades, sino también transiciones entre comunidades conectadas. En este trabajo, esa información local fue esencial para detectar contrastes observacionales que un clustering convencional no mostraría con la misma naturalidad.
+
+En síntesis, el estudio habla principalmente del catálogo observado y solo indirectamente de la población real de exoplanetas. Su principal aporte no es descubrir nuevos planetas, sino reorganizar la información existente para señalar dónde conviene buscar, validar o modelar mejor.
+
+\section{Limitaciones}
+
+\begin{enumerate}
+  \item Mapper no prueba planetas faltantes; solo localiza regiones candidatas a incompletitud.
+  \item Un vecino topológico no equivale a un planeta real no detectado ni a un planeta del mismo sistema estelar.
+  \item Sin funciones de completitud instrumental no se pueden estimar cantidades absolutas de planetas faltantes.
+  \item Los nodos pequeños pueden tener pureza artificialmente alta por tamaño muestral.
+  \item La imputación puede inflar o distorsionar algunas regiones, aunque los mejores candidatos orbitales parecen tener baja imputación.
+  \item El índice de sombra es heurístico y multiplicativo; debe leerse como priorización, no como probabilidad calibrada.
+\end{enumerate}
+
+\section{Trabajo futuro}
+
+La continuación natural tiene tres niveles.
+
+\subsection{Completitud por método}
+
+Incorporar funciones aproximadas de detectabilidad:
+\[
+P(\mathrm{detectado}\mid R_p,M_p,P,a,\mathrm{estrella},m),
+\]
+para traducir sombra observacional en estimaciones calibradas de incompletitud.
+
+\end{document}

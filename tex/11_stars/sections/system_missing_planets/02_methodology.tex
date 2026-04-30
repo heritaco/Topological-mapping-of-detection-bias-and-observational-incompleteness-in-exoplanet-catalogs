@@ -1,0 +1,20 @@
+El pipeline opera sobre un cat\'alogo planetario imputado y auditado, con \'enfasis en columnas que permitan describir tanto la arquitectura del sistema como el contexto observacional. Las variables principales son:
+
+\begin{itemize}
+\item identificaci\'on: \texttt{hostname}, \texttt{pl\_name};
+\item variables orbitales: \texttt{pl\_orbper}, \texttt{pl\_orbsmax};
+\item variables f\'isicas: \texttt{pl\_bmasse}, \texttt{pl\_rade}, \texttt{pl\_dens};
+\item variables estelares: \texttt{st\_mass}, \texttt{st\_rad};
+\item variables observacionales: \texttt{discoverymethod}, \texttt{disc\_year}, \texttt{disc\_facility};
+\item variables de auditor\'ia: columnas del tipo \texttt{*\_was\_imputed}, \texttt{*\_was\_observed}, \texttt{*\_was\_physically\_derived} y \texttt{*\_source}.
+\end{itemize}
+
+Esta separaci\'on es importante porque el score final no depende solo del tama\~no del gap. Tambi\'en depende de la calidad de datos, de la trazabilidad entre valores observados, derivados o imputados, y del m\'etodo dominante de descubrimiento en cada sistema.
+
+Cuando el semieje mayor no est\'a disponible pero existen per\'iodo orbital y masa estelar, el m\'odulo deriva \texttt{pl\_orbsmax} con la tercera ley de Kepler en unidades pr\'acticas:
+\[
+a = \left[M_\star \left(\frac{P}{365.25}\right)^2\right]^{1/3}.
+\]
+Aqu\'i, $a$ queda en unidades astron\'omicas, $P$ en d\'ias y $M_\star$ en masas solares. La derivaci\'on no reemplaza una medici\'on observacional directa, pero preserva consistencia f\'isica y evita perder sistemas completos por una ausencia puntual de columna.
+
+El m\'odulo se dise\~na adem\'as para degradar con control. Si faltan tablas previas de TOI, ATI, sombra o membres\'ia nodo-planeta, el pipeline sigue corriendo con el modelo orbital y deja constancia expl\'icita del fallback. Esto mantiene la reproducibilidad y evita que la ausencia de una capa auxiliar impida documentar el comportamiento intra-sistema.

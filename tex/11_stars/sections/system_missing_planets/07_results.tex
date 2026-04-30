@@ -1,0 +1,108 @@
+La salida esperada del subproyecto es un conjunto de tablas y figuras que documenten la priorizaci\'on intra-sistema sin afirmar descubrimientos. Los archivos principales son:
+\begin{itemize}
+\item \texttt{outputs/system\_missing\_planets/candidate\_missing\_planets\_by\_system.csv};
+\item \texttt{outputs/system\_missing\_planets/system\_gap\_summary.csv};
+\item \texttt{outputs/system\_missing\_planets/high\_priority\_candidates.csv};
+\item \texttt{outputs/system\_missing\_planets/system\_missing\_planets\_validation\_summary.json}.
+\end{itemize}
+
+Si estos outputs ya existen, el documento puede referenciar las figuras directamente. Si todav\'ia no existen, las cajas placeholder definidas por \verb|\safeincludegraphics| permiten compilar el texto y dejan claro qu\'e artefacto falta.
+
+\subsection{Distribuci\'on global de prioridades}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.88\textwidth]{\figroot/candidate_priority_distribution.pdf}
+\caption{Distribuci\'on de \texttt{candidate\_priority\_score}. Una cola hacia scores altos sugiere pocos intervalos muy prioritarios y muchos intervalos de menor inter\'es relativo.}
+\label{fig:priority-distribution}
+\end{figure}
+
+\subsection{Relaci\'on entre gap orbital y prioridad}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.88\textwidth]{\figroot/gap_ratio_vs_priority.pdf}
+\caption{Relaci\'on entre raz\'on de periodos del gap y score final de prioridad. Un gap grande no basta por s\'i solo; la interpretaci\'on depende tambi\'en del soporte topol\'ogico, la detectabilidad y la calidad de datos.}
+\label{fig:gap-vs-priority}
+\end{figure}
+
+\subsection{Sistemas m\'as prioritarios}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.88\textwidth]{\figroot/top_high_priority_systems.pdf}
+\caption{Sistemas con mayor score m\'aximo o mayor densidad de candidatos intra-sistema. La lectura correcta es de priorizaci\'on observacional, no de conteo de planetas reales ausentes.}
+\label{fig:top-systems}
+\end{figure}
+
+\subsection{Arquitecturas de sistemas seleccionados}
+
+Por defecto, el m\'odulo genera figuras espec\'ificas de arquitectura para un subconjunto de sistemas top. Cada una sit\'ua planetas observados y candidatos sint\'eticos sobre un eje logar\'itmico de periodo orbital. El objetivo es mostrar d\'onde queda el intervalo prioritario dentro de la arquitectura conocida.
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.88\textwidth]{\figroot/system_architecture_WASP-132.pdf}
+\caption{Ejemplo de arquitectura de sistema con planetas observados y candidatos sintetizados. Si la figura no existe todav\'ia, este recuadro debe permanecer como placeholder hasta regenerar el pipeline.}
+\label{fig:system-architecture-example}
+\end{figure}
+
+% TODO: actualizar esta tabla con outputs/system_missing_planets/high_priority_candidates.csv
+\begin{table}[H]
+\centering
+\caption{Placeholder para candidatos de alta prioridad.}
+\label{tab:high-priority-placeholder}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.22\textwidth} c c c}
+\toprule
+Sistema & Intervalo orbital & $P^\ast$ [d] & Clase & Comentario \\
+\midrule
+TODO & TODO & TODO & TODO & Actualizar desde \texttt{high\_priority\_candidates.csv} \\
+TODO & TODO & TODO & TODO & Verificar soporte TOI/ATI/sombra \\
+TODO & TODO & TODO & TODO & Verificar dificultad relativa de detecci\'on \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% TODO: actualizar esta tabla con outputs/system_missing_planets/system_gap_summary.csv
+\begin{table}[H]
+\centering
+\caption{Placeholder para resumen por sistema.}
+\label{tab:system-gap-summary-placeholder}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.20\textwidth} c c c}
+\toprule
+Sistema & $N_{\mathrm{obs}}$ & $N_{\mathrm{cand}}$ & Clase global \\
+\midrule
+TODO & TODO & TODO & TODO \\
+TODO & TODO & TODO & TODO \\
+TODO & TODO & TODO & TODO \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El score final del candidato se define como:
+\[
+S_{\mathrm{cand}} =
+w_g S_g
++
+w_t S_t
++
+w_a S_a
++
+w_d S_d
++
+w_q S_q.
+\]
+Aqu\'i, $S_g$ es el score del gap orbital, $S_t$ el soporte topol\'ogico previo, $S_a$ el soporte de an\'alogos globales, $S_d$ la dificultad relativa de detectabilidad y $S_q$ la calidad de datos. Los pesos por defecto son:
+\[
+(w_g,w_t,w_a,w_d,w_q)=(0.30,0.25,0.20,0.15,0.10).
+\]
+
+La clasificaci\'on por prioridad es:
+\[
+S_{\mathrm{cand}}\ge 0.70 \Rightarrow high,
+\qquad
+0.40\le S_{\mathrm{cand}}<0.70 \Rightarrow medium,
+\qquad
+S_{\mathrm{cand}}<0.40 \Rightarrow low.
+\]
+
+Solo los candidatos que combinan gap geom\'etrico importante, soporte topol\'ogico y plausibilidad observacional deber\'ian interpretarse como candidatos fuertes para seguimiento. Incluso en ese caso, la conclusi\'on sigue siendo de priorizaci\'on, no de detecci\'on.

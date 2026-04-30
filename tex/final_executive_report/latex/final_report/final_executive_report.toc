@@ -1,0 +1,16 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Resumen ejecutivo}{3}{section.1}%
+\contentsline {section}{\numberline {2}Evolución del pipeline}{3}{section.2}%
+\contentsline {section}{\numberline {3}Resultado regional: TOI}{4}{section.3}%
+\contentsline {section}{\numberline {4}Resultado local: ATI original}{6}{section.4}%
+\contentsline {section}{\numberline {5}Validación multiescala y ATI conservador}{7}{section.5}%
+\contentsline {section}{\numberline {6}Casos principales finales}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}\texttt {cube12\_cluster0}: región top por TOI}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}HIP 90988 b: ancla conservadora principal}{10}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}HD 42012 b: transición Mapper}{10}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}HD 4313 b: candidato secundario estable}{11}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Ranking final de prioridad observacional}{11}{section.7}%
+\contentsline {section}{\numberline {8}Lectura final del proyecto}{12}{section.8}%
+\contentsline {section}{\numberline {9}Trabajo futuro}{13}{section.9}%
+\contentsline {section}{Cierre}{13}{section*.2}%
+\contentsline {section}{\numberline {A}Apéndice técnico breve}{13}{appendix.Alph1}%

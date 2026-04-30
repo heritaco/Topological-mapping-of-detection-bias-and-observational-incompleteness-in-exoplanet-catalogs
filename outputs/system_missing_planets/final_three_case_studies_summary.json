@@ -1,0 +1,37 @@
+{
+  "selected_cases": [
+    {
+      "hostname": "WASP-132",
+      "candidate_id": "WASP-132::WASP-132 b::WASP-132 d::3",
+      "case_type": "top_ranked_visual_case",
+      "main_reason": "Gap orbital amplio (254.66), soporte topologico=1.000, score final=0.972, con lectura Transit y razon probable de no deteccion: long period.",
+      "followup_recommendation": "Priorizar fotometria adicional, revision de senales debiles y chequeo de ventanas de transito para WASP-132; si hay soporte independiente, combinar con RV de precision o TTV segun disponibilidad.",
+      "caution": "Candidate is not a confirmed planet."
+    },
+    {
+      "hostname": "HD 27894",
+      "candidate_id": "HD 27894::HD 27894 c::HD 27894 d::2",
+      "case_type": "radial_velocity_like_case",
+      "main_reason": "Gap orbital amplio (139.16), soporte topologico=1.000, score final=0.971, con lectura Radial Velocity y razon probable de no deteccion: weak RV signal.",
+      "followup_recommendation": "Priorizar seguimiento RV mas sensible en HD 27894, junto con un analisis de completitud dinamica y re-evaluacion de series temporales de velocidad radial en el entorno del periodo candidato.",
+      "caution": "Candidate is not a confirmed planet."
+    },
+    {
+      "hostname": "HAT-P-17",
+      "candidate_id": "HAT-P-17::HAT-P-17 b::HAT-P-17 c::2",
+      "case_type": "mixed_or_fallback_case",
+      "main_reason": "Gap orbital amplio (540.12), soporte topologico=1.000, score final=0.937, con lectura Mixed y razon probable de no deteccion: weak RV signal.",
+      "followup_recommendation": "Priorizar seguimiento RV mas sensible en HAT-P-17, junto con un analisis de completitud dinamica y re-evaluacion de series temporales de velocidad radial en el entorno del periodo candidato.",
+      "caution": "Candidate is not a confirmed planet."
+    }
+  ],
+  "selection_logic": "Se priorizaron casos high con score alto, gap amplio, estimaciones fisicas disponibles, interpretacion de detectabilidad y variedad narrativa entre un caso visual top, un caso radial-velocity-like y un caso mixed/fallback.",
+  "global_caution": "The module prioritizes orbital intervals; it does not detect planets.",
+  "base_phrase": "El pipeline no detecta planetas reales; prioriza intervalos orbitales donde un candidato no detectado seria plausible bajo la arquitectura observada, el soporte topologico previo y la dificultad relativa de deteccion.",
+  "supporting_paths": {
+    "toi_table": "outputs/topological_incompleteness_index/tables/regional_toi_scores.csv",
+    "ati_table": "outputs/topological_incompleteness_index/tables/anchor_ati_scores.csv",
+    "shadow_table": "outputs/observational_shadow/tables/node_observational_shadow_metrics.csv",
+    "node_membership_table": "outputs/observational_shadow/metadata/membership_with_shadow_inputs_orbital_pca2_cubes10_overlap0p35.csv"
+  }
+}

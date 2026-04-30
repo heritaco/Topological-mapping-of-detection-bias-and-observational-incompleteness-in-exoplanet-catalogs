@@ -1,0 +1,38 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducci\'on}{3}{section.1}%
+\contentsline {section}{\numberline {2}Datos y variables}{3}{section.2}%
+\contentsline {section}{\numberline {3}Integraci\'on con resultados previos: Mapper, sombra, TOI y ATI}{4}{section.3}%
+\contentsline {section}{\numberline {4}Modelo de gaps orbitales intra-sistema}{5}{section.4}%
+\contentsline {section}{\numberline {5}Detectabilidad por m\'etodo}{6}{section.5}%
+\contentsline {section}{\numberline {6}Validaci\'on leave-one-out}{6}{section.6}%
+\contentsline {section}{\numberline {7}Resultados esperados y resultados generados}{7}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Distribuci\'on global de prioridades}{8}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Relaci\'on entre gap orbital y prioridad}{9}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Sistemas m\'as prioritarios}{9}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Arquitecturas de sistemas seleccionados}{10}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Tres casos finales de candidatos intra-sistema}{11}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Criterio de selecci\'on}{11}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Caso 1: WASP-132}{11}{subsection.8.2}%
+\contentsline {paragraph}{Arquitectura observada.}{11}{section*.10}%
+\contentsline {paragraph}{Candidato propuesto.}{12}{section*.11}%
+\contentsline {paragraph}{Raz\'on de prioridad.}{12}{section*.12}%
+\contentsline {paragraph}{Por qu\'e podr\'ia no haber sido detectado.}{12}{section*.13}%
+\contentsline {paragraph}{Seguimiento sugerido.}{12}{section*.14}%
+\contentsline {paragraph}{Cautela.}{13}{section*.15}%
+\contentsline {subsection}{\numberline {8.3}Caso 2: HD 27894}{13}{subsection.8.3}%
+\contentsline {paragraph}{Arquitectura observada.}{13}{section*.17}%
+\contentsline {paragraph}{Candidato propuesto.}{13}{section*.18}%
+\contentsline {paragraph}{Raz\'on de prioridad.}{13}{section*.19}%
+\contentsline {paragraph}{Por qu\'e podr\'ia no haber sido detectado.}{13}{section*.20}%
+\contentsline {paragraph}{Seguimiento sugerido.}{14}{section*.21}%
+\contentsline {paragraph}{Cautela.}{14}{section*.22}%
+\contentsline {subsection}{\numberline {8.4}Caso 3: HAT-P-17}{14}{subsection.8.4}%
+\contentsline {paragraph}{Arquitectura observada.}{14}{section*.24}%
+\contentsline {paragraph}{Candidato propuesto.}{14}{section*.25}%
+\contentsline {paragraph}{Raz\'on de prioridad.}{14}{section*.26}%
+\contentsline {paragraph}{Por qu\'e podr\'ia no haber sido detectado.}{14}{section*.27}%
+\contentsline {paragraph}{Seguimiento sugerido.}{15}{section*.28}%
+\contentsline {paragraph}{Cautela.}{15}{section*.29}%
+\contentsline {subsection}{\numberline {8.5}Lectura comparativa}{15}{subsection.8.5}%
+\contentsline {section}{\numberline {9}Limitaciones}{16}{section.9}%
+\contentsline {section}{\numberline {10}Trabajo futuro}{16}{section.10}%

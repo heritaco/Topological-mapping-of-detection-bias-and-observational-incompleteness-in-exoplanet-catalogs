@@ -1,0 +1,778 @@
+\documentclass[11pt]{article}
+
+% -----------------------------------------------------------------------------
+% Reporte interpretado SIN COMPILAR
+% Estudio local de comunidades RV de alta sombra observacional
+% -----------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}
+
+\setlist[itemize]{topsep=0.25em,itemsep=0.15em}
+\setlist[enumerate]{topsep=0.25em,itemsep=0.15em}
+
+% Ruta esperada dentro del repositorio.
+% No compilar este archivo aqui si no estan las figuras; el objetivo de esta entrega
+% es entregar el LaTeX sin compilar.
+\newcommand{\figroot}{../../outputs/local_shadow_case_studies/figures}
+\newcommand{\tabroot}{../../outputs/local_shadow_case_studies/tables}
+
+% Inclusión robusta: si se compila en una maquina donde faltan las figuras,
+% muestra una caja en vez de romper con un error opaco.
+\newcommand{\safeincludegraphics}[2][]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \fbox{\begin{minipage}{0.86\textwidth}\centering
+    \vspace{1em}
+    Figura no encontrada en la ruta esperada:\\[0.4em]
+    \texttt{\detokenize{#2}}\\[0.4em]
+    \small Este archivo LaTeX esta pensado para compilarse dentro del repositorio, con los outputs ya generados.
+    \vspace{1em}
+    \end{minipage}}%
+  }%
+}
+
+\title{Estudio local de HIP 90988 b y comunidades RV de alta sombra observacional en el Mapper orbital}
+\author{Proyecto Mapper/TDA de exoplanetas}
+\date{28 de abril de 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Este reporte interpreta tres comunidades locales del Mapper orbital dominadas por velocidad radial: \texttt{cube17\_cluster2}, \texttt{cube26\_cluster0} y \texttt{cube24\_cluster0}. El objetivo no es afirmar planetas faltantes, sino estudiar si un exoplaneta observado puede funcionar como ancla de una vecindad físico-orbital potencialmente submuestreada. do con alta sombra observacional, frontera metodológica fuerte, imputación nula en las variables de $\mathbb{R}^3$ y déficit relativo local débil. En particular, el reporte evalúa si una comunidad Mapper dominada por velocidad radial y contrastante con su vecindario puede interpretarse como una región local auditable de posible incompletitud observacional.
+\end{abstract}
+
+\section{Motivación y alcance}
+
+Los catálogos de exoplanetas no son mapas completos del universo planetario; son mapas de lo que los métodos de detección han podido observar. Por eso, estudiar sombra observacional permite convertir el sesgo de detección en una herramienta: localizar regiones donde el catálogo podría estar submuestreado.
+
+En este reporte, la pregunta no es únicamente si velocidad radial favorece planetas más detectables, sino en qué vecindarios topológicos concretos ese sesgo aparece como una frontera local. Mapper es útil porque no solo agrupa planetas; construye una red de comunidades solapadas que permite comparar cada nodo con sus vecinos inmediatos y de segundo orden.
+
+Este documento debe leerse como un caso de estudio local. La pregunta general del proyecto es si Mapper puede convertir sesgo observacional en regiones locales auditables de posible incompletitud. La pregunta específica de este reporte es si HIP 90988 b funciona como ancla concreta de una comunidad RV de alta sombra con déficit local de vecinos compatibles.
+
+\section{Pregunta central}
+
+Este documento debe leerse como un estudio de caso local, no como una búsqueda ciega global de incompletitud en todo el catálogo. Los nodos analizados fueron seleccionados previamente como comunidades RV de interés: \texttt{cube17\_cluster2}, \texttt{cube26\_cluster0} y \texttt{cube24\_cluster0}. Dentro de esos nodos, el planeta ancla fue seleccionado mediante un criterio reproducible: pertenencia al nodo, método RV, validez en $\mathbb{R}^3$, baja imputación y cercanía al medoide local.
+
+Por tanto, HIP 90988 b no fue elegido como planeta famoso ni como outlier. Fue seleccionado algorítmicamente como ancla representativa dentro de \texttt{cube17\_cluster2}.
+
+La pregunta específica que motiva este reporte es:
+
+\begin{quote}
+¿Topológicamente, HIP 90988 b debería tener más exoplanetas cercanos en un espacio físico-orbital $\mathbb{R}^3$, y esos vecinos podrían no aparecer por sesgo de observación?
+\end{quote}
+
+La respuesta corta es: \textbf{sí, pero solo en sentido débil y modelo-dependiente}. Los resultados no permiten afirmar que ``faltan'' planetas reales alrededor de HIP 90988 b ni que haya un número absoluto de exoplanetas ausentes. Lo que sí permiten decir es:
+
+\[
+\boxed{
+\text{HIP 90988 b ancla una comunidad RV de alta sombra con déficit topológico local débil de vecinos compatibles.}
+}
+\]
+
+La palabra clave es \emph{déficit topológico local}, no descubrimiento de planetas. La evidencia para HIP 90988 b combina cinco hechos:
+
+\begin{enumerate}
+    \item pertenece a \texttt{cube17\_cluster2}, una comunidad dominada por Radial Velocity;
+    \item esa comunidad tiene el mayor \texttt{shadow\_score} entre los tres casos analizados, aproximadamente $0.274$;
+    \item la imputación específica en $\mathbb{R}^3$ es nula, $I_{R^3}=0.000$;
+    \item la frontera metodológica con el vecindario es alta, con \texttt{method\_l1\_boundary\_N1} cercano a $1.10$;
+    \item el déficit relativo local respecto a vecinos es positivo pero pequeño, aproximadamente $0.11$.
+\end{enumerate}
+
+Por tanto, la interpretación científica no es ``HIP 90988 b tiene planetas faltantes'', sino:
+
+\begin{quote}
+HIP 90988 b pertenece a una región topológica donde el catálogo observado podría estar mostrando preferentemente objetos con señal RV suficientemente alta, dejando submuestreada una vecindad compatible hacia menor masa planetaria o menor proxy RV.
+\end{quote}
+
+
+La hipótesis falsable es que, si \texttt{cube17\_cluster2} representa una sombra observacional RV real, entonces catálogos futuros, campañas RV más sensibles o modelos de completitud deberían poblar parcialmente esa vecindad con planetas de menor masa o menor proxy RV, a periodos y semiejes mayores comparables.
+
+La refutación sería que, si al mejorar la completitud RV no aparecen ni se predicen objetos de menor masa o menor proxy RV en esa vecindad, entonces la interpretación de incompletitud observacional se debilita. En ese caso, el nodo debería leerse más como estructura física, azar muestral o efecto del pipeline Mapper.
+
+\section{Definiciones y notación}
+
+Sea $G=(V,E)$ el grafo Mapper orbital. Cada nodo $v\in V$ contiene un conjunto de planetas $S_v$. Para un nodo objetivo $v$, definimos su vecindario de primer orden como:
+
+\[
+N_1(v)=\{u\in V:(u,v)\in E\},
+\]
+
+y su vecindario de segundo orden como:
+
+\[
+N_2(v)=\{u\in V:d_G(u,v)\leq 2\},
+\]
+
+donde $d_G$ es la distancia geodésica en la red Mapper.
+
+El espacio físico-orbital usado para estudiar los casos locales es:
+
+\[
+x_i=
+\left(
+\log_{10}M_{p,i},\
+\log_{10}P_i,\
+\log_{10}a_i
+\right)
+\in \mathbb{R}^3,
+\]
+
+donde $M_p$ es \texttt{pl\_bmasse}, $P$ es \texttt{pl\_orbper} y $a$ es \texttt{pl\_orbsmax}. Este espacio fue elegido porque las comunidades estudiadas están dominadas por velocidad radial, y ese método es especialmente sensible a masa planetaria, periodo orbital y escala orbital.
+
+Este espacio $\mathbb{R}^3$ se eligió porque los casos analizados están dominados por velocidad radial. En ese contexto, la masa planetaria aproxima la escala de la señal dinámica, mientras que el periodo orbital y el semieje mayor describen la escala orbital sobre la cual esa señal debe detectarse. Por tanto, $\mathbb{R}^3$ no se propone como espacio universal de clasificación planetaria, sino como una métrica local interpretable para comunidades RV.
+
+La composición por método de descubrimiento dentro del nodo se define como:
+
+\[
+p_v(m)=\frac{n_v(m)}{\sum_m n_v(m)}.
+\]
+
+La frontera metodológica local entre nodo y vecindario se mide con:
+
+\[
+B(v)=\sum_m |p_v(m)-p_{N_1(v)}(m)|.
+\]
+
+La imputación específica en $\mathbb{R}^3$ se define como:
+
+\[
+I_{R^3}(v)=
+\frac{
+\#\{\text{valores imputados en }M_p,P,a\}
+}{3|S_v|}.
+\]
+
+El espacio $\mathbb{R}^3=(\log M_p,\log P,\log a)$ se usa como espacio local de inspección porque los casos analizados están dominados por velocidad radial. En ese contexto, la masa planetaria aproxima la escala de la señal dinámica, mientras que el periodo y el semieje mayor describen la escala orbital sobre la cual esa señal debe detectarse.
+
+No se eligió $\mathbb{R}^3$ para descubrir clases planetarias generales, sino para estudiar vecindarios RV en un espacio interpretable. La métrica euclidiana en variables log-transformadas compara similitud relativa, no diferencias absolutas, lo cual es apropiado para cantidades que varían por órdenes de magnitud.
+
+Para un planeta ancla $p^*$, el número de vecinos observados dentro de un radio $r$ es:
+
+\[
+N_{obs}(p^*,r)=
+\left|\left\{q:\|x(q)-x(p^*)\|\leq r\right\}\right|.
+\]
+
+La referencia local esperada se denota $N_{exp}$, y el déficit relativo es:
+
+\[
+\Delta_{rel}=\frac{N_{exp}-N_{obs}}{N_{exp}+\epsilon}.
+\]
+
+Este $\Delta_{rel}$ no es un conteo de planetas reales faltantes. Es un índice de submuestreo local relativo a una referencia topológica.
+
+\subsection{Por qué Mapper y no clustering clásico}
+
+Mapper no solo produce grupos; produce una red de comunidades solapadas. Esto es importante porque el análisis no depende únicamente de decir que un cluster está dominado por RV, sino de comparar la composición por método del nodo con la composición de sus vecinos topológicos:
+
+\[
+p_v(m) \quad \text{vs.} \quad p_{N(v)}(m).
+\]
+
+Un clustering clásico como k-means, GMM o DBSCAN directo podría identificar agrupamientos, pero no ofrece de manera tan natural vecindarios de primer y segundo orden, fronteras locales entre comunidades, regiones de transición ni una noción explícita de contraste nodo-vecindario.
+
+En este reporte, \texttt{cube17\_cluster2} no importa solo porque sea RV; importa porque está conectado a una región más amplia y aun así mantiene una composición RV distinta. Esa diferencia local es lo que se interpreta como sombra observacional.
+
+
+\section{Casos seleccionados}
+
+Los tres nodos solicitados existían en los outputs y fueron analizados sin reemplazos:
+
+\begin{table}[H]
+\centering
+\caption{Resumen interpretativo de los tres casos locales.}
+\label{tab:threecases}
+\begin{tabular}{llllrrr}
+\toprule
+Caso & Nodo & Ancla & Método & Sombra & $I_{R^3}$ & $\Delta_{rel}$ \\
+\midrule
+A & \texttt{cube17\_cluster2} & HIP 90988 b & RV & 0.274 & 0.000 & 0.11 \\
+B & \texttt{cube26\_cluster0} & HD 167677 b & RV & 0.198 & 0.000 & 0.09 \\
+C & \texttt{cube24\_cluster0} & HD 60292 b & RV & 0.243 & 0.000 & 0.09 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Los tres casos viven en comunidades dominadas por velocidad radial y tienen imputación nula en las variables clave de $\mathbb{R}^3$. La diferencia principal es que \texttt{cube17\_cluster2} combina la sombra más alta con déficit relativo positivo débil; \texttt{cube26\_cluster0} es el caso más integrado físicamente, pero no muestra déficit claro; y \texttt{cube24\_cluster0} tiene frontera metodológica fuerte, pero también mayor distancia física al vecindario, lo que sugiere que parte de su separación podría ser física y no solo observacional.
+
+\section{Caso A: \texttt{cube17\_cluster2} e HIP 90988 b}
+
+\subsection{Ficha técnica}
+
+El nodo \texttt{cube17\_cluster2} es el caso principal del reporte. Está dominado por Radial Velocity, tiene \texttt{shadow\_score}$\approx 0.274$, imputación específica nula en $\mathbb{R}^3$ y planeta ancla HIP 90988 b. Este nodo es el candidato más claro para discutir déficit topológico local, no porque demuestre objetos ausentes, sino porque reúne las condiciones mínimas para una interpretación prudente:
+
+\[
+\text{sombra alta}
++
+\text{baja imputación}
++
+\text{frontera metodológica fuerte}
++
+\text{déficit relativo positivo débil}.
+\]
+
+\subsection{Figura 1: ego-network local de \texttt{cube17\_cluster2}}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.88\textwidth]{\figroot/case_cube17_cluster2_ego_network.pdf}
+\caption{Ego-network local de \texttt{cube17\_cluster2}.}
+\label{fig:cube17-ego}
+\end{figure}
+
+La Figura~\ref{fig:cube17-ego} ubica el nodo objetivo dentro de la red Mapper. Topológicamente, \texttt{cube17\_cluster2} no aparece como un punto completamente aislado: vive dentro de una vecindad densa, con múltiples nodos cercanos y conexiones hacia otras comunidades. Esto es importante porque una sombra observacional en un nodo aislado podría deberse simplemente a bajo tamaño muestral o a un outlier. Aquí, en cambio, el nodo objetivo se inserta dentro de una región conectada del Mapper orbital.
+
+La lectura de red es la siguiente: el nodo representa una comunidad local que comparte planetas o preimágenes con nodos vecinos, pero conserva una identidad metodológica particular. En términos topológicos, el nodo está suficientemente conectado como para que tenga sentido comparar su composición con $N_1(v)$ y $N_2(v)$. Si un nodo no tuviera vecinos, no se podría hablar de contraste local; en este caso sí se puede.
+
+La interpretación física es prudente: la red sugiere continuidad local, no aislamiento extremo. Por eso, si el nodo está dominado por RV mientras sus vecinos mezclan más métodos, la frontera tiene sentido como posible frontera de selección observacional.
+
+\subsection{Figura 2: proyecciones de $\mathbb{R}^3$ para HIP 90988 b}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.98\textwidth]{\figroot/case_cube17_cluster2_r3_projections.pdf}
+\caption{Proyecciones 2D del espacio $\mathbb{R}^3=(\log M_p,\log P,\log a)$ para \texttt{cube17\_cluster2}.}
+\label{fig:cube17-r3}
+\end{figure}
+
+La Figura~\ref{fig:cube17-r3} proyecta los miembros del nodo, sus vecinos y el planeta ancla HIP 90988 b en el espacio físico-orbital. Las tres proyecciones muestran una estructura esperada: $\log P$ y $\log a$ aparecen casi linealmente relacionados, lo cual es consistente con la conexión física entre periodo orbital y semieje mayor. Por eso, el tercer panel no debe leerse como evidencia independiente fuerte; funciona más bien como verificación de coherencia orbital.
+
+Los paneles que involucran $\log M_p$ son los más importantes para velocidad radial. En ellos se observa que los puntos del nodo RV ocupan una región de masas relativamente altas y escalas orbitales comparables a las de sus vecinos. HIP 90988 b aparece como un objeto representativo dentro de esta zona, no como un punto completamente separado.
+
+Esto apoya la elección del ancla: HIP 90988 b no se escogió por ser el objeto más extremo, sino porque funciona como representante local de la comunidad. Esa elección es metodológicamente mejor para una ficha de incompletitud: un ancla demasiado extrema produciría una conclusión débil, porque cualquier falta de vecinos podría atribuirse a rareza física. Aquí la pregunta es más interesante: si HIP 90988 b vive en una zona físicamente continua con vecinos, pero metodológicamente dominada por RV, entonces el déficit local puede interpretarse como una posible huella de selección observacional.
+
+\subsection{Figura 3: composición por método del nodo y sus vecinos}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/case_cube17_cluster2_method_node_vs_neighbors.pdf}
+\caption{Composición por método de descubrimiento para \texttt{cube17\_cluster2}, $N_1(v)$ y $N_2(v)$.}
+\label{fig:cube17-method}
+\end{figure}
+
+La Figura~\ref{fig:cube17-method} es una de las piezas centrales para interpretar el caso. El nodo objetivo aparece dominado por Radial Velocity, mientras que sus vecindarios de primer y segundo orden presentan una composición más diversa. Esto significa que el nodo no solo es RV-dominado; también contrasta con su entorno topológico.
+
+La diferencia entre ``nodo puro'' y ``nodo frontera'' es crucial. Un nodo podría ser puro por azar si tuviera pocos miembros. Pero cuando su composición difiere marcadamente de la de sus vecinos, aparece una frontera local:
+
+\[
+B(v)=\sum_m |p_v(m)-p_{N_1(v)}(m)|
+\]
+
+alta. En \texttt{cube17\_cluster2}, esa frontera es aproximadamente $1.10$, una de las más altas de los tres casos. Esto permite decir que la comunidad no solo tiene señal RV, sino que esa señal está localizada topológicamente.
+
+La lectura observacional es directa: si el nodo está dominado por RV y sus vecinos contienen una mezcla más amplia de métodos, entonces la transición entre nodo y vecindario puede estar reflejando una ventana de detectabilidad. Para RV, esa ventana favorece objetos con mayor masa planetaria o mayor señal dinámica.
+
+\subsection{Figura 4: auditoría de imputación en $\mathbb{R}^3$}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.76\textwidth]{\figroot/case_cube17_cluster2_imputation_r3_audit.pdf}
+\caption{Auditoría de observación, derivación física e imputación en $\log M_p$, $\log P$ y $\log a$ para \texttt{cube17\_cluster2}.}
+\label{fig:cube17-imputation}
+\end{figure}
+
+La Figura~\ref{fig:cube17-imputation} muestra que las variables usadas en $\mathbb{R}^3$ no dependen de imputación para este nodo, con $I_{R^3}=0.000$. Este es uno de los resultados más importantes del caso. Si la masa, el periodo o el semieje mayor estuvieran fuertemente imputados, la interpretación de la vecindad en $\mathbb{R}^3$ sería frágil. Aquí, la lectura es más confiable.
+
+Eso no significa que el análisis sea definitivo. Significa que la geometría local de HIP 90988 b en $\mathbb{R}^3$ está apoyada por datos disponibles para las variables clave del caso. Por tanto, si aparece un patrón de frontera metodológica, es menos probable que sea un artefacto directo de la imputación.
+
+\subsection{Figura 5: déficit local de vecinos compatibles}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/case_cube17_cluster2_anchor_deficit.pdf}
+\caption{Conteos observados y referencias locales de vecinos compatibles alrededor de HIP 90988 b.}
+\label{fig:cube17-deficit}
+\end{figure}
+
+La Figura~\ref{fig:cube17-deficit} responde directamente la pregunta del usuario: ¿topológicamente HIP 90988 b debería tener más vecinos cercanos? La respuesta es: bajo la referencia local de vecinos Mapper, sí aparece un exceso pequeño de $N_{exp}$ sobre $N_{obs}$ en los radios evaluados. Sin embargo, la diferencia es pequeña: el resultado se clasifica como \emph{weak deficit}.
+
+Eso quiere decir que HIP 90988 b no está en una región dramáticamente vacía. No se observa un hueco grande. Lo que se observa es una señal leve de submuestreo local:
+
+\[
+\Delta_{rel}\approx 0.11.
+\]
+
+Este valor debe interpretarse como una señal débil, no como una prueba fuerte. En los radios evaluados, el déficit muchas veces equivale aproximadamente a un vecino de diferencia entre $N_{obs}$ y $N_{exp}$. Por tanto, el valor aislado de $\Delta_{rel}$ no basta para afirmar un hueco poblacional.
+
+Su importancia está en la coincidencia con otros diagnósticos: sombra alta, frontera metodológica fuerte, imputación nula en $\mathbb{R}^3$ y proxy RV compatible con selección observacional. Así, el resultado debe leerse como evidencia exploratoria y direccional, no como evidencia estadística concluyente.
+
+\subsection{Figura 6: proxy de detectabilidad RV}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/case_cube17_cluster2_rv_proxy_distribution.pdf}
+\caption{Distribución del proxy de detectabilidad RV para el nodo, sus vecinos y HIP 90988 b.}
+\label{fig:cube17-rvproxy}
+\end{figure}
+
+La Figura~\ref{fig:cube17-rvproxy} muestra que HIP 90988 b se ubica dentro de una región de proxy RV relativamente alto en comparación con gran parte del vecindario. Este proxy no es una amplitud radial exacta; es una aproximación diseñada para ordenar objetos por detectabilidad RV esperada en función de masa y periodo.
+
+La interpretación física es consistente con la hipótesis: si el nodo contiene objetos de mayor proxy RV, entonces es plausible que la región esté poblada preferentemente por planetas que RV puede detectar con mayor facilidad. Los vecinos ``faltantes'' esperados, si existieran en el catálogo completo, no tendrían que ser planetas radicalmente distintos en periodo o semieje; podrían ser objetos de masa menor o señal RV más débil a escala orbital comparable.
+
+La conclusión específica para HIP 90988 b es:
+
+\[
+\boxed{
+\text{HIP 90988 b es un ancla razonable de una vecindad RV con déficit local débil hacia menor proxy RV.}
+}
+\]
+
+\section{Caso B: \texttt{cube26\_cluster0} y HD 167677 b}
+
+\subsection{Ficha técnica}
+
+El nodo \texttt{cube26\_cluster0} tiene \texttt{shadow\_score}$\approx 0.198$, $I_{R^3}=0.000$ y planeta ancla HD 167677 b. Aunque está dominado por Radial Velocity, su evidencia de déficit local es más débil que la de HIP 90988 b. En el reporte automático se clasifica como \emph{no\_deficit}, con déficit relativo cercano a $0.09$.
+
+\subsection{Figura 7: ego-network de \texttt{cube26\_cluster0}}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.86\textwidth]{\figroot/case_cube26_cluster0_ego_network.pdf}
+\caption{Ego-network local de \texttt{cube26\_cluster0}.}
+\label{fig:cube26-ego}
+\end{figure}
+
+La Figura~\ref{fig:cube26-ego} muestra un vecindario más compacto que el de \texttt{cube17\_cluster2}. El nodo aparece integrado en una zona local dominada por nodos RV relacionados. Esta estructura sugiere que el caso es topológicamente coherente, pero menos marcado como frontera de selección extrema.
+
+Desde el punto de vista de red, \texttt{cube26\_cluster0} parece más una comunidad dentro de una región RV amplia que una frontera abrupta entre métodos. Eso explica por qué su \texttt{shadow\_score} es menor que el de \texttt{cube17\_cluster2}.
+
+\subsection{Figura 8: proyecciones $\mathbb{R}^3$ de \texttt{cube26\_cluster0}}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.98\textwidth]{\figroot/case_cube26_cluster0_r3_projections.pdf}
+\caption{Proyecciones 2D de $\mathbb{R}^3$ para \texttt{cube26\_cluster0}.}
+\label{fig:cube26-r3}
+\end{figure}
+
+La Figura~\ref{fig:cube26-r3} muestra que HD 167677 b y su nodo viven dentro de una nube física con continuidad hacia sus vecinos. La distancia física al vecindario es la más baja de los tres casos, aproximadamente $0.40$. Esta es una señal de integración física: el nodo no está muy separado en $\mathbb{R}^3$.
+
+Sin embargo, una baja distancia física no implica automáticamente déficit. Para que hubiera una fuerte señal de incompletitud, necesitaríamos también una diferencia clara entre $N_{obs}$ y $N_{exp}$. Esa diferencia no aparece de forma fuerte en este caso.
+
+\subsection{Figura 9: composición método-vecindario en \texttt{cube26\_cluster0}}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/case_cube26_cluster0_method_node_vs_neighbors.pdf}
+\caption{Composición por método del nodo y vecindarios de \texttt{cube26\_cluster0}.}
+\label{fig:cube26-method}
+\end{figure}
+
+La Figura~\ref{fig:cube26-method} muestra dominancia RV en el nodo, pero la frontera metodológica es menor que en \texttt{cube17\_cluster2} y \texttt{cube24\_cluster0}. La matriz comparativa reporta \texttt{method\_l1\_boundary\_N1}$\approx 0.78$, frente a $1.10$ en los otros dos casos.
+
+Esto sugiere que \texttt{cube26\_cluster0} es un caso de comunidad RV integrada, no la frontera más fuerte. Es útil como control: muestra que no toda comunidad RV con sombra observacional produce una afirmación fuerte de incompletitud.
+
+\subsection{Figura 10: imputación $\mathbb{R}^3$ de \texttt{cube26\_cluster0}}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.76\textwidth]{\figroot/case_cube26_cluster0_imputation_r3_audit.pdf}
+\caption{Auditoría de imputación en $\mathbb{R}^3$ para \texttt{cube26\_cluster0}.}
+\label{fig:cube26-imputation}
+\end{figure}
+
+La Figura~\ref{fig:cube26-imputation} confirma $I_{R^3}=0.000$. Esto hace que la ausencia de déficit fuerte sea informativa: no parece que el caso falle por mala calidad de datos. Más bien, parece que esta comunidad está suficientemente poblada respecto a su referencia local.
+
+\subsection{Figura 11: déficit local de HD 167677 b}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/case_cube26_cluster0_anchor_deficit.pdf}
+\caption{Conteos observados y referencias locales alrededor de HD 167677 b.}
+\label{fig:cube26-deficit}
+\end{figure}
+
+La Figura~\ref{fig:cube26-deficit} muestra que $N_{obs}$ y $N_{exp\_neighbors}$ son prácticamente equivalentes en los radios evaluados. Por eso el caso se interpreta como \emph{no\_deficit}. La comunidad puede estar sesgada por método, pero no muestra evidencia clara de que HD 167677 b tenga menos vecinos compatibles de los esperados bajo la referencia topológica local.
+
+Este resultado es importante porque evita una sobreinterpretación. Si el índice marcara déficit en todos los casos, sería poco discriminativo. Aquí el método distingue entre comunidad RV con sombra y comunidad RV con déficit local. \texttt{cube26\_cluster0} tiene sombra moderada, pero no déficit convincente.
+
+\subsection{Figura 12: proxy RV de HD 167677 b}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/case_cube26_cluster0_rv_proxy_distribution.pdf}
+\caption{Proxy RV para \texttt{cube26\_cluster0}, sus vecinos y HD 167677 b.}
+\label{fig:cube26-rvproxy}
+\end{figure}
+
+La Figura~\ref{fig:cube26-rvproxy} muestra que HD 167677 b está dentro de la zona RV esperada, pero no produce una evidencia clara de hueco local. El proxy RV ayuda a interpretar la comunidad, pero no basta por sí solo para afirmar incompletitud. Este caso funciona como contraste metodológico frente a HIP 90988 b.
+
+\section{Caso C: \texttt{cube24\_cluster0} y HD 60292 b}
+
+\subsection{Ficha técnica}
+
+El nodo \texttt{cube24\_cluster0} tiene \texttt{shadow\_score}$\approx 0.243$, $I_{R^3}=0.000$ y planeta ancla HD 60292 b. Su frontera metodológica es alta, similar a \texttt{cube17\_cluster2}, pero su distancia física al vecindario es la mayor de los tres casos, aproximadamente $1.14$. Esto cambia la interpretación: parte de la separación podría ser física, no solo observacional.
+
+\subsection{Figura 13: ego-network de \texttt{cube24\_cluster0}}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.86\textwidth]{\figroot/case_cube24_cluster0_ego_network.pdf}
+\caption{Ego-network local de \texttt{cube24\_cluster0}.}
+\label{fig:cube24-ego}
+\end{figure}
+
+La Figura~\ref{fig:cube24-ego} muestra que \texttt{cube24\_cluster0} vive en una región muy conectada del grafo local. Esto permite interpretar su composición frente a vecinos, pero también indica que su comportamiento puede estar influido por una zona amplia de transición dentro del Mapper orbital.
+
+Topológicamente, la comunidad no es irrelevante ni aislada. Sin embargo, por su distancia física mayor al vecindario, se debe evitar decir que la frontera es puramente observacional.
+
+\subsection{Figura 14: proyecciones $\mathbb{R}^3$ de \texttt{cube24\_cluster0}}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.98\textwidth]{\figroot/case_cube24_cluster0_r3_projections.pdf}
+\caption{Proyecciones 2D de $\mathbb{R}^3$ para \texttt{cube24\_cluster0}.}
+\label{fig:cube24-r3}
+\end{figure}
+
+La Figura~\ref{fig:cube24-r3} muestra una región RV concentrada, pero con mayor separación física respecto a su vecindario que los otros casos. Esto es visible en la comparación global: \texttt{cube24\_cluster0} tiene \texttt{physical\_distance\_v\_to\_N1}$\approx 1.14$, el mayor de los tres.
+
+La lectura es que HD 60292 b y su comunidad pueden representar una región físico-orbital más especializada. En ese caso, la falta relativa de vecinos no debe interpretarse solamente como sesgo de observación; podría haber una diferencia física real en masa, periodo o semieje mayor.
+
+\subsection{Figura 15: composición por método de \texttt{cube24\_cluster0}}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/case_cube24_cluster0_method_node_vs_neighbors.pdf}
+\caption{Composición método-nodo y método-vecindario para \texttt{cube24\_cluster0}.}
+\label{fig:cube24-method}
+\end{figure}
+
+La Figura~\ref{fig:cube24-method} confirma una frontera metodológica fuerte. El nodo es dominantemente RV y sus vecinos son más diversos. La frontera metodológica es comparable a la de \texttt{cube17\_cluster2}, con valor cercano a $1.10$.
+
+Sin embargo, la combinación con la Figura~\ref{fig:cube24-r3} impone un matiz: una frontera metodológica fuerte acompañada de distancia física alta puede ser frontera mixta. Es decir, el nodo puede estar separado por detectabilidad y también por propiedades físicas reales.
+
+\subsection{Figura 16: imputación en $\mathbb{R}^3$ de \texttt{cube24\_cluster0}}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.76\textwidth]{\figroot/case_cube24_cluster0_imputation_r3_audit.pdf}
+\caption{Auditoría de imputación en $\mathbb{R}^3$ para \texttt{cube24\_cluster0}.}
+\label{fig:cube24-imputation}
+\end{figure}
+
+La Figura~\ref{fig:cube24-imputation} confirma imputación nula en las variables clave. Por tanto, la distancia física elevada no parece ser producto directo de imputación. Esto vuelve al caso interesante, pero cambia su interpretación: puede ser un nodo físicamente más distintivo, no necesariamente una sombra observacional limpia.
+
+\subsection{Figura 17: déficit local de HD 60292 b}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/case_cube24_cluster0_anchor_deficit.pdf}
+\caption{Conteos observados y referencias locales alrededor de HD 60292 b.}
+\label{fig:cube24-deficit}
+\end{figure}
+
+La Figura~\ref{fig:cube24-deficit} muestra que $N_{obs}$ y $N_{exp\_neighbors}$ son casi iguales. Por tanto, no hay déficit fuerte de vecinos compatibles. El caso tiene sombra y frontera metodológica, pero no evidencia local clara de que HD 60292 b ``debería'' tener muchos más vecinos cercanos.
+
+\subsection{Figura 18: proxy RV de HD 60292 b}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/case_cube24_cluster0_rv_proxy_distribution.pdf}
+\caption{Proxy RV para \texttt{cube24\_cluster0}, sus vecinos y HD 60292 b.}
+\label{fig:cube24-rvproxy}
+\end{figure}
+
+La Figura~\ref{fig:cube24-rvproxy} muestra que HD 60292 b se ubica en una zona alta del proxy RV. Eso es compatible con el sesgo esperado de velocidad radial: el nodo observa principalmente planetas con señal dinámica favorable. No obstante, al no haber déficit claro en la Figura~\ref{fig:cube24-deficit}, la inferencia debe detenerse en ``frontera metodológica fuerte'', no avanzar a ``vecinos faltantes''.
+
+\section{Comparación entre los tres casos}
+
+\subsection{Figura 19: sombra observacional frente a distancia física}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/three_case_shadow_vs_physical_distance.pdf}
+\caption{Sombra observacional frente a distancia física al vecindario en los tres casos.}
+\label{fig:three-shadow-distance}
+\end{figure}
+
+La Figura~\ref{fig:three-shadow-distance} resume la tensión principal del análisis. \texttt{cube17\_cluster2} tiene la mayor sombra observacional y distancia física intermedia. \texttt{cube26\_cluster0} tiene menor sombra y menor distancia física. \texttt{cube24\_cluster0} tiene sombra alta, pero también la mayor distancia física.
+
+Esto permite ordenar los casos:
+
+\begin{itemize}
+    \item \texttt{cube17\_cluster2}: mejor candidato a sombra observacional local con déficit débil.
+    \item \texttt{cube26\_cluster0}: caso físicamente integrado, pero sin déficit local claro.
+    \item \texttt{cube24\_cluster0}: frontera fuerte, pero posiblemente mixta entre sesgo observacional y diferencia física real.
+\end{itemize}
+
+\subsection{Figura 20: comparación de déficit relativo}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/three_case_deficit_comparison.pdf}
+\caption{Comparación del déficit relativo local entre los tres casos.}
+\label{fig:three-deficit}
+\end{figure}
+
+La Figura~\ref{fig:three-deficit} deja claro que ninguno de los tres casos presenta un déficit fuerte. El máximo es HIP 90988 b en \texttt{cube17\_cluster2}, con valor relativo aproximado de $0.11$. Los otros dos casos quedan cerca de $0.09$ y se clasifican como \emph{no\_deficit} o déficit muy débil.
+
+La conclusión importante es que el resultado es conservador. El pipeline no está diciendo que faltan muchos planetas. Está diciendo que, dentro de comunidades RV de alta sombra, solo HIP 90988 b muestra una señal positiva débil de déficit local. Eso es metodológicamente mejor que una conclusión exagerada.
+
+\subsection{Figura 21: matriz de confianza}
+
+\begin{figure}[H]
+\centering
+\safeincludegraphics[width=0.82\textwidth]{\figroot/three_case_confidence_matrix.pdf}
+\caption{Matriz visual de sombra, imputación, frontera metodológica, distancia física y déficit relativo.}
+\label{fig:confidence}
+\end{figure}
+
+La Figura~\ref{fig:confidence} resume todo el análisis en cinco dimensiones:
+
+\begin{enumerate}
+    \item \texttt{shadow\_score};
+    \item $I_{R^3}$;
+    \item \texttt{method\_l1\_boundary\_N1};
+    \item \texttt{physical\_distance\_v\_to\_N1};
+    \item \texttt{delta\_rel\_neighbors\_best}.
+\end{enumerate}
+
+La matriz muestra que los tres casos tienen $I_{R^3}=0.00$, lo cual fortalece la interpretación geométrica. También muestra que \texttt{cube17\_cluster2} y \texttt{cube24\_cluster0} tienen frontera metodológica alta, mientras que \texttt{cube26\_cluster0} es más moderado. Finalmente, \texttt{cube17\_cluster2} tiene el mayor déficit relativo, aunque sigue siendo débil.
+
+Por eso, el ranking interpretativo es:
+
+\begin{enumerate}
+    \item \textbf{Mejor caso para exposición:} \texttt{cube17\_cluster2} / HIP 90988 b.
+    \item \textbf{Mejor caso de control integrado:} \texttt{cube26\_cluster0} / HD 167677 b.
+    \item \textbf{Mejor caso de frontera mixta física-observacional:} \texttt{cube24\_cluster0} / HD 60292 b.
+\end{enumerate}
+
+\section{Respuesta final sobre HIP 90988 b}
+
+Topológicamente, HIP 90988 b sí aparece en una región donde se podría esperar una cantidad ligeramente mayor de vecinos compatibles bajo una referencia local. Sin embargo, la señal es débil:
+
+\[
+\Delta_{rel}\approx 0.11.
+\]
+
+Esto significa que no se puede afirmar que le ``faltan'' muchos exoplanetas cercanos. La frase correcta es:
+
+\begin{quote}
+HIP 90988 b funciona como ancla de una vecindad RV de alta sombra observacional donde aparece un déficit topológico local débil de vecinos compatibles. Ese déficit es coherente con submuestreo hacia menor masa o menor proxy RV, pero no constituye evidencia de planetas reales no detectados.
+\end{quote}
+
+En términos físicos, la explicación es que velocidad radial favorece planetas con señales dinámicas más fuertes. Si HIP 90988 b y su nodo ocupan una zona de proxy RV alto, entonces el catálogo puede estar mostrando la parte más detectable de una población físico-orbital más continua. Los vecinos compatibles esperados serían planetas con periodo y semieje comparable, pero posiblemente menor masa o menor proxy RV.
+
+En términos topológicos, lo relevante es que el nodo de HIP 90988 b no está completamente aislado; vive en una red local con vecinos, pero su composición por método cambia de forma abrupta. Esa combinación permite hablar de una frontera de selección.
+
+En términos de imputación, el caso es fuerte porque $I_{R^3}=0.000$. La conclusión no depende de valores imputados en masa, periodo o semieje mayor.
+
+
+\section{Diagnóstico crítico: por qué ocurre el patrón y dónde podría estar el error}
+
+Esta sección separa tres cosas que pueden confundirse: una explicación física plausible, una explicación topológica del algoritmo Mapper y posibles errores o fragilidades metodológicas. La conclusión central es que el resultado de HIP 90988 b no parece un error simple de imputación ni un artefacto obvio de datos faltantes, porque $I_{R^3}=0.000$. Sin embargo, sí hay varias razones por las que el déficit aparece débil y por las que no debe interpretarse como evidencia directa de planetas faltantes.
+
+\subsection{Por qué creo que ocurre físicamente}
+
+El patrón aparece porque velocidad radial no observa el espacio planetario de manera uniforme. Para detectar un planeta por RV se necesita una señal dinámica suficientemente grande en la estrella. De forma aproximada, esa señal aumenta con la masa planetaria y disminuye cuando la configuración orbital produce una modulación más difícil de detectar. Por eso, en una región RV del Mapper esperamos observar primero los planetas de mayor masa, mayor proxy RV o mayor detectabilidad dinámica.
+
+En el caso de HIP 90988 b, la comunidad \texttt{cube17\_cluster2} está dominada por Radial Velocity y su ancla tiene un proxy RV relativamente alto frente a buena parte del vecindario. La interpretación física es que el nodo puede estar capturando la parte más detectable de una vecindad físico-orbital más amplia. Los vecinos que podrían estar submuestreados no serían planetas arbitrarios, sino objetos con:
+
+\begin{itemize}
+    \item periodo orbital comparable;
+    \item semieje mayor comparable;
+    \item menor masa planetaria;
+    \item menor proxy RV;
+    \item por tanto, menor probabilidad de haber sido detectados por velocidad radial en el catálogo actual.
+\end{itemize}
+
+La hipótesis física razonable es:
+
+\[
+\boxed{
+\text{el catálogo observa bien la parte de alta señal RV, pero podría submuestrear la extensión de menor masa.}
+}
+\]
+
+Esto explica por qué el resultado apunta hacia ``menor proxy RV'' y no hacia una población completamente distinta. No estamos diciendo que HIP 90988 b debería tener vecinos de otro tipo físico; estamos diciendo que su vecindad topológica sugiere una posible continuación local hacia objetos menos detectables por RV.
+
+\subsection{Por qué ocurre topológicamente}
+
+Mapper no agrupa planetas solamente por cercanía euclidiana global. Construye clusters locales dentro de regiones de una lente y conecta clusters que comparten observaciones. Por eso, un nodo puede funcionar como una región de transición: no es una clase física cerrada, sino una pieza local de una geometría mayor.
+
+El caso \texttt{cube17\_cluster2} tiene tres propiedades topológicas relevantes:
+
+\begin{enumerate}
+    \item no está aislado: tiene vecindario de red suficiente para comparar contra $N_1(v)$ y $N_2(v)$;
+    \item tiene frontera metodológica fuerte: su composición RV difiere mucho de la de sus vecinos;
+    \item tiene distancia física intermedia: no está tan separado como para que todo se explique por una clase física distinta.
+\end{enumerate}
+
+Esa combinación produce una lectura de sombra observacional. En símbolos:
+
+\[
+\text{sombra local}
+\approx
+\text{alta dominancia RV}
++
+\text{contraste con vecinos}
++
+\text{distancia física no extrema}
++
+\text{baja imputación}.
+\]
+
+El punto decisivo es que el nodo no se interpreta solo por su color o por su método dominante. Se interpreta porque cambia bruscamente respecto a su vecindario. Si el nodo y sus vecinos fueran todos RV en proporciones similares, habría comunidad RV, pero no frontera local. Si el nodo fuera físicamente muy lejano de sus vecinos, habría separación física, pero no necesariamente sombra observacional. HIP 90988 b es interesante porque vive en el caso intermedio.
+
+\subsection{Por qué el déficit sale débil y no fuerte}
+
+El resultado más importante del análisis no es que falten muchos vecinos. De hecho, no salen muchos. El déficit relativo de HIP 90988 b es aproximadamente $0.11$, clasificado como \emph{weak deficit}. Esto probablemente ocurre por cuatro razones.
+
+Primero, el vecindario local ya está bastante poblado. En la Figura~\ref{fig:cube17-deficit}, $N_{obs}$ y $N_{exp\_neighbors}$ son cercanos. Eso significa que la región no es un hueco grande en $\mathbb{R}^3$; es una región ligeramente subpoblada bajo la referencia topológica usada.
+
+Segundo, el ancla fue seleccionada como un representante razonable del cluster, no como el punto más extremo ni como el punto con mayor déficit. Esta decisión es conservadora. Un planeta extremo podría producir un déficit más grande, pero sería más fácil acusar al análisis de seleccionar un outlier. HIP 90988 b es útil precisamente porque funciona como ancla representativa.
+
+Tercero, los radios usados pueden ser relativamente amplios. Cuando se usa un radio grande, como el percentil 75 de distancias, la bola local incluye muchos objetos y el déficit se diluye. Radios amplios responden una pregunta de vecindario general; radios pequeños responden una pregunta de microvecindad. Si se quisiera buscar un hueco más localizado, habría que usar radios más pequeños o vecinos $k$-NN más estrictos.
+
+Cuarto, el espacio $\mathbb{R}^3=(\log M_p,\log P,\log a)$ no tiene tres dimensiones completamente independientes. Periodo y semieje mayor están físicamente correlacionados por la dinámica orbital. Por eso, el panel $\log P$ frente a $\log a$ aparece casi lineal. En la práctica, la geometría efectiva puede estar más cerca de dos dimensiones: masa y escala orbital. Esta dependencia puede hacer que las distancias y densidades locales parezcan más estructuradas de lo que serían en un espacio completamente independiente.
+
+\subsection{Cuál creo que es el error principal de interpretación}
+
+El error principal no sería de código; sería de interpretación. El error sería leer:
+
+\begin{quote}
+``HIP 90988 b tiene planetas faltantes.''
+\end{quote}
+
+cuando el análisis solo justifica:
+
+\begin{quote}
+``HIP 90988 b vive en una región con déficit topológico local débil de vecinos compatibles bajo una referencia de vecindario Mapper.''
+\end{quote}
+
+La diferencia es sustancial. El primer enunciado afirma existencia astrofísica no observada. El segundo describe una asimetría geométrica y observacional dentro del catálogo. Lo que tenemos es evidencia de submuestreo compatible con sesgo RV, no evidencia directa de objetos reales.
+
+El segundo error posible sería interpretar el \texttt{shadow\_score} como si fuera una probabilidad de incompletitud. No lo es. El \texttt{shadow\_score} es un índice heurístico construido a partir de pureza, entropía, imputación, contraste con vecinos y tamaño. Sirve para priorizar casos, no para estimar número real de planetas no detectados.
+
+El tercer error sería interpretar $N_{exp}$ como conteo absoluto. $N_{exp}$ es una referencia local. Depende del radio, de la definición de vecindario, de la selección de nodos análogos y de si se cuentan planetas únicos o incidencias nodo--planeta. Por tanto, no debe convertirse directamente en ``faltan $k$ planetas''.
+
+\subsection{Posibles fragilidades técnicas}
+
+Hay varias fragilidades técnicas que deben mencionarse explícitamente en el reporte.
+
+\begin{longtable}{p{0.22\textwidth}p{0.30\textwidth}p{0.38\textwidth}}
+\caption{Diagnóstico de posibles fuentes de error o fragilidad.}\label{tab:error-diagnosis}\\
+\toprule
+\textbf{Síntoma} & \textbf{Causa probable} & \textbf{Impacto interpretativo} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Síntoma} & \textbf{Causa probable} & \textbf{Impacto interpretativo} \\
+\midrule
+\endhead
+Déficit relativo bajo en HIP 90988 b & El vecindario ya está bastante poblado y los radios pueden ser amplios & La conclusión debe ser \emph{weak deficit}, no hueco grande \\
+\addlinespace
+$N_{exp\_analog}$ muy bajo frente a $N_{obs}$ & Los nodos análogos pueden no ser comparables o pueden ser demasiado escasos & La referencia por análogos debe tratarse como secundaria o diagnóstica \\
+\addlinespace
+Relación casi lineal entre $\log P$ y $\log a$ & Dependencia física entre periodo y semieje mayor & $\mathbb{R}^3$ tiene redundancia; la distancia puede sobreponderar escala orbital \\
+\addlinespace
+Nodos pequeños con sombra alta & Tamaño muestral bajo puede inflar pureza y frontera metodológica & Requiere cautela; no convertir pureza en certeza física \\
+\addlinespace
+Vecindarios $N_1$ y $N_2$ muy grandes & El solapamiento de Mapper puede incluir muchos nodos y planetas repetidos & Los conteos pueden reflejar incidencias topológicas más que poblaciones independientes \\
+\addlinespace
+Proxy RV alto & El proxy usa masa y periodo, pero no masa estelar, inclinación, excentricidad ni ruido instrumental & Debe llamarse proxy de detectabilidad, no amplitud RV real \\
+\addlinespace
+Cero imputación en $R^3$ & Buena calidad local en masa, periodo y semieje & Fortalece la geometría, pero no elimina sesgo de selección observacional \\
+\bottomrule
+\end{longtable}
+
+\subsection{Cuál creo que es la falla metodológica más importante}
+
+La falla metodológica más importante es que todavía no hay una función de completitud instrumental. Sin una función:
+
+\[
+P(\mathrm{detectado}\mid M_p,P,a,\text{estrella},\text{método}),
+\]
+
+no podemos transformar déficit topológico en número de planetas reales. El análisis actual compara contra vecinos del Mapper y nodos análogos, pero no modela si un planeta de menor masa realmente habría sido detectable con los instrumentos, cadencia, precisión y estrellas disponibles.
+
+Por eso, el resultado correcto vive en una escala intermedia:
+
+\[
+\text{más fuerte que una visualización cualitativa, pero más débil que una predicción poblacional.}
+\]
+
+Es más fuerte que una visualización porque combina red, $\mathbb{R}^3$, imputación y contraste metodológico. Pero es más débil que una inferencia de población porque carece de completitud observacional explícita.
+
+\subsection{Qué corregiría o mejoraría si hubiera otra iteración}
+
+Si se continuara el proyecto, corregiría cuatro aspectos.
+
+\begin{enumerate}
+    \item \textbf{Separar conteos únicos de incidencias Mapper.} Un planeta puede aparecer en más de un nodo por el solapamiento de Mapper. Para estimar déficit local, conviene reportar tanto incidencias como planetas únicos.
+    \item \textbf{Reducir redundancia en $\mathbb{R}^3$.} Como $P$ y $a$ están correlacionados, probaría también $\mathbb{R}^2=(\log M_p,\log P)$ o un espacio blanqueado por PCA local.
+    \item \textbf{Mejorar la referencia de nodos análogos.} Los análogos deberían emparejarse por distancia física, tamaño nodal, componente, método dominante e imputación, no solo por sombra baja.
+    \item \textbf{Agregar detectabilidad RV física.} El proxy debería incorporar masa estelar si existe, y eventualmente una aproximación de semiamplitud radial. Sin eso, la lectura de menor señal RV sigue siendo cualitativa.
+\end{enumerate}
+
+\subsection{Conclusión del diagnóstico}
+
+Creo que el patrón ocurre porque HIP 90988 b está en una comunidad donde el Mapper detecta una frontera entre una zona RV de alta detectabilidad y un vecindario más mezclado. El resultado es físicamente plausible y topológicamente interesante, pero el déficit es débil porque la región no está vacía: está solo ligeramente subpoblada respecto a la referencia local.
+
+La frase más honesta es:
+
+\begin{quote}
+El caso HIP 90988 b funciona como prueba de concepto de una ficha de incompletitud topológica. No demuestra planetas faltantes, pero sí muestra cómo un planeta ancla puede localizar una región RV de alta sombra, baja imputación y déficit local débil hacia menor proxy de detectabilidad.
+\end{quote}
+
+\[
+\boxed{
+\text{El posible ``error'' no es el patrón, sino sobreinterpretar un déficit topológico débil como descubrimiento astrofísico.}
+}
+\]
+\section{Conclusiones}
+
+\begin{enumerate}
+    \item \textbf{El caso HIP 90988 b es el más útil para explicar el resultado.} Combina sombra alta, frontera metodológica fuerte, imputación nula en $\mathbb{R}^3$ y déficit relativo positivo débil.
+    \item \textbf{No hay evidencia de un hueco grande.} El déficit es débil, aproximadamente $0.11$, por lo que debe interpretarse como señal local de submuestreo, no como conteo de planetas faltantes.
+    \item \textbf{La dirección física esperada es menor masa o menor proxy RV.} Si hubiera vecinos submuestreados, probablemente no serían objetos radicalmente distintos en escala orbital, sino planetas menos detectables por RV.
+    \item \textbf{La imputación no explica el resultado principal.} En los tres casos, $I_{R^3}=0.000$.
+    \item \textbf{Los otros dos casos funcionan como controles.} HD 167677 b no muestra déficit claro; HD 60292 b tiene frontera fuerte, pero mayor distancia física, por lo que su separación puede ser más física que observacional.
+\end{enumerate}
+
+\section{Limitaciones}
+
+Este análisis no modela una función de completitud instrumental. Por tanto, $N_{exp}$ no debe interpretarse como número absoluto de planetas reales. El proxy RV tampoco es una amplitud radial física exacta; solo ordena objetos de manera aproximada según masa y periodo. Además, el espacio $\mathbb{R}^3$ simplifica el problema: no incluye masa estelar, excentricidad, inclinación, ruido instrumental, cadencia observacional ni sesgos de publicación.
+
+La conclusión es local y comparativa, no universal. HIP 90988 b es una buena ancla para una ficha de incompletitud topológica, pero el resultado no debe extrapolarse a todo el catálogo ni a todos los planetas RV.
+
+\section{Frase final para presentación}
+
+\begin{quote}
+HIP 90988 b no prueba planetas faltantes, pero topológicamente vive en una comunidad RV de alta sombra, baja imputación y frontera metodológica fuerte. Su vecindario sugiere un déficit local débil de planetas compatibles, posiblemente hacia menor masa o menor señal RV.
+\end{quote}
+
+\[
+\boxed{
+\text{HIP 90988 b es una ancla concreta de incompletitud topológica débil, no una detección de planetas ausentes.}
+}
+\]
+
+\end{document}

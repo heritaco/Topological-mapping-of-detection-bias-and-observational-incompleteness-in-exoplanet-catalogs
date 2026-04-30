@@ -1,0 +1,652 @@
+\documentclass[11pt]{article}
+
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\usetikzlibrary{arrows.meta,positioning,calc,fit,shapes.geometric}
+\pgfplotsset{compat=1.18}
+
+\definecolor{navy}{HTML}{0B1220}
+\definecolor{slate}{HTML}{334155}
+\definecolor{muted}{HTML}{64748B}
+\definecolor{line}{HTML}{CBD5E1}
+\definecolor{panel}{HTML}{F8FAFC}
+\definecolor{accent}{HTML}{2563EB}
+\definecolor{accentdark}{HTML}{1E40AF}
+\definecolor{good}{HTML}{059669}
+\definecolor{warn}{HTML}{D97706}
+\definecolor{softblue}{HTML}{EFF6FF}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=accentdark,
+  citecolor=accentdark,
+  urlcolor=accentdark,
+  pdftitle={Topologia del Universo Observable de Exoplanetas},
+  pdfauthor={[MI NOMBRE]}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\headheight}{22pt}
+\setlist[itemize]{topsep=0.25em,itemsep=0.18em,leftmargin=1.3em}
+\setlist[enumerate]{topsep=0.25em,itemsep=0.18em,leftmargin=1.5em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Topologia del Universo Observable de Exoplanetas}
+\rhead{\small Mapper/TDA}
+\cfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{line}\leaders\hrule height \headrulewidth\hfill}}
+
+\titleformat{\section}
+  {\Large\bfseries\color{navy}}
+  {\thesection.}{0.5em}{}
+\titleformat{\subsection}
+  {\large\bfseries\color{slate}}
+  {\thesubsection.}{0.5em}{}
+
+\newcommand{\ProjectAuthor}{[MI NOMBRE]}
+
+\newcommand{\callout}[2]{%
+  \begin{center}
+  \fcolorbox{line}{softblue}{%
+    \begin{minipage}{0.93\linewidth}
+      \textbf{\color{accentdark}#1}\par
+      #2
+    \end{minipage}}
+  \end{center}
+}
+
+\newcommand{\metric}[3]{%
+  \fcolorbox{line}{panel}{%
+    \begin{minipage}[t]{0.29\linewidth}
+      {\small\color{muted}#1}\par
+      {\LARGE\bfseries\color{navy}#2}\par
+      {\small #3}
+    \end{minipage}}
+}
+
+\newcommand{\figplaceholder}[2]{%
+  \begin{tikzpicture}
+    \node[
+      draw=line,
+      fill=panel,
+      rounded corners=6pt,
+      minimum width=0.92\linewidth,
+      minimum height=#1,
+      align=center,
+      text width=0.78\linewidth
+    ] {\small\color{muted}Placeholder de figura\\[0.25em]\texttt{#2}};
+  \end{tikzpicture}
+}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\pagenumbering{roman}
+
+\begin{titlepage}
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[navy] (current page.south west) rectangle (current page.north east);
+    \fill[accentdark!45] ($(current page.north east)+(-2.1,-2.0)$) circle[radius=4.2cm];
+    \draw[white!20,line width=0.4pt] ($(current page.north east)+(-2.1,-2.0)$) circle[radius=2.9cm];
+    \draw[white!12,line width=0.4pt] ($(current page.north east)+(-2.1,-2.0)$) circle[radius=4.9cm];
+    \foreach \x/\y/\r in {
+      1.2/25.0/0.022, 2.8/23.6/0.018, 4.4/26.0/0.020, 6.7/24.4/0.016,
+      9.0/26.5/0.024, 11.2/23.4/0.016, 13.3/25.0/0.020, 15.1/23.9/0.018,
+      3.1/18.2/0.014, 6.3/19.4/0.016, 10.8/18.8/0.015, 14.2/19.6/0.014
+    }{
+      \fill[white!75] ($(current page.south west)+(\x,\y)$) circle[radius=\r];
+    }
+  \end{tikzpicture}
+
+  \vspace*{2.0cm}
+  {\color{white}\Huge\bfseries Topologia del Universo Observable de Exoplanetas\par}
+  \vspace{0.4cm}
+  {\color{white!80}\Large Una lectura critica del catalogo NASA mediante Mapper/TDA\par}
+  \vspace{0.25cm}
+  {\color{white!65}\large De sesgos de deteccion a geometria observable\par}
+  \vfill
+  \begin{minipage}{0.78\linewidth}
+    \color{white!88}
+    \large
+    El catalogo de exoplanetas no representa el universo real de planetas:
+    representa el universo observable de planetas, filtrado por instrumentos,
+    metodos, historia observacional y seleccion humana de objetivos.
+  \end{minipage}
+  \vfill
+  {\color{white!75}\ProjectAuthor\par}
+  {\color{white!55}\today\par}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+
+\section{Resumen Ejecutivo}
+
+El crecimiento del NASA Exoplanet Archive ha transformado el estudio de sistemas planetarios. Sin embargo, el aumento del numero de exoplanetas confirmados no implica que el catalogo sea una muestra neutral del universo planetario. Cada deteccion es resultado de una cadena de filtros: sensibilidad instrumental, geometria de observacion, metodo de descubrimiento, seleccion de targets, historia de misiones y decisiones humanas. Por tanto, el catalogo disponible no debe leerse como una representacion directa de la poblacion real de planetas, sino como una representacion del universo observable de exoplanetas.
+
+\callout{Tesis central}{No observamos todos los planetas. Observamos aquellos que nuestros metodos permiten detectar.}
+
+Este proyecto usa Mapper, una tecnica de Topological Data Analysis (TDA), para estudiar la geometria de ese universo observable. En lugar de asumir que los datos revelan clases naturales definitivas, se construye un grafo topologico que preserva continuidad local, ramas, puentes y regiones densas. La topologia resultante permite leer como las propiedades fisicas, orbitales y termicas se organizan dentro del catalogo observado, y como esa organizacion se relaciona con metodos de descubrimiento.
+
+La contribucion principal es una cartografia topologica interpretable del espacio observado. Sobre esa cartografia se define el \textit{Shadow Score}, entendido como un indice de frontera observacional local. El indice no estima planetas faltantes reales ni reconstruye la poblacion completa. Su funcion es detectar nodos donde la cobertura observacional cambia: regiones dominadas por un metodo, contrastantes con sus vecinos topologicos, con baja imputacion y soporte local suficiente.
+
+El resultado mas solido aparece en el espacio orbital, construido con periodo orbital y semieje mayor. La configuracion principal, \texttt{orbital\_pca2\_cubes10\_overlap0p35}, contiene \(124\) nodos, \(196\) aristas y \(\beta_1=96\), con una imputacion media nodal de apenas \(0.011\). Esta combinacion de complejidad topologica alta y baja dependencia de imputacion lo convierte en el mejor mapa operativo del universo observable orbital dentro de las configuraciones evaluadas.
+
+Adicionalmente, la auditoria observacional muestra una asociacion significativa entre la estructura Mapper y el metodo de descubrimiento. Para el grafo orbital se obtuvo \(\mathrm{NMI}=0.165\), \(z \approx 138.9\) y \(p \approx 0.001\). Esto no invalida el grafo; al contrario, bajo la narrativa del universo observable indica que la topologia captura huellas de la funcion de seleccion observacional.
+
+El valor final del proyecto es practico y cientifico: convertir sesgos de observacion en una herramienta de priorizacion. A partir del \textit{Shadow Score} se derivan indices regionales y por planeta ancla, como TOI y ATI, que permiten proponer regiones donde futuras observaciones podrian aportar mayor informacion. El entregable no es una lista de planetas descubiertos, sino un mapa criticamente interpretado de donde el catalogo parece mas informativo, mas sesgado o potencialmente submuestreado.
+
+\section{Introduccion}
+
+Los catalogos de exoplanetas se han convertido en una infraestructura cientifica central. Reunen detecciones obtenidas por transitos, velocidad radial, imagen directa, microlensing y otros metodos. Sin embargo, cada metodo observa una fraccion distinta del espacio planetario. Transit favorece planetas con radios grandes, periodos cortos y geometria de alineacion favorable. Radial Velocity (RV) favorece planetas con masas suficientemente grandes y senales dinamicas detectables. Imaging favorece objetos brillantes, jovenes o con separacion angular amplia. Microlensing depende de configuraciones geometricas raras y eventos temporales poco repetibles.
+
+La consecuencia es profunda: el catalogo no es una muestra aleatoria de planetas. Es una poblacion filtrada por detectabilidad. Por eso, una lectura cientifica madura debe distinguir entre el universo real de planetas y el universo observable registrado por nuestros instrumentos.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw=line,fill=panel,rounded corners=8pt,minimum width=4.1cm,minimum height=2.2cm,align=center,text width=3.7cm},
+  filter/.style={draw=line,fill=softblue,rounded corners=6pt,minimum width=3.1cm,minimum height=0.8cm,align=center},
+  arr/.style={-{Latex[length=2.2mm]},line width=0.9pt,color=accentdark}
+]
+  \node[box] (real) at (0,0) {\textbf{Universo real}\\poblacion planetaria completa\\no observada directamente};
+  \node[filter] (inst) at (5.0,1.25) {limites instrumentales};
+  \node[filter] (meth) at (5.0,0.25) {metodos de deteccion};
+  \node[filter] (hist) at (5.0,-0.75) {historia observacional};
+  \node[filter] (sel) at (5.0,-1.75) {seleccion de targets};
+  \node[box] (obs) at (10.2,-0.25) {\textbf{Universo observable}\\catalogo NASA\\detectado y estructurado};
+  \draw[arr] (real) -- (inst);
+  \draw[arr] (real) -- (meth);
+  \draw[arr] (real) -- (hist);
+  \draw[arr] (real) -- (sel);
+  \draw[arr] (inst) -- (obs);
+  \draw[arr] (meth) -- (obs);
+  \draw[arr] (hist) -- (obs);
+  \draw[arr] (sel) -- (obs);
+\end{tikzpicture}
+\caption{Diferencia conceptual entre universo real y universo observable. El catalogo disponible contiene informacion fisica, pero tambien la huella de los filtros que permitieron observarla.}
+\end{figure}
+
+Este reporte propone estudiar esa huella con Mapper/TDA. Mapper es adecuado porque no obliga a imponer un numero fijo de clusters ni a tratar los datos como grupos aislados. En cambio, produce un grafo que conserva relaciones locales, solapamientos y transiciones. Esa estructura es especialmente util cuando el objetivo no es clasificar definitivamente planetas, sino entender como el espacio observable se organiza bajo sesgos conocidos.
+
+\section{Problema Cientifico}
+
+Formalmente, sea \(\mathcal{P}\) la poblacion real de planetas y sea \(\mathcal{D}\subset \mathcal{P}\) el conjunto observado en un catalogo. El conjunto \(\mathcal{D}\) no surge de un muestreo uniforme; depende de una funcion de seleccion \(S\) asociada con instrumentos, metodos y decisiones humanas:
+\[
+  \mathcal{D} = \{p \in \mathcal{P}: S(p, t, m, I, H) = 1\},
+\]
+donde \(t\) representa tiempo e historia observacional, \(m\) el metodo de deteccion, \(I\) las capacidades instrumentales y \(H\) la seleccion humana de objetivos. En general,
+\[
+  \mathcal{D} \neq \mathcal{P}.
+\]
+
+La pregunta cientifica del proyecto es:
+
+\callout{Pregunta de investigacion}{Puede la topologia del catalogo revelar como la observacion humana ha estructurado el espacio planetario visible?}
+
+Responder esta pregunta requiere prudencia. No basta con encontrar clusters y asignarles significado fisico. Si la funcion de seleccion estructura el catalogo, entonces un cluster puede reflejar una familia fisica, un regimen de detectabilidad o una mezcla de ambos. Por tanto, el objetivo del proyecto es construir una lectura critica: identificar regiones topologicas, auditar su relacion con metadata observacional y producir prioridades interpretables para futuras observaciones.
+
+\section{Datos Utilizados}
+
+La fuente de datos es el NASA Exoplanet Archive, tabla \texttt{PSCompPars}, con aproximadamente \(6273\) exoplanetas. Se eligieron variables con interpretacion fisica clara y relevancia para detectabilidad:
+
+\begin{table}[H]
+\centering
+\caption{Variables principales utilizadas en el proyecto.}
+\begin{tabularx}{\linewidth}{lllX}
+\toprule
+Variable & Familia & Uso & Interpretacion \\
+\midrule
+\texttt{pl\_bmasse} & Fisica & Mapper/local & Masa planetaria en masas terrestres; relevante para senal RV. \\
+\texttt{pl\_rade} & Fisica & Mapper/local & Radio planetario; relevante para profundidad de transito. \\
+\texttt{pl\_dens} & Fisica & Control & Densidad; util pero parcialmente derivada de masa y radio. \\
+\texttt{pl\_orbper} & Orbital & Principal & Periodo orbital; eje fuerte de detectabilidad. \\
+\texttt{pl\_orbsmax} & Orbital & Principal & Semieje mayor; escala orbital y geometrica. \\
+\texttt{pl\_eqt} & Termica & Control & Temperatura de equilibrio; interpretacion sensible a imputacion. \\
+\texttt{pl\_insol} & Termica & Control & Insolacion; relacionada con ambiente energetico. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+La metadata observacional, especialmente \texttt{discoverymethod}, no se usa como coordenada principal para construir la geometria. Se reserva como variable externa de auditoria. Esta decision evita construir un grafo que ya este definido directamente por el metodo de descubrimiento. La pregunta no es ``que ocurre si agrupamos por metodo'', sino ``hasta que punto una geometria fisico-orbital independiente queda asociada con el metodo''.
+
+\subsection{Faltantes e imputacion}
+
+Los catalogos astronomicos contienen valores faltantes por razones fisicas y observacionales: no todos los planetas tienen masa, radio, densidad, insolacion o temperatura estimada. El pipeline distingue entre valores observados, derivados e imputados. La regla interpretativa fue:
+\[
+  \text{mayor imputacion} \Rightarrow \text{mayor cautela cientifica}.
+\]
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
+  width=0.90\linewidth,
+  height=4.4cm,
+  ymin=0,ymax=0.75,
+  ylabel={fraccion imputada},
+  symbolic x coords={Fisico,Orbital,Termico,Joint},
+  xtick=data,
+  xticklabel style={font=\small},
+  yticklabel style={font=\small},
+  bar width=14pt,
+  axis line style={draw=line},
+  tick style={draw=line},
+  grid=major,
+  grid style={draw=line!45}
+]
+\addplot[fill=accent!75,draw=accentdark] coordinates {
+  (Fisico,0.017)
+  (Orbital,0.011)
+  (Termico,0.588)
+  (Joint,0.152)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Imputacion media nodal por espacio.}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  xbar,
+  width=0.90\linewidth,
+  height=4.4cm,
+  xmin=0,xmax=1,
+  xlabel={fraccion},
+  symbolic y coords={Imputado,Derivado,Observado},
+  ytick=data,
+  yticklabel style={font=\small},
+  xticklabel style={font=\small},
+  bar width=13pt,
+  axis line style={draw=line},
+  tick style={draw=line},
+  grid=major,
+  grid style={draw=line!45}
+]
+\addplot[fill=good!70,draw=good] coordinates {
+  (0.03,Imputado)
+  (0.03,Derivado)
+  (0.94,Observado)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Lectura conceptual de trazabilidad para el espacio orbital.}
+\end{subfigure}
+\caption{Auditoria de faltantes. El espacio orbital combina alta utilidad topologica con baja dependencia de imputacion.}
+\end{figure}
+
+\section{Metodologia}
+
+El proyecto se organiza bajo CRISP-DM, no solo como formalidad, sino como estructura de decisiones:
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  stage/.style={draw=line,fill=panel,rounded corners=7pt,minimum width=2.55cm,minimum height=1.05cm,align=center,text width=2.30cm,font=\footnotesize},
+  arr/.style={-{Latex[length=2.1mm]},line width=0.85pt,color=accentdark}
+]
+  \node[stage] (b) at (0,0) {\textbf{Business}\\sesgo como oportunidad};
+  \node[stage] (d) at (2.85,0) {\textbf{Data}\\PSCompPars y faltantes};
+  \node[stage] (p) at (5.70,0) {\textbf{Preparation}\\log, scaling, imputacion};
+  \node[stage] (m) at (8.55,0) {\textbf{Modeling}\\Mapper/TDA};
+  \node[stage] (e) at (11.40,0) {\textbf{Evaluation}\\topologia y auditoria};
+  \node[stage] (c) at (5.70,-1.8) {\textbf{Comunic.}\\TOI, ATI y prioridades};
+  \draw[arr] (b) -- (d);
+  \draw[arr] (d) -- (p);
+  \draw[arr] (p) -- (m);
+  \draw[arr] (m) -- (e);
+  \draw[arr] (e) |- (c);
+  \draw[arr] (c) -| (b);
+\end{tikzpicture}
+\caption{Pipeline CRISP-DM del proyecto. La comunicacion no es un paso posterior: condiciona la interpretacion cientifica del resultado.}
+\end{figure}
+
+\subsection{Preparacion}
+
+La preparacion incluyo:
+\begin{itemize}
+  \item transformaciones logaritmicas para variables de escala amplia;
+  \item escalamiento robusto para reducir sensibilidad a valores extremos;
+  \item derivaciones fisicas, como densidad o semieje mayor cuando la informacion disponible lo permite;
+  \item imputacion iterativa para completar espacios de variables;
+  \item auditoria de la fraccion imputada por planeta, variable y nodo Mapper.
+\end{itemize}
+
+La eleccion de pocas variables no es una debilidad. Es una decision metodologica. Usar todas las columnas mezclaria magnitudes redundantes, metadatos observacionales, variables derivadas y campos con trazabilidad desigual. En cambio, se definieron espacios de variables con significado fisico: fisico minimo, fisico con densidad, orbital, termico, orbital-termico y espacios conjuntos.
+
+\subsection{Mapper/TDA}
+
+Mapper construye un grafo topologico a partir de cuatro pasos:
+\begin{enumerate}
+  \item \textbf{Lente}. Se proyectan los datos a un espacio de baja dimension. La lente principal fue PCA2.
+  \item \textbf{Cover solapado}. El espacio proyectado se cubre con regiones parcialmente superpuestas. Se uso una cubierta de \(10\) cubos con \(\mathrm{overlap}=0.35\).
+  \item \textbf{Clustering local}. Dentro de cada region de la cubierta se aplica DBSCAN para formar comunidades locales.
+  \item \textbf{Grafo}. Cada cluster local se convierte en nodo; dos nodos se conectan si comparten miembros.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  mapstep/.style={draw=line,fill=panel,rounded corners=7pt,minimum width=3.0cm,minimum height=1.1cm,align=center,text width=2.75cm},
+  arr/.style={-{Latex[length=2.1mm]},line width=0.85pt,color=accentdark}
+]
+  \node[mapstep] (lens) at (0,0) {\textbf{1. Lente}\\PCA2};
+  \node[mapstep] (cover) at (3.5,0) {\textbf{2. Cover}\\cubos solapados};
+  \node[mapstep] (cluster) at (7.0,0) {\textbf{3. DBSCAN}\\clusters locales};
+  \node[mapstep] (graph) at (10.5,0) {\textbf{4. Grafo}\\nodos y aristas};
+  \draw[arr] (lens) -- (cover);
+  \draw[arr] (cover) -- (cluster);
+  \draw[arr] (cluster) -- (graph);
+\end{tikzpicture}
+\caption{Esquema de Mapper. Nodo = comunidad local; arista = solapamiento de miembros entre comunidades.}
+\end{figure}
+
+Se generaron \(21\) grafos Mapper: \(7\) espacios de variables por \(3\) lentes. La interpretacion principal se apoyo en la lente PCA2, mientras que las otras lentes se usaron como sensibilidad. Esto evita afirmar que una topologia unica sea ``la verdad'' del catalogo.
+
+\section{Reinterpretacion Cientifica del Mapper}
+
+En este proyecto, el grafo Mapper no se interpreta como una taxonomia definitiva de clases planetarias. Se interpreta como una cartografia del universo observable. Esta distincion es central.
+
+\begin{table}[H]
+\centering
+\caption{Lectura cientifica propuesta para estructuras Mapper.}
+\begin{tabularx}{\linewidth}{lX}
+\toprule
+Estructura topologica & Interpretacion dentro del universo observable \\
+\midrule
+Nodo denso & Region altamente observable o muy poblada por los metodos actuales. \\
+Rama & Regimen observacional especializado o franja fisico-orbital detectada por un metodo particular. \\
+Puente & Transicion entre regimenes fisicos u observacionales. \\
+Hueco & Baja cobertura relativa, posible submuestreo o ausencia de continuidad observada. \\
+Componente pequena & Caso potencialmente interesante, pero sensible al soporte local. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Esta lectura cambia el objetivo del analisis. El grafo no responde simplemente ``que tipos de planetas existen'', sino ``como se organiza lo que hemos logrado observar''. Un nodo dominado por Transit no necesariamente representa una clase natural transitiva; puede representar una region donde el metodo Transit es particularmente efectivo. Un nodo RV aislado puede ser una region de masas y periodos donde la senal dinamica supera los umbrales historicos de deteccion.
+
+\section{Shadow Score}
+
+El \textit{Shadow Score} es la seccion metodologica clave. Se define como un indice de frontera observacional local. Su objetivo es detectar nodos donde la cobertura observacional cambia de forma estructurada dentro del grafo.
+
+Conceptualmente, para un nodo \(v\):
+\[
+  \mathrm{Shadow}(v)
+  \propto
+  f_{\mathrm{dom}}(v)
+  \left[1-H(v)\right]
+  \left[1-I(v)\right]
+  B(v)
+  S(v),
+\]
+donde:
+\begin{itemize}
+  \item \(f_{\mathrm{dom}}(v)\) mide la fraccion del metodo dominante;
+  \item \(H(v)\) resume la entropia del metodo de descubrimiento;
+  \item \(I(v)\) penaliza alta imputacion;
+  \item \(B(v)\) mide contraste con vecinos topologicos;
+  \item \(S(v)\) pondera soporte local o tamano efectivo del nodo.
+\end{itemize}
+
+Un nodo con Shadow alto combina cuatro propiedades: esta dominado por un metodo de descubrimiento, difiere de sus vecinos, tiene baja imputacion y cuenta con soporte suficiente para ser interpretable.
+
+\callout{Lectura prudente del indice}{Shadow alto no estima planetas faltantes reales. Shadow alto indica una frontera local de cobertura observacional: una region donde el catalogo cambia de regimen de detectabilidad.}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node/.style={circle,draw=line,minimum size=0.8cm,align=center,font=\small},
+  rv/.style={node,fill=accent!20,draw=accentdark},
+  tr/.style={node,fill=good!18,draw=good},
+  mix/.style={node,fill=panel,draw=line},
+  edge/.style={line width=0.9pt,color=line}
+]
+  \node[mix] (a) at (0,0) {mix};
+  \node[tr] (b) at (1.7,0.9) {T};
+  \node[mix] (c) at (1.8,-0.8) {mix};
+  \node[rv] (d) at (3.6,0.0) {RV};
+  \node[rv] (e) at (5.2,0.7) {RV};
+  \node[mix] (f) at (5.3,-0.8) {mix};
+  \draw[edge] (a)--(b)--(d)--(e);
+  \draw[edge] (a)--(c)--(d)--(f);
+  \draw[edge] (d)--(e);
+  \draw[edge] (d)--(f);
+  \node[draw=accentdark,rounded corners=6pt,fit=(d),inner sep=0.22cm,label={[align=center,text=accentdark]below:{frontera local\\Shadow alto}}] {};
+\end{tikzpicture}
+\caption{Interpretacion conceptual de Shadow alto. El nodo RV contrasta con un vecindario mas mezclado; esto sugiere una frontera local de cobertura, no una prediccion cerrada de objetos ausentes.}
+\end{figure}
+
+\section{Resultados Principales}
+
+\subsection{El espacio orbital como mapa principal}
+
+El resultado principal fue el grafo \texttt{orbital\_pca2\_cubes10\_overlap0p35}. Este grafo combina complejidad topologica alta con imputacion muy baja.
+
+\begin{center}
+\metric{Nodos}{124}{comunidades locales}
+\hfill
+\metric{Aristas}{196}{continuidad topologica}
+\hfill
+\metric{\(\beta_1\)}{96}{ciclos independientes}
+\end{center}
+
+\begin{table}[H]
+\centering
+\caption{Comparacion de configuraciones principales con lente PCA2.}
+\begin{tabular}{lrrrrl}
+\toprule
+Espacio & Nodos & Aristas & \(\beta_1\) & Imputacion media & Lectura \\
+\midrule
+Fisico minimo & 66 & 105 & 54 & 0.017 & baseline limpio \\
+Fisico + densidad & 67 & 102 & 52 & 0.002 & control por densidad \\
+Orbital & 124 & 196 & 96 & 0.011 & resultado principal \\
+Joint sin densidad & 62 & 134 & 81 & 0.176 & informativo, mas imputado \\
+Joint & 56 & 126 & 77 & 0.152 & control conjunto \\
+Termico & 121 & 150 & 67 & 0.588 & cautela alta \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\(\beta_1\) mide el numero de ciclos independientes del grafo. Un \(\beta_1\) alto no significa automaticamente ``mejor ciencia'', pero si indica que la estructura no se reduce a clusters aislados. En el contexto del proyecto, ciclos y puentes sugieren transiciones, recorridos alternativos y continuidad local dentro del universo observable.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  xbar,
+  width=0.90\linewidth,
+  height=5.1cm,
+  xmin=0,xmax=105,
+  xlabel={\(\beta_1\)},
+  symbolic y coords={Termico,Joint,Joint s/d,Orbital,Fisico dens,Fisico min},
+  ytick=data,
+  yticklabel style={font=\small},
+  xticklabel style={font=\small},
+  bar width=10pt,
+  axis line style={draw=line},
+  tick style={draw=line},
+  grid=major,
+  grid style={draw=line!40}
+]
+\addplot[fill=accent!75,draw=accentdark] coordinates {
+  (67,Termico)
+  (77,Joint)
+  (81,Joint s/d)
+  (96,Orbital)
+  (52,Fisico dens)
+  (54,Fisico min)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Complejidad topologica.}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  xbar,
+  width=0.90\linewidth,
+  height=5.1cm,
+  xmin=0,xmax=0.65,
+  xlabel={imputacion media},
+  symbolic y coords={Termico,Joint,Joint s/d,Orbital,Fisico dens,Fisico min},
+  ytick=data,
+  yticklabel style={font=\small},
+  xticklabel style={font=\small},
+  bar width=10pt,
+  axis line style={draw=line},
+  tick style={draw=line},
+  grid=major,
+  grid style={draw=line!40}
+]
+\addplot[fill=warn!70,draw=warn] coordinates {
+  (0.588,Termico)
+  (0.152,Joint)
+  (0.176,Joint s/d)
+  (0.011,Orbital)
+  (0.002,Fisico dens)
+  (0.017,Fisico min)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Dependencia de imputacion.}
+\end{subfigure}
+\caption{El espacio orbital destaca porque combina el mayor \(\beta_1\) con imputacion baja. El espacio termico tiene estructura, pero su lectura es mas debil por alta imputacion.}
+\end{figure}
+
+\subsection{Auditoria observacional}
+
+La auditoria observacional evalua si la estructura Mapper esta asociada con \texttt{discoverymethod}. En el grafo orbital se obtuvieron:
+\[
+  \mathrm{NMI}=0.165,\qquad
+  z \approx 138.9,\qquad
+  p \approx 0.001.
+\]
+
+La asociacion es estadisticamente fuerte. Desde una lectura tradicional, esto podria verse como sesgo que contamina el grafo. Desde la narrativa propuesta, es precisamente una senal de interes: el universo observable queda estructurado por la interaccion entre propiedades planetarias y metodos de descubrimiento.
+
+\subsection{Regiones con Shadow alto y priorizacion}
+
+Algunas regiones relevantes incluyen:
+
+\begin{table}[H]
+\centering
+\caption{Ejemplos de regiones con Shadow alto.}
+\begin{tabularx}{\linewidth}{llrrX}
+\toprule
+Espacio & Nodo & Metodo & Shadow & Lectura \\
+\midrule
+Fisico minimo & \texttt{cube51\_cluster1} & Transit & 0.552 & Nodo grande, puro y de baja imputacion; compatible con frontera hacia radios menores y periodos mas largos. \\
+Orbital & \texttt{cube17\_cluster2} & RV & 0.274 & Nodo pequeno pero limpio; compatible con senales RV mas debiles a escala orbital comparable. \\
+Orbital & \texttt{cube17\_cluster10} & RV & 0.249 & Caso RV estable con soporte local menor; requiere cautela. \\
+Orbital & \texttt{cube24\_cluster0} & RV & 0.243 & Region RV donde masa media elevada sugiere sesgo hacia planetas masivos. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+El pipeline traduce estas senales en priorizacion mediante TOI y ATI. TOI ordena regiones topologicas; ATI ordena planetas ancla dentro de dichas regiones; ATI conservador penaliza sensibilidad y privilegia casos mas estables.
+
+\begin{table}[H]
+\centering
+\caption{Ranking de prioridad observacional derivado del grafo orbital.}
+\begin{tabularx}{\linewidth}{llrlX}
+\toprule
+Tipo & Caso & Puntaje & Metodo & Lectura \\
+\midrule
+TOI regional & \texttt{cube12\_cluster0} & 0.07667 & Transit & Region grande, de baja imputacion y alta prioridad topologica. \\
+TOI regional & \texttt{cube17\_cluster2} & 0.06276 & RV & Region pequena pero contrastante, con Shadow alto. \\
+TOI regional & \texttt{cube26\_cluster6} & 0.05811 & RV & Region RV estable con baja imputacion. \\
+ATI conservador & HIP 90988 b & 0.00639 & RV & Top ancla conservadora; deficit pequeno pero estable. \\
+ATI conservador & HD 42012 b & 0.00511 & RV & Caso prudente para seguimiento futuro. \\
+ATI conservador & HD 4313 b & 0.00435 & RV & Caso alternativo con deficit positivo estable. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+La interpretacion correcta es deliberadamente prudente: estas regiones presentan evidencia compatible con posible incompletitud observacional local. No constituyen predicciones cerradas de nuevos planetas ni pruebas de ausencia.
+
+\section{Implicaciones Cientificas}
+
+La utilidad del proyecto esta en transformar una limitacion del catalogo en un objeto de analisis. En vez de tratar el sesgo observacional solo como ruido, se usa como informacion estructural sobre donde el catalogo es fuerte, donde cambia de regimen y donde podria estar subrepresentando planetas similares.
+
+Las aplicaciones potenciales son:
+\begin{itemize}
+  \item \textbf{Priorizar follow-up}. Identificar regiones donde observaciones adicionales podrian mejorar el valor cientifico del catalogo.
+  \item \textbf{Estudiar completitud}. Comparar regiones densas, periferias y fronteras locales de detectabilidad.
+  \item \textbf{Comparar metodos}. Evaluar como Transit, RV, Imaging y Microlensing ocupan regiones distintas del espacio observado.
+  \item \textbf{Orientar busquedas futuras}. Usar TOI/ATI como ranking interpretable para seleccionar objetivos o vecindarios.
+  \item \textbf{Auditar historia observacional}. Leer el catalogo como producto acumulativo de decisiones instrumentales y humanas.
+\end{itemize}
+
+La salida del sistema es interpretable. Cada prioridad puede revisarse por nodo, metodo dominante, imputacion, vecindario topologico, soporte local y estabilidad. Esto es importante para un contexto astronomico, donde una recomendacion opaca tendria poco valor cientifico.
+
+\section{Limitaciones}
+
+El proyecto se sostiene precisamente porque sus limites estan claros:
+\begin{enumerate}
+  \item No reconstruye la poblacion real de exoplanetas.
+  \item No confirma planetas faltantes ni estima una probabilidad fisica de ausencia.
+  \item No incorpora una funcion completa de detectabilidad instrumental.
+  \item Depende de las variables seleccionadas y de la trazabilidad del catalogo.
+  \item Depende de hiperparametros de Mapper, como lente, cubierta, overlap y clustering local.
+  \item El Shadow Score es heuristico: prioriza fronteras locales, pero no reemplaza simulaciones de completitud.
+\end{enumerate}
+
+Estas limitaciones no invalidan el enfoque. Lo ubican correctamente. El resultado no es una afirmacion cosmologica sobre el universo real; es una cartografia critica del universo observable registrado en el catalogo.
+
+\section{Trabajo Futuro}
+
+Una evolucion natural del proyecto incluiria:
+\begin{itemize}
+  \item integrar propiedades estelares, como masa, radio, metalicidad, edad y actividad;
+  \item incorporar funciones de completitud instrumentales por mision o metodo;
+  \item comparar versiones temporales del catalogo para estudiar como cambia la topologia con nuevos descubrimientos;
+  \item usar simulaciones injection-recovery para calibrar Shadow contra detectabilidad fisica;
+  \item entrenar modelos sobre grafos, incluyendo Graph Neural Networks, para aprender patrones de transicion;
+  \item validar rankings contra descubrimientos futuros o campanas de seguimiento.
+\end{itemize}
+
+El punto central del trabajo futuro no es hacer afirmaciones mas agresivas, sino cerrar el ciclo entre topologia, instrumentacion y validacion observacional.
+
+\section{Conclusion Final}
+
+El catalogo de exoplanetas no es el universo planetario. Es la huella de como la humanidad lo ha observado.
+
+Este proyecto propone estudiar esa huella con Mapper/TDA. La contribucion no consiste en descubrir planetas faltantes ni en reconstruir la poblacion real, sino en construir una cartografia topologica interpretable del universo observable. El grafo orbital ofrece el mapa mas defendible por su combinacion de complejidad alta y baja imputacion. El \textit{Shadow Score} permite localizar fronteras observacionales locales. TOI y ATI convierten esa senal en una priorizacion prudente para futuras observaciones.
+
+\callout{Cierre}{Nuestro trabajo transforma sesgo observacional en una herramienta cientifica de priorizacion: no dice que planetas faltan, sino donde podria valer mas la pena mirar.}
+
+\end{document}

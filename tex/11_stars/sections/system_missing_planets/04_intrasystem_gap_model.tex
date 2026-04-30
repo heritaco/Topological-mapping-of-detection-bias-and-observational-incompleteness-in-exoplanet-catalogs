@@ -1,0 +1,58 @@
+El an\'alisis intra-sistema parte de ordenar los planetas observados alrededor de una misma estrella por per\'iodo orbital:
+\[
+P_1 < P_2 < \cdots < P_n.
+\]
+Para cada par adyacente se define una raz\'on de per\'iodos
+\[
+R_i = \frac{P_{i+1}}{P_i}
+\]
+y un ancho logar\'itmico
+\[
+g_i = \log_{10} P_{i+1} - \log_{10} P_i.
+\]
+
+Un gap grande sugiere un intervalo orbital amplio entre dos planetas ya observados. Esto no demuestra que exista un planeta intermedio, pero s\'i motiva explorar si el sistema parece menos completo que otros sistemas de referencia.
+
+El m\'odulo implementa dos estimadores de conteo esperado de candidatos. El primero es una heur\'istica simple:
+\[
+N_{\mathrm{cand}} =
+\left\lfloor
+\frac{\log R_i}{\log R_{\min}}
+\right\rfloor.
+\]
+Esta forma garantiza que solo gaps suficientemente grandes generen al menos un candidato y que el conteo crezca de manera controlada.
+
+El segundo estimador se basa en una referencia emp\'irica para el ancho t\'ipico de gaps adyacentes:
+\[
+N_{\mathrm{cand}} =
+\max\left(
+0,
+\operatorname{round}\left(\frac{g_i}{\tilde g}\right)-1
+\right),
+\]
+donde $\tilde g$ es el gap t\'ipico global o el gap t\'ipico mediano dentro de sistemas similares, por ejemplo separados por m\'etodo dominante de descubrimiento o por rango de masa estelar.
+
+Una vez fijado $N_{\mathrm{cand}}$, el pipeline genera posiciones orbitales plausibles mediante interpolaci\'on geom\'etrica:
+\[
+\log P_k^\ast =
+\log P_i +
+\frac{k}{N_{\mathrm{cand}}+1}
+\left(\log P_{i+1}-\log P_i\right),
+\]
+\[
+P_k^\ast = 10^{\log P_k^\ast}.
+\]
+Si se dispone de masa estelar, el semieje mayor propuesto se calcula con:
+\[
+a_k^\ast =
+\left[
+M_\star
+\left(
+\frac{P_k^\ast}{365.25}
+\right)^2
+\right]^{1/3}.
+\]
+
+Estas expresiones solo generan posiciones orbitales plausibles para priorizaci\'on. No modelan estabilidad din\'amica completa, resonancias, excentricidad, inclinaci\'on ni historia de formaci\'on. Por eso los objetos sintetizados deben describirse como candidatos a planetas no detectados o candidatos a submuestreo intra-sistema, nunca como planetas confirmados.
+
+En una capa adicional, el m\'odulo usa an\'alogos globales cercanos en el espacio $\left(\log P, \log a, \log M_\star\right)$ para estimar rangos plausibles de masa y radio del candidato. Estas estimaciones sirven para priorizaci\'on observacional, no para inferencia f\'isica cerrada.

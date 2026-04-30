@@ -1,0 +1,343 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{borucki2010kepler}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8c0eff532b591fcda33946ba1b6c4984}{%
+           family={Borucki},
+           familyi={B\bibinitperiod},
+           given={William\bibnamedelima J.},
+           giveni={W\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e7a3974787a07cde7a14ee24beb257f4}
+      \strng{fullhash}{e7a3974787a07cde7a14ee24beb257f4}
+      \strng{fullhashraw}{e7a3974787a07cde7a14ee24beb257f4}
+      \strng{bibnamehash}{e7a3974787a07cde7a14ee24beb257f4}
+      \strng{authorbibnamehash}{e7a3974787a07cde7a14ee24beb257f4}
+      \strng{authornamehash}{e7a3974787a07cde7a14ee24beb257f4}
+      \strng{authorfullhash}{e7a3974787a07cde7a14ee24beb257f4}
+      \strng{authorfullhashraw}{e7a3974787a07cde7a14ee24beb257f4}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science}
+      \field{number}{5968}
+      \field{title}{Kepler Planet-Detection Mission: Introduction and First Results}
+      \field{volume}{327}
+      \field{year}{2010}
+      \true{nocite}
+      \field{pages}{977\bibrangedash 980}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1126/science.1185402
+      \endverb
+    \endentry
+    \entry{bowler2016imaging}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3faa98b7b5413e29442c1a8b6fda41b1}{%
+           family={Bowler},
+           familyi={B\bibinitperiod},
+           given={Brendan\bibnamedelima P.},
+           giveni={B\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3faa98b7b5413e29442c1a8b6fda41b1}
+      \strng{fullhash}{3faa98b7b5413e29442c1a8b6fda41b1}
+      \strng{fullhashraw}{3faa98b7b5413e29442c1a8b6fda41b1}
+      \strng{bibnamehash}{3faa98b7b5413e29442c1a8b6fda41b1}
+      \strng{authorbibnamehash}{3faa98b7b5413e29442c1a8b6fda41b1}
+      \strng{authornamehash}{3faa98b7b5413e29442c1a8b6fda41b1}
+      \strng{authorfullhash}{3faa98b7b5413e29442c1a8b6fda41b1}
+      \strng{authorfullhashraw}{3faa98b7b5413e29442c1a8b6fda41b1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Publications of the Astronomical Society of the Pacific}
+      \field{number}{968}
+      \field{title}{Imaging Extrasolar Giant Planets}
+      \field{volume}{128}
+      \field{year}{2016}
+      \true{nocite}
+      \field{pages}{102001}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1538-3873/128/968/102001
+      \endverb
+    \endentry
+    \entry{carlsson2009topology}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=86916713a3861f9e4e6fa5e0ce4c7b44}{%
+           family={Carlsson},
+           familyi={C\bibinitperiod},
+           given={Gunnar},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{86916713a3861f9e4e6fa5e0ce4c7b44}
+      \strng{fullhash}{86916713a3861f9e4e6fa5e0ce4c7b44}
+      \strng{fullhashraw}{86916713a3861f9e4e6fa5e0ce4c7b44}
+      \strng{bibnamehash}{86916713a3861f9e4e6fa5e0ce4c7b44}
+      \strng{authorbibnamehash}{86916713a3861f9e4e6fa5e0ce4c7b44}
+      \strng{authornamehash}{86916713a3861f9e4e6fa5e0ce4c7b44}
+      \strng{authorfullhash}{86916713a3861f9e4e6fa5e0ce4c7b44}
+      \strng{authorfullhashraw}{86916713a3861f9e4e6fa5e0ce4c7b44}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bulletin of the American Mathematical Society}
+      \field{number}{2}
+      \field{title}{Topology and Data}
+      \field{volume}{46}
+      \field{year}{2009}
+      \true{nocite}
+      \field{pages}{255\bibrangedash 308}
+      \range{pages}{54}
+      \verb{doi}
+      \verb 10.1090/S0273-0979-09-01249-X
+      \endverb
+    \endentry
+    \entry{gaudi2012microlensing}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f808402b669e942531c516072b1070ec}{%
+           family={Gaudi},
+           familyi={G\bibinitperiod},
+           given={B.\bibnamedelimi Scott},
+           giveni={B\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f808402b669e942531c516072b1070ec}
+      \strng{fullhash}{f808402b669e942531c516072b1070ec}
+      \strng{fullhashraw}{f808402b669e942531c516072b1070ec}
+      \strng{bibnamehash}{f808402b669e942531c516072b1070ec}
+      \strng{authorbibnamehash}{f808402b669e942531c516072b1070ec}
+      \strng{authornamehash}{f808402b669e942531c516072b1070ec}
+      \strng{authorfullhash}{f808402b669e942531c516072b1070ec}
+      \strng{authorfullhashraw}{f808402b669e942531c516072b1070ec}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annual Review of Astronomy and Astrophysics}
+      \field{title}{Microlensing by Exoplanets}
+      \field{volume}{50}
+      \field{year}{2012}
+      \true{nocite}
+      \field{pages}{411\bibrangedash 453}
+      \range{pages}{43}
+      \verb{doi}
+      \verb 10.1146/annurev-astro-081811-125518
+      \endverb
+    \endentry
+    \entry{lovis2011radialvelocity}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=0f90f016bbd9bbda9c698b6412405769}{%
+           family={Lovis},
+           familyi={L\bibinitperiod},
+           given={Christophe},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=77fc69f637a4677c9c5f43406a36a7e9}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Debra},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f4f367ae603a4e22187e9fe171032119}
+      \strng{fullhash}{f4f367ae603a4e22187e9fe171032119}
+      \strng{fullhashraw}{f4f367ae603a4e22187e9fe171032119}
+      \strng{bibnamehash}{f4f367ae603a4e22187e9fe171032119}
+      \strng{authorbibnamehash}{f4f367ae603a4e22187e9fe171032119}
+      \strng{authornamehash}{f4f367ae603a4e22187e9fe171032119}
+      \strng{authorfullhash}{f4f367ae603a4e22187e9fe171032119}
+      \strng{authorfullhashraw}{f4f367ae603a4e22187e9fe171032119}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Exoplanets}
+      \field{note}{TODO verify bibliographic fields}
+      \field{title}{Radial Velocity Techniques for Exoplanets}
+      \field{year}{2011}
+      \true{nocite}
+      \field{pages}{27\bibrangedash 53}
+      \range{pages}{27}
+    \endentry
+    \entry{nasaexoplanetarchive}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c9448cd0bc409f460f4bd29817ec24d6}{%
+           family={{NASA Exoplanet Archive}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{c9448cd0bc409f460f4bd29817ec24d6}
+      \strng{fullhash}{c9448cd0bc409f460f4bd29817ec24d6}
+      \strng{fullhashraw}{c9448cd0bc409f460f4bd29817ec24d6}
+      \strng{bibnamehash}{c9448cd0bc409f460f4bd29817ec24d6}
+      \strng{authorbibnamehash}{c9448cd0bc409f460f4bd29817ec24d6}
+      \strng{authornamehash}{c9448cd0bc409f460f4bd29817ec24d6}
+      \strng{authorfullhash}{c9448cd0bc409f460f4bd29817ec24d6}
+      \strng{authorfullhashraw}{c9448cd0bc409f460f4bd29817ec24d6}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed for catalog context; TODO verify access date}
+      \field{title}{NASA Exoplanet Archive}
+      \field{year}{2026}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://exoplanetarchive.ipac.caltech.edu/
+      \endverb
+      \verb{url}
+      \verb https://exoplanetarchive.ipac.caltech.edu/
+      \endverb
+    \endentry
+    \entry{ricker2015tess}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3138bcbc51be7bd63f9154e68b56fad1}{%
+           family={Ricker},
+           familyi={R\bibinitperiod},
+           given={George\bibnamedelima R.},
+           giveni={G\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{65cfd7860d4ec8b910442f050b253332}
+      \strng{fullhash}{65cfd7860d4ec8b910442f050b253332}
+      \strng{fullhashraw}{65cfd7860d4ec8b910442f050b253332}
+      \strng{bibnamehash}{65cfd7860d4ec8b910442f050b253332}
+      \strng{authorbibnamehash}{65cfd7860d4ec8b910442f050b253332}
+      \strng{authornamehash}{65cfd7860d4ec8b910442f050b253332}
+      \strng{authorfullhash}{65cfd7860d4ec8b910442f050b253332}
+      \strng{authorfullhashraw}{65cfd7860d4ec8b910442f050b253332}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Astronomical Telescopes, Instruments, and Systems}
+      \field{number}{1}
+      \field{title}{Transiting Exoplanet Survey Satellite (TESS)}
+      \field{volume}{1}
+      \field{year}{2015}
+      \true{nocite}
+      \field{pages}{014003}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1117/1.JATIS.1.1.014003
+      \endverb
+    \endentry
+    \entry{singh2007topological}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8e192c311aece21b90815dc7c4fa4d95}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Gurjeet},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2fd11e676a24c6aabdc0a0823f559d23}{%
+           family={Mémoli},
+           familyi={M\bibinitperiod},
+           given={Facundo},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=86916713a3861f9e4e6fa5e0ce4c7b44}{%
+           family={Carlsson},
+           familyi={C\bibinitperiod},
+           given={Gunnar},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{34c0d17e199be0eebbb57297927d1b2e}
+      \strng{fullhash}{af20a0679f50c62330752c5feea37583}
+      \strng{fullhashraw}{af20a0679f50c62330752c5feea37583}
+      \strng{bibnamehash}{af20a0679f50c62330752c5feea37583}
+      \strng{authorbibnamehash}{af20a0679f50c62330752c5feea37583}
+      \strng{authornamehash}{34c0d17e199be0eebbb57297927d1b2e}
+      \strng{authorfullhash}{af20a0679f50c62330752c5feea37583}
+      \strng{authorfullhashraw}{af20a0679f50c62330752c5feea37583}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SPBG}
+      \field{note}{TODO verify bibliographic fields}
+      \field{title}{Topological Methods for the Analysis of High Dimensional Data Sets and 3D Object Recognition}
+      \field{year}{2007}
+      \true{nocite}
+    \endentry
+    \entry{winn2010transits}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=987e5cdf8fdc979662d7296c44dfcc49}{%
+           family={Winn},
+           familyi={W\bibinitperiod},
+           given={Joshua\bibnamedelima N.},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{987e5cdf8fdc979662d7296c44dfcc49}
+      \strng{fullhash}{987e5cdf8fdc979662d7296c44dfcc49}
+      \strng{fullhashraw}{987e5cdf8fdc979662d7296c44dfcc49}
+      \strng{bibnamehash}{987e5cdf8fdc979662d7296c44dfcc49}
+      \strng{authorbibnamehash}{987e5cdf8fdc979662d7296c44dfcc49}
+      \strng{authornamehash}{987e5cdf8fdc979662d7296c44dfcc49}
+      \strng{authorfullhash}{987e5cdf8fdc979662d7296c44dfcc49}
+      \strng{authorfullhashraw}{987e5cdf8fdc979662d7296c44dfcc49}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Exoplanets}
+      \field{note}{TODO verify bibliographic fields}
+      \field{title}{Exoplanet Transits and Occultations}
+      \field{year}{2010}
+      \true{nocite}
+      \field{pages}{55\bibrangedash 77}
+      \range{pages}{23}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,38 @@
+{
+  "config": {
+    "catalog": "data/PSCompPars_imputed_iterative.csv",
+    "output_dir": "outputs/system_missing_planets/HIP_90988",
+    "mode": "single",
+    "hostname": "HIP 90988",
+    "min_planets_per_system": 2,
+    "min_gap_ratio": 2.8,
+    "high_gap_ratio": 5.0,
+    "max_candidates_per_gap": 4,
+    "n_analogs": 35,
+    "random_state": 42,
+    "toi_table": null,
+    "ati_table": null,
+    "shadow_table": null,
+    "node_membership_table": null,
+    "make_figures": true,
+    "make_latex_summary": true,
+    "weights": {
+      "w_gap": 0.3,
+      "w_topology": 0.25,
+      "w_analog": 0.2,
+      "w_detectability": 0.15,
+      "w_data_quality": 0.1
+    }
+  },
+  "resolved_paths": {
+    "catalog": "reports\\imputation\\PSCompPars_imputed_iterative.csv",
+    "toi_table": "outputs\\topological_incompleteness_index\\tables\\regional_toi_scores.csv",
+    "ati_table": "outputs\\topological_incompleteness_index\\tables\\anchor_ati_scores.csv",
+    "shadow_table": "outputs\\observational_shadow\\tables\\node_observational_shadow_metrics.csv",
+    "node_membership_table": "outputs\\observational_shadow\\metadata\\membership_with_shadow_inputs_orbital_pca2_cubes10_overlap0p35.csv"
+  },
+  "warnings": [],
+  "n_catalog_planets": 6273,
+  "n_target_systems": 1,
+  "n_candidate_rows": 0
+}

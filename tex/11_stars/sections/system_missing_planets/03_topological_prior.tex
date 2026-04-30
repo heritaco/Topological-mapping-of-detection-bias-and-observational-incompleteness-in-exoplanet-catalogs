@@ -1,0 +1,39 @@
+La integraci\'on con resultados previos es el puente conceptual entre el an\'alisis global del repositorio y la priorizaci\'on intra-sistema. El proyecto ya construy\'o:
+
+\begin{itemize}
+\item nodos y regiones Mapper;
+\item m\'etricas de sombra observacional por nodo;
+\item TOI como prioridad regional;
+\item ATI como prioridad de planetas ancla;
+\item validaciones locales y multiescala sobre d\'eficit de vecinos.
+\end{itemize}
+
+En la capa regional, el proyecto usa el \'indice:
+\[
+TOI(v) =
+Shadow(v)(1-I_{R^3}(v))C_{\mathrm{phys}}(v)S_{\mathrm{net}}(v).
+\]
+Este score combina frontera observacional, penalizaci\'on por dependencia de imputaci\'on en $R^3$, continuidad f\'isica y soporte de red. En la capa de ancla, el proyecto usa:
+\[
+ATI(p^\ast) =
+TOI(v)\Delta_{\mathrm{rel,best}}(p^\ast)
+(1-I_{R^3}(p^\ast))A(p^\ast).
+\]
+ATI hereda la prioridad regional y la modula con un d\'eficit local alrededor del planeta ancla, siempre con lectura prudente.
+
+El nuevo m\'odulo no redefine estos \'indices. Los usa como se\~nal topol\'ogica exploratoria previa para evaluar un gap orbital entre dos planetas observados. Si el planeta interno o el externo pertenece a nodos con TOI alto, sombra alta o ATI alto, el intervalo hereda parte de esa prioridad. Una forma resumida de esta herencia es:
+\[
+T_{\mathrm{gap}} =
+\max\{
+TOI(v_{\mathrm{in}}),
+TOI(v_{\mathrm{out}}),
+ATI(p_{\mathrm{in}}),
+ATI(p_{\mathrm{out}}),
+Shadow(v_{\mathrm{in}}),
+Shadow(v_{\mathrm{out}})
+\}.
+\]
+
+La interpretaci\'on es directa: un gap grande con soporte topol\'ogico previo merece m\'as atenci\'on que un gap grande sin contexto adicional. Sin embargo, la relaci\'on sigue siendo indicativa y no causal. TOI, ATI y sombra no prueban que exista un planeta no detectado; solo refuerzan la idea de que la regi\'on local del cat\'alogo podr\'ia estar submuestreada.
+
+Si estas tablas no existen, el reporte debe seguir siendo v\'alido. En ese caso, el an\'alisis cae al modelo orbital puro y la prioridad topol\'ogica del gap se fija en cero o queda marcada como no disponible. Este comportamiento es una decisi\'on metodol\'ogica deliberada para separar la evidencia orbital de la evidencia topol\'ogica previa.

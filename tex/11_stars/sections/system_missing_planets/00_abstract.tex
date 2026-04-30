@@ -1,0 +1,7 @@
+\begin{abstract}
+El proyecto previo construy\'o una lectura global de posible incompletitud observacional a partir de Mapper, sesgo de descubrimiento, sombra observacional, TOI y ATI. El nuevo subproyecto \texttt{src/system\_missing\_planets/} traslada esa idea a escala de sistema planetario: dado un \texttt{hostname}, ordena los planetas por per\'iodo orbital, identifica gaps grandes entre vecinos y prioriza intervalos donde podr\'ia existir posible submuestreo intra-sistema bajo una lectura prudente.
+
+La metodolog\'ia combina cuatro capas. Primero, modela gaps orbitales intra-sistema mediante razones de per\'iodo y anchos en escala logar\'itmica. Segundo, interpola posiciones orbitales plausibles para candidatos a planetas no detectados sin tratarlos como objetos confirmados. Tercero, recupera se\~nales previas de Mapper, sombra observacional, TOI y ATI para reforzar o debilitar la prioridad de cada intervalo. Cuarto, eval\'ua detectabilidad relativa por m\'etodo dominante del sistema, principalmente tr\'ansito y velocidad radial.
+
+El resultado esperado es un ranking de intervalos orbitales prioritarios y candidatos para seguimiento observacional. La conclusi\'on correcta no es que se descubran planetas reales, sino que se priorizan sistemas e intervalos donde nuevas observaciones podr\'ian aportar m\'as valor. En ese sentido, el m\'odulo traduce una se\~nal topol\'ogica exploratoria global a una pregunta concreta sobre arquitecturas planetarias conocidas.
+\end{abstract}

@@ -1,0 +1,93 @@
+Este apartado aclara como se usan los 21 grafos Mapper y por que la interpretacion principal se queda con una capa mas pequena. La idea importante es que los otros grafos no se descartan como resultados incorrectos. Se usan para comparar sensibilidad metodologica. Lo que se evita es tratarlos todos como evidencia cientifica equivalente.
+
+\subsection*{Tres niveles de uso}
+
+El repositorio contiene 21 grafos Mapper completos:
+
+\[
+7\ \text{espacios de variables} \times 3\ \text{lentes}
+= 21\ \text{grafos Mapper}.
+\]
+
+Estos 21 grafos tienen tres funciones distintas:
+
+\begin{enumerate}
+    \item \textbf{Inventario completo de corridas.} Los 21 grafos documentan que se evaluaron siete espacios de variables bajo tres lentes: \texttt{pca2}, \texttt{domain} y \texttt{density}. Esta capa sirve para no confundir una corrida \texttt{pca2} con el conjunto completo de artefactos generados.
+    \item \textbf{Sensibilidad metodologica.} Los grafos \texttt{domain} y \texttt{density} se usan para preguntar si la complejidad topologica depende de la forma de proyectar la nube de datos. Si el numero de nodos, aristas o ciclos cambia mucho al cambiar el lente, la conclusion debe ser mas cautelosa.
+    \item \textbf{Interpretacion cientifica principal.} Las conclusiones principales se apoyan en los grafos \texttt{pca2} seleccionados, especialmente \texttt{orbital\_pca2\_cubes10\_overlap0p35}. Esta eleccion mantiene una capa de lectura comun entre espacios y evita mezclar conclusiones obtenidas con lentes que producen geometrias muy distintas.
+\end{enumerate}
+
+Por tanto, la frase correcta no es que los otros lentes sean ``malos'' o que hayan sido descartados por inestables. La formulacion mas precisa es:
+
+\begin{quote}
+Los lentes \texttt{domain} y \texttt{density} muestran que Mapper es sensible a la eleccion del lente; por eso se usan como controles de sensibilidad y no como base principal de las afirmaciones de sombra observacional.
+\end{quote}
+
+\subsection*{Por que \texttt{pca2} queda como capa activa}
+
+La lente \texttt{pca2} se mantiene como capa activa por tres razones. Primero, resume la variacion multivariable del espacio sin imponer una coordenada fisica unica como eje dominante. Segundo, las tablas activas de interpretacion, seleccion de grafos, auditoria de sesgo y sombra observacional fueron construidas alrededor de configuraciones \texttt{pca2}. Tercero, permite comparar los espacios fisico, orbital, termico y conjunto bajo una regla comun.
+
+Esto no significa que \texttt{pca2} sea la unica mirada valida. Significa que es la mirada principal y reproducible del reporte. Los otros lentes se conservan para revisar si la topologia cambia cuando se usa otra forma de mirar el mismo espacio.
+
+\subsection*{Que muestran los otros lentes}
+
+La tabla \texttt{mapper\_lens\_sensitivity\_all\_existing.csv} muestra que las metricas cambian de manera importante con el lente. Por ejemplo, en el espacio orbital:
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Lente} & \textbf{Nodos} & \textbf{Aristas} & $\boldsymbol{\beta_1}$ \\
+\midrule
+\texttt{domain} & 77 & 94 & 42 \\
+\texttt{pca2} & 124 & 196 & 96 \\
+\texttt{density} & 178 & 297 & 144 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Esta comparacion no prueba que una lente sea verdadera y las otras falsas. Lo que prueba es que la complejidad del grafo depende del lente. Por eso no se debe afirmar que el valor exacto de $\beta_1$, el numero de nodos o la forma de una rama sean invariantes. La conclusion defendible es mas prudente: el espacio orbital produce una estructura rica, pero su complejidad medida cambia con la proyeccion.
+
+La lente \texttt{domain} funciona como una mirada mas ligada a coordenadas interpretables del dominio. Si esta lente simplifica mucho el grafo, como ocurre en varios espacios, indica que parte de la complejidad de \texttt{pca2} puede venir de combinaciones multivariables y no de un eje fisico directo.
+
+La lente \texttt{density} funciona como una mirada sensible a la densidad local de la nube de datos. Cuando produce mas nodos y ciclos, no necesariamente revela mas estructura fisica; tambien puede estar amplificando cambios de muestreo, acumulaciones de puntos o irregularidades de cobertura del catalogo.
+
+\subsection*{Como se usan los espacios con y sin densidad}
+
+Ademas de comparar lentes, el reporte compara espacios con y sin \texttt{pl\_dens}. Esto es necesario porque \texttt{pl\_dens} es fisicamente util, pero en gran parte del catalogo fue derivada de masa y radio. Por eso no debe tratarse como una fuente completamente independiente de informacion.
+
+La tabla \texttt{mapper\_density\_feature\_sensitivity.csv} resume dos comparaciones:
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Comparacion} & $\Delta$ nodos & $\Delta$ aristas & $\Delta \beta_1$ \\
+\midrule
+\texttt{phys\_min} $\rightarrow$ \texttt{phys\_density} & 1 & -3 & -2 \\
+\texttt{joint\_no\_density} $\rightarrow$ \texttt{joint} & -6 & -8 & -4 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+En ambas comparaciones, agregar densidad no aumenta la ramificacion topologica. Mas bien reduce ligeramente las aristas o los ciclos. La lectura metodologica es que \texttt{pl\_dens} actua como una coordenada de control o regularizacion, no como evidencia nueva de una estructura independiente.
+
+\subsection*{Que queda para las fases posteriores}
+
+Las fases posteriores no usan los 21 grafos por igual. La auditoria de sesgo y el reporte de sombra observacional usan como configuracion principal:
+
+\[
+\texttt{orbital\_pca2\_cubes10\_overlap0p35}.
+\]
+
+Algunas comparaciones adicionales usan otros grafos \texttt{pca2}, como \texttt{phys\_min}, \texttt{joint\_no\_density}, \texttt{joint} y \texttt{thermal}. En cambio, las configuraciones \texttt{domain} y \texttt{density} aparecen principalmente como evidencia de sensibilidad del Mapper, no como base directa de los indices locales de sombra o incompletitud.
+
+La seleccion final se puede resumir asi:
+
+\begin{itemize}
+    \item Los 21 grafos existen y documentan la exploracion de espacios y lentes.
+    \item Los grafos \texttt{domain} y \texttt{density} muestran sensibilidad al lente.
+    \item Los grafos con \texttt{pl\_dens} sirven como controles de una variable derivada.
+    \item Los grafos \texttt{pca2} seleccionados son la capa activa de interpretacion.
+    \item El grafo \texttt{orbital\_pca2} es la base principal para sombra observacional y estudios locales porque combina alta complejidad topologica, baja imputacion y una lectura fisico-orbital clara.
+\end{itemize}
+
+Por eso, cuando el reporte dice que nos quedamos con \texttt{orbital\_pca2}, no esta diciendo que los otros 20 grafos no importan. Esta diciendo que los otros grafos delimitan el alcance y la fragilidad metodologica de la conclusion principal.

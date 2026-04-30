@@ -1,0 +1,50 @@
+La validaci\'on interna se dise\~na para responder una pregunta metodol\'ogica b\'asica: si el algoritmo oculta artificialmente un planeta intermedio conocido, \emph{\`es capaz de volver a priorizar un candidato cercano en periodo orbital?}
+
+El procedimiento leave-one-out se aplica a sistemas con tres o m\'as planetas:
+\begin{enumerate}
+\item se retira temporalmente un planeta intermedio;
+\item se recalculan los gaps del sistema sin ese planeta;
+\item se generan candidatos sint\'eticos dentro del nuevo hueco;
+\item se compara el periodo predicho con el periodo verdadero del planeta oculto.
+\end{enumerate}
+
+La m\'etrica base del error es:
+\[
+e =
+\left|
+\log_{10} P_{\mathrm{pred}}
+-
+\log_{10} P_{\mathrm{true}}
+\right|.
+\]
+
+Sobre este error se resumen m\'etricas de recuperaci\'on m\'as interpretables:
+\begin{itemize}
+\item recall within 0.1 dex;
+\item recall within 0.2 dex;
+\item recall within factor 1.5;
+\item recall within factor 2.
+\end{itemize}
+
+Esta validaci\'on no demuestra que los candidatos de la corrida principal correspondan a planetas reales. Lo que s\'i demuestra, cuando funciona razonablemente bien, es que el algoritmo no genera intervalos arbitrarios sin relaci\'on con arquitecturas conocidas. En otras palabras, el m\'etodo tiene cierta capacidad de recuperar patrones intra-sistema cuando un planeta conocido se oculta de manera controlada.
+
+% TODO: actualizar esta tabla con outputs/system_missing_planets/system_missing_planets_validation_summary.json
+\begin{table}[H]
+\centering
+\caption{Resumen placeholder de validaci\'on leave-one-out.}
+\label{tab:validation-placeholder}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.42\textwidth}c}
+\toprule
+M\'etrica & Valor \\
+\midrule
+N\'umero de pruebas holdout & TODO \\
+Error mediano en $\log_{10} P$ & TODO \\
+Recall dentro de 0.1 dex & TODO \\
+Recall dentro de 0.2 dex & TODO \\
+Recall dentro de factor 1.5 & TODO \\
+Recall dentro de factor 2 & TODO \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Cuando el pipeline ya ha sido ejecutado y el archivo JSON existe, estos valores deben sustituirse por los resultados reales del m\'odulo. Si la validaci\'on muestra desempe\~no pobre para ciertos tipos de sistema, eso debe leerse como una se\~nal de cautela y no como una falla editorial del reporte.

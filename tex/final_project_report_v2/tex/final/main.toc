@@ -1,0 +1,23 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Resumen ejecutivo}{3}{section.1}%
+\contentsline {section}{\numberline {2}Glosario ejecutivo y notación}{3}{section.2}%
+\contentsline {section}{\numberline {3}La base reproducible: imputación trazable y cobertura Mapper}{4}{section.3}%
+\contentsline {section}{\numberline {4}Mapper como atlas topológico del catálogo}{5}{section.4}%
+\contentsline {section}{\numberline {5}De estructura a evidencia: clasificación final de regiones}{7}{section.5}%
+\contentsline {section}{\numberline {6}El grafo orbital: el núcleo más informativo del proyecto}{8}{section.6}%
+\contentsline {section}{\numberline {7}Del sesgo de descubrimiento a la sombra observacional}{10}{section.7}%
+\contentsline {section}{\numberline {8}TOI: prioridad regional}{10}{section.8}%
+\contentsline {section}{\numberline {9}ATI: de regiones a planetas ancla}{12}{section.9}%
+\contentsline {section}{\numberline {10}Validación multiescala: del ranking exploratorio al ranking conservador}{13}{section.10}%
+\contentsline {section}{\numberline {11}Ranking final de prioridad observacional}{15}{section.11}%
+\contentsline {section}{\numberline {12}Fichas finales: los casos que cuentan la historia}{15}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Región top por TOI: \texttt {cube12\_cluster0}}{16}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Ancla conservadora: HIP 90988 b / \texttt {cube17\_cluster2}}{16}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Ancla de transición: HD 42012 b}{19}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Candidato secundario estable: HD 4313 b}{20}{subsection.12.4}%
+\contentsline {section}{\numberline {13}Tesis, contrapeso y síntesis}{20}{section.13}%
+\contentsline {section}{\numberline {14}Mapa interdisciplinario}{20}{section.14}%
+\contentsline {section}{\numberline {15}Trabajo futuro como expansión natural}{20}{section.15}%
+\contentsline {section}{\numberline {16}Conclusión final}{21}{section.16}%
+\contentsline {section}{\numberline {A}Notas de reproducibilidad}{21}{appendix.Alph1}%
+\contentsline {section}{\numberline {B}Definiciones formales mínimas}{21}{appendix.Alph2}%

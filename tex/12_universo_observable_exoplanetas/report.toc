@@ -1,0 +1,19 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Resumen Ejecutivo}{1}{section.1}%
+\contentsline {section}{\numberline {2}Introduccion}{1}{section.2}%
+\contentsline {section}{\numberline {3}Problema Cientifico}{2}{section.3}%
+\contentsline {section}{\numberline {4}Datos Utilizados}{2}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Faltantes e imputacion}{3}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Metodologia}{3}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Preparacion}{4}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Mapper/TDA}{4}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Reinterpretacion Cientifica del Mapper}{5}{section.6}%
+\contentsline {section}{\numberline {7}Shadow Score}{5}{section.7}%
+\contentsline {section}{\numberline {8}Resultados Principales}{6}{section.8}%
+\contentsline {subsection}{\numberline {8.1}El espacio orbital como mapa principal}{6}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Auditoria observacional}{7}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Regiones con Shadow alto y priorizacion}{7}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Implicaciones Cientificas}{8}{section.9}%
+\contentsline {section}{\numberline {10}Limitaciones}{8}{section.10}%
+\contentsline {section}{\numberline {11}Trabajo Futuro}{8}{section.11}%
+\contentsline {section}{\numberline {12}Conclusion Final}{9}{section.12}%

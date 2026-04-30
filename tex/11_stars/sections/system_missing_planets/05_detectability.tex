@@ -1,0 +1,23 @@
+La pregunta \emph{por qu\'e no fue detectado} es tan importante como la pregunta \emph{d\'onde podr\'ia estar}. Por eso el pipeline incorpora proxies de detectabilidad consistentes con el m\'etodo dominante del sistema.
+
+Para sistemas dominados por tr\'ansito, se estima primero la probabilidad geom\'etrica aproximada:
+\[
+p_{\mathrm{tr}} \approx \frac{R_\star}{a^\ast},
+\]
+y luego la profundidad de tr\'ansito:
+\[
+\delta \approx \left(\frac{R_p^\ast}{R_\star}\right)^2.
+\]
+Si el candidato tiene menor probabilidad geom\'etrica, menor profundidad esperada o per\'iodo m\'as largo que los planetas ya observados, entonces es razonable clasificarlo como m\'as dif\'icil de detectar por fotometr\'ia de tr\'ansito.
+
+Para sistemas dominados por velocidad radial, se usa un proxy din\'amico simplificado:
+\[
+K_{\mathrm{proxy}}
+\propto
+\frac{M_p^\ast}{M_\star^{2/3}(P^\ast)^{1/3}}.
+\]
+La idea no es aproximar una amplitud f\'isica exacta en metros por segundo, sino capturar la tendencia de que masas menores y per\'iodos largos producen se\~nales m\'as d\'ebiles. Si un candidato tiene un proxy $K$ muy por debajo de la mediana del sistema, la ausencia de detecci\'on es observacionalmente m\'as plausible.
+
+El reporte debe dejar claro que otros m\'etodos requieren otra lectura. Imagen directa no es el camino principal para candidatos interiores, salvo separaciones grandes y planetas masivos. Microlensing tampoco ofrece un esquema de seguimiento equivalente sobre un sistema conocido particular, porque depende de alineamientos transitorios raros. Por eso la interpretaci\'on operacional del m\'odulo se concentra en tr\'ansito y velocidad radial, que son los m\'etodos dominantes en el cat\'alogo y los m\'as compatibles con seguimiento dirigido.
+
+En la implementaci\'on, estos proxies se comparan contra la mediana de los planetas observados del mismo sistema. El resultado es una medida relativa de dificultad de detectabilidad. Esa medida no confirma ning\'un candidato, pero ayuda a distinguir entre gaps grandes que ser\'ian observacionalmente triviales y gaps grandes donde un posible planeta intermedio podr\'ia haber pasado desapercibido.

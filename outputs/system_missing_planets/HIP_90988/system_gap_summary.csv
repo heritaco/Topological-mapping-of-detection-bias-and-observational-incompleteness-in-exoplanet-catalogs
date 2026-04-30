@@ -1,0 +1,2 @@
+hostname,n_observed_planets,n_candidate_missing_planets,max_gap_period_ratio,max_candidate_priority_score,mean_candidate_priority_score,dominant_discoverymethod_system,best_candidate_id,best_candidate_period_days,best_candidate_semimajor_au,system_priority_class
+HIP 90988,1,0,,,,Radial Velocity,,,,low

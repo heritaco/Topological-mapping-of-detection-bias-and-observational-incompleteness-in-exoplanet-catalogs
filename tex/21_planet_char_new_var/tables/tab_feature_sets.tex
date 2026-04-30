@@ -1,0 +1,17 @@
+\begin{longtable}{p{0.27\linewidth}p{0.36\linewidth}p{0.18\linewidth}p{0.10\linewidth}}
+\caption{Feature sets configurados para prediccion, Mapper y sensibilidad}\label{tab:feature-sets}\\
+\toprule
+Feature set & Incluye & Excluye / audit-only & Leakage-safe \\
+\midrule
+\endfirsthead
+\toprule
+Feature set & Incluye & Excluye / audit-only & Leakage-safe \\
+\midrule
+\endhead
+candidate\_characterization\_minimal & candidate\_orbital, stellar\_base, system\_architecture, topological\_context, detectability\_proxy & observational\_audit & True \\
+candidate\_characterization\_with\_audit\_controls & candidate\_orbital, stellar\_base, system\_architecture, topological\_context, detectability\_proxy, observational\_audit & observational\_audit & True \\
+mapper\_orbital\_base & orbital\_base &  & True \\
+mapper\_orbital\_extended & orbital\_extended &  & True \\
+mapper\_joint\_cautious & physical\_base, orbital\_base, thermal &  & False \\
+\bottomrule
+\end{longtable}

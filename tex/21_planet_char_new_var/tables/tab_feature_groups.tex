@@ -1,0 +1,25 @@
+\begin{longtable}{p{0.20\linewidth}p{0.12\linewidth}p{0.11\linewidth}rp{0.39\linewidth}}
+\caption{Grupos de variables registrados para feature governance}\label{tab:feature-groups}\\
+\toprule
+Grupo & Rol & Riesgo & $n$ & Accion recomendada \\
+\midrule
+\endfirsthead
+\toprule
+Grupo & Rol & Riesgo & $n$ & Accion recomendada \\
+\midrule
+\endhead
+orbital\_base & geometry & low & 2 & safe for orbital Mapper geometry and sensitivity analysis \\
+orbital\_extended & geometry & low & 3 & use as Mapper sensitivity analysis; eccentricity missingness should be audited \\
+candidate\_orbital & prediction & low & 2 & default orbital inputs for hypothetical candidate prioritization \\
+physical\_base & prediction & high & 2 & exclude when predicting mass, radius, or classes derived from mass/radius \\
+physical\_density & prediction & high & 3 & diagnostic only for target-derived experiments unless explicitly allowed \\
+thermal & prediction & medium & 2 & audit derivation path before use; include in ablation and sensitivity analysis \\
+stellar\_base & prediction & low & 7 & default stellar host controls when available \\
+observational\_audit & audit & medium & 6 & audit-only by default; use for bias analysis, stratified validation, or sensitivity analysis \\
+system\_architecture & derived & low & 12 & derive from hostname-level grouping; safe if based only on known architecture at prediction time \\
+topological\_context & derived & medium & 9 & read from Mapper/TOI/ATI outputs when available; include in ablation and sensitivity analysis \\
+detectability\_proxy & derived & medium & 4 & derive only from candidate orbital and stellar inputs; keep separate from calibrated detection claims \\
+data\_quality\_uncertainty & quality & low & 14 & use for audit tables and sensitivity analysis rather than default physical prediction \\
+targets & target & high & 6 & never include as model inputs for their own prediction target \\
+\bottomrule
+\end{longtable}

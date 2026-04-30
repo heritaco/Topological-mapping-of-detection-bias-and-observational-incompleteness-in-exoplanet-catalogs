@@ -1,0 +1,19 @@
+{
+  "analog_neighbor_rows": 85800,
+  "candidate_predictions_rows": 1144,
+  "found_inputs": {
+    "configs/features/feature_registry.yaml": true,
+    "configs/features/feature_sets.yaml": true,
+    "outputs/candidate_characterization/tables/candidate_analog_neighbors.csv": true,
+    "outputs/candidate_characterization/tables/candidate_property_predictions.csv": true,
+    "outputs/candidate_characterization/tables/validation_metrics.csv": true,
+    "outputs/candidate_characterization/tables/validation_predictions.csv": true,
+    "outputs/runs/feature_audit_dry/tables/feature_audit/feature_missingness.csv": true,
+    "reports/candidate_characterization/candidate_characterization_summary.md": true
+  },
+  "generated_at": "2026-04-30T15:29:18",
+  "newest_feature_ablation": null,
+  "newest_feature_audit": "outputs/runs/feature_audit_dry/tables/feature_audit/feature_missingness.csv",
+  "validation_metrics_rows": 3,
+  "warnings": []
+}

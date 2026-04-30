@@ -1,0 +1,361 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{siunitx}
+
+\geometry{margin=2.5cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  urlcolor=blue!50!black,
+  citecolor=blue!50!black
+}
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
+\captionsetup{font=small, labelfont=bf}
+\sisetup{detect-all=true}
+
+\newcommand{\safeinput}[1]{\IfFileExists{#1}{\input{#1}}{\begin{center}\fbox{\parbox{0.85\linewidth}{Archivo no generado: \texttt{#1}. Ejecute \texttt{python tex/21\_planet\_char\_new\_var/scripts/build\_report\_assets.py}.}}\end{center}}}
+\newcommand{\safefigure}[4]{%
+  \begin{figure}[H]
+    \centering
+    \IfFileExists{#1}{\includegraphics[width=#2\linewidth]{#1}}{\fbox{\parbox{0.85\linewidth}{Figura no generada: \texttt{#1}.}}}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+\newcommand{\Rp}{R_{\oplus}}
+\newcommand{\Mp}{M_{\oplus}}
+
+\title{\textbf{Caracterización probabilística de candidatos planetarios y nueva selección de variables}\\[0.5em]
+\large Extensión del pipeline Mapper/TDA hacia predicción de propiedades, auditoría de features y validación leakage-safe}
+\author{Repositorio: \texttt{Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Este reporte documenta la extensión que transforma la priorización topológica de ubicaciones orbitales candidatas en una caracterización probabilística de propiedades planetarias plausibles. El resultado no es una confirmación observacional ni una cuenta real de objetos ausentes; es una capa de apoyo para priorización, validación y sensibilidad. La novedad metodológica central es una capa explícita de \textit{feature governance}: las variables se organizan por propósito científico, se auditan por disponibilidad y missingness, y se filtran para evitar leakage antes de entrenar modelos de caracterización.
+\end{abstract}
+
+\section{Resumen ejecutivo}
+
+El proyecto ya contaba con módulos Mapper/TDA, TOI/ATI, observational shadow y \texttt{system\_missing\_planets} para localizar regiones o brechas orbitales topológicamente sugerentes. La nueva extensión responde una pregunta distinta: si una ubicación candidata merece seguimiento, ¿qué radio, masa, densidad, clase y detectabilidad relativa serían plausibles bajo el catálogo observado y bajo reglas conservadoras de variables?
+
+La salida debe leerse como \textbf{caracterización probabilística}. No confirma planetas, no mide una masa observada y no convierte una brecha en detección. Su valor está en ordenar candidatos orbitales, mostrar incertidumbre, comparar con análogos observados y exponer qué tan sensible es el resultado a las variables usadas.
+
+\begin{table}[H]
+\centering
+\caption{Lectura ejecutiva de la extensión}
+\label{tab:executive-reading}
+\begin{tabular}{p{0.26\linewidth}p{0.62\linewidth}}
+\toprule
+Elemento & Lectura recomendada \\
+\midrule
+Entrada científica & Ubicaciones orbitales candidatas priorizadas por topología, arquitectura del sistema y contexto observacional. \\
+Salida principal & Distribuciones predictivas o intervalos para radio, masa, densidad, clase de radio y proxies de detectabilidad. \\
+Control metodológico & Feature governance, auditoría de variables, reglas de leakage y configuraciones listas para ablation. \\
+Resultado actual & \safeinput{tables/validation_result_note.tex} \\
+Interpretación & Evidencia exploratoria para priorización y sensibilidad, no confirmación física. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Problema que resuelve esta extensión}
+
+Los índices TOI/ATI y el módulo \texttt{system\_missing\_planets} priorizan \emph{dónde} podría existir una incompletitud observacional interesante: una brecha en periodos, una región Mapper poco representada, o una zona con contraste entre estructura física y método de detección. Sin embargo, una ubicación orbital candidata no dice por sí sola qué clase de planeta sería compatible con el sistema anfitrión y con los ejemplos observados.
+
+La caracterización de candidatos añade esa segunda capa: estima propiedades plausibles de radio, masa, densidad derivada, clase, proxies de tránsito/RV y soporte por análogos. La capa de selección de variables decide qué información puede entrar a cada modelo. Esta separación es importante porque añadir columnas indiscriminadamente puede introducir leakage, mezclar sesgos observacionales con física, o inflar validaciones de manera artificial.
+
+\section{Ubicación dentro del repositorio}
+
+La extensión se distribuye en código, configuración y artefactos de salida:
+
+\begin{verbatim}
+src/candidate_characterization/
+  analogs.py
+  config.py
+  features.py
+  gpu.py
+  io.py
+  labels.py
+  models.py
+  physics.py
+  predict.py
+  run_characterization.py
+  summarize.py
+  validation.py
+
+src/exoplanet_tda/features/
+  registry.py
+  audit.py
+  derived.py
+  leakage.py
+  ablation.py
+
+configs/features/
+  feature_registry.yaml
+  feature_sets.yaml
+
+outputs/candidate_characterization/
+reports/candidate_characterization/
+\end{verbatim}
+
+El módulo \texttt{candidate\_characterization} realiza entrenamiento, predicción, validación y resumen. La carpeta \texttt{src/exoplanet\_tda/features/} contiene la gobernanza: registro de variables, auditoría, derivaciones, reglas de leakage y ejecución ligera de ablation.
+
+Los assets de este reporte se generan en \texttt{tex/21\_planet\_char\_new\_var/figures/} y \texttt{tex/21\_planet\_char\_new\_var/tables/}. Incluyen figuras de métricas de validación, intervalos de radio/masa, probabilidades de clase, soporte por análogos, composición de feature sets, missingness de features y ablation; además de tablas de métricas, grupos de variables, feature sets, candidatos priorizados e inventario de artefactos.
+
+\section{Capa de selección y gobernanza de variables}
+
+La capa de \textit{feature governance} evita que todas las columnas disponibles entren a todos los modelos. En su lugar, las variables se separan por propósito:
+
+\begin{itemize}
+  \item \textbf{geometry}: variables aptas para geometría Mapper/TDA, por ejemplo periodo y semieje mayor.
+  \item \textbf{prediction}: variables físicas o estelares candidatas para modelos predictivos.
+  \item \textbf{audit}: variables observacionales usadas para auditoría, estratificación o sensibilidad.
+  \item \textbf{derived}: variables derivadas de arquitectura, topología o proxies físicos.
+  \item \textbf{target}: variables que se predicen o definen clases objetivo.
+  \item \textbf{quality}: incertidumbres y columnas de calidad de datos.
+\end{itemize}
+
+\safeinput{tables/tab_feature_groups.tex}
+
+\safefigure{figures/fig_feature_group_summary.pdf}{0.92}{Número de variables registradas por grupo de feature governance.}{fig:feature-group-summary}
+
+La tabla muestra que grupos como \texttt{observational\_audit} y \texttt{targets} existen explícitamente, pero no se mezclan por defecto con las variables físicas de predicción. Esta distinción es una protección científica: las variables de auditoría pueden explicar sesgos de detección, pero no deben interpretarse automáticamente como predictores físicos de masa o radio.
+
+\section{Feature sets y prevención de leakage}
+
+El archivo \texttt{configs/features/feature\_sets.yaml} define configuraciones listas para entrenamiento, Mapper y sensibilidad. Las más importantes son:
+
+\begin{itemize}
+  \item \texttt{candidate\_characterization\_minimal}: conjunto recomendado por defecto; incluye órbita candidata, propiedades estelares, arquitectura del sistema, contexto topológico y proxies de detectabilidad; excluye auditoría observacional.
+  \item \texttt{candidate\_characterization\_with\_audit\_controls}: permite variables de auditoría como controles, pero marcadas como \texttt{audit\_only}.
+  \item \texttt{mapper\_orbital\_base} y \texttt{mapper\_orbital\_extended}: espacios Mapper orbitales.
+  \item \texttt{mapper\_joint\_cautious}: conjunto para diagnóstico/Mapper, no para predicción leakage-safe de masa o radio.
+  \item \texttt{feature\_ablation\_plan}: plan de comparación incremental entre conjuntos de variables.
+\end{itemize}
+
+\safeinput{tables/tab_feature_sets.tex}
+
+\safefigure{figures/fig_feature_set_composition.pdf}{0.96}{Composición de los feature sets definidos en la configuración.}{fig:feature-set-composition}
+
+Aquí, leakage significa usar información del objetivo como entrada al modelo. En forma compacta:
+
+\[
+X_{\mathrm{input}} \cap \{y_{\mathrm{target}}\} = \varnothing .
+\]
+
+Si el objetivo es la masa planetaria observada,
+\[
+y = \texttt{pl\_bmasse}
+\quad \Rightarrow \quad
+\texttt{pl\_bmasse},\ \texttt{log\_pl\_bmasse},\ \texttt{pl\_dens} \notin X_{\mathrm{input}}.
+\]
+
+Si el objetivo es el radio planetario observado,
+\[
+y = \texttt{pl\_rade}
+\quad \Rightarrow \quad
+\texttt{pl\_rade},\ \texttt{log\_pl\_rade},\ \texttt{pl\_dens} \notin X_{\mathrm{input}}.
+\]
+
+Para clases derivadas de radio o masa, las variables que definen directamente esas clases se excluyen salvo en un modo diagnóstico explícito de planetas ya observados. Además, \texttt{discoverymethod}, \texttt{disc\_year} y \texttt{disc\_facility} no se usan por defecto como predictores físicos: pertenecen a observational audit, validación estratificada o sensibilidad.
+
+\section{Variables derivadas y proxies físicos}
+
+La extensión añade variables derivadas con prefijos o nombres controlados y sin sobrescribir columnas crudas. Sean $P_\ast$ y $a_\ast$ el periodo y semieje mayor de la ubicación orbital candidata, $R_\star$ el radio estelar, $M_\star$ la masa estelar, $L_\star$ la luminosidad estelar, $M_p$ y $R_p$ las propiedades planetarias caracterizadas.
+
+Variables candidatas y de arquitectura:
+\begin{itemize}
+  \item \texttt{candidate\_pl\_orbper}, \texttt{candidate\_pl\_orbsmax};
+  \item \texttt{n\_known\_planets};
+  \item \texttt{period\_ratio\_inner}, \texttt{period\_ratio\_outer};
+  \item \texttt{log\_gap\_width}, \texttt{normalized\_gap\_position}.
+\end{itemize}
+
+Proxies físicos:
+\[
+\texttt{transit\_probability\_proxy} \approx \frac{R_\star}{a_\ast},
+\]
+\[
+\texttt{candidate\_insol} \approx \frac{L_\star}{a_\ast^2},
+\]
+\[
+\rho_p = 5.514\,\frac{M_p}{R_p^3},
+\]
+\[
+\texttt{rv\_amplitude\_proxy} \propto
+\frac{M_p}{M_\star^{2/3} P_\ast^{1/3}}.
+\]
+
+Estos términos son proxies relativos, no funciones calibradas de completitud instrumental ni detectabilidad absoluta. En particular, \texttt{candidate\_eqt} se deriva sólo si existen radio estelar, temperatura efectiva estelar y semieje mayor candidato; si faltan, queda como \texttt{NaN} y se registra advertencia.
+
+\section{Módulo de caracterización probabilística}
+
+El flujo del módulo es:
+
+\[
+\text{inputs}
+\rightarrow
+\text{feature construction}
+\rightarrow
+\text{analog support}
+\rightarrow
+\text{probabilistic ML}
+\rightarrow
+\text{physical postprocessing}
+\rightarrow
+\text{validation}
+\rightarrow
+\text{summary}.
+\]
+
+Conceptualmente, el modelo estima:
+\[
+(P_\ast, a_\ast, \mathrm{host\ star}, \mathrm{system\ architecture}, \mathrm{TOI/ATI}, \mathrm{shadow})
+\rightarrow
+p(M_p, R_p, \mathrm{class}, \mathrm{detectability}\mid \mathrm{candidate}).
+\]
+
+La salida combina modelos de cuantiles para propiedades numéricas, clasificación probabilística de clase de radio, densidad derivada, proxies de tránsito/RV y análogos observados cercanos en el espacio de features leakage-safe. La palabra clave es \emph{plausible}: el modelo describe regiones de probabilidad condicionadas al catálogo y a sus sesgos.
+
+\section{Resultados de validación}
+
+La validación actual usa planetas retenidos como pseudo-candidatos, en modo \texttt{multiplanet}. La tabla y la figura resumen MAE para objetivos numéricos, cobertura de intervalos 5--95\% y accuracy para clase de radio.
+
+\safeinput{tables/tab_validation_metrics.tex}
+
+\safefigure{figures/fig_validation_metrics.pdf}{0.88}{Métricas disponibles por objetivo en la validación de planetas retenidos.}{fig:validation-metrics}
+
+\safeinput{tables/validation_result_note.tex}
+
+El error de masa puede ser grande porque las masas exoplanetarias tienen colas pesadas, se reportan con heterogeneidad instrumental y están muy condicionadas por método de detección. La cobertura 5--95\% es evidencia de calibración aproximada de intervalos, no una prueba de corrección física. Una cobertura razonable no elimina sesgos de catálogo, ni sustituye pruebas de inyección-recuperación o completitud instrumental.
+
+\section{Resultados de predicción de candidatos}
+
+\safeinput{tables/candidate_prediction_status.tex}
+
+\safeinput{tables/tab_top_candidates.tex}
+
+\safefigure{figures/fig_candidate_radius_mass_intervals.pdf}{0.92}{Intervalos de radio para candidatos orbitales priorizados.}{fig:candidate-radius-intervals}
+
+\safefigure{figures/fig_candidate_mass_intervals.pdf}{0.92}{Intervalos de masa para candidatos orbitales priorizados.}{fig:candidate-mass-intervals}
+
+\safefigure{figures/fig_radius_class_probabilities.pdf}{0.92}{Probabilidades de clase de radio para los candidatos con columnas de probabilidad disponibles.}{fig:radius-class-probabilities}
+
+\safeinput{tables/note_radius_class_probabilities.tex}
+
+Si en una ejecución futura la tabla \texttt{candidate\_property\_predictions.csv} existe pero no tiene filas, la interpretación correcta es operativa: falta conectar o regenerar la tabla de candidatos de entrada, o el archivo está vacío. No debe leerse como evidencia de ausencia de planetas.
+
+\section{Soporte por análogos}
+
+El soporte por análogos busca planetas observados cercanos en el espacio de features permitido. Estos análogos aportan contexto empírico: indican qué objetos conocidos se parecen al candidato bajo las variables leakage-safe disponibles.
+
+\safefigure{figures/fig_analog_support.pdf}{0.92}{Número de análogos observados por candidato en la tabla de soporte empírico.}{fig:analog-support}
+
+El soporte por análogos tampoco confirma un objeto. Sirve para revisar si la caracterización cae en una región del catálogo con ejemplos comparables, o si por el contrario depende de extrapolación.
+
+\section{Auditoría de nuevas variables}
+
+La auditoría de features reporta disponibilidad, missingness, rol, riesgo de leakage y acción recomendada. En esta corrida existe una auditoría bajo \texttt{outputs/runs/feature\_audit\_dry/}; al ser dry-run, puede no contener porcentajes finitos para todos los campos. Una ejecución completa antes del pipeline unificado debe actualizar estas tablas con los catálogos reales cargados.
+
+\safefigure{figures/fig_feature_missingness.pdf}{0.92}{Features con mayor missingness cuando existe una auditoría completa; si sólo hay dry-run, la figura actúa como recordatorio operativo.}{fig:feature-missingness}
+
+La lectura correcta de missingness es conservadora. Una variable con alta ausencia puede ser útil para auditoría o sensibilidad, pero no debe promoverse automáticamente a predictor por defecto. Del mismo modo, una variable observacional como método o año de detección puede mejorar métricas por capturar sesgo histórico, no por representar física planetaria.
+
+\section{Ablation y sensibilidad}
+
+La ablation compara conjuntos de variables para estimar si agregar grupos mejora o degrada la caracterización bajo validación. El plan actual incluye experimentos desde orbital mínimo hasta conjuntos completos con controles de auditoría.
+
+\safefigure{figures/fig_ablation_metrics.pdf}{0.88}{Comparación de métricas por feature set cuando existe \texttt{ablation\_metrics.csv}; si no existe, se muestra una figura placeholder.}{fig:ablation-metrics}
+
+Si la figura es placeholder, significa que la ablation todavía no se ejecutó. Ese estado es metodológicamente sano: antes de afirmar que variables adicionales ayudan, deben compararse con el conjunto mínimo bajo validación común, idealmente con métricas de calibración y particiones ocultas.
+
+\section{Discusión científica}
+
+\textbf{Tesis.} La topología dice dónde mirar. Mapper/TDA, TOI/ATI y observational shadow identifican regiones de incompletitud observacional o brechas orbitales que merecen revisión.
+
+\textbf{Antítesis.} El catálogo no es un muestreo uniforme del universo. Missingness, sesgos por método, selección histórica, precisión instrumental y leakage pueden inflar la habilidad aparente de un modelo. Mezclar columnas sin gobierno puede hacer que el modelo aprenda la forma del catálogo y no relaciones físicas transferibles.
+
+\textbf{Síntesis.} La caracterización gobernada por features permite usar la topología como priorización y la predicción probabilística como descripción de plausibilidad, manteniendo lenguaje conservador. Las métricas de validación, la cobertura, la ablation y las variables audit-only deben acompañar cualquier interpretación científica.
+
+\section{Limitaciones}
+
+\begin{itemize}
+  \item No hay todavía una función instrumental explícita de completitud.
+  \item No se han ejecutado simulaciones de inyección-recuperación.
+  \item Las masas y radios de candidatos son probabilísticos, no observados.
+  \item La densidad se deriva de masa y radio caracterizados, por lo que acumula incertidumbre.
+  \item Las variables de observational audit se excluyen del predictor físico por defecto.
+  \item La ablation puede estar pendiente o incompleta.
+  \item Una tabla vacía de candidatos debe tratarse como falta de ejecución o conexión de insumos, no como resultado científico negativo.
+\end{itemize}
+
+\section{Conclusión}
+
+Esta extensión convierte la priorización topológica de candidatos orbitales en un flujo de caracterización probabilística. El avance técnico más importante no es simplemente entrenar modelos adicionales, sino imponer una capa de feature governance que separa geometría, predicción, auditoría, derivados, calidad y objetivos.
+
+El siguiente paso más importante es ejecutar ablation completa y validación calibrada sobre planetas conocidos ocultos, usando el conjunto \texttt{candidate\_characterization\_minimal} como default leakage-safe y comparándolo contra variantes de sensibilidad.
+
+\section{Cómo correr / reproducir}
+
+Caracterización probabilística:
+\begin{verbatim}
+python -m src.candidate_characterization.run_characterization \
+  --config configs/candidate_characterization/default.yaml \
+  --repo-root . \
+  --train \
+  --predict \
+  --validate \
+  --validation-mode multiplanet \
+  --feature-set candidate_characterization_minimal
+\end{verbatim}
+
+Ablation ligera:
+\begin{verbatim}
+python -m src.exoplanet_tda.features.ablation \
+  --config configs/candidate_characterization/default.yaml \
+  --run-id feature_ablation
+\end{verbatim}
+
+Generación de assets del reporte:
+\begin{verbatim}
+python tex/21_planet_char_new_var/scripts/build_report_assets.py
+\end{verbatim}
+
+Compilación opcional posterior, cuando exista una distribución TeX local:
+\begin{verbatim}
+pdflatex main.tex
+biber main
+pdflatex main.tex
+pdflatex main.tex
+\end{verbatim}
+
+No se compiló en esta máquina porque no está instalado Strawberry Perl / latexmk. Este reporte no requiere \texttt{latexmk}; los comandos anteriores son sólo una ruta manual para más adelante.
+
+\appendix
+\section{Inventario de artefactos}
+
+\safeinput{tables/tab_outputs_inventory.tex}
+
+\section{Advertencias de generación de assets}
+
+\safeinput{tables/build_warnings.tex}
+
+\end{document}

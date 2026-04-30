@@ -1,0 +1,11 @@
+2026-04-30 12:28:27,583 INFO [exoplanet_tda.dry_script_test] Starting stage: data_audit
+2026-04-30 12:28:27,646 INFO [exoplanet_tda.dry_script_test] Starting stage: mapper
+2026-04-30 12:28:27,656 INFO [exoplanet_tda.dry_script_test] Starting stage: observational_bias
+2026-04-30 12:28:27,667 INFO [exoplanet_tda.dry_script_test] Starting stage: observational_shadow
+2026-04-30 12:28:27,677 INFO [exoplanet_tda.dry_script_test] Starting stage: local_shadow_case_studies
+2026-04-30 12:28:27,687 INFO [exoplanet_tda.dry_script_test] Starting stage: topological_incompleteness_index
+2026-04-30 12:28:27,697 INFO [exoplanet_tda.dry_script_test] Starting stage: toi_ati_case_anatomy
+2026-04-30 12:28:27,706 INFO [exoplanet_tda.dry_script_test] Starting stage: toi_ati_future_validation
+2026-04-30 12:28:27,730 INFO [exoplanet_tda.dry_script_test] Starting stage: system_missing_planets
+2026-04-30 12:28:27,740 INFO [exoplanet_tda.dry_script_test] Starting stage: candidate_characterization
+2026-04-30 12:28:27,750 INFO [exoplanet_tda.dry_script_test] Starting stage: reporting

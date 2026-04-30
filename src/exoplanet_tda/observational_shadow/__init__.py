@@ -1,0 +1,1 @@
+"""Unified observational-shadow adapters."""

@@ -1,0 +1,12 @@
+project:
+  name: baseline_orbital
+
+stages:
+  mapper:
+    enabled: true
+    spaces: ["orbital"]
+    lenses: ["pca2"]
+    n_cubes: 10
+    overlap: 0.35
+  candidate_characterization:
+    enabled: false

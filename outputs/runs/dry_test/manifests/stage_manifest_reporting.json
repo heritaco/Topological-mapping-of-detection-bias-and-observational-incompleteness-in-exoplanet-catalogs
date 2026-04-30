@@ -1,0 +1,23 @@
+{
+  "name": "reporting",
+  "status": "success",
+  "outputs": [
+    {
+      "stage": "reporting",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/dry_test/reports/run_summary.md",
+      "relative_path": "outputs/runs/dry_test/reports/run_summary.md",
+      "kind": "report",
+      "description": "Unified run summary",
+      "created_at": "2026-04-30T18:27:16.143101+00:00",
+      "exists": true,
+      "size_bytes": 2818,
+      "metadata": {}
+    }
+  ],
+  "metrics": {
+    "artifact_count": 1
+  },
+  "warnings": [],
+  "error": null,
+  "elapsed_seconds": 0.006146500003524125
+}

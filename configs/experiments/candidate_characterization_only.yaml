@@ -1,0 +1,28 @@
+project:
+  name: candidate_characterization_only
+
+stages:
+  data_audit:
+    enabled: true
+  imputation:
+    enabled: false
+  mapper:
+    enabled: false
+  observational_bias:
+    enabled: false
+  observational_shadow:
+    enabled: false
+  local_shadow_case_studies:
+    enabled: false
+  topological_incompleteness_index:
+    enabled: false
+  toi_ati_case_anatomy:
+    enabled: false
+  toi_ati_future_validation:
+    enabled: false
+  system_missing_planets:
+    enabled: false
+  candidate_characterization:
+    enabled: true
+  reporting:
+    enabled: true

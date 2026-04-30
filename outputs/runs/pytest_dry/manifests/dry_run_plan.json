@@ -1,0 +1,17 @@
+{
+  "run_id": "pytest_dry",
+  "stages": [
+    "data_audit"
+  ],
+  "inputs": {
+    "raw_catalog": "data/PSCompPars_2026.04.25_17.36.36.csv",
+    "imputed_catalog": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "mapper_outputs_dir": "outputs/mapper",
+    "system_candidates_csv": "outputs/system_missing_planets/candidate_missing_planets_by_system.csv",
+    "toi_regions_csv": "outputs/topological_incompleteness_index/tables/regional_toi_scores.csv",
+    "ati_anchors_csv": "outputs/topological_incompleteness_index/tables/anchor_ati_scores.csv"
+  },
+  "expected_stage_outputs": {
+    "data_audit": null
+  }
+}

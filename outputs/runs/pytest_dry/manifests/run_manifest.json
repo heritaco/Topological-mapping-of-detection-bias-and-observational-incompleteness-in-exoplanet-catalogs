@@ -1,0 +1,123 @@
+{
+  "run_id": "pytest_dry",
+  "created_at": "2026-04-30T18:28:52.235554+00:00",
+  "updated_at": "2026-04-30T18:28:52.287416+00:00",
+  "run_dir": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry",
+  "stages": {
+    "data_audit": {
+      "name": "data_audit",
+      "status": "success",
+      "outputs": [
+        {
+          "stage": "data_audit",
+          "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry/tables/data_audit/input_inventory.csv",
+          "relative_path": "outputs/runs/pytest_dry/tables/data_audit/input_inventory.csv",
+          "kind": "table",
+          "description": "Input and legacy-output inventory",
+          "created_at": "2026-04-30T18:28:52.276416+00:00",
+          "exists": true,
+          "size_bytes": 4780,
+          "metadata": {}
+        },
+        {
+          "stage": "data_audit",
+          "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry/reports/stage_summaries/data_audit.md",
+          "relative_path": "outputs/runs/pytest_dry/reports/stage_summaries/data_audit.md",
+          "kind": "report",
+          "description": "Data audit stage summary",
+          "created_at": "2026-04-30T18:28:52.280416+00:00",
+          "exists": true,
+          "size_bytes": 170,
+          "metadata": {}
+        }
+      ],
+      "metrics": {
+        "items": 16
+      },
+      "warnings": [],
+      "error": null,
+      "elapsed_seconds": 0.030029600005946122
+    }
+  },
+  "artifacts": [
+    {
+      "stage": "config",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry/config/config_original.yaml",
+      "relative_path": "outputs/runs/pytest_dry/config/config_original.yaml",
+      "kind": "config",
+      "description": "Original submitted pipeline configuration",
+      "created_at": "2026-04-30T18:28:52.236557+00:00",
+      "exists": true,
+      "size_bytes": 2777,
+      "metadata": {}
+    },
+    {
+      "stage": "config",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry/config/config_effective.yaml",
+      "relative_path": "outputs/runs/pytest_dry/config/config_effective.yaml",
+      "kind": "config",
+      "description": "Effective resolved pipeline configuration",
+      "created_at": "2026-04-30T18:28:52.240557+00:00",
+      "exists": true,
+      "size_bytes": 4878,
+      "metadata": {}
+    },
+    {
+      "stage": "logging",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry/logs/pipeline.log",
+      "relative_path": "outputs/runs/pytest_dry/logs/pipeline.log",
+      "kind": "log",
+      "description": "Unified pipeline log",
+      "created_at": "2026-04-30T18:28:52.244057+00:00",
+      "exists": true,
+      "size_bytes": 84,
+      "metadata": {}
+    },
+    {
+      "stage": "dry_run",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry/manifests/dry_run_plan.json",
+      "relative_path": "outputs/runs/pytest_dry/manifests/dry_run_plan.json",
+      "kind": "manifest",
+      "description": "Dry-run execution plan",
+      "created_at": "2026-04-30T18:28:52.249528+00:00",
+      "exists": true,
+      "size_bytes": 637,
+      "metadata": {}
+    },
+    {
+      "stage": "data_audit",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry/tables/data_audit/input_inventory.csv",
+      "relative_path": "outputs/runs/pytest_dry/tables/data_audit/input_inventory.csv",
+      "kind": "table",
+      "description": "Input and legacy-output inventory",
+      "created_at": "2026-04-30T18:28:52.276416+00:00",
+      "exists": true,
+      "size_bytes": 4780,
+      "metadata": {}
+    },
+    {
+      "stage": "data_audit",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry/reports/stage_summaries/data_audit.md",
+      "relative_path": "outputs/runs/pytest_dry/reports/stage_summaries/data_audit.md",
+      "kind": "report",
+      "description": "Data audit stage summary",
+      "created_at": "2026-04-30T18:28:52.280416+00:00",
+      "exists": true,
+      "size_bytes": 170,
+      "metadata": {}
+    },
+    {
+      "stage": "data_audit",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/runs/pytest_dry/manifests/stage_manifest_data_audit.json",
+      "relative_path": "outputs/runs/pytest_dry/manifests/stage_manifest_data_audit.json",
+      "kind": "manifest",
+      "description": "Stage manifest for data_audit",
+      "created_at": "2026-04-30T18:28:52.285417+00:00",
+      "exists": true,
+      "size_bytes": 1366,
+      "metadata": {}
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}

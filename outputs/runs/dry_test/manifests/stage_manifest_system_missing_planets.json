@@ -1,0 +1,25 @@
+{
+  "name": "system_missing_planets",
+  "status": "skipped",
+  "outputs": [
+    {
+      "stage": "system_missing_planets",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/system_missing_planets",
+      "relative_path": "outputs/system_missing_planets",
+      "kind": "other",
+      "description": "Expected legacy output directory",
+      "created_at": "2026-04-30T18:27:16.122216+00:00",
+      "exists": true,
+      "size_bytes": null,
+      "metadata": {
+        "dry_run": true
+      }
+    }
+  ],
+  "metrics": {
+    "dry_run": true
+  },
+  "warnings": [],
+  "error": null,
+  "elapsed_seconds": 0.003885899990564212
+}

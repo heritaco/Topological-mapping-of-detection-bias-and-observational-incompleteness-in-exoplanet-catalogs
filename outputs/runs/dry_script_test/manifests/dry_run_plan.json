@@ -1,0 +1,39 @@
+{
+  "run_id": "dry_script_test",
+  "stages": [
+    "data_audit",
+    "imputation",
+    "mapper",
+    "observational_bias",
+    "observational_shadow",
+    "local_shadow_case_studies",
+    "topological_incompleteness_index",
+    "toi_ati_case_anatomy",
+    "toi_ati_future_validation",
+    "system_missing_planets",
+    "candidate_characterization",
+    "reporting"
+  ],
+  "inputs": {
+    "raw_catalog": "data/PSCompPars_2026.04.25_17.36.36.csv",
+    "imputed_catalog": "reports/imputation/PSCompPars_imputed_iterative.csv",
+    "mapper_outputs_dir": "outputs/mapper",
+    "system_candidates_csv": "outputs/system_missing_planets/candidate_missing_planets_by_system.csv",
+    "toi_regions_csv": "outputs/topological_incompleteness_index/tables/regional_toi_scores.csv",
+    "ati_anchors_csv": "outputs/topological_incompleteness_index/tables/anchor_ati_scores.csv"
+  },
+  "expected_stage_outputs": {
+    "data_audit": null,
+    "imputation": "outputs/imputation",
+    "mapper": "outputs/mapper",
+    "observational_bias": "outputs/observational_bias_audit",
+    "observational_shadow": "outputs/observational_shadow",
+    "local_shadow_case_studies": "outputs/local_shadow_case_studies",
+    "topological_incompleteness_index": "outputs/topological_incompleteness_index",
+    "toi_ati_case_anatomy": "outputs/toi_ati_case_anatomy",
+    "toi_ati_future_validation": "outputs/toi_ati_future_validation",
+    "system_missing_planets": "outputs/system_missing_planets",
+    "candidate_characterization": "outputs/candidate_characterization",
+    "reporting": null
+  }
+}

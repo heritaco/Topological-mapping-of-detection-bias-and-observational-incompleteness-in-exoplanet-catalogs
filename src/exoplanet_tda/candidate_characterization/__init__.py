@@ -1,0 +1,1 @@
+"""Unified candidate-characterization adapters."""

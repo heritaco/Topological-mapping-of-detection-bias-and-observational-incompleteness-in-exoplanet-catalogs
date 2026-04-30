@@ -1,0 +1,25 @@
+{
+  "name": "observational_bias",
+  "status": "skipped",
+  "outputs": [
+    {
+      "stage": "observational_bias",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/observational_bias_audit",
+      "relative_path": "outputs/observational_bias_audit",
+      "kind": "other",
+      "description": "Expected legacy output directory",
+      "created_at": "2026-04-30T18:28:27.658539+00:00",
+      "exists": true,
+      "size_bytes": null,
+      "metadata": {
+        "dry_run": true
+      }
+    }
+  ],
+  "metrics": {
+    "dry_run": true
+  },
+  "warnings": [],
+  "error": null,
+  "elapsed_seconds": 0.0037330000050133094
+}

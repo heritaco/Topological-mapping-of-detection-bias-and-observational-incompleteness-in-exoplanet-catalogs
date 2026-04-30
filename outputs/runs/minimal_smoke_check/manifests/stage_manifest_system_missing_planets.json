@@ -1,0 +1,11 @@
+{
+  "name": "system_missing_planets",
+  "status": "skipped",
+  "outputs": [],
+  "metrics": {},
+  "warnings": [
+    "Stage disabled by config"
+  ],
+  "error": null,
+  "elapsed_seconds": 0.0
+}

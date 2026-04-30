@@ -1,0 +1,2 @@
+2026-04-30 12:31:28,300 INFO [exoplanet_tda.minimal_smoke_check] Starting stage: data_audit
+2026-04-30 12:31:28,433 INFO [exoplanet_tda.minimal_smoke_check] Starting stage: reporting

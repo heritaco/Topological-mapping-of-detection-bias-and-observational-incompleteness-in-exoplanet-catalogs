@@ -1,0 +1,92 @@
+project:
+  name: exoplanet_tda_unified_full
+  random_state: 42
+
+paths:
+  repo_root: "."
+  data_dir: "data"
+  outputs_dir: "outputs"
+  reports_dir: "reports"
+  run_dir_template: "outputs/runs/{run_id}"
+
+run:
+  run_id: null
+  overwrite: false
+  fail_fast: false
+  dry_run: false
+  use_gpu: auto
+
+inputs:
+  raw_catalog: "data/PSCompPars_2026.04.25_17.36.36.csv"
+  imputed_catalog: "reports/imputation/PSCompPars_imputed_iterative.csv"
+  mapper_outputs_dir: "outputs/mapper"
+  system_candidates_csv: "outputs/system_missing_planets/candidate_missing_planets_by_system.csv"
+  toi_regions_csv: "outputs/topological_incompleteness_index/tables/regional_toi_scores.csv"
+  ati_anchors_csv: "outputs/topological_incompleteness_index/tables/anchor_ati_scores.csv"
+
+stages:
+  data_audit:
+    enabled: true
+  imputation:
+    enabled: false
+    mode: legacy_subprocess
+    legacy_entrypoint: "src/impute_exodata.py"
+    outputs_dir: "outputs/imputation"
+  mapper:
+    enabled: true
+    mode: legacy_or_import
+    legacy_entrypoint: "src/mapper_exodata.py"
+    outputs_dir: "outputs/mapper"
+    rerun: false
+    spaces: ["orbital", "phys_min", "joint_no_density"]
+    lenses: ["pca2"]
+    n_cubes: 10
+    overlap: 0.35
+  observational_bias:
+    enabled: true
+    config: "configs/observational_bias_audit.yaml"
+    outputs_dir: "outputs/observational_bias_audit"
+    rerun: false
+  observational_shadow:
+    enabled: true
+    config: "configs/observational_shadow.yaml"
+    outputs_dir: "outputs/observational_shadow"
+    rerun: false
+  local_shadow_case_studies:
+    enabled: true
+    config: "configs/local_shadow_case_studies.yaml"
+    outputs_dir: "outputs/local_shadow_case_studies"
+    rerun: false
+  topological_incompleteness_index:
+    enabled: true
+    config: "configs/topological_incompleteness_index.yaml"
+    outputs_dir: "outputs/topological_incompleteness_index"
+    rerun: false
+  toi_ati_case_anatomy:
+    enabled: true
+    config: "configs/toi_ati_case_anatomy.yaml"
+    outputs_dir: "outputs/toi_ati_case_anatomy"
+    rerun: false
+  toi_ati_future_validation:
+    enabled: true
+    config: "configs/toi_ati_future_validation.yaml"
+    outputs_dir: "outputs/toi_ati_future_validation"
+    rerun: false
+  system_missing_planets:
+    enabled: true
+    outputs_dir: "outputs/system_missing_planets"
+    mode: all
+    rerun: false
+  candidate_characterization:
+    enabled: true
+    config: "configs/candidate_characterization/default.yaml"
+    module: "src.candidate_characterization.run_characterization"
+    outputs_dir: "outputs/candidate_characterization"
+    report_dir: "reports/candidate_characterization"
+    train: true
+    predict: true
+    validate: true
+    validation_mode: "multiplanet"
+    rerun: false
+  reporting:
+    enabled: true

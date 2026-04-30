@@ -1,0 +1,11 @@
+{
+  "name": "observational_bias",
+  "status": "skipped",
+  "outputs": [],
+  "metrics": {},
+  "warnings": [
+    "Stage disabled by config"
+  ],
+  "error": null,
+  "elapsed_seconds": 0.0
+}

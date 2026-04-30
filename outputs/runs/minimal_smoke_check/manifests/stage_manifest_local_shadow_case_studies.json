@@ -1,0 +1,11 @@
+{
+  "name": "local_shadow_case_studies",
+  "status": "skipped",
+  "outputs": [],
+  "metrics": {},
+  "warnings": [
+    "Stage disabled by config"
+  ],
+  "error": null,
+  "elapsed_seconds": 0.0
+}

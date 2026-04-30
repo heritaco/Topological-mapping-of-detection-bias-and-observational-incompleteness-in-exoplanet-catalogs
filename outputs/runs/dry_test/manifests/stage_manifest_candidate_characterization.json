@@ -1,0 +1,25 @@
+{
+  "name": "candidate_characterization",
+  "status": "skipped",
+  "outputs": [
+    {
+      "stage": "candidate_characterization",
+      "path": "C:/Users/175199/OneDrive - Fundacion Universidad de las Americas Puebla/Topological-mapping-of-detection-bias-and-observational-incompleteness-in-exoplanet-catalogs/outputs/candidate_characterization",
+      "relative_path": "outputs/candidate_characterization",
+      "kind": "other",
+      "description": "Expected legacy output directory",
+      "created_at": "2026-04-30T18:27:16.131606+00:00",
+      "exists": true,
+      "size_bytes": null,
+      "metadata": {
+        "dry_run": true
+      }
+    }
+  ],
+  "metrics": {
+    "dry_run": true
+  },
+  "warnings": [],
+  "error": null,
+  "elapsed_seconds": 0.004174899993813597
+}
